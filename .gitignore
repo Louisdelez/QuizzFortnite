@@ -5,8 +5,9 @@ tools/quiz_map.obj
 tools/quiz_map.mtl
 tools/*.verse.txt
 
-# ── Config locale MCP (ne pas committer les chemins perso) ──
+# ── Config locale MCP + serveur tiers cloné (ne pas committer) ──
 .mcp.json
+.mcp-server/
 
 # ── Python ──
 __pycache__/
