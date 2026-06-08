@@ -1,0 +1,31 @@
+# ── Fichiers generes par les outils tools/ (regenerables) ──
+tools/layout.json
+tools/placement_manifest.json
+tools/quiz_map.obj
+tools/quiz_map.mtl
+tools/*.verse.txt
+
+# ── Config locale MCP (ne pas committer les chemins perso) ──
+.mcp.json
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ── OS / éditeurs ──
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ── UEFN / Unreal (si le projet UEFN est ajouté plus tard) ──
+Intermediate/
+Saved/
+DerivedDataCache/
+Binaries/
+Build/
+*.tmp

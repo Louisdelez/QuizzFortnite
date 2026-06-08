@@ -1,0 +1,13 @@
+{
+  "//": "Exemple de config MCP pour brancher UEFN a Claude Code. Copier en .mcp.json a la racine du projet et adapter le chemin.",
+  "//doc": "Voir docs/08-creation-hors-uefn/06-mcp-setup.md",
+  "mcpServers": {
+    "uefn": {
+      "command": "python",
+      "args": ["C:/chemin/vers/uefn-mcp-server/mcp_server.py"],
+      "env": {
+        "UEFN_MCP_PORT": "8765"
+      }
+    }
+  }
+}

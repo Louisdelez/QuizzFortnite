@@ -1,0 +1,11 @@
+# Normalise les fins de ligne (LF) pour tout le texte.
+* text=auto eol=lf
+
+# Types explicitement texte
+*.md     text eol=lf
+*.verse  text eol=lf
+*.py     text eol=lf
+*.json   text eol=lf
+*.txt    text eol=lf
+*.obj    text eol=lf
+*.mtl    text eol=lf
