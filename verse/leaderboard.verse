@@ -45,3 +45,12 @@ leaderboard := class:
             if (not Inserted?) { set Out += array{ E } }
             set Result = Out
         Result
+
+    # Lignes de texte du classement, ex. "#1   450 pts".
+    RankingLines() : []string =
+        var Lines : []string = array{}
+        var Rank : int = 1
+        for (E : Ranking()):
+            set Lines += array{ "#{Rank}    {E.Score} pts" }
+            set Rank += 1
+        Lines

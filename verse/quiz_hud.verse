@@ -5,7 +5,9 @@ using { /Verse.org/Colors }
 using { /Verse.org/Simulation }
 
 # ============================================================
-#  quiz_hud.verse — UI Verse par joueur (question, reponses, score)
+#  quiz_hud.verse — UI Verse par joueur
+#  question, reponses A/B/C/D colorees, score, chrono,
+#  flash Correct/Faux/Timeout, classement final.
 # ============================================================
 
 # string -> message (requis par les widgets de texte).
@@ -14,6 +16,7 @@ StringToMessage<localizes>(Value : string) : message = "{Value}"
 quiz_hud := class:
     var MaybeCanvas : ?canvas = false
     var MaybeStatus : ?text_block = false
+    var MaybeTimer : ?text_block = false
     var MaybeQuestion : ?text_block = false
     var MaybeFeedback : ?text_block = false
     var MaybeAnswers : []text_block = array{}
@@ -36,6 +39,9 @@ quiz_hud := class:
         Status := text_block:
             DefaultText := StringToMessage("Score : 0")
             DefaultTextColor := NamedColors.White
+        Timer := text_block:
+            DefaultText := StringToMessage("")
+            DefaultTextColor := NamedColors.White
         Question := text_block:
             DefaultText := StringToMessage("...")
             DefaultTextColor := NamedColors.White
@@ -54,12 +60,17 @@ quiz_hud := class:
         Root := canvas:
             Slots := array:
                 canvas_slot:
-                    Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.06 }, Maximum := vector2{ X := 0.5, Y := 0.06 } }
+                    Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.05 }, Maximum := vector2{ X := 0.5, Y := 0.05 } }
                     Alignment := vector2{ X := 0.5, Y := 0.0 }
                     SizeToContent := true
                     Widget := Status
                 canvas_slot:
-                    Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.15 }, Maximum := vector2{ X := 0.5, Y := 0.15 } }
+                    Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.10 }, Maximum := vector2{ X := 0.5, Y := 0.10 } }
+                    Alignment := vector2{ X := 0.5, Y := 0.0 }
+                    SizeToContent := true
+                    Widget := Timer
+                canvas_slot:
+                    Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.16 }, Maximum := vector2{ X := 0.5, Y := 0.16 } }
                     Alignment := vector2{ X := 0.5, Y := 0.0 }
                     SizeToContent := true
                     Widget := Question
@@ -94,11 +105,11 @@ quiz_hud := class:
 
         set MaybeCanvas = option{ Root }
         set MaybeStatus = option{ Status }
+        set MaybeTimer = option{ Timer }
         set MaybeQuestion = option{ Question }
         set MaybeFeedback = option{ Feedback }
         set MaybeAnswers = Blocks
 
-    # Renvoie le text_block d'index I, ou un widget vide de secours.
     AnswerOrEmpty(Blocks : []text_block, I : int) : widget =
         if (B := Blocks[I]) { B } else { text_block{ DefaultText := StringToMessage("") } }
 
@@ -109,27 +120,39 @@ quiz_hud := class:
             if (Texte := Q.Reponses[I]):
                 Block.SetText(StringToMessage("{Lettre(I)} : {Texte}"))
 
-    # Met a jour le bandeau (score, n0 question, total).
+    # Bandeau (score, n0 question, total).
     SetStatus(Score : int, Numero : int, Total : int) : void =
         if (T := MaybeStatus?):
             T.SetText(StringToMessage("Score : {Score}    Question {Numero}/{Total}"))
 
-    # Flash "CORRECT !" / "FAUX !" pendant ~1s, puis efface (pur Verse, async).
-    ShowFeedback(IsCorrect : logic)<suspends> : void =
+    # Ligne de chronometre.
+    SetTimer(Secondes : int) : void =
+        if (T := MaybeTimer?):
+            T.SetText(StringToMessage("Temps : {Secondes}s"))
+
+    # Flash temporaire (CORRECT ! / FAUX ! / TEMPS ECOULE !), ~1s, puis efface.
+    Flash(Text : string)<suspends> : void =
         if (T := MaybeFeedback?):
-            if (IsCorrect?):
-                T.SetText(StringToMessage("CORRECT !"))
-                # Couleur optionnelle (si l'API le permet) : T.SetTextColor(NamedColors.Green)
-            else:
-                T.SetText(StringToMessage("FAUX !"))
-                # T.SetTextColor(NamedColors.Red)
+            T.SetText(StringToMessage(Text))
             Sleep(1.0)
             T.SetText(StringToMessage(""))
 
-    # Ecran de fin : remplace la question par le bilan + le rang.
+    # Ecran de fin individuel (score + rang).
     ShowEndScreen(Score : int, Rank : int, Total : int) : void =
         if (T := MaybeQuestion?) { T.SetText(StringToMessage("BRAVO - Quiz termine !")) }
         if (S := MaybeStatus?) { S.SetText(StringToMessage("Score : {Score}    Rang : {Rank}/{Total}")) }
+        if (Tm := MaybeTimer?) { Tm.SetText(StringToMessage("")) }
+        if (F := MaybeFeedback?) { F.SetText(StringToMessage("")) }
+        for (Block : MaybeAnswers) { Block.SetText(StringToMessage("")) }
+
+    # Classement final partage (multi-lignes) affiche a tous.
+    ShowLeaderboard(Title : string, Lines : []string) : void =
+        var Body : string = Title
+        for (L : Lines):
+            set Body = "{Body}\n{L}"
+        if (T := MaybeQuestion?) { T.SetText(StringToMessage(Body)) }
+        if (S := MaybeStatus?) { S.SetText(StringToMessage("Partie terminee")) }
+        if (Tm := MaybeTimer?) { Tm.SetText(StringToMessage("")) }
         if (F := MaybeFeedback?) { F.SetText(StringToMessage("")) }
         for (Block : MaybeAnswers) { Block.SetText(StringToMessage("")) }
 

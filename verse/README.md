@@ -10,14 +10,22 @@ Tu poses **un seul device** (`quiz_manager`) + 2 assets de props, et tout le res
 | `question_bank.verse` | Banque + accès + mélange aléatoire. |
 | `player_state.verse` | État par joueur + registre (`[agent]`). |
 | `map_builder.verse` | **Génère la map** (sol + 4 portails/question) selon N + **impulsion du portail** (effet bonne réponse). |
-| `quiz_hud.verse` | UI par joueur : question, réponses A/B/C/D colorées, score, **flash Correct/Faux**, **écran de fin**. |
-| `leaderboard.verse` | **Score & classement** (rang, tri décroissant). |
-| `quiz_manager.verse` | **Orchestrateur** (le device à poser) : build + état + détection + score + feedback + fin. |
+| `quiz_hud.verse` | UI par joueur : question, réponses A/B/C/D colorées, score, **chrono**, **flash Correct/Faux/Timeout**, **écran de fin**, **classement final**. |
+| `leaderboard.verse` | **Score & classement** (rang, tri décroissant, lignes formatées). |
+| `quiz_manager.verse` | **Orchestrateur** (le device à poser) : build + état + détection + chrono + score + feedback + fin. |
 
-### Nouveautés (tout en Verse pur)
-- **Feedback** : flash « CORRECT ! » / « FAUX ! » dans l'UI (async, ~1 s).
-- **Effet portail** : le bon portail fait une **impulsion verticale** (`MoveTo`) — aucun nouvel asset.
-- **Classement** : à la fin, l'UI affiche **Score + Rang X/Y** (module `leaderboard.verse`).
+### Fonctionnalités (tout en Verse pur)
+- **Génération** de la map selon le nombre de questions (`SpawnProp`).
+- **Chronomètre par question** affiché dans l'UI + **bonus de rapidité** dans le score.
+- **Timeout** : temps écoulé → retour au début du segment (la question doit être réussie).
+- **Feedback** : flash « CORRECT ! +pts » / « FAUX ! » / « TEMPS ECOULE ! » (async, ~1 s).
+- **Effet portail** : impulsion verticale du bon portail (`MoveTo`) — aucun nouvel asset.
+- **Combo** : bonus cumulatif par bonnes réponses consécutives (`StreakBonus`).
+- **Classement final partagé** : affiché à **tous** les joueurs quand la partie est finie.
+- **Banque de 25 questions** Fortnite prête (éditable dans `MakeQuestions()`).
+
+### Réglages (`@editable` sur `quiz_manager`)
+`Randomize`, `StreakBonus`, `QuestionTimeSeconds`, `MaxSpeedBonus`, `PollSeconds`, + `FloorAsset` / `PortalAsset`.
 
 ## 🚀 Installation dans UEFN
 1. **Verse → Verse Explorer → Create New Verse File** pour chaque fichier (recopie le contenu),

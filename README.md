@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Verse](https://img.shields.io/badge/code-Verse%20%2F%20UEFN-blue.svg)](./verse)
-[![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-green.svg)](./CHANGELOG.md)
 
 > Une **map Quizz pour Fortnite** entièrement codée en **Verse / UEFN** : un parcours en ligne
 > droite, **4 portails par question** (1 par réponse). Bonne réponse → on avance ; mauvaise → on
@@ -15,7 +15,8 @@
 - **Génération procédurale** — la map s'allonge automatiquement selon la taille de la banque de questions.
 - **Architecture pro modulaire** — un fichier `.verse` par responsabilité.
 - **Multijoueur** — état indépendant par joueur (score, progression, série).
-- **UI Verse** — question, 4 réponses colorées, score, **feedback Correct/Faux**, **écran de fin + rang**.
+- **UI Verse** — question, 4 réponses colorées, score, **chronomètre**, **feedback Correct/Faux/Timeout**, **classement final partagé**.
+- **Scoring riche** — points par question + **combo** (série) + **bonus de rapidité**.
 - **Outils** — un générateur Python qui prévisualise la map et produit la géométrie 3D importable.
 
 ## 📁 Structure du dépôt

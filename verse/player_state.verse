@@ -13,6 +13,10 @@ quiz_player_state := class:
     var Finished : logic = false
     var Locked : logic = false      # anti double-validation
 
+    # --- Chronometre par question ---
+    var TimeLeft : float = 0.0      # temps restant sur la question courante (s)
+    var LastShownSecond : int = -1  # derniere seconde affichee (anti-rafraichissement)
+
     # Index reel de la question courante dans la banque (faillible).
     CurrentQuestionIndex()<decides><transacts> : int =
         Order[Position]
