@@ -41,6 +41,8 @@ tools/      Générateurs Python (aperçu, géométrie OBJ, script éditeur, MCP
 2. **Aperçu / géométrie** : `python tools/generate_quiz.py` (aperçu ASCII) ou
    `python tools/build_map_obj.py` (génère un mesh `.obj` importable).
 
+> ▶️ **Pour jouer pas-à-pas (de zéro à jouable) :** voir **[`docs/COMMENT-JOUER.md`](./docs/COMMENT-JOUER.md)**.
+
 Détails : [`verse/README.md`](./verse/README.md) · [`docs/README.md`](./docs/README.md).
 
 ## 🧩 Le concept
