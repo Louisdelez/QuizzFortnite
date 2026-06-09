@@ -9,6 +9,9 @@ tools/*.verse.txt
 .mcp.json
 .mcp-server/
 
+# ── Projet UEFN local (lourd, spécifique machine) ──
+maps/
+
 # ── Python ──
 __pycache__/
 *.py[cod]
