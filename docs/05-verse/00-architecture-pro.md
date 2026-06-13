@@ -43,7 +43,7 @@ tools/
 └── generate_quiz.py        # Générateur externe (aperçu + extraits Verse) ⭐
 ```
 
-> ⭐ `map_builder.verse` + `tools/generate_quiz.py` sont le cœur de la **génération automatique**
+> ⭐ `map_builder.verse` + `tools/map/generate_quiz.py` sont le cœur de la **génération automatique**
 > (chemin droit + 4 portails) selon le nombre de questions. Voir [`12`](./12-generation-procedurale.md)
 > et [`13`](./13-generateur-externe.md). Dans l'approche **procédurale**, `answer_portal` (zones)
 > n'est **pas** utilisé : la détection se fait par **position**.
@@ -109,7 +109,7 @@ zones/téléporteurs placés à la main. À la place :
 ➡️ Résultat : **un seul device à poser** (le manager) + 2 références de props. Changer la banque
 de questions **régénère** toute la map. C'est l'approche **recommandée** pour ta demande.
 Modules ajoutés : `map_builder.verse` ([`12`](./12-generation-procedurale.md)) et l'outil externe
-`tools/generate_quiz.py` ([`13`](./13-generateur-externe.md)).
+`tools/map/generate_quiz.py` ([`13`](./13-generateur-externe.md)).
 
 > ⚠️ **Limite confirmée** : Verse **ne peut pas** spawner de *devices* au runtime (zones,
 > téléporteurs). D'où la détection par **position** et le déplacement par **code**.

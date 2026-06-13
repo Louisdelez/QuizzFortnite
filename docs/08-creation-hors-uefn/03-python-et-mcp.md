@@ -14,7 +14,7 @@ UEFN peut exécuter du **Python d'éditeur** (le module `unreal`) :
   **devices**) **au moment de l'édition**. La map existe ensuite comme acteurs **pré-placés**.
 
 ### Ce que j'ai produit
-**`tools/build_map.py`** : lit `placement_manifest.json` et place dans l'éditeur :
+**`tools/map/build_map.py`** : lit `placement_manifest.json` et place dans l'éditeur :
 - le **static mesh** du couloir (importé) à l'origine,
 - des **cubes-repères** aux positions des **20 portails**, du **spawn**, de la **victoire** et du
   **quiz_manager**,

@@ -22,16 +22,21 @@
 ## 📁 Structure du dépôt
 
 ```
-verse/      Le code Verse du quiz (cœur du projet) — 7 modules
-docs/       Documentation complète et hiérarchisée (00 → 08)
-tools/      Générateurs Python (aperçu, géométrie OBJ, script éditeur, MCP)
+verse/      Le code Verse du quiz (cœur) — 7 modules moteur + ~35 banques de questions   [tracké]
+tools/      Générateurs Python — lib/ banks/ textures/ map/                              [tracké]
+assets/     Images / audio / 3D GÉNÉRÉS (staging d'import UEFN)                           [gitignoré]
+docs/       Documentation hiérarchisée (00 → 08) + design/                               [tracké]
+maps/       Le vrai projet UEFN local                                                    [gitignoré]
 ```
+
+> 🗺️ **Carte complète + pipeline de build + contraintes :** [`STRUCTURE.md`](./STRUCTURE.md).
 
 | Dossier | Contenu |
 |---------|---------|
-| [`verse/`](./verse) | Code Verse prêt à l'emploi (`quiz_manager`, `map_builder`, `quiz_hud`, …). Voir [`verse/README.md`](./verse/README.md). |
+| [`verse/`](./verse) | Code Verse prêt à l'emploi (`quiz_manager`, `map_builder`, `quiz_hud`, …) + banques `*_bank.verse`. Voir [`verse/README.md`](./verse/README.md). |
+| [`tools/`](./tools) | Générateurs Python rangés en `lib/`, `banks/`, `textures/`, `map/`. Voir [`tools/README.md`](./tools/README.md). |
+| [`assets/`](./assets) | Médias générés (gitignorés, régénérables). Manifeste : [`assets/README.md`](./assets/README.md). |
 | [`docs/`](./docs) | Guide complet : prérequis, conception, **architecture Verse**, génération, création hors UEFN, tests, publication. Voir [`docs/README.md`](./docs/README.md). |
-| [`tools/`](./tools) | `generate_quiz.py`, `build_map_obj.py`, `build_map.py`, exemple MCP. Voir [`tools/README.md`](./tools/README.md). |
 
 ## 🚀 Démarrage rapide
 

@@ -97,7 +97,7 @@ La map **se génère par code** depuis le nombre de questions — **un seul devi
 - **`map_builder.verse`** ([`05-verse/12`](./05-verse/12-generation-procedurale.md)) : construit
   le sol et les portails au runtime (`SpawnProp`), détecte la réponse par **position** du joueur
   et l'avance par **code** (`TeleportTo`). Aucune zone, aucun téléporteur à placer.
-- **`tools/generate_quiz.py`** ([`05-verse/13`](./05-verse/13-generateur-externe.md)) : générateur
+- **`tools/map/generate_quiz.py`** ([`05-verse/13`](./05-verse/13-generateur-externe.md)) : générateur
   externe qui **calcule et prévisualise** la map (ASCII), et produit les **extraits Verse** prêts
   à coller. Change le nombre de questions → toute la map se recalcule.
 

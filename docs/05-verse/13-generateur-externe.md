@@ -1,10 +1,10 @@
-# 05.13 — Générateur externe (`tools/generate_quiz.py`)
+# 05.13 — Générateur externe (`tools/map/generate_quiz.py`)
 
 Un outil **que l'on exécute hors UEFN** pour produire/adapter la map **instantanément** selon le
 nombre de questions. Il calcule toute la géométrie, l'affiche, et génère les **extraits Verse**
 prêts à coller. C'est le moyen le plus rapide d'**itérer** et de **visualiser** avant de builder.
 
-> 📂 Fichier : [`../../tools/generate_quiz.py`](../../tools/generate_quiz.py) — Python 3, **zéro dépendance**.
+> 📂 Fichier : [`../../tools/map/generate_quiz.py`](../../tools/map/generate_quiz.py) — Python 3, **zéro dépendance**.
 
 ## 🎯 À quoi il sert
 

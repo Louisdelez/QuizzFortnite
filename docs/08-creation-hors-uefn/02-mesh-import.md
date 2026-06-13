@@ -1,7 +1,7 @@
 # 08.02 — Créer la map en mesh & l'importer (FBX / glTF / OBJ)
 
 La voie **recommandée et universelle** : créer la **géométrie** hors UEFN, puis l'importer comme
-**static mesh**. C'est ce que je produis déjà avec `tools/build_map_obj.py`.
+**static mesh**. C'est ce que je produis déjà avec `tools/map/build_map_obj.py`.
 
 ## 📦 Formats supportés par UEFN
 
@@ -17,7 +17,7 @@ La voie **recommandée et universelle** : créer la **géométrie** hors UEFN, p
 
 ## 🛠️ Ce que je produis (déjà fait)
 
-`tools/build_map_obj.py` génère, à partir du **nombre de questions** :
+`tools/map/build_map_obj.py` génère, à partir du **nombre de questions** :
 - **`quiz_map.obj`** + **`quiz_map.mtl`** : sol, murs latéraux, séparateurs de lane, et **4
   portails colorés** (A=rouge, B=bleu, C=vert, D=jaune) par question, dalles de départ/arrivée.
 - **`placement_manifest.json`** : positions exactes (cm) des **portails**, du **spawn**, de la
