@@ -1,0 +1,71 @@
+# Donnees anglaises partagees par build_flags.py et build_capitals.py
+# EN : nom anglais du pays ; CAP_EN : capitale anglaise SI differente du francais ;
+# THE_EN : pays qui prennent "the" en anglais ("the United States").
+
+EN = {
+    "fr": "France", "de": "Germany", "it": "Italy", "es": "Spain", "pt": "Portugal",
+    "gb": "United Kingdom", "ie": "Ireland", "be": "Belgium", "nl": "Netherlands",
+    "lu": "Luxembourg", "ch": "Switzerland", "at": "Austria", "mc": "Monaco",
+    "ad": "Andorra", "li": "Liechtenstein", "sm": "San Marino", "va": "Vatican City",
+    "mt": "Malta", "is": "Iceland", "no": "Norway", "se": "Sweden", "dk": "Denmark",
+    "fi": "Finland", "pl": "Poland", "cz": "Czechia", "sk": "Slovakia", "hu": "Hungary",
+    "si": "Slovenia", "hr": "Croatia", "ba": "Bosnia and Herzegovina", "rs": "Serbia",
+    "me": "Montenegro", "mk": "North Macedonia", "al": "Albania", "gr": "Greece",
+    "bg": "Bulgaria", "ro": "Romania", "md": "Moldova", "ua": "Ukraine", "by": "Belarus",
+    "ru": "Russia", "ee": "Estonia", "lv": "Latvia", "lt": "Lithuania", "cy": "Cyprus",
+    "tr": "Turkey", "il": "Israel", "ps": "Palestine", "lb": "Lebanon", "sy": "Syria",
+    "jo": "Jordan", "iq": "Iraq", "ir": "Iran", "sa": "Saudi Arabia", "ye": "Yemen",
+    "om": "Oman", "ae": "United Arab Emirates", "qa": "Qatar", "bh": "Bahrain",
+    "kw": "Kuwait", "ge": "Georgia", "am": "Armenia", "az": "Azerbaijan",
+    "kz": "Kazakhstan", "uz": "Uzbekistan", "tm": "Turkmenistan", "kg": "Kyrgyzstan",
+    "tj": "Tajikistan", "af": "Afghanistan", "mn": "Mongolia", "cn": "China",
+    "jp": "Japan", "kr": "South Korea", "kp": "North Korea", "in": "India",
+    "pk": "Pakistan", "bd": "Bangladesh", "lk": "Sri Lanka", "np": "Nepal",
+    "bt": "Bhutan", "mv": "Maldives", "mm": "Myanmar", "th": "Thailand", "la": "Laos",
+    "kh": "Cambodia", "vn": "Vietnam", "my": "Malaysia", "sg": "Singapore",
+    "id": "Indonesia", "bn": "Brunei", "ph": "Philippines", "tl": "East Timor",
+    "au": "Australia", "nz": "New Zealand", "pg": "Papua New Guinea", "fj": "Fiji",
+    "sb": "Solomon Islands", "vu": "Vanuatu", "ws": "Samoa", "to": "Tonga",
+    "tv": "Tuvalu", "ki": "Kiribati", "nr": "Nauru", "pw": "Palau", "fm": "Micronesia",
+    "mh": "Marshall Islands", "ma": "Morocco", "dz": "Algeria", "tn": "Tunisia",
+    "ly": "Libya", "eg": "Egypt", "sd": "Sudan", "ss": "South Sudan", "et": "Ethiopia",
+    "er": "Eritrea", "dj": "Djibouti", "so": "Somalia", "ke": "Kenya", "ug": "Uganda",
+    "tz": "Tanzania", "rw": "Rwanda", "bi": "Burundi", "cd": "DR Congo", "cg": "Congo",
+    "ga": "Gabon", "gq": "Equatorial Guinea", "cm": "Cameroon",
+    "cf": "Central African Republic", "td": "Chad", "ne": "Niger", "ng": "Nigeria",
+    "bj": "Benin", "tg": "Togo", "gh": "Ghana", "ci": "Ivory Coast", "lr": "Liberia",
+    "sl": "Sierra Leone", "gn": "Guinea", "gw": "Guinea-Bissau", "sn": "Senegal",
+    "gm": "Gambia", "ml": "Mali", "bf": "Burkina Faso", "mr": "Mauritania",
+    "cv": "Cape Verde", "st": "Sao Tome and Principe", "ao": "Angola", "zm": "Zambia",
+    "zw": "Zimbabwe", "mw": "Malawi", "mz": "Mozambique", "mg": "Madagascar",
+    "km": "Comoros", "mu": "Mauritius", "sc": "Seychelles", "za": "South Africa",
+    "na": "Namibia", "bw": "Botswana", "ls": "Lesotho", "sz": "Eswatini",
+    "us": "United States", "ca": "Canada", "mx": "Mexico", "gt": "Guatemala",
+    "bz": "Belize", "hn": "Honduras", "sv": "El Salvador", "ni": "Nicaragua",
+    "cr": "Costa Rica", "pa": "Panama", "bs": "Bahamas", "cu": "Cuba", "jm": "Jamaica",
+    "ht": "Haiti", "do": "Dominican Republic", "kn": "Saint Kitts and Nevis",
+    "ag": "Antigua and Barbuda", "dm": "Dominica", "lc": "Saint Lucia",
+    "vc": "Saint Vincent", "bb": "Barbados", "gd": "Grenada",
+    "tt": "Trinidad and Tobago", "co": "Colombia", "ve": "Venezuela", "gy": "Guyana",
+    "sr": "Suriname", "ec": "Ecuador", "pe": "Peru", "br": "Brazil", "bo": "Bolivia",
+    "py": "Paraguay", "uy": "Uruguay", "cl": "Chile", "ar": "Argentina",
+}
+
+# capitales EN uniquement si differentes du francais
+CAP_EN = {
+    "pt": "Lisbon", "gb": "London", "be": "Brussels", "ch": "Bern", "at": "Vienna",
+    "ad": "Andorra la Vella", "sm": "San Marino", "va": "Vatican City", "mt": "Valletta",
+    "dk": "Copenhagen", "pl": "Warsaw", "gr": "Athens", "ro": "Bucharest", "ua": "Kyiv",
+    "ru": "Moscow", "cy": "Nicosia", "lb": "Beirut", "sy": "Damascus", "iq": "Baghdad",
+    "ir": "Tehran", "sa": "Riyadh", "om": "Muscat", "ae": "Abu Dhabi", "kw": "Kuwait City",
+    "ge": "Tbilisi", "am": "Yerevan", "az": "Baku", "uz": "Tashkent", "tm": "Ashgabat",
+    "kg": "Bishkek", "tj": "Dushanbe", "af": "Kabul", "mn": "Ulaanbaatar", "cn": "Beijing",
+    "bd": "Dhaka", "np": "Kathmandu", "bt": "Thimphu", "sg": "Singapore", "ph": "Manila",
+    "vu": "Port Vila", "dz": "Algiers", "eg": "Cairo", "ss": "Juba", "et": "Addis Ababa",
+    "so": "Mogadishu", "mu": "Port Louis", "cu": "Havana", "do": "Santo Domingo",
+    "gd": "Saint George's", "tt": "Port of Spain", "mx": "Mexico City",
+}
+
+# pays avec article "the" en anglais (enonce capitales)
+THE_EN = {"gb", "nl", "ae", "ph", "mv", "sb", "mh", "km", "bs", "gm", "cf", "do",
+          "us", "cd", "cg", "sc", "kn"}

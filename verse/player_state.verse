@@ -13,6 +13,11 @@ quiz_player_state := class:
     var Finished : logic = false
     var Locked : logic = false      # anti double-validation
 
+    # --- Stats de session (ecran de resultats) ---
+    var Good : int = 0              # bonnes reponses
+    var BestStreak : int = 0        # meilleure serie
+    var SpeedBonus : int = 0        # total des bonus de rapidite
+
     # --- Chronometre par question ---
     var TimeLeft : float = 0.0      # temps restant sur la question courante (s)
     var LastShownSecond : int = -1  # derniere seconde affichee (anti-rafraichissement)

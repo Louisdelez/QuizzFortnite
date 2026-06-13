@@ -10,7 +10,7 @@ question_bank := class:
     Questions : []question = array{}
 
     # Nombre de questions = nombre de segments du parcours.
-    Count() : int = Questions.Length
+    Count()<transacts> : int = Questions.Length
 
     # Acces sur (faillible) a une question par index.
     GetQuestion(Index : int)<decides><transacts> : question =
@@ -20,14 +20,19 @@ question_bank := class:
     DefaultOrder() : []int =
         for (I := 0..Count() - 1) { I }
 
-    # Ordre melange (Fisher-Yates) pour la rejouabilite.
+    # Retire l'element a l'index Idx (reconstruction fonctionnelle, evite set Arr[i]).
+    RemoveAt(Arr : []int, Idx : int) : []int =
+        for (K := 0..Arr.Length - 1, K <> Idx, X := Arr[K]) { X }
+
+    # Ordre melange (tirage sans remise) pour la rejouabilite.
     ShuffledOrder() : []int =
-        var Order : []int = DefaultOrder()
-        var I : int = Order.Length - 1
+        var Remaining : []int = DefaultOrder()
+        var Result : []int = array{}
         loop:
-            if (I <= 0) { break }
-            if (J := GetRandomInt(0, I), A := Order[I], B := Order[J]):
-                set Order[I] = B
-                set Order[J] = A
-            set I -= 1
-        Order
+            if (Remaining.Length <= 0) { break }
+            if (J := GetRandomInt(0, Remaining.Length - 1), Picked := Remaining[J]):
+                set Result += array{ Picked }
+                set Remaining = RemoveAt(Remaining, J)
+            else:
+                break
+        Result

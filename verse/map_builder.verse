@@ -1,6 +1,7 @@
 using { /Fortnite.com/Devices }
 using { /Verse.org/Simulation }
 using { /UnrealEngine.com/Temporary/SpatialMath }
+using { /UnrealEngine.com/Temporary/Diagnostics }
 
 # ============================================================
 #  map_builder.verse — GENERATION de la map EN VERSE (SpawnProp)
@@ -9,10 +10,6 @@ using { /UnrealEngine.com/Temporary/SpatialMath }
 # ============================================================
 
 map_builder := class:
-    # Assets de props a spawner (branches depuis le quiz_manager).
-    FloorAsset : creative_prop_asset
-    PortalAsset : creative_prop_asset
-
     # --- Parametres de layout (cm). Modifie-les pour adapter la forme. ---
     SegmentLength : float = 1024.0   # longueur d'une question (axe X)
     LaneSpacing : float = 300.0      # ecart entre 2 portails (axe Y)
@@ -27,39 +24,43 @@ map_builder := class:
     var Portals : [int]creative_prop = map{}
 
     # --- Math de layout (partagee avec la detection du quiz_manager) ---
-    LaneY(I : int) : float =
+    LaneY(I : int)<transacts> : float =
         (I * 1.0 - (LaneCount * 1.0 - 1.0) / 2.0) * LaneSpacing
 
-    GateX(Q : int) : float =
+    GateX(Q : int)<transacts> : float =
         Q * 1.0 * SegmentLength + SegmentLength * GateRatio
 
-    SegmentStartX(Q : int) : float =
+    SegmentStartX(Q : int)<transacts> : float =
         Q * 1.0 * SegmentLength
 
     # Position de depart du joueur (centre du sas de depart).
-    StartPosition() : vector3 =
+    StartPosition()<transacts> : vector3 =
         vector3{ X := -StartPad / 2.0, Y := 0.0, Z := 100.0 }
 
     # Arrondi superieur (isole pour s'adapter a l'API d'arrondi).
-    CeilInt(F : float) : int =
-        Whole := Floor[F]
-        if (Whole * 1.0 < F) { Whole + 1 } else { Whole }
+    CeilInt(F : float)<transacts> : int =
+        if (Whole := Floor[F]):
+            if (Whole * 1.0 < F) { Whole + 1 } else { Whole }
+        else:
+            0
 
     # --- Construction complete pour N questions ---
-    Build(NumQuestions : int)<suspends> : void =
-        SpawnFloor(NumQuestions)
+    Build(NumQuestions : int, FloorA : creative_prop_asset, PortalA : creative_prop_asset)<suspends> : void =
+        SpawnFloor(NumQuestions, FloorA)
         var Q : int = 0
         loop:
             if (Q >= NumQuestions) { break }
-            SpawnSegmentPortals(Q)
+            SpawnSegmentPortals(Q, PortalA)
+            Sleep(0.0)
             set Q += 1
 
-    SpawnFloor(N : int)<suspends> : void =
+    SpawnFloor(N : int, FloorA : creative_prop_asset)<suspends> : void =
         FloorWidth := LaneCount * 1.0 * LaneSpacing + 2.0 * FloorMargin
         XStart := -StartPad
         XEnd := N * 1.0 * SegmentLength + EndPad
         NX := CeilInt((XEnd - XStart) / FloorTileSize)
         NY := CeilInt(FloorWidth / FloorTileSize)
+        Print("QUIZ: SpawnFloor NX={NX} NY={NY}")
         var IX : int = 0
         loop:
             if (IX >= NX) { break }
@@ -68,19 +69,21 @@ map_builder := class:
                 if (IY >= NY) { break }
                 FX := XStart + (IX * 1.0 + 0.5) * FloorTileSize
                 FY := -FloorWidth / 2.0 + (IY * 1.0 + 0.5) * FloorTileSize
-                SpawnAt(FloorAsset, vector3{ X := FX, Y := FY, Z := 0.0 })
+                SpawnAt(FloorA, vector3{ X := FX, Y := FY, Z := 0.0 })
                 set IY += 1
+            Sleep(0.0)
             set IX += 1
 
-    SpawnSegmentPortals(Q : int)<suspends> : void =
+    SpawnSegmentPortals(Q : int, PortalA : creative_prop_asset)<suspends> : void =
         var I : int = 0
         loop:
             if (I >= LaneCount) { break }
-            if (P := SpawnAt(PortalAsset, vector3{ X := GateX(Q), Y := LaneY(I), Z := 0.0 })?):
+            MaybeProp := SpawnAt(PortalA, vector3{ X := GateX(Q), Y := LaneY(I), Z := 0.0 })
+            if (P := MaybeProp?):
                 if (set Portals[PortalKey(Q, I)] = P) {}
             set I += 1
 
-    PortalKey(Q : int, I : int) : int = Q * LaneCount + I
+    PortalKey(Q : int, I : int)<transacts> : int = Q * LaneCount + I
 
     # Spawne un prop a une position (rotation identite) et renvoie l'instance.
     SpawnAt(Asset : creative_prop_asset, Pos : vector3) : ?creative_prop =
