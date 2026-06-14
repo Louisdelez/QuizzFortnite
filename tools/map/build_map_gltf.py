@@ -17,6 +17,10 @@
 #  Coords IDENTIQUES a map_builder.verse (detection cote quiz_manager).
 # ============================================================
 import struct, json, zlib
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 # --- Constantes (cm) : DOIVENT matcher map_builder.verse ---
 SEG = 1024.0; LANE = 300.0; NLANE = 4; GR = 0.85; SP = 768.0; EP = 768.0
@@ -272,7 +276,7 @@ out += struct.pack('<II', len(json_bytes), 0x4E4F534A) + json_bytes
 out += struct.pack('<II', len(bin_data), 0x004E4942) + bytes(bin_data)
 
 # On ecrit les DEUX noms (quiz_map.glb est celui importe dans UEFN).
-for path in ('D:/QuizzFortnite/quiz_map.glb', 'D:/QuizzFortnite/quiz_couloir.glb'):
+for path in (f'{_ROOT}/quiz_map.glb', f'{_ROOT}/quiz_couloir.glb'):
     with open(path, 'wb') as f:
         f.write(out)
 

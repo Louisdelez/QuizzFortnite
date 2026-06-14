@@ -15,8 +15,12 @@
 #  Mettre ASCII=False pour conserver les accents (si UEFN gere l'UTF-8).
 # ============================================================
 import json, os, random, sys, unicodedata, re
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 SRC = f"{ROOT}/tools/_culture_fr.json"
 TRAD = f"{ROOT}/tools/culture_trad"
 DST = f"{ROOT}/verse/culture_bank.verse"

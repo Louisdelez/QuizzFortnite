@@ -25,9 +25,13 @@ import os, random, sys, time, urllib.request, urllib.parse, json, ssl
 from PIL import Image
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
 from depts_core import DEPS, NAME, REGION, TIER, DEPT_FLAG_FILE
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 BANK_ONLY = "--bank-only" in sys.argv
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 OUT = f"{ROOT}/assets/dep_flags"
 OUT_PX = f"{ROOT}/assets/dep_flags_pixel"
 os.makedirs(OUT, exist_ok=True)

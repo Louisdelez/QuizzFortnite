@@ -21,7 +21,7 @@ from PIL import Image
 
 BANK_ONLY = "--bank-only" in sys.argv
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 OUT = f"{ROOT}/assets/dragonball"
 os.makedirs(OUT, exist_ok=True)
 
@@ -38,6 +38,10 @@ def db_name(i):
 
 # romanisation MAL -> formes usuelles (connues du grand public)
 import re
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 FIXUPS = {"Gokuu": "Goku", "Gokou": "Goku", "Kuririn": "Krillin",
           "Muten-Roushi": "Master Roshi", "Juubei": "Jubei"}
 def fix_android(s):

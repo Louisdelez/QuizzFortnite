@@ -10,8 +10,12 @@
 # ============================================================
 import os, math
 from PIL import Image, ImageDraw
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-OUT = "D:/QuizzFortnite/assets/rangs"
+OUT = f"{_ROOT}/assets/rangs"
 os.makedirs(OUT, exist_ok=True)
 SS = 4
 S = 128 * SS

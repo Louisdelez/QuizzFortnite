@@ -32,6 +32,16 @@ python banks/build_flags.py --bank-only   # régénère seulement la banque (ima
 ```
 `inject_banks.py` assemble les banques multilingues intermédiaires (ex. capitales) dans les `.verse`.
 
+> ⚠️ **Ordre obligatoire (sur un clone neuf)** — certains scripts lisent des fichiers
+> intermédiaires `tools/_*` (gitignorés). Génère-les **avant** :
+>
+> | Étape finale | Pré-requis à lancer d'abord | Intermédiaire lu |
+> |--------------|-----------------------------|------------------|
+> | `inject_banks.py` | `build_flags.py` **et** `build_capitals.py` | `tools/_flags_bank.verse.txt`, `tools/_capitals_bank.verse.txt`, `tools/_flags_diff.txt` |
+> | `build_culture.py` | `parse_culture.py` (parse les `.md` de `docs/culture-generale/`) | `tools/_culture_fr.json` |
+>
+> Lancer une étape finale sans son pré-requis échoue par `FileNotFoundError`.
+
 ## 🎨 textures/ — interface
 
 ```bash

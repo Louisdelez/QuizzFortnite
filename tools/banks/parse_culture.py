@@ -8,7 +8,11 @@
 #    A. Rep ✅ — B. Rep — C. Rep — D. Rep   (✅ = bonne reponse)
 # ============================================================
 import re, json
-ROOT = "D:/QuizzFortnite"
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
+ROOT = _ROOT
 TIERS = {"facile": 0, "moyen": 1, "difficile": 2}
 
 out, problems = [], []

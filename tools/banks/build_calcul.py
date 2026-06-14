@@ -7,6 +7,10 @@
 #  Distracteurs = presque-bonnes reponses (+-1, +-10, chiffres inverses).
 # ============================================================
 import random
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 rng = random.Random("calcul-quizz-fortnite")
 qs = []   # (enonce, bonne_reponse:int, tier)
@@ -84,7 +88,7 @@ diffs = ", ".join(str(t) for _, _, t in qs)
 header = ("# Quizz CALCUL MENTAL (300 questions generees, langue-neutre)\n"
           "# GENERE par tools/build_calcul.py — NE PAS EDITER A LA MAIN.\n\n"
           "CalculDiff : []int = array{%s}\n" % diffs)
-dst = "D:/QuizzFortnite/verse/calcul_bank.verse"
+dst = f"{_ROOT}/verse/calcul_bank.verse"
 with open(dst, "w", encoding="utf-8", newline="\n") as f:
     f.write(header + "\n" + "\n\n".join(parts) + "\n")
 print("OK :", dst, "(%d questions)" % len(qs))

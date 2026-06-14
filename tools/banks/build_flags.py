@@ -28,15 +28,19 @@
 import os, random, sys, urllib.request
 from PIL import Image
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from country_core import C, NAME, REGION
+from country_core import C, NAME, REGION, EASY
 from country_en import EN
 from country_es import ES
 from country_de import DE
 from country_it import IT
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 BANK_ONLY = "--bank-only" in sys.argv
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 OUT = f"{ROOT}/assets/flags"
 OUT_PX = f"{ROOT}/assets/flags_pixel"
 os.makedirs(OUT, exist_ok=True)
@@ -50,23 +54,8 @@ PIX = 11                        # taille du bloc de pixelisation (plus grand = p
 # ---------------- Palier FACILE : ~65 drapeaux communs / iconiques ----------------
 # Tout pays hors de cette liste -> palier MOYEN (image normale).
 # Le palier DIFFICILE = les 195 pays en version pixelisee (ajoute plus bas).
-EASY = {
-    # Europe de l'Ouest / Nord
-    "fr", "de", "it", "es", "pt", "gb", "ie", "be", "nl", "ch", "at",
-    "no", "se", "dk", "fi", "mc", "va", "is",
-    # Europe de l'Est / Balkans
-    "pl", "gr", "ua", "ru", "cz", "hu", "hr", "rs", "ro",
-    # Moyen-Orient
-    "tr", "il", "ps", "sa", "ir", "ae", "qa",
-    # Asie
-    "cn", "jp", "kr", "kp", "in", "pk", "th", "vn", "id", "sg", "my", "ph",
-    # Oceanie
-    "au", "nz",
-    # Afrique
-    "ma", "dz", "tn", "eg", "za", "ng", "ke",
-    # Ameriques
-    "us", "ca", "mx", "br", "ar", "co", "ve", "pe", "cl", "cu", "jm",
-}
+# EASY est mutualise dans country_core (partage avec build_carte.py) pour eviter
+# toute desynchronisation des paliers entre les quizz Drapeaux et Carte.
 
 def tier_normal(iso):
     return 0 if iso in EASY else 1

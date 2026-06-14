@@ -5,6 +5,10 @@
 #  Lignes "Sym|FR|EN|ES|DE|IT" ou "Sym|Nom" (identique x5).
 # ============================================================
 import random
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 E = """H|Hydrogene|Hydrogen|Hidrogeno|Wasserstoff|Idrogeno
 He|Helium|Helium|Helio|Helium|Elio
@@ -175,7 +179,7 @@ diffs = ", ".join(str(e["tier"]) for e in elems)
 header = ("# tableaux_bank style — Quizz ELEMENTS CHIMIQUES (118, texte)\n"
           "# GENERE par tools/build_elements.py — NE PAS EDITER A LA MAIN.\n\n"
           "ElementsDiff : []int = array{%s}\n" % diffs)
-dst = "D:/QuizzFortnite/verse/elements_bank.verse"
+dst = f"{_ROOT}/verse/elements_bank.verse"
 with open(dst, "w", encoding="utf-8", newline="\n") as f:
     f.write(header + "\n" + "\n\n".join(parts) + "\n")
 print("OK :", dst, "(118 questions,", sum(1 for _ in open(dst, encoding="utf-8")), "lignes)")

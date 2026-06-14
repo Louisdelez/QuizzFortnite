@@ -5,8 +5,12 @@
 import os, random, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
 from quiz_common import emit_custom, LANGS
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 
 E = [
  ("la Revolution francaise","the French Revolution","la Revolucion francesa","die Franzoesische Revolution","la Rivoluzione francese",1789,0),

@@ -4,9 +4,13 @@
 import os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
 from quiz_common import build_images, emit_bank
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 BANK_ONLY = "--bank-only" in sys.argv
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 
 M = [
  ("Zeus","Zeus",0),

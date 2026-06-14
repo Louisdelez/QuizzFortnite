@@ -6,8 +6,12 @@
 #  Sortie : sfx/sfx_*.wav
 # ============================================================
 import math, os, random, struct, wave
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-OUT = "D:/QuizzFortnite/assets/sfx"
+OUT = f"{_ROOT}/assets/sfx"
 os.makedirs(OUT, exist_ok=True)
 SR = 44100
 

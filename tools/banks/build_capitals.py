@@ -15,6 +15,10 @@ from country_en import EN, CAP_EN, THE_EN
 from country_es import ES, CAP_ES
 from country_de import DE, CAP_DE
 from country_it import IT, CAP_IT
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 # (iso, pays FR ascii, capitale FR ascii, region, palier 0/1/2)
 C = [
@@ -152,7 +156,7 @@ bank_it = bank("MakeCapitalQuestionsIT",
                "# ===== Banque CAPITALES IT (195) — memes tirages/indices que la banque FR =====",
                lambda i: CAPIT[i], lambda iso, pays: "Qual e la capitale: %s?" % IT[iso])
 
-with open("D:/QuizzFortnite/tools/_capitals_bank.verse.txt", "w", encoding="utf-8", newline="\n") as f:
+with open(f"{_ROOT}/tools/_capitals_bank.verse.txt", "w", encoding="utf-8", newline="\n") as f:
     f.write(capdiff + "\n" + bank_fr + "\n" + bank_en + "\n" + bank_es + "\n" + bank_de + "\n" + bank_it)
 print("OK : banques capitales FR+EN+ES+DE+IT generees (%d questions)" % len(C))
 print("Paliers : Facile=%s Moyen=%s Difficile=%s" % (diffs.count(chr(48)), diffs.count(chr(49)), diffs.count(chr(50))))

@@ -20,13 +20,14 @@ Tu poses **un seul device** (`quiz_manager`) + 2 assets de props, et tout le res
 > monde** & **Capitales du monde** (intégrés à `quiz_manager.verse`), **Pays sur carte**
 > (`carte_bank.verse`), **Drapeaux des départements** (`depflags_bank.verse`) et **Départements sur
 > carte** (`depcarte_bank.verse`). Capitales = texte seul (pas d'image). Les autres banques ci-dessous
-> restent dans le dépôt mais sont **dormantes** (hors lobby/map). `flags_pixel_bank.verse` **déprécié**.
+> restent dans le dépôt mais sont **dormantes** (hors lobby/map). Les drapeaux pixelisés sont
+> **fusionnés** dans la banque Drapeaux principale (palier Difficile), pas de banque séparée.
 
 En plus des modules moteur ci-dessus, ~35 fichiers `*_bank.verse` contiennent les questions,
 **générés par les scripts [`../tools/banks/`](../tools/banks/)** :
 
 `anatomie` · `animaux` · `athletes` · `botanique` · `calcul` · `carte` · `celebrites` · `cinema` ·
-`clubs` · `dates` · `dirigeants` · `dragonball` · `elements` · `espace` · `flags_pixel` ·
+`clubs` · `dates` · `dirigeants` · `dragonball` · `elements` · `espace` ·
 `inventions` · `jeuxvideo` · `livres` · `logos` · `monuments` · `musique` · `mytho` · `naruto` ·
 `nature` · `onepiece` · `persos` · `pokemon` · `records` · `regions` · `series` · `sport` ·
 `tableaux` · `villes` (+ capitales injectées via `inject_banks.py`).

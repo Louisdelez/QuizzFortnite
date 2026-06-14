@@ -10,9 +10,13 @@
 import os, re, math, io, urllib.request
 from PIL import Image, ImageDraw
 import numpy as np
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-OUT = "D:/QuizzFortnite/assets/icons"
-CACHE = "D:/QuizzFortnite/tools/lucide_svgs"
+OUT = f"{_ROOT}/assets/icons"
+CACHE = f"{_ROOT}/tools/lucide_svgs"
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(CACHE, exist_ok=True)
 

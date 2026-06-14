@@ -9,8 +9,12 @@ from country_es import ES
 from country_de import DE
 from country_it import IT
 from quiz_common import emit_custom, LANGS
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 NAMES = {"FR": NAME, "EN": EN, "ES": ES, "DE": DE, "IT": IT}
 
 # (dirigeant, iso_pays, palier) — chefs d'Etat/gouvernement et figures historiques

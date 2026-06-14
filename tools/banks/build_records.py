@@ -17,11 +17,15 @@ from country_es import ES
 from country_de import DE
 from country_it import IT
 
-ROOT = "D:/QuizzFortnite"
+ROOT = _ROOT
 # Donnees : Natural Earth 10m (deja telecharge par build_carte.py).
 # POP_EST = population estimee ; superficie calculee depuis les polygones
 # (approximation equirectangulaire — suffisante avec le garde-fou ratio 1.6).
 import math
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 GEO = f"{ROOT}/tools/_ne10m_countries.geojson"
 gj = json.load(open(GEO, encoding="utf-8"))
 POP, AREA = {}, {}

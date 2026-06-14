@@ -24,9 +24,13 @@ ATTENTION (honnetete technique) :
 
 import json
 import unreal  # disponible uniquement dans l'editeur
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
 # --- A ADAPTER ---
-MANIFEST_PATH = "D:/QuizzFortnite/tools/map/placement_manifest.json"
+MANIFEST_PATH = f"{_ROOT}/tools/map/placement_manifest.json"
 MESH_PATH = "/Game/Imported/quiz_map"          # chemin de l'asset mesh importe
 MARKER_MESH = "/Engine/BasicShapes/Cube"        # petit cube repere (fallback)
 # -----------------

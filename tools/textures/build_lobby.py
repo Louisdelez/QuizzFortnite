@@ -8,8 +8,12 @@
 #  Rendu SDF anti-aliase (pas de supersampling => rapide et lisse).
 # ============================================================
 import struct, zlib, os, math
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-OUT = "D:/QuizzFortnite/assets/lobby"
+OUT = f"{_ROOT}/assets/lobby"
 os.makedirs(OUT, exist_ok=True)
 
 # ---- Tokens du design (styles.css / lobby.css) ----

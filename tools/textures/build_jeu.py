@@ -4,8 +4,12 @@
 # Image blanche (teintee ensuite en Verse via DefaultTint), coins arrondis anti-alises,
 # alpha interieur configurable (panneaux translucides vs cles opaques).
 import struct, zlib, os
+import os as _ospath  # racine projet portable (ne depend plus d'un chemin absolu)
+_ROOT = _ospath.path.dirname(_ospath.path.abspath(__file__))
+while _ROOT != _ospath.path.dirname(_ROOT) and not _ospath.path.isdir(_ospath.path.join(_ROOT, "verse")):
+    _ROOT = _ospath.path.dirname(_ROOT)
 
-OUT = "D:/QuizzFortnite/assets/jeu"
+OUT = f"{_ROOT}/assets/jeu"
 os.makedirs(OUT, exist_ok=True)
 
 # (nom, largeur, hauteur, rayon, alpha_interieur 0-255)  -- doit matcher quiz_hud.verse
