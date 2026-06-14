@@ -15,7 +15,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_01 }
-            Reponses := array{"Savoie", "Cantal", "Loire", "Ain"}
+            Reponses := array{"Rhone", "Cantal", "Loire", "Ain"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
@@ -45,13 +45,13 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_07 }
-            Reponses := array{"Allier", "Savoie", "Isere", "Ardeche"}
+            Reponses := array{"Cantal", "Allier", "Loire", "Ardeche"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_08 }
-            Reponses := array{"Bas-Rhin", "Meurthe-et-Moselle", "Vosges", "Ardennes"}
-            BonneReponse := 3
+            Reponses := array{"Vosges", "Bas-Rhin", "Ardennes", "Marne"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_09 }
@@ -60,7 +60,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_10 }
-            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
+            Reponses := array{"Moselle", "Haute-Marne", "Vosges", "Aube"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
@@ -90,12 +90,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_16 }
-            Reponses := array{"Gironde", "Pyrenees-Atlantiques", "Charente", "Haute-Vienne"}
+            Reponses := array{"Gironde", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_17 }
-            Reponses := array{"Charente-Maritime", "Charente", "Gironde", "Dordogne"}
+            Reponses := array{"Charente-Maritime", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
@@ -105,7 +105,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_19 }
-            Reponses := array{"Correze", "Deux-Sevres", "Charente", "Gironde"}
+            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Charente", "Gironde"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
@@ -120,13 +120,13 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_23 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Creuse", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_24 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 0
+            Reponses := array{"Pyrenees-Atlantiques", "Charente-Maritime", "Dordogne", "Creuse"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_25 }
@@ -205,8 +205,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_38 }
-            Reponses := array{"Ain", "Isere", "Ardeche", "Allier"}
-            BonneReponse := 1
+            Reponses := array{"Ardeche", "Allier", "Ain", "Isere"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_39 }
@@ -215,7 +215,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_40 }
-            Reponses := array{"Charente-Maritime", "Dordogne", "Landes", "Correze"}
+            Reponses := array{"Dordogne", "Lot-et-Garonne", "Landes", "Charente-Maritime"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
@@ -250,8 +250,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_47 }
-            Reponses := array{"Eure-et-Loir", "Lot-et-Garonne", "Paris", "Ille-et-Vilaine"}
-            BonneReponse := 1
+            Reponses := array{"Creuse", "Gironde", "Lot-et-Garonne", "Dordogne"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_48 }
@@ -275,8 +275,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_52 }
-            Reponses := array{"Aube", "Ardennes", "Haute-Marne", "Moselle"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Marne", "Ardennes", "Bas-Rhin", "Aube"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_53 }
@@ -285,12 +285,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Ardennes", "Haute-Marne", "Aube"}
+            Reponses := array{"Meurthe-et-Moselle", "Haute-Marne", "Ardennes", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_55 }
-            Reponses := array{"Meuse", "Meurthe-et-Moselle", "Moselle", "Ardennes"}
+            Reponses := array{"Meuse", "Haute-Marne", "Meurthe-et-Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
@@ -330,12 +330,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Loire", "Haute-Loire"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Rhone", "Allier", "Ain"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_64 }
-            Reponses := array{"Landes", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
+            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
@@ -350,18 +350,18 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_67 }
-            Reponses := array{"Haute-Marne", "Vosges", "Bas-Rhin", "Meurthe-et-Moselle"}
+            Reponses := array{"Haute-Marne", "Haut-Rhin", "Bas-Rhin", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_68 }
-            Reponses := array{"Isere", "Haut-Rhin", "Pyrenees-Orientales", "Drome"}
-            BonneReponse := 1
+            Reponses := array{"Vosges", "Moselle", "Aube", "Haut-Rhin"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_69 }
-            Reponses := array{"Yonne", "Rhone", "Loir-et-Cher", "Loire-Atlantique"}
-            BonneReponse := 1
+            Reponses := array{"Cantal", "Ain", "Allier", "Rhone"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_70 }
@@ -380,7 +380,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_73 }
-            Reponses := array{"Haute-Savoie", "Drome", "Savoie", "Puy-de-Dome"}
+            Reponses := array{"Haute-Savoie", "Isere", "Savoie", "Puy-de-Dome"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
@@ -410,7 +410,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_79 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Charente", "Deux-Sevres"}
+            Reponses := array{"Dordogne", "Haute-Vienne", "Charente", "Deux-Sevres"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
@@ -445,7 +445,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_86 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Vienne", "Correze"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
@@ -455,8 +455,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_88 }
-            Reponses := array{"Vosges", "Aube", "Ardennes", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Bas-Rhin", "Vosges", "Aube", "Haute-Marne"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_flags.dflag_89 }
@@ -520,8 +520,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_01 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Ardeche"}
-            BonneReponse := 0
+            Reponses := array{"Isere", "Ardeche", "Ain", "Haute-Savoie"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_02 }
@@ -530,7 +530,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_03 }
-            Reponses := array{"Ain", "Allier", "Puy-de-Dome", "Drome"}
+            Reponses := array{"Ain", "Allier", "Cantal", "Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -550,12 +550,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_07 }
-            Reponses := array{"Ain", "Ardeche", "Savoie", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Ain", "Haute-Savoie", "Ardeche", "Loire"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_08 }
-            Reponses := array{"Haute-Marne", "Aube", "Meuse", "Ardennes"}
+            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -565,7 +565,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_10 }
-            Reponses := array{"Meuse", "Bas-Rhin", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Marne", "Aube", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -590,18 +590,18 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_15 }
-            Reponses := array{"Cantal", "Ardeche", "Savoie", "Drome"}
+            Reponses := array{"Cantal", "Savoie", "Drome", "Rhone"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_16 }
-            Reponses := array{"Pyrenees-Atlantiques", "Creuse", "Charente", "Haute-Vienne"}
-            BonneReponse := 2
+            Reponses := array{"Gironde", "Charente", "Haute-Vienne", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_17 }
-            Reponses := array{"Vienne", "Deux-Sevres", "Charente-Maritime", "Gironde"}
-            BonneReponse := 2
+            Reponses := array{"Deux-Sevres", "Gironde", "Vienne", "Charente-Maritime"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_18 }
@@ -610,7 +610,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_19 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Dordogne", "Deux-Sevres"}
+            Reponses := array{"Correze", "Lot-et-Garonne", "Dordogne", "Pyrenees-Atlantiques"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -625,12 +625,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_23 }
-            Reponses := array{"Pyrenees-Atlantiques", "Charente", "Vienne", "Creuse"}
+            Reponses := array{"Charente-Maritime", "Charente", "Deux-Sevres", "Creuse"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_24 }
-            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Dordogne", "Charente"}
+            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Dordogne", "Lot-et-Garonne"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -640,7 +640,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_26 }
-            Reponses := array{"Isere", "Puy-de-Dome", "Drome", "Haute-Savoie"}
+            Reponses := array{"Haute-Savoie", "Isere", "Drome", "Savoie"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -685,8 +685,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_33 }
-            Reponses := array{"Gironde", "Haute-Vienne", "Pyrenees-Atlantiques", "Correze"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Vienne", "Gironde", "Correze"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_34 }
@@ -710,8 +710,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_38 }
-            Reponses := array{"Cantal", "Allier", "Isere", "Savoie"}
-            BonneReponse := 2
+            Reponses := array{"Isere", "Savoie", "Cantal", "Drome"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_39 }
@@ -720,7 +720,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_40 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Gironde"}
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Correze", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -730,7 +730,7 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_42 }
-            Reponses := array{"Haute-Loire", "Loire", "Puy-de-Dome", "Cantal"}
+            Reponses := array{"Ardeche", "Loire", "Rhone", "Cantal"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -755,8 +755,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_47 }
-            Reponses := array{"Lot-et-Garonne", "Cote-d'Or", "Vendee", "Eure"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_48 }
@@ -775,12 +775,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_51 }
-            Reponses := array{"Ardennes", "Marne", "Moselle", "Bas-Rhin"}
-            BonneReponse := 1
+            Reponses := array{"Ardennes", "Bas-Rhin", "Marne", "Aube"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_52 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Meuse", "Haute-Marne"}
+            Reponses := array{"Marne", "Bas-Rhin", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -790,12 +790,12 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Aube", "Moselle", "Vosges"}
+            Reponses := array{"Meurthe-et-Moselle", "Aube", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_55 }
-            Reponses := array{"Ardennes", "Haute-Marne", "Vosges", "Meuse"}
+            Reponses := array{"Ardennes", "Haute-Marne", "Aube", "Meuse"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
@@ -805,8 +805,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_57 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Marne", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Moselle", "Haut-Rhin", "Bas-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_58 }
@@ -840,8 +840,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_64 }
-            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Creuse", "Landes"}
-            BonneReponse := 1
+            Reponses := array{"Vienne", "Lot-et-Garonne", "Charente", "Pyrenees-Atlantiques"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_65 }
@@ -855,18 +855,18 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_67 }
-            Reponses := array{"Aube", "Vosges", "Moselle", "Bas-Rhin"}
+            Reponses := array{"Haut-Rhin", "Vosges", "Ardennes", "Bas-Rhin"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_68 }
-            Reponses := array{"Somme", "Essonne", "Haut-Rhin", "Oise"}
+            Reponses := array{"Ardennes", "Bas-Rhin", "Haut-Rhin", "Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_69 }
-            Reponses := array{"Rhone", "Seine-Saint-Denis", "Tarn-et-Garonne", "Nievre"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Allier", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_70 }
@@ -885,8 +885,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_73 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Ain", "Drome"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Savoie", "Isere"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_74 }
@@ -915,8 +915,8 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_79 }
-            Reponses := array{"Haute-Vienne", "Deux-Sevres", "Creuse", "Correze"}
-            BonneReponse := 1
+            Reponses := array{"Charente", "Correze", "Deux-Sevres", "Pyrenees-Atlantiques"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_80 }
@@ -950,18 +950,18 @@ MakeDepFlagsQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_86 }
-            Reponses := array{"Haute-Vienne", "Landes", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Vienne", "Correze", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_87 }
-            Reponses := array{"Haute-Vienne", "Dordogne", "Deux-Sevres", "Charente"}
-            BonneReponse := 0
+            Reponses := array{"Landes", "Haute-Vienne", "Charente", "Dordogne"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_88 }
-            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Aube", "Haut-Rhin", "Vosges"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (drapeau pixelise)"
             Image := option{ dep_flags_pixel.dfpx_89 }
@@ -1031,7 +1031,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_01 }
-            Reponses := array{"Savoie", "Cantal", "Loire", "Ain"}
+            Reponses := array{"Rhone", "Cantal", "Loire", "Ain"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
@@ -1061,13 +1061,13 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_07 }
-            Reponses := array{"Allier", "Savoie", "Isere", "Ardeche"}
+            Reponses := array{"Cantal", "Allier", "Loire", "Ardeche"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_08 }
-            Reponses := array{"Bas-Rhin", "Meurthe-et-Moselle", "Vosges", "Ardennes"}
-            BonneReponse := 3
+            Reponses := array{"Vosges", "Bas-Rhin", "Ardennes", "Marne"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_09 }
@@ -1076,7 +1076,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_10 }
-            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
+            Reponses := array{"Moselle", "Haute-Marne", "Vosges", "Aube"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
@@ -1106,12 +1106,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_16 }
-            Reponses := array{"Gironde", "Pyrenees-Atlantiques", "Charente", "Haute-Vienne"}
+            Reponses := array{"Gironde", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_17 }
-            Reponses := array{"Charente-Maritime", "Charente", "Gironde", "Dordogne"}
+            Reponses := array{"Charente-Maritime", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
@@ -1121,7 +1121,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_19 }
-            Reponses := array{"Correze", "Deux-Sevres", "Charente", "Gironde"}
+            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Charente", "Gironde"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
@@ -1136,13 +1136,13 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_23 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Creuse", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_24 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 0
+            Reponses := array{"Pyrenees-Atlantiques", "Charente-Maritime", "Dordogne", "Creuse"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_25 }
@@ -1221,8 +1221,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_38 }
-            Reponses := array{"Ain", "Isere", "Ardeche", "Allier"}
-            BonneReponse := 1
+            Reponses := array{"Ardeche", "Allier", "Ain", "Isere"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_39 }
@@ -1231,7 +1231,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_40 }
-            Reponses := array{"Charente-Maritime", "Dordogne", "Landes", "Correze"}
+            Reponses := array{"Dordogne", "Lot-et-Garonne", "Landes", "Charente-Maritime"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
@@ -1266,8 +1266,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_47 }
-            Reponses := array{"Eure-et-Loir", "Lot-et-Garonne", "Paris", "Ille-et-Vilaine"}
-            BonneReponse := 1
+            Reponses := array{"Creuse", "Gironde", "Lot-et-Garonne", "Dordogne"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_48 }
@@ -1291,8 +1291,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_52 }
-            Reponses := array{"Aube", "Ardennes", "Haute-Marne", "Moselle"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Marne", "Ardennes", "Bas-Rhin", "Aube"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_53 }
@@ -1301,12 +1301,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Ardennes", "Haute-Marne", "Aube"}
+            Reponses := array{"Meurthe-et-Moselle", "Haute-Marne", "Ardennes", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_55 }
-            Reponses := array{"Meuse", "Meurthe-et-Moselle", "Moselle", "Ardennes"}
+            Reponses := array{"Meuse", "Haute-Marne", "Meurthe-et-Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
@@ -1346,12 +1346,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Loire", "Haute-Loire"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Rhone", "Allier", "Ain"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_64 }
-            Reponses := array{"Landes", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
+            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
@@ -1366,18 +1366,18 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_67 }
-            Reponses := array{"Haute-Marne", "Vosges", "Bas-Rhin", "Meurthe-et-Moselle"}
+            Reponses := array{"Haute-Marne", "Haut-Rhin", "Bas-Rhin", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_68 }
-            Reponses := array{"Isere", "Haut-Rhin", "Pyrenees-Orientales", "Drome"}
-            BonneReponse := 1
+            Reponses := array{"Vosges", "Moselle", "Aube", "Haut-Rhin"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_69 }
-            Reponses := array{"Yonne", "Rhone", "Loir-et-Cher", "Loire-Atlantique"}
-            BonneReponse := 1
+            Reponses := array{"Cantal", "Ain", "Allier", "Rhone"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_70 }
@@ -1396,7 +1396,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_73 }
-            Reponses := array{"Haute-Savoie", "Drome", "Savoie", "Puy-de-Dome"}
+            Reponses := array{"Haute-Savoie", "Isere", "Savoie", "Puy-de-Dome"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
@@ -1426,7 +1426,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_79 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Charente", "Deux-Sevres"}
+            Reponses := array{"Dordogne", "Haute-Vienne", "Charente", "Deux-Sevres"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
@@ -1461,7 +1461,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_86 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Vienne", "Correze"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
@@ -1471,8 +1471,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_88 }
-            Reponses := array{"Vosges", "Aube", "Ardennes", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Bas-Rhin", "Vosges", "Aube", "Haute-Marne"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_flags.dflag_89 }
@@ -1536,8 +1536,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_01 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Ardeche"}
-            BonneReponse := 0
+            Reponses := array{"Isere", "Ardeche", "Ain", "Haute-Savoie"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_02 }
@@ -1546,7 +1546,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_03 }
-            Reponses := array{"Ain", "Allier", "Puy-de-Dome", "Drome"}
+            Reponses := array{"Ain", "Allier", "Cantal", "Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1566,12 +1566,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_07 }
-            Reponses := array{"Ain", "Ardeche", "Savoie", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Ain", "Haute-Savoie", "Ardeche", "Loire"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_08 }
-            Reponses := array{"Haute-Marne", "Aube", "Meuse", "Ardennes"}
+            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1581,7 +1581,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_10 }
-            Reponses := array{"Meuse", "Bas-Rhin", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Marne", "Aube", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1606,18 +1606,18 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_15 }
-            Reponses := array{"Cantal", "Ardeche", "Savoie", "Drome"}
+            Reponses := array{"Cantal", "Savoie", "Drome", "Rhone"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_16 }
-            Reponses := array{"Pyrenees-Atlantiques", "Creuse", "Charente", "Haute-Vienne"}
-            BonneReponse := 2
+            Reponses := array{"Gironde", "Charente", "Haute-Vienne", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_17 }
-            Reponses := array{"Vienne", "Deux-Sevres", "Charente-Maritime", "Gironde"}
-            BonneReponse := 2
+            Reponses := array{"Deux-Sevres", "Gironde", "Vienne", "Charente-Maritime"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_18 }
@@ -1626,7 +1626,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_19 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Dordogne", "Deux-Sevres"}
+            Reponses := array{"Correze", "Lot-et-Garonne", "Dordogne", "Pyrenees-Atlantiques"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1641,12 +1641,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_23 }
-            Reponses := array{"Pyrenees-Atlantiques", "Charente", "Vienne", "Creuse"}
+            Reponses := array{"Charente-Maritime", "Charente", "Deux-Sevres", "Creuse"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_24 }
-            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Dordogne", "Charente"}
+            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Dordogne", "Lot-et-Garonne"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1656,7 +1656,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_26 }
-            Reponses := array{"Isere", "Puy-de-Dome", "Drome", "Haute-Savoie"}
+            Reponses := array{"Haute-Savoie", "Isere", "Drome", "Savoie"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1701,8 +1701,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_33 }
-            Reponses := array{"Gironde", "Haute-Vienne", "Pyrenees-Atlantiques", "Correze"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Vienne", "Gironde", "Correze"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_34 }
@@ -1726,8 +1726,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_38 }
-            Reponses := array{"Cantal", "Allier", "Isere", "Savoie"}
-            BonneReponse := 2
+            Reponses := array{"Isere", "Savoie", "Cantal", "Drome"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_39 }
@@ -1736,7 +1736,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_40 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Gironde"}
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Correze", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1746,7 +1746,7 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_42 }
-            Reponses := array{"Haute-Loire", "Loire", "Puy-de-Dome", "Cantal"}
+            Reponses := array{"Ardeche", "Loire", "Rhone", "Cantal"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1771,8 +1771,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_47 }
-            Reponses := array{"Lot-et-Garonne", "Cote-d'Or", "Vendee", "Eure"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_48 }
@@ -1791,12 +1791,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_51 }
-            Reponses := array{"Ardennes", "Marne", "Moselle", "Bas-Rhin"}
-            BonneReponse := 1
+            Reponses := array{"Ardennes", "Bas-Rhin", "Marne", "Aube"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_52 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Meuse", "Haute-Marne"}
+            Reponses := array{"Marne", "Bas-Rhin", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1806,12 +1806,12 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Aube", "Moselle", "Vosges"}
+            Reponses := array{"Meurthe-et-Moselle", "Aube", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_55 }
-            Reponses := array{"Ardennes", "Haute-Marne", "Vosges", "Meuse"}
+            Reponses := array{"Ardennes", "Haute-Marne", "Aube", "Meuse"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
@@ -1821,8 +1821,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_57 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Marne", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Moselle", "Haut-Rhin", "Bas-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_58 }
@@ -1856,8 +1856,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_64 }
-            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Creuse", "Landes"}
-            BonneReponse := 1
+            Reponses := array{"Vienne", "Lot-et-Garonne", "Charente", "Pyrenees-Atlantiques"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_65 }
@@ -1871,18 +1871,18 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_67 }
-            Reponses := array{"Aube", "Vosges", "Moselle", "Bas-Rhin"}
+            Reponses := array{"Haut-Rhin", "Vosges", "Ardennes", "Bas-Rhin"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_68 }
-            Reponses := array{"Somme", "Essonne", "Haut-Rhin", "Oise"}
+            Reponses := array{"Ardennes", "Bas-Rhin", "Haut-Rhin", "Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_69 }
-            Reponses := array{"Rhone", "Seine-Saint-Denis", "Tarn-et-Garonne", "Nievre"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Allier", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_70 }
@@ -1901,8 +1901,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_73 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Ain", "Drome"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Savoie", "Isere"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_74 }
@@ -1931,8 +1931,8 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_79 }
-            Reponses := array{"Haute-Vienne", "Deux-Sevres", "Creuse", "Correze"}
-            BonneReponse := 1
+            Reponses := array{"Charente", "Correze", "Deux-Sevres", "Pyrenees-Atlantiques"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_80 }
@@ -1966,18 +1966,18 @@ MakeDepFlagsQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_86 }
-            Reponses := array{"Haute-Vienne", "Landes", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Vienne", "Correze", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_87 }
-            Reponses := array{"Haute-Vienne", "Dordogne", "Deux-Sevres", "Charente"}
-            BonneReponse := 0
+            Reponses := array{"Landes", "Haute-Vienne", "Charente", "Dordogne"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_88 }
-            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Aube", "Haut-Rhin", "Vosges"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated)"
             Image := option{ dep_flags_pixel.dfpx_89 }
@@ -2044,7 +2044,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_01 }
-            Reponses := array{"Savoie", "Cantal", "Loire", "Ain"}
+            Reponses := array{"Rhone", "Cantal", "Loire", "Ain"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
@@ -2074,13 +2074,13 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_07 }
-            Reponses := array{"Allier", "Savoie", "Isere", "Ardeche"}
+            Reponses := array{"Cantal", "Allier", "Loire", "Ardeche"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_08 }
-            Reponses := array{"Bas-Rhin", "Meurthe-et-Moselle", "Vosges", "Ardennes"}
-            BonneReponse := 3
+            Reponses := array{"Vosges", "Bas-Rhin", "Ardennes", "Marne"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_09 }
@@ -2089,7 +2089,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_10 }
-            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
+            Reponses := array{"Moselle", "Haute-Marne", "Vosges", "Aube"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
@@ -2119,12 +2119,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_16 }
-            Reponses := array{"Gironde", "Pyrenees-Atlantiques", "Charente", "Haute-Vienne"}
+            Reponses := array{"Gironde", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_17 }
-            Reponses := array{"Charente-Maritime", "Charente", "Gironde", "Dordogne"}
+            Reponses := array{"Charente-Maritime", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
@@ -2134,7 +2134,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_19 }
-            Reponses := array{"Correze", "Deux-Sevres", "Charente", "Gironde"}
+            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Charente", "Gironde"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
@@ -2149,13 +2149,13 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_23 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Creuse", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_24 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 0
+            Reponses := array{"Pyrenees-Atlantiques", "Charente-Maritime", "Dordogne", "Creuse"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_25 }
@@ -2234,8 +2234,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_38 }
-            Reponses := array{"Ain", "Isere", "Ardeche", "Allier"}
-            BonneReponse := 1
+            Reponses := array{"Ardeche", "Allier", "Ain", "Isere"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_39 }
@@ -2244,7 +2244,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_40 }
-            Reponses := array{"Charente-Maritime", "Dordogne", "Landes", "Correze"}
+            Reponses := array{"Dordogne", "Lot-et-Garonne", "Landes", "Charente-Maritime"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
@@ -2279,8 +2279,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_47 }
-            Reponses := array{"Eure-et-Loir", "Lot-et-Garonne", "Paris", "Ille-et-Vilaine"}
-            BonneReponse := 1
+            Reponses := array{"Creuse", "Gironde", "Lot-et-Garonne", "Dordogne"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_48 }
@@ -2304,8 +2304,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_52 }
-            Reponses := array{"Aube", "Ardennes", "Haute-Marne", "Moselle"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Marne", "Ardennes", "Bas-Rhin", "Aube"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_53 }
@@ -2314,12 +2314,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Ardennes", "Haute-Marne", "Aube"}
+            Reponses := array{"Meurthe-et-Moselle", "Haute-Marne", "Ardennes", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_55 }
-            Reponses := array{"Meuse", "Meurthe-et-Moselle", "Moselle", "Ardennes"}
+            Reponses := array{"Meuse", "Haute-Marne", "Meurthe-et-Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
@@ -2359,12 +2359,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Loire", "Haute-Loire"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Rhone", "Allier", "Ain"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_64 }
-            Reponses := array{"Landes", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
+            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
@@ -2379,18 +2379,18 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_67 }
-            Reponses := array{"Haute-Marne", "Vosges", "Bas-Rhin", "Meurthe-et-Moselle"}
+            Reponses := array{"Haute-Marne", "Haut-Rhin", "Bas-Rhin", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_68 }
-            Reponses := array{"Isere", "Haut-Rhin", "Pyrenees-Orientales", "Drome"}
-            BonneReponse := 1
+            Reponses := array{"Vosges", "Moselle", "Aube", "Haut-Rhin"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_69 }
-            Reponses := array{"Yonne", "Rhone", "Loir-et-Cher", "Loire-Atlantique"}
-            BonneReponse := 1
+            Reponses := array{"Cantal", "Ain", "Allier", "Rhone"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_70 }
@@ -2409,7 +2409,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_73 }
-            Reponses := array{"Haute-Savoie", "Drome", "Savoie", "Puy-de-Dome"}
+            Reponses := array{"Haute-Savoie", "Isere", "Savoie", "Puy-de-Dome"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
@@ -2439,7 +2439,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_79 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Charente", "Deux-Sevres"}
+            Reponses := array{"Dordogne", "Haute-Vienne", "Charente", "Deux-Sevres"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
@@ -2474,7 +2474,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_86 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Vienne", "Correze"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
@@ -2484,8 +2484,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_88 }
-            Reponses := array{"Vosges", "Aube", "Ardennes", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Bas-Rhin", "Vosges", "Aube", "Haute-Marne"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_flags.dflag_89 }
@@ -2549,8 +2549,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_01 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Ardeche"}
-            BonneReponse := 0
+            Reponses := array{"Isere", "Ardeche", "Ain", "Haute-Savoie"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_02 }
@@ -2559,7 +2559,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_03 }
-            Reponses := array{"Ain", "Allier", "Puy-de-Dome", "Drome"}
+            Reponses := array{"Ain", "Allier", "Cantal", "Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2579,12 +2579,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_07 }
-            Reponses := array{"Ain", "Ardeche", "Savoie", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Ain", "Haute-Savoie", "Ardeche", "Loire"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_08 }
-            Reponses := array{"Haute-Marne", "Aube", "Meuse", "Ardennes"}
+            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2594,7 +2594,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_10 }
-            Reponses := array{"Meuse", "Bas-Rhin", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Marne", "Aube", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2619,18 +2619,18 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_15 }
-            Reponses := array{"Cantal", "Ardeche", "Savoie", "Drome"}
+            Reponses := array{"Cantal", "Savoie", "Drome", "Rhone"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_16 }
-            Reponses := array{"Pyrenees-Atlantiques", "Creuse", "Charente", "Haute-Vienne"}
-            BonneReponse := 2
+            Reponses := array{"Gironde", "Charente", "Haute-Vienne", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_17 }
-            Reponses := array{"Vienne", "Deux-Sevres", "Charente-Maritime", "Gironde"}
-            BonneReponse := 2
+            Reponses := array{"Deux-Sevres", "Gironde", "Vienne", "Charente-Maritime"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_18 }
@@ -2639,7 +2639,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_19 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Dordogne", "Deux-Sevres"}
+            Reponses := array{"Correze", "Lot-et-Garonne", "Dordogne", "Pyrenees-Atlantiques"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2654,12 +2654,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_23 }
-            Reponses := array{"Pyrenees-Atlantiques", "Charente", "Vienne", "Creuse"}
+            Reponses := array{"Charente-Maritime", "Charente", "Deux-Sevres", "Creuse"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_24 }
-            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Dordogne", "Charente"}
+            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Dordogne", "Lot-et-Garonne"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2669,7 +2669,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_26 }
-            Reponses := array{"Isere", "Puy-de-Dome", "Drome", "Haute-Savoie"}
+            Reponses := array{"Haute-Savoie", "Isere", "Drome", "Savoie"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2714,8 +2714,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_33 }
-            Reponses := array{"Gironde", "Haute-Vienne", "Pyrenees-Atlantiques", "Correze"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Vienne", "Gironde", "Correze"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_34 }
@@ -2739,8 +2739,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_38 }
-            Reponses := array{"Cantal", "Allier", "Isere", "Savoie"}
-            BonneReponse := 2
+            Reponses := array{"Isere", "Savoie", "Cantal", "Drome"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_39 }
@@ -2749,7 +2749,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_40 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Gironde"}
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Correze", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2759,7 +2759,7 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_42 }
-            Reponses := array{"Haute-Loire", "Loire", "Puy-de-Dome", "Cantal"}
+            Reponses := array{"Ardeche", "Loire", "Rhone", "Cantal"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2784,8 +2784,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_47 }
-            Reponses := array{"Lot-et-Garonne", "Cote-d'Or", "Vendee", "Eure"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_48 }
@@ -2804,12 +2804,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_51 }
-            Reponses := array{"Ardennes", "Marne", "Moselle", "Bas-Rhin"}
-            BonneReponse := 1
+            Reponses := array{"Ardennes", "Bas-Rhin", "Marne", "Aube"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_52 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Meuse", "Haute-Marne"}
+            Reponses := array{"Marne", "Bas-Rhin", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2819,12 +2819,12 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Aube", "Moselle", "Vosges"}
+            Reponses := array{"Meurthe-et-Moselle", "Aube", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_55 }
-            Reponses := array{"Ardennes", "Haute-Marne", "Vosges", "Meuse"}
+            Reponses := array{"Ardennes", "Haute-Marne", "Aube", "Meuse"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
@@ -2834,8 +2834,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_57 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Marne", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Moselle", "Haut-Rhin", "Bas-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_58 }
@@ -2869,8 +2869,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_64 }
-            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Creuse", "Landes"}
-            BonneReponse := 1
+            Reponses := array{"Vienne", "Lot-et-Garonne", "Charente", "Pyrenees-Atlantiques"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_65 }
@@ -2884,18 +2884,18 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_67 }
-            Reponses := array{"Aube", "Vosges", "Moselle", "Bas-Rhin"}
+            Reponses := array{"Haut-Rhin", "Vosges", "Ardennes", "Bas-Rhin"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_68 }
-            Reponses := array{"Somme", "Essonne", "Haut-Rhin", "Oise"}
+            Reponses := array{"Ardennes", "Bas-Rhin", "Haut-Rhin", "Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_69 }
-            Reponses := array{"Rhone", "Seine-Saint-Denis", "Tarn-et-Garonne", "Nievre"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Allier", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_70 }
@@ -2914,8 +2914,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_73 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Ain", "Drome"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Savoie", "Isere"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_74 }
@@ -2944,8 +2944,8 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_79 }
-            Reponses := array{"Haute-Vienne", "Deux-Sevres", "Creuse", "Correze"}
-            BonneReponse := 1
+            Reponses := array{"Charente", "Correze", "Deux-Sevres", "Pyrenees-Atlantiques"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_80 }
@@ -2979,18 +2979,18 @@ MakeDepFlagsQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_86 }
-            Reponses := array{"Haute-Vienne", "Landes", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Vienne", "Correze", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_87 }
-            Reponses := array{"Haute-Vienne", "Dordogne", "Deux-Sevres", "Charente"}
-            BonneReponse := 0
+            Reponses := array{"Landes", "Haute-Vienne", "Charente", "Dordogne"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_88 }
-            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Aube", "Haut-Rhin", "Vosges"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (pixelado)"
             Image := option{ dep_flags_pixel.dfpx_89 }
@@ -3057,7 +3057,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_01 }
-            Reponses := array{"Savoie", "Cantal", "Loire", "Ain"}
+            Reponses := array{"Rhone", "Cantal", "Loire", "Ain"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3087,13 +3087,13 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_07 }
-            Reponses := array{"Allier", "Savoie", "Isere", "Ardeche"}
+            Reponses := array{"Cantal", "Allier", "Loire", "Ardeche"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_08 }
-            Reponses := array{"Bas-Rhin", "Meurthe-et-Moselle", "Vosges", "Ardennes"}
-            BonneReponse := 3
+            Reponses := array{"Vosges", "Bas-Rhin", "Ardennes", "Marne"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_09 }
@@ -3102,7 +3102,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_10 }
-            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
+            Reponses := array{"Moselle", "Haute-Marne", "Vosges", "Aube"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3132,12 +3132,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_16 }
-            Reponses := array{"Gironde", "Pyrenees-Atlantiques", "Charente", "Haute-Vienne"}
+            Reponses := array{"Gironde", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_17 }
-            Reponses := array{"Charente-Maritime", "Charente", "Gironde", "Dordogne"}
+            Reponses := array{"Charente-Maritime", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3147,7 +3147,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_19 }
-            Reponses := array{"Correze", "Deux-Sevres", "Charente", "Gironde"}
+            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Charente", "Gironde"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3162,13 +3162,13 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_23 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Creuse", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_24 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 0
+            Reponses := array{"Pyrenees-Atlantiques", "Charente-Maritime", "Dordogne", "Creuse"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_25 }
@@ -3247,8 +3247,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_38 }
-            Reponses := array{"Ain", "Isere", "Ardeche", "Allier"}
-            BonneReponse := 1
+            Reponses := array{"Ardeche", "Allier", "Ain", "Isere"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_39 }
@@ -3257,7 +3257,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_40 }
-            Reponses := array{"Charente-Maritime", "Dordogne", "Landes", "Correze"}
+            Reponses := array{"Dordogne", "Lot-et-Garonne", "Landes", "Charente-Maritime"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3292,8 +3292,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_47 }
-            Reponses := array{"Eure-et-Loir", "Lot-et-Garonne", "Paris", "Ille-et-Vilaine"}
-            BonneReponse := 1
+            Reponses := array{"Creuse", "Gironde", "Lot-et-Garonne", "Dordogne"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_48 }
@@ -3317,8 +3317,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_52 }
-            Reponses := array{"Aube", "Ardennes", "Haute-Marne", "Moselle"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Marne", "Ardennes", "Bas-Rhin", "Aube"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_53 }
@@ -3327,12 +3327,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Ardennes", "Haute-Marne", "Aube"}
+            Reponses := array{"Meurthe-et-Moselle", "Haute-Marne", "Ardennes", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_55 }
-            Reponses := array{"Meuse", "Meurthe-et-Moselle", "Moselle", "Ardennes"}
+            Reponses := array{"Meuse", "Haute-Marne", "Meurthe-et-Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3372,12 +3372,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Loire", "Haute-Loire"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Rhone", "Allier", "Ain"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_64 }
-            Reponses := array{"Landes", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
+            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3392,18 +3392,18 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_67 }
-            Reponses := array{"Haute-Marne", "Vosges", "Bas-Rhin", "Meurthe-et-Moselle"}
+            Reponses := array{"Haute-Marne", "Haut-Rhin", "Bas-Rhin", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_68 }
-            Reponses := array{"Isere", "Haut-Rhin", "Pyrenees-Orientales", "Drome"}
-            BonneReponse := 1
+            Reponses := array{"Vosges", "Moselle", "Aube", "Haut-Rhin"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_69 }
-            Reponses := array{"Yonne", "Rhone", "Loir-et-Cher", "Loire-Atlantique"}
-            BonneReponse := 1
+            Reponses := array{"Cantal", "Ain", "Allier", "Rhone"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_70 }
@@ -3422,7 +3422,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_73 }
-            Reponses := array{"Haute-Savoie", "Drome", "Savoie", "Puy-de-Dome"}
+            Reponses := array{"Haute-Savoie", "Isere", "Savoie", "Puy-de-Dome"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3452,7 +3452,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_79 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Charente", "Deux-Sevres"}
+            Reponses := array{"Dordogne", "Haute-Vienne", "Charente", "Deux-Sevres"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3487,7 +3487,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_86 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Vienne", "Correze"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3497,8 +3497,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_88 }
-            Reponses := array{"Vosges", "Aube", "Ardennes", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Bas-Rhin", "Vosges", "Aube", "Haute-Marne"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_flags.dflag_89 }
@@ -3562,8 +3562,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_01 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Ardeche"}
-            BonneReponse := 0
+            Reponses := array{"Isere", "Ardeche", "Ain", "Haute-Savoie"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_02 }
@@ -3572,7 +3572,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_03 }
-            Reponses := array{"Ain", "Allier", "Puy-de-Dome", "Drome"}
+            Reponses := array{"Ain", "Allier", "Cantal", "Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3592,12 +3592,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_07 }
-            Reponses := array{"Ain", "Ardeche", "Savoie", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Ain", "Haute-Savoie", "Ardeche", "Loire"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_08 }
-            Reponses := array{"Haute-Marne", "Aube", "Meuse", "Ardennes"}
+            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3607,7 +3607,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_10 }
-            Reponses := array{"Meuse", "Bas-Rhin", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Marne", "Aube", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3632,18 +3632,18 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_15 }
-            Reponses := array{"Cantal", "Ardeche", "Savoie", "Drome"}
+            Reponses := array{"Cantal", "Savoie", "Drome", "Rhone"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_16 }
-            Reponses := array{"Pyrenees-Atlantiques", "Creuse", "Charente", "Haute-Vienne"}
-            BonneReponse := 2
+            Reponses := array{"Gironde", "Charente", "Haute-Vienne", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_17 }
-            Reponses := array{"Vienne", "Deux-Sevres", "Charente-Maritime", "Gironde"}
-            BonneReponse := 2
+            Reponses := array{"Deux-Sevres", "Gironde", "Vienne", "Charente-Maritime"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_18 }
@@ -3652,7 +3652,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_19 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Dordogne", "Deux-Sevres"}
+            Reponses := array{"Correze", "Lot-et-Garonne", "Dordogne", "Pyrenees-Atlantiques"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3667,12 +3667,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_23 }
-            Reponses := array{"Pyrenees-Atlantiques", "Charente", "Vienne", "Creuse"}
+            Reponses := array{"Charente-Maritime", "Charente", "Deux-Sevres", "Creuse"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_24 }
-            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Dordogne", "Charente"}
+            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Dordogne", "Lot-et-Garonne"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3682,7 +3682,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_26 }
-            Reponses := array{"Isere", "Puy-de-Dome", "Drome", "Haute-Savoie"}
+            Reponses := array{"Haute-Savoie", "Isere", "Drome", "Savoie"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3727,8 +3727,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_33 }
-            Reponses := array{"Gironde", "Haute-Vienne", "Pyrenees-Atlantiques", "Correze"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Vienne", "Gironde", "Correze"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_34 }
@@ -3752,8 +3752,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_38 }
-            Reponses := array{"Cantal", "Allier", "Isere", "Savoie"}
-            BonneReponse := 2
+            Reponses := array{"Isere", "Savoie", "Cantal", "Drome"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_39 }
@@ -3762,7 +3762,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_40 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Gironde"}
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Correze", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3772,7 +3772,7 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_42 }
-            Reponses := array{"Haute-Loire", "Loire", "Puy-de-Dome", "Cantal"}
+            Reponses := array{"Ardeche", "Loire", "Rhone", "Cantal"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3797,8 +3797,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_47 }
-            Reponses := array{"Lot-et-Garonne", "Cote-d'Or", "Vendee", "Eure"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_48 }
@@ -3817,12 +3817,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_51 }
-            Reponses := array{"Ardennes", "Marne", "Moselle", "Bas-Rhin"}
-            BonneReponse := 1
+            Reponses := array{"Ardennes", "Bas-Rhin", "Marne", "Aube"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_52 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Meuse", "Haute-Marne"}
+            Reponses := array{"Marne", "Bas-Rhin", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3832,12 +3832,12 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Aube", "Moselle", "Vosges"}
+            Reponses := array{"Meurthe-et-Moselle", "Aube", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_55 }
-            Reponses := array{"Ardennes", "Haute-Marne", "Vosges", "Meuse"}
+            Reponses := array{"Ardennes", "Haute-Marne", "Aube", "Meuse"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
@@ -3847,8 +3847,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_57 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Marne", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Moselle", "Haut-Rhin", "Bas-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_58 }
@@ -3882,8 +3882,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_64 }
-            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Creuse", "Landes"}
-            BonneReponse := 1
+            Reponses := array{"Vienne", "Lot-et-Garonne", "Charente", "Pyrenees-Atlantiques"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_65 }
@@ -3897,18 +3897,18 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_67 }
-            Reponses := array{"Aube", "Vosges", "Moselle", "Bas-Rhin"}
+            Reponses := array{"Haut-Rhin", "Vosges", "Ardennes", "Bas-Rhin"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_68 }
-            Reponses := array{"Somme", "Essonne", "Haut-Rhin", "Oise"}
+            Reponses := array{"Ardennes", "Bas-Rhin", "Haut-Rhin", "Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_69 }
-            Reponses := array{"Rhone", "Seine-Saint-Denis", "Tarn-et-Garonne", "Nievre"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Allier", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_70 }
@@ -3927,8 +3927,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_73 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Ain", "Drome"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Savoie", "Isere"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_74 }
@@ -3957,8 +3957,8 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_79 }
-            Reponses := array{"Haute-Vienne", "Deux-Sevres", "Creuse", "Correze"}
-            BonneReponse := 1
+            Reponses := array{"Charente", "Correze", "Deux-Sevres", "Pyrenees-Atlantiques"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_80 }
@@ -3992,18 +3992,18 @@ MakeDepFlagsQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_86 }
-            Reponses := array{"Haute-Vienne", "Landes", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Vienne", "Correze", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_87 }
-            Reponses := array{"Haute-Vienne", "Dordogne", "Deux-Sevres", "Charente"}
-            BonneReponse := 0
+            Reponses := array{"Landes", "Haute-Vienne", "Charente", "Dordogne"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_88 }
-            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Aube", "Haut-Rhin", "Vosges"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelt)"
             Image := option{ dep_flags_pixel.dfpx_89 }
@@ -4070,7 +4070,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_01 }
-            Reponses := array{"Savoie", "Cantal", "Loire", "Ain"}
+            Reponses := array{"Rhone", "Cantal", "Loire", "Ain"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4100,13 +4100,13 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_07 }
-            Reponses := array{"Allier", "Savoie", "Isere", "Ardeche"}
+            Reponses := array{"Cantal", "Allier", "Loire", "Ardeche"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_08 }
-            Reponses := array{"Bas-Rhin", "Meurthe-et-Moselle", "Vosges", "Ardennes"}
-            BonneReponse := 3
+            Reponses := array{"Vosges", "Bas-Rhin", "Ardennes", "Marne"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_09 }
@@ -4115,7 +4115,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_10 }
-            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
+            Reponses := array{"Moselle", "Haute-Marne", "Vosges", "Aube"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4145,12 +4145,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_16 }
-            Reponses := array{"Gironde", "Pyrenees-Atlantiques", "Charente", "Haute-Vienne"}
+            Reponses := array{"Gironde", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_17 }
-            Reponses := array{"Charente-Maritime", "Charente", "Gironde", "Dordogne"}
+            Reponses := array{"Charente-Maritime", "Lot-et-Garonne", "Charente", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4160,7 +4160,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_19 }
-            Reponses := array{"Correze", "Deux-Sevres", "Charente", "Gironde"}
+            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Charente", "Gironde"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4175,13 +4175,13 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_23 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Creuse", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_24 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Vienne", "Creuse"}
-            BonneReponse := 0
+            Reponses := array{"Pyrenees-Atlantiques", "Charente-Maritime", "Dordogne", "Creuse"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_25 }
@@ -4260,8 +4260,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_38 }
-            Reponses := array{"Ain", "Isere", "Ardeche", "Allier"}
-            BonneReponse := 1
+            Reponses := array{"Ardeche", "Allier", "Ain", "Isere"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_39 }
@@ -4270,7 +4270,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_40 }
-            Reponses := array{"Charente-Maritime", "Dordogne", "Landes", "Correze"}
+            Reponses := array{"Dordogne", "Lot-et-Garonne", "Landes", "Charente-Maritime"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4305,8 +4305,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_47 }
-            Reponses := array{"Eure-et-Loir", "Lot-et-Garonne", "Paris", "Ille-et-Vilaine"}
-            BonneReponse := 1
+            Reponses := array{"Creuse", "Gironde", "Lot-et-Garonne", "Dordogne"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_48 }
@@ -4330,8 +4330,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_52 }
-            Reponses := array{"Aube", "Ardennes", "Haute-Marne", "Moselle"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Marne", "Ardennes", "Bas-Rhin", "Aube"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_53 }
@@ -4340,12 +4340,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Ardennes", "Haute-Marne", "Aube"}
+            Reponses := array{"Meurthe-et-Moselle", "Haute-Marne", "Ardennes", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_55 }
-            Reponses := array{"Meuse", "Meurthe-et-Moselle", "Moselle", "Ardennes"}
+            Reponses := array{"Meuse", "Haute-Marne", "Meurthe-et-Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4385,12 +4385,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Loire", "Haute-Loire"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Rhone", "Allier", "Ain"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_64 }
-            Reponses := array{"Landes", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
+            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Deux-Sevres", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4405,18 +4405,18 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_67 }
-            Reponses := array{"Haute-Marne", "Vosges", "Bas-Rhin", "Meurthe-et-Moselle"}
+            Reponses := array{"Haute-Marne", "Haut-Rhin", "Bas-Rhin", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_68 }
-            Reponses := array{"Isere", "Haut-Rhin", "Pyrenees-Orientales", "Drome"}
-            BonneReponse := 1
+            Reponses := array{"Vosges", "Moselle", "Aube", "Haut-Rhin"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_69 }
-            Reponses := array{"Yonne", "Rhone", "Loir-et-Cher", "Loire-Atlantique"}
-            BonneReponse := 1
+            Reponses := array{"Cantal", "Ain", "Allier", "Rhone"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_70 }
@@ -4435,7 +4435,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_73 }
-            Reponses := array{"Haute-Savoie", "Drome", "Savoie", "Puy-de-Dome"}
+            Reponses := array{"Haute-Savoie", "Isere", "Savoie", "Puy-de-Dome"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4465,7 +4465,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_79 }
-            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Charente", "Deux-Sevres"}
+            Reponses := array{"Dordogne", "Haute-Vienne", "Charente", "Deux-Sevres"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4500,7 +4500,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_86 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Vienne", "Correze"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4510,8 +4510,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_88 }
-            Reponses := array{"Vosges", "Aube", "Ardennes", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Bas-Rhin", "Vosges", "Aube", "Haute-Marne"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_flags.dflag_89 }
@@ -4575,8 +4575,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_01 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Ardeche"}
-            BonneReponse := 0
+            Reponses := array{"Isere", "Ardeche", "Ain", "Haute-Savoie"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_02 }
@@ -4585,7 +4585,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_03 }
-            Reponses := array{"Ain", "Allier", "Puy-de-Dome", "Drome"}
+            Reponses := array{"Ain", "Allier", "Cantal", "Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4605,12 +4605,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_07 }
-            Reponses := array{"Ain", "Ardeche", "Savoie", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Ain", "Haute-Savoie", "Ardeche", "Loire"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_08 }
-            Reponses := array{"Haute-Marne", "Aube", "Meuse", "Ardennes"}
+            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4620,7 +4620,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_10 }
-            Reponses := array{"Meuse", "Bas-Rhin", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Marne", "Aube", "Meurthe-et-Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4645,18 +4645,18 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_15 }
-            Reponses := array{"Cantal", "Ardeche", "Savoie", "Drome"}
+            Reponses := array{"Cantal", "Savoie", "Drome", "Rhone"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_16 }
-            Reponses := array{"Pyrenees-Atlantiques", "Creuse", "Charente", "Haute-Vienne"}
-            BonneReponse := 2
+            Reponses := array{"Gironde", "Charente", "Haute-Vienne", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_17 }
-            Reponses := array{"Vienne", "Deux-Sevres", "Charente-Maritime", "Gironde"}
-            BonneReponse := 2
+            Reponses := array{"Deux-Sevres", "Gironde", "Vienne", "Charente-Maritime"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_18 }
@@ -4665,7 +4665,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_19 }
-            Reponses := array{"Correze", "Pyrenees-Atlantiques", "Dordogne", "Deux-Sevres"}
+            Reponses := array{"Correze", "Lot-et-Garonne", "Dordogne", "Pyrenees-Atlantiques"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4680,12 +4680,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_23 }
-            Reponses := array{"Pyrenees-Atlantiques", "Charente", "Vienne", "Creuse"}
+            Reponses := array{"Charente-Maritime", "Charente", "Deux-Sevres", "Creuse"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_24 }
-            Reponses := array{"Haute-Vienne", "Pyrenees-Atlantiques", "Dordogne", "Charente"}
+            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Dordogne", "Lot-et-Garonne"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4695,7 +4695,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_26 }
-            Reponses := array{"Isere", "Puy-de-Dome", "Drome", "Haute-Savoie"}
+            Reponses := array{"Haute-Savoie", "Isere", "Drome", "Savoie"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4740,8 +4740,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_33 }
-            Reponses := array{"Gironde", "Haute-Vienne", "Pyrenees-Atlantiques", "Correze"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Vienne", "Gironde", "Correze"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_34 }
@@ -4765,8 +4765,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_38 }
-            Reponses := array{"Cantal", "Allier", "Isere", "Savoie"}
-            BonneReponse := 2
+            Reponses := array{"Isere", "Savoie", "Cantal", "Drome"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_39 }
@@ -4775,7 +4775,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_40 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Gironde"}
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Correze", "Gironde"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4785,7 +4785,7 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_42 }
-            Reponses := array{"Haute-Loire", "Loire", "Puy-de-Dome", "Cantal"}
+            Reponses := array{"Ardeche", "Loire", "Rhone", "Cantal"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4810,8 +4810,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_47 }
-            Reponses := array{"Lot-et-Garonne", "Cote-d'Or", "Vendee", "Eure"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Vienne", "Lot-et-Garonne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_48 }
@@ -4830,12 +4830,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_51 }
-            Reponses := array{"Ardennes", "Marne", "Moselle", "Bas-Rhin"}
-            BonneReponse := 1
+            Reponses := array{"Ardennes", "Bas-Rhin", "Marne", "Aube"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_52 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Meuse", "Haute-Marne"}
+            Reponses := array{"Marne", "Bas-Rhin", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4845,12 +4845,12 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_54 }
-            Reponses := array{"Meurthe-et-Moselle", "Aube", "Moselle", "Vosges"}
+            Reponses := array{"Meurthe-et-Moselle", "Aube", "Haut-Rhin", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_55 }
-            Reponses := array{"Ardennes", "Haute-Marne", "Vosges", "Meuse"}
+            Reponses := array{"Ardennes", "Haute-Marne", "Aube", "Meuse"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
@@ -4860,8 +4860,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_57 }
-            Reponses := array{"Moselle", "Bas-Rhin", "Marne", "Haute-Marne"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Moselle", "Haut-Rhin", "Bas-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_58 }
@@ -4895,8 +4895,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_64 }
-            Reponses := array{"Charente", "Pyrenees-Atlantiques", "Creuse", "Landes"}
-            BonneReponse := 1
+            Reponses := array{"Vienne", "Lot-et-Garonne", "Charente", "Pyrenees-Atlantiques"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_65 }
@@ -4910,18 +4910,18 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_67 }
-            Reponses := array{"Aube", "Vosges", "Moselle", "Bas-Rhin"}
+            Reponses := array{"Haut-Rhin", "Vosges", "Ardennes", "Bas-Rhin"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_68 }
-            Reponses := array{"Somme", "Essonne", "Haut-Rhin", "Oise"}
+            Reponses := array{"Ardennes", "Bas-Rhin", "Haut-Rhin", "Moselle"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_69 }
-            Reponses := array{"Rhone", "Seine-Saint-Denis", "Tarn-et-Garonne", "Nievre"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Allier", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_70 }
@@ -4940,8 +4940,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_73 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Ain", "Drome"}
-            BonneReponse := 0
+            Reponses := array{"Loire", "Rhone", "Savoie", "Isere"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_74 }
@@ -4970,8 +4970,8 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_79 }
-            Reponses := array{"Haute-Vienne", "Deux-Sevres", "Creuse", "Correze"}
-            BonneReponse := 1
+            Reponses := array{"Charente", "Correze", "Deux-Sevres", "Pyrenees-Atlantiques"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_80 }
@@ -5005,18 +5005,18 @@ MakeDepFlagsQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_86 }
-            Reponses := array{"Haute-Vienne", "Landes", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Vienne", "Correze", "Landes"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_87 }
-            Reponses := array{"Haute-Vienne", "Dordogne", "Deux-Sevres", "Charente"}
-            BonneReponse := 0
+            Reponses := array{"Landes", "Haute-Vienne", "Charente", "Dordogne"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_88 }
-            Reponses := array{"Vosges", "Aube", "Haute-Marne", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Haute-Marne", "Aube", "Haut-Rhin", "Vosges"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (pixelato)"
             Image := option{ dep_flags_pixel.dfpx_89 }

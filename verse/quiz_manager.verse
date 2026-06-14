@@ -207,6 +207,7 @@ quiz_manager := class(creative_device):
     var LobbyQueueContent : [player]widget = map{}   # contenu courant de la file
     var LobbyFiltVal : [player]text_block = map{}    # libelle "Toutes"/categorie du filtre
     var LobbyDispoT : [player]text_block = map{}     # texte "N dispo"
+    var LobbyFlameT : [player]text_block = map{}     # nombre de flammes (maj ciblee, sans rebuild)
     var LobbyQCountT : [player]text_block = map{}    # pastille "n/4"
     var LobbyRanked : [player]logic = map{}          # true = Classe, false = Non classe
     var LobbyRankRing : [player][]widget = map{}     # anneaux or/cyan (Classe / Non classe)
@@ -238,6 +239,7 @@ quiz_manager := class(creative_device):
     VisibleCards : int = 5                            # 5 cartes de 76px + gaps 9 dans la liste de 443px
     SessionQuestions : int = 25                       # questions par partie (= segments du couloir)
     var CurrentQuiz : int = 0                         # quizz joue (indice dans QzName)
+    var RoundDiff : int = 1                           # difficulte REELLE du round (partagee, fixee par le chef)
     # Permutations des reponses du round (1 par question), generees par le chef et
     # PARTAGEES a tout le groupe -> memes questions, memes reponses, meme ordre des reponses.
     var SessionPerms : [][]int = array{}
@@ -393,6 +395,10 @@ quiz_manager := class(creative_device):
         Playspace := GetPlayspace()
         for (Player : Playspace.GetPlayers()):
             InitPlayer(Player)
+            # les joueurs DEJA presents au lancement (dont l'hote) doivent aussi compter leurs heures
+            NewGen := FlameGenOf(Player) + 1
+            if (set FlameGen[Player] = NewGen) {}
+            spawn { FlameLoop(Player, NewGen) }
         Playspace.PlayerAddedEvent().Subscribe(OnPlayerAdded)
         Playspace.PlayerRemovedEvent().Subscribe(OnPlayerRemoved)
 
@@ -817,10 +823,12 @@ quiz_manager := class(creative_device):
         BtnSet.OnClick().Subscribe(OnOpenSettings)
         # pastille FLAMMES (heures consecutives), a GAUCHE du rang
         FlameN := FlamesOf(Player)
+        FlameNumT := LbText2("{FlameN}", 22.0, LbWhite, text_justification.Left)
+        if (set LobbyFlameT[Player] = FlameNumT) {}   # ref gardee pour maj ciblee (sans rebuild complet)
         FlameTxtCol := stack_box:
             Orientation := orientation.Vertical
             Slots := array:
-                stack_box_slot{ Widget := LbText2("{FlameN}", 22.0, LbWhite, text_justification.Left) }
+                stack_box_slot{ Widget := FlameNumT }
                 stack_box_slot{ Widget := LbText2("HEURES", 10.0, MakeColorFromHex("FFCB7A"), text_justification.Left), Padding := margin{ Left := 0.0, Top := 1.0, Right := 0.0, Bottom := 0.0 } }
         FlameRowH := stack_box:
             Orientation := orientation.Horizontal
@@ -1950,6 +1958,10 @@ quiz_manager := class(creative_device):
     # combo = indice unique (quizz, difficulte).
     Combo(Gi : int, Diff : int) : int = Gi * 3 + Diff
 
+    # Tableau de N zeros (padding en UNE passe : evite le O(n^2) d'un loop set Arr += array{0}).
+    Zeros(N : int) : []int =
+        for (_I := 0..N - 1) { 0 }
+
     # Affectation fonctionnelle Arr[Idx] = V (Verse evite set Arr[i]=).
     SetAtI(Arr : []int, Idx : int, V : int) : []int =
         for (K := 0..Arr.Length - 1, X := Arr[K]) { if (K = Idx) { V } else { X } }
@@ -1970,9 +1982,7 @@ quiz_manager := class(creative_device):
         Need := 2 * C + 2
         var Arr : []int = array{}
         if (Old := BestSave[P]) { set Arr = Old }
-        loop:
-            if (Arr.Length >= Need) { break }
-            set Arr += array{ 0 }
+        if (Arr.Length < Need) { set Arr += Zeros(Need - Arr.Length) }
         var Cur : int = 0
         if (X := Arr[2 * C]) { set Cur = X }
         if (Score > Cur):
@@ -2100,9 +2110,7 @@ quiz_manager := class(creative_device):
     SaveFlames(P : player, N : int) : void =
         var Arr : []int = array{}
         if (Old := BestSave[P]) { set Arr = Old }
-        loop:
-            if (Arr.Length >= FlameSlot + 1) { break }
-            set Arr += array{ 0 }
+        if (Arr.Length < FlameSlot + 1) { set Arr += Zeros(FlameSlot + 1 - Arr.Length) }
         set Arr = SetAtI(Arr, FlameSlot, N)
         if (set BestSave[P] = Arr) {}
 
@@ -2129,7 +2137,9 @@ quiz_manager := class(creative_device):
                 SaveFlames(P, FlamesOf(P) + 1)               # +1 flamme (persiste dans BestSave)
                 var InLobby : logic = false
                 if (X := LobbyShown[P]) { set InLobby = X }
-                if (InLobby?) { RebuildLobby(P) }            # maj live de la pastille si au lobby
+                if (InLobby?):                               # maj CIBLEE de la pastille (pas de rebuild complet)
+                    NewN := FlamesOf(P)
+                    if (T := LobbyFlameT[P]) { T.SetText(StringToMessage("{NewN}")) }
 
     AgentPNum(A : agent) : int =
         var N : int = 1
@@ -2643,11 +2653,27 @@ quiz_manager := class(creative_device):
         var Gi : int = 0
         if (Q0 := LobbyQueue[QueuePos]) { set Gi = Q0 }
         set CurrentQuiz = Gi
+        set RoundDiff = Diff   # difficulte reelle jouee (partagee), reutilisee a la sauvegarde du score
+        # Banque FR toujours construite : sert d'ordre de tirage partage + fallback langue.
         set Bank = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 0) }
-        set BankEN = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 1) }
-        set BankES = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 2) }
-        set BankDE = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 3) }
-        set BankIT = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 4) }
+        # On ne reconstruit QUE les banques des langues effectivement presentes
+        # (eviter de batir 5 banques de ~900 questions quand le groupe est mono-langue).
+        var NeedEN : logic = false
+        var NeedES : logic = false
+        var NeedDE : logic = false
+        var NeedIT : logic = false
+        Ps0 := GetPlayspace().GetPlayers()
+        for (Pl : Ps0):
+            if (L := LobbyLang[Pl]):
+                if (L = 1) { set NeedEN = true }
+                else if (L = 2) { set NeedES = true }
+                else if (L = 3) { set NeedDE = true }
+                else if (L = 4) { set NeedIT = true }
+        EmptyBank := question_bank{ Questions := array{} }
+        set BankEN = if (NeedEN?) { question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 1) } } else { EmptyBank }
+        set BankES = if (NeedES?) { question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 2) } } else { EmptyBank }
+        set BankDE = if (NeedDE?) { question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 3) } } else { EmptyBank }
+        set BankIT = if (NeedIT?) { question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 4) } } else { EmptyBank }
         var Ord : []int = array{}
         if (Randomize?) { set Ord = TakeFirst(Bank.ShuffledOrder(), SessionQuestions) }
         else { set Ord = TakeFirst(Bank.DefaultOrder(), SessionQuestions) }
@@ -2657,6 +2683,9 @@ quiz_manager := class(creative_device):
 
     StartQuizForPlayer(Player : player, Order : []int)<suspends> : void =
         if (State := Registry.Get[Player]):
+            # la diff REELLE du round prime sur le choix local (un retardataire pouvait garder Moyen) :
+            # garantit que score (bon combo) et musique correspondent a la difficulte jouee
+            if (set LobbyDiff[Player] = RoundDiff) {}
             set State.Order = Order
             set State.AnswerPerms = SessionPerms   # memes permutations pour tout le groupe
             set State.Position = 0
@@ -2777,12 +2806,13 @@ quiz_manager := class(creative_device):
 
     # ===== Evaluation =====
     EvaluateAnswer(Agent : agent, Index : int) : void =
+        QB := BankForAgent(Agent)   # banque dans la langue du joueur (coherent avec LoadQuestion ; hors du if : no_rollback)
         if:
             State := Registry.Get[Agent]
             not State.Finished?
             not State.Locked?
             QIndex := State.CurrentQuestionIndex[]
-            Q0 := Bank.GetQuestion[QIndex]
+            Q0 := QB.GetQuestion[QIndex]
         then:
             set State.Locked = true
             Q := ApplyPerm(Q0, State.CurrentPerm())   # meme melange qu'a l'affichage
@@ -3126,7 +3156,11 @@ quiz_manager := class(creative_device):
     BuildEntries() : []leaderboard_entry =
         var Entries : []leaderboard_entry = array{}
         for (Agent -> _H : Huds):
-            if (S := Registry.Get[Agent]):
+            # ne garder que les joueurs du round COURANT (les HUD d'un round precedent ne sont pas retires)
+            var InRound : logic = false
+            if (P := player[Agent]):
+                for (Rp : RoundPlayers, Rp = P) { set InRound = true }
+            if (InRound?, S := Registry.Get[Agent]):
                 set Entries += array{ leaderboard_entry{ Agent := Agent, Score := S.Score } }
         SortEntries(Entries)
 

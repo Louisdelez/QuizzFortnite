@@ -44,12 +44,12 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_07 }
-            Reponses := array{"Savoie", "Haute-Savoie", "Drome", "Ardeche"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Savoie", "Ardeche", "Rhone", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_08 }
-            Reponses := array{"Ardennes", "Bas-Rhin", "Meuse", "Marne"}
+            Reponses := array{"Ardennes", "Haut-Rhin", "Moselle", "Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
@@ -59,8 +59,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_10 }
-            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Aube", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Bas-Rhin", "Aube", "Vosges", "Haut-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_11 }
@@ -84,18 +84,18 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_15 }
-            Reponses := array{"Ain", "Haute-Loire", "Haute-Savoie", "Cantal"}
+            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_16 }
-            Reponses := array{"Gironde", "Charente-Maritime", "Charente", "Pyrenees-Atlantiques"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Charente-Maritime", "Landes", "Correze"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_17 }
-            Reponses := array{"Deux-Sevres", "Charente", "Pyrenees-Atlantiques", "Charente-Maritime"}
-            BonneReponse := 3
+            Reponses := array{"Deux-Sevres", "Charente", "Charente-Maritime", "Haute-Vienne"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_18 }
@@ -124,8 +124,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_24 }
-            Reponses := array{"Correze", "Charente-Maritime", "Pyrenees-Atlantiques", "Dordogne"}
-            BonneReponse := 3
+            Reponses := array{"Correze", "Dordogne", "Vienne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_25 }
@@ -134,8 +134,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_26 }
-            Reponses := array{"Ardeche", "Haute-Savoie", "Puy-de-Dome", "Drome"}
-            BonneReponse := 3
+            Reponses := array{"Drome", "Loire", "Ardeche", "Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_27 }
@@ -179,7 +179,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_33 }
-            Reponses := array{"Landes", "Gironde", "Deux-Sevres", "Haute-Vienne"}
+            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
@@ -204,7 +204,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_38 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Isere", "Allier"}
+            Reponses := array{"Savoie", "Allier", "Isere", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
@@ -214,8 +214,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_40 }
-            Reponses := array{"Vienne", "Correze", "Landes", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Dordogne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_41 }
@@ -224,13 +224,13 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_42 }
-            Reponses := array{"Ain", "Haute-Savoie", "Loire", "Allier"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Savoie", "Savoie", "Ain", "Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_43 }
-            Reponses := array{"Drome", "Haute-Loire", "Cantal", "Haute-Savoie"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Ardeche", "Drome", "Haute-Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_44 }
@@ -249,8 +249,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_47 }
-            Reponses := array{"Jura", "Loiret", "Indre-et-Loire", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Vienne", "Creuse", "Haute-Vienne"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_48 }
@@ -274,7 +274,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_52 }
-            Reponses := array{"Meuse", "Moselle", "Meurthe-et-Moselle", "Haute-Marne"}
+            Reponses := array{"Moselle", "Bas-Rhin", "Meurthe-et-Moselle", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
@@ -284,13 +284,13 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_54 }
-            Reponses := array{"Marne", "Moselle", "Meurthe-et-Moselle", "Ardennes"}
+            Reponses := array{"Marne", "Vosges", "Meurthe-et-Moselle", "Ardennes"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_55 }
-            Reponses := array{"Meuse", "Moselle", "Aube", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Ardennes", "Vosges", "Meuse", "Moselle"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_56 }
@@ -299,7 +299,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_57 }
-            Reponses := array{"Vosges", "Marne", "Bas-Rhin", "Moselle"}
+            Reponses := array{"Marne", "Haut-Rhin", "Ardennes", "Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
@@ -329,13 +329,13 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_63 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Puy-de-Dome"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Allier", "Isere", "Haute-Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_64 }
-            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 3
+            Reponses := array{"Creuse", "Gironde", "Pyrenees-Atlantiques", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_65 }
@@ -349,18 +349,18 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_67 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Vosges", "Haute-Marne"}
-            BonneReponse := 0
-        question:
-            Enonce := "Quel est ce departement ?"
-            Image := option{ dep_carte.dmap_68 }
-            Reponses := array{"Pyrenees-Atlantiques", "Gers", "Haut-Rhin", "Meuse"}
+            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Bas-Rhin", "Haute-Marne"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
+            Image := option{ dep_carte.dmap_68 }
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_69 }
-            Reponses := array{"Rhone", "Mayotte", "Finistere", "Moselle"}
-            BonneReponse := 0
+            Reponses := array{"Allier", "Rhone", "Puy-de-Dome", "Haute-Savoie"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_70 }
@@ -379,13 +379,13 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_73 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Isere"}
-            BonneReponse := 0
+            Reponses := array{"Ardeche", "Puy-de-Dome", "Savoie", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_74 }
-            Reponses := array{"Isere", "Haute-Savoie", "Puy-de-Dome", "Ain"}
-            BonneReponse := 1
+            Reponses := array{"Rhone", "Loire", "Ain", "Haute-Savoie"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_75 }
@@ -409,7 +409,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_79 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Vienne"}
+            Reponses := array{"Deux-Sevres", "Creuse", "Correze", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
@@ -444,8 +444,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_86 }
-            Reponses := array{"Landes", "Gironde", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Charente", "Gironde", "Lot-et-Garonne"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_87 }
@@ -454,8 +454,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_88 }
-            Reponses := array{"Meuse", "Marne", "Vosges", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ?"
             Image := option{ dep_carte.dmap_89 }
@@ -529,7 +529,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_03 }
-            Reponses := array{"Savoie", "Ain", "Loire", "Allier"}
+            Reponses := array{"Savoie", "Ain", "Puy-de-Dome", "Allier"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -549,7 +549,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_07 }
-            Reponses := array{"Haute-Savoie", "Ardeche", "Loire", "Puy-de-Dome"}
+            Reponses := array{"Loire", "Ardeche", "Haute-Loire", "Rhone"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -564,7 +564,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_10 }
-            Reponses := array{"Aube", "Marne", "Haute-Marne", "Vosges"}
+            Reponses := array{"Aube", "Vosges", "Moselle", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -589,17 +589,17 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_15 }
-            Reponses := array{"Loire", "Isere", "Ain", "Cantal"}
+            Reponses := array{"Ain", "Haute-Loire", "Isere", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_16 }
-            Reponses := array{"Dordogne", "Gironde", "Charente", "Correze"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Lot-et-Garonne", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_17 }
-            Reponses := array{"Haute-Vienne", "Charente", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Deux-Sevres", "Gironde", "Charente", "Charente-Maritime"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -609,8 +609,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_19 }
-            Reponses := array{"Correze", "Vienne", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 0
+            Reponses := array{"Vienne", "Correze", "Creuse", "Haute-Vienne"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_21 }
@@ -624,7 +624,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_23 }
-            Reponses := array{"Vienne", "Correze", "Creuse", "Landes"}
+            Reponses := array{"Deux-Sevres", "Correze", "Creuse", "Landes"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -684,7 +684,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_33 }
-            Reponses := array{"Charente", "Gironde", "Creuse", "Deux-Sevres"}
+            Reponses := array{"Pyrenees-Atlantiques", "Gironde", "Creuse", "Charente"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -709,7 +709,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_38 }
-            Reponses := array{"Haute-Savoie", "Isere", "Ardeche", "Haute-Loire"}
+            Reponses := array{"Drome", "Isere", "Ardeche", "Haute-Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -719,7 +719,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_40 }
-            Reponses := array{"Haute-Vienne", "Landes", "Charente-Maritime", "Correze"}
+            Reponses := array{"Vienne", "Landes", "Charente-Maritime", "Correze"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -734,7 +734,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_43 }
-            Reponses := array{"Cantal", "Ardeche", "Puy-de-Dome", "Haute-Loire"}
+            Reponses := array{"Ardeche", "Isere", "Cantal", "Haute-Loire"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -754,8 +754,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_47 }
-            Reponses := array{"Indre-et-Loire", "Manche", "Vienne", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Correze", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_48 }
@@ -774,12 +774,12 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_51 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Moselle"}
+            Reponses := array{"Haut-Rhin", "Marne", "Meuse", "Moselle"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_52 }
-            Reponses := array{"Bas-Rhin", "Haute-Marne", "Meuse", "Aube"}
+            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -789,12 +789,12 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_54 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Ardennes", "Meuse", "Meurthe-et-Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_55 }
-            Reponses := array{"Meuse", "Marne", "Aube", "Vosges"}
+            Reponses := array{"Meuse", "Marne", "Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -804,7 +804,7 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_57 }
-            Reponses := array{"Moselle", "Meurthe-et-Moselle", "Haute-Marne", "Aube"}
+            Reponses := array{"Moselle", "Haut-Rhin", "Haute-Marne", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -834,12 +834,12 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Allier", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Allier", "Savoie", "Puy-de-Dome", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_64 }
-            Reponses := array{"Vienne", "Pyrenees-Atlantiques", "Gironde", "Creuse"}
+            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Creuse", "Deux-Sevres"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -854,18 +854,18 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_67 }
-            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Vosges"}
+            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_68 }
-            Reponses := array{"Territoire de Belfort", "Haut-Rhin", "Gers", "Aude"}
-            BonneReponse := 1
+            Reponses := array{"Haut-Rhin", "Marne", "Ardennes", "Moselle"}
+            BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_69 }
-            Reponses := array{"Ardennes", "La Reunion", "Meurthe-et-Moselle", "Rhone"}
-            BonneReponse := 3
+            Reponses := array{"Cantal", "Rhone", "Ain", "Isere"}
+            BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_70 }
@@ -884,12 +884,12 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_73 }
-            Reponses := array{"Loire", "Ain", "Haute-Loire", "Savoie"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Ain", "Savoie", "Drome"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_74 }
-            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Savoie"}
+            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -914,8 +914,8 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_79 }
-            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Haute-Vienne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 3
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_80 }
@@ -949,17 +949,17 @@ MakeDepCarteQuestionsFR() : []question =
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_86 }
-            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Charente-Maritime"}
+            Reponses := array{"Dordogne", "Vienne", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_87 }
-            Reponses := array{"Dordogne", "Deux-Sevres", "Landes", "Haute-Vienne"}
-            BonneReponse := 3
+            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Lot-et-Garonne"}
+            BonneReponse := 2
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
             Image := option{ dep_carte_pixel.dmpx_88 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Bas-Rhin"}
+            Reponses := array{"Vosges", "Marne", "Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Quel est ce departement ? (carte pixelisee)"
@@ -1060,12 +1060,12 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_07 }
-            Reponses := array{"Savoie", "Haute-Savoie", "Drome", "Ardeche"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Savoie", "Ardeche", "Rhone", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_08 }
-            Reponses := array{"Ardennes", "Bas-Rhin", "Meuse", "Marne"}
+            Reponses := array{"Ardennes", "Haut-Rhin", "Moselle", "Marne"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
@@ -1075,8 +1075,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_10 }
-            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Aube", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Bas-Rhin", "Aube", "Vosges", "Haut-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_11 }
@@ -1100,18 +1100,18 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_15 }
-            Reponses := array{"Ain", "Haute-Loire", "Haute-Savoie", "Cantal"}
+            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_16 }
-            Reponses := array{"Gironde", "Charente-Maritime", "Charente", "Pyrenees-Atlantiques"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Charente-Maritime", "Landes", "Correze"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_17 }
-            Reponses := array{"Deux-Sevres", "Charente", "Pyrenees-Atlantiques", "Charente-Maritime"}
-            BonneReponse := 3
+            Reponses := array{"Deux-Sevres", "Charente", "Charente-Maritime", "Haute-Vienne"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_18 }
@@ -1140,8 +1140,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_24 }
-            Reponses := array{"Correze", "Charente-Maritime", "Pyrenees-Atlantiques", "Dordogne"}
-            BonneReponse := 3
+            Reponses := array{"Correze", "Dordogne", "Vienne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_25 }
@@ -1150,8 +1150,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_26 }
-            Reponses := array{"Ardeche", "Haute-Savoie", "Puy-de-Dome", "Drome"}
-            BonneReponse := 3
+            Reponses := array{"Drome", "Loire", "Ardeche", "Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_27 }
@@ -1195,7 +1195,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_33 }
-            Reponses := array{"Landes", "Gironde", "Deux-Sevres", "Haute-Vienne"}
+            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
@@ -1220,7 +1220,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_38 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Isere", "Allier"}
+            Reponses := array{"Savoie", "Allier", "Isere", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
@@ -1230,8 +1230,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_40 }
-            Reponses := array{"Vienne", "Correze", "Landes", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Dordogne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_41 }
@@ -1240,13 +1240,13 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_42 }
-            Reponses := array{"Ain", "Haute-Savoie", "Loire", "Allier"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Savoie", "Savoie", "Ain", "Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_43 }
-            Reponses := array{"Drome", "Haute-Loire", "Cantal", "Haute-Savoie"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Ardeche", "Drome", "Haute-Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_44 }
@@ -1265,8 +1265,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_47 }
-            Reponses := array{"Jura", "Loiret", "Indre-et-Loire", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Vienne", "Creuse", "Haute-Vienne"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_48 }
@@ -1290,7 +1290,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_52 }
-            Reponses := array{"Meuse", "Moselle", "Meurthe-et-Moselle", "Haute-Marne"}
+            Reponses := array{"Moselle", "Bas-Rhin", "Meurthe-et-Moselle", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
@@ -1300,13 +1300,13 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_54 }
-            Reponses := array{"Marne", "Moselle", "Meurthe-et-Moselle", "Ardennes"}
+            Reponses := array{"Marne", "Vosges", "Meurthe-et-Moselle", "Ardennes"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_55 }
-            Reponses := array{"Meuse", "Moselle", "Aube", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Ardennes", "Vosges", "Meuse", "Moselle"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_56 }
@@ -1315,7 +1315,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_57 }
-            Reponses := array{"Vosges", "Marne", "Bas-Rhin", "Moselle"}
+            Reponses := array{"Marne", "Haut-Rhin", "Ardennes", "Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
@@ -1345,13 +1345,13 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_63 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Puy-de-Dome"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Allier", "Isere", "Haute-Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_64 }
-            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 3
+            Reponses := array{"Creuse", "Gironde", "Pyrenees-Atlantiques", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_65 }
@@ -1365,18 +1365,18 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_67 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Vosges", "Haute-Marne"}
-            BonneReponse := 0
-        question:
-            Enonce := "Which French department is this?"
-            Image := option{ dep_carte.dmap_68 }
-            Reponses := array{"Pyrenees-Atlantiques", "Gers", "Haut-Rhin", "Meuse"}
+            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Bas-Rhin", "Haute-Marne"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
+            Image := option{ dep_carte.dmap_68 }
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_69 }
-            Reponses := array{"Rhone", "Mayotte", "Finistere", "Moselle"}
-            BonneReponse := 0
+            Reponses := array{"Allier", "Rhone", "Puy-de-Dome", "Haute-Savoie"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_70 }
@@ -1395,13 +1395,13 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_73 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Isere"}
-            BonneReponse := 0
+            Reponses := array{"Ardeche", "Puy-de-Dome", "Savoie", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_74 }
-            Reponses := array{"Isere", "Haute-Savoie", "Puy-de-Dome", "Ain"}
-            BonneReponse := 1
+            Reponses := array{"Rhone", "Loire", "Ain", "Haute-Savoie"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_75 }
@@ -1425,7 +1425,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_79 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Vienne"}
+            Reponses := array{"Deux-Sevres", "Creuse", "Correze", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
@@ -1460,8 +1460,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_86 }
-            Reponses := array{"Landes", "Gironde", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Charente", "Gironde", "Lot-et-Garonne"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_87 }
@@ -1470,8 +1470,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_88 }
-            Reponses := array{"Meuse", "Marne", "Vosges", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this?"
             Image := option{ dep_carte.dmap_89 }
@@ -1545,7 +1545,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_03 }
-            Reponses := array{"Savoie", "Ain", "Loire", "Allier"}
+            Reponses := array{"Savoie", "Ain", "Puy-de-Dome", "Allier"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1565,7 +1565,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_07 }
-            Reponses := array{"Haute-Savoie", "Ardeche", "Loire", "Puy-de-Dome"}
+            Reponses := array{"Loire", "Ardeche", "Haute-Loire", "Rhone"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1580,7 +1580,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_10 }
-            Reponses := array{"Aube", "Marne", "Haute-Marne", "Vosges"}
+            Reponses := array{"Aube", "Vosges", "Moselle", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1605,17 +1605,17 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_15 }
-            Reponses := array{"Loire", "Isere", "Ain", "Cantal"}
+            Reponses := array{"Ain", "Haute-Loire", "Isere", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_16 }
-            Reponses := array{"Dordogne", "Gironde", "Charente", "Correze"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Lot-et-Garonne", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_17 }
-            Reponses := array{"Haute-Vienne", "Charente", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Deux-Sevres", "Gironde", "Charente", "Charente-Maritime"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1625,8 +1625,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_19 }
-            Reponses := array{"Correze", "Vienne", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 0
+            Reponses := array{"Vienne", "Correze", "Creuse", "Haute-Vienne"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_21 }
@@ -1640,7 +1640,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_23 }
-            Reponses := array{"Vienne", "Correze", "Creuse", "Landes"}
+            Reponses := array{"Deux-Sevres", "Correze", "Creuse", "Landes"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1700,7 +1700,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_33 }
-            Reponses := array{"Charente", "Gironde", "Creuse", "Deux-Sevres"}
+            Reponses := array{"Pyrenees-Atlantiques", "Gironde", "Creuse", "Charente"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1725,7 +1725,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_38 }
-            Reponses := array{"Haute-Savoie", "Isere", "Ardeche", "Haute-Loire"}
+            Reponses := array{"Drome", "Isere", "Ardeche", "Haute-Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1735,7 +1735,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_40 }
-            Reponses := array{"Haute-Vienne", "Landes", "Charente-Maritime", "Correze"}
+            Reponses := array{"Vienne", "Landes", "Charente-Maritime", "Correze"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1750,7 +1750,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_43 }
-            Reponses := array{"Cantal", "Ardeche", "Puy-de-Dome", "Haute-Loire"}
+            Reponses := array{"Ardeche", "Isere", "Cantal", "Haute-Loire"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1770,8 +1770,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_47 }
-            Reponses := array{"Indre-et-Loire", "Manche", "Vienne", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Correze", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_48 }
@@ -1790,12 +1790,12 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_51 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Moselle"}
+            Reponses := array{"Haut-Rhin", "Marne", "Meuse", "Moselle"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_52 }
-            Reponses := array{"Bas-Rhin", "Haute-Marne", "Meuse", "Aube"}
+            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1805,12 +1805,12 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_54 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Ardennes", "Meuse", "Meurthe-et-Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_55 }
-            Reponses := array{"Meuse", "Marne", "Aube", "Vosges"}
+            Reponses := array{"Meuse", "Marne", "Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1820,7 +1820,7 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_57 }
-            Reponses := array{"Moselle", "Meurthe-et-Moselle", "Haute-Marne", "Aube"}
+            Reponses := array{"Moselle", "Haut-Rhin", "Haute-Marne", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1850,12 +1850,12 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Allier", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Allier", "Savoie", "Puy-de-Dome", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_64 }
-            Reponses := array{"Vienne", "Pyrenees-Atlantiques", "Gironde", "Creuse"}
+            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Creuse", "Deux-Sevres"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1870,18 +1870,18 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_67 }
-            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Vosges"}
+            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_68 }
-            Reponses := array{"Territoire de Belfort", "Haut-Rhin", "Gers", "Aude"}
-            BonneReponse := 1
+            Reponses := array{"Haut-Rhin", "Marne", "Ardennes", "Moselle"}
+            BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_69 }
-            Reponses := array{"Ardennes", "La Reunion", "Meurthe-et-Moselle", "Rhone"}
-            BonneReponse := 3
+            Reponses := array{"Cantal", "Rhone", "Ain", "Isere"}
+            BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_70 }
@@ -1900,12 +1900,12 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_73 }
-            Reponses := array{"Loire", "Ain", "Haute-Loire", "Savoie"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Ain", "Savoie", "Drome"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_74 }
-            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Savoie"}
+            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -1930,8 +1930,8 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_79 }
-            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Haute-Vienne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 3
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_80 }
@@ -1965,17 +1965,17 @@ MakeDepCarteQuestionsEN() : []question =
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_86 }
-            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Charente-Maritime"}
+            Reponses := array{"Dordogne", "Vienne", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_87 }
-            Reponses := array{"Dordogne", "Deux-Sevres", "Landes", "Haute-Vienne"}
-            BonneReponse := 3
+            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Lot-et-Garonne"}
+            BonneReponse := 2
         question:
             Enonce := "Which French department is this? (pixelated map)"
             Image := option{ dep_carte_pixel.dmpx_88 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Bas-Rhin"}
+            Reponses := array{"Vosges", "Marne", "Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Which French department is this? (pixelated map)"
@@ -2073,12 +2073,12 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_07 }
-            Reponses := array{"Savoie", "Haute-Savoie", "Drome", "Ardeche"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Savoie", "Ardeche", "Rhone", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_08 }
-            Reponses := array{"Ardennes", "Bas-Rhin", "Meuse", "Marne"}
+            Reponses := array{"Ardennes", "Haut-Rhin", "Moselle", "Marne"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
@@ -2088,8 +2088,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_10 }
-            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Aube", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Bas-Rhin", "Aube", "Vosges", "Haut-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_11 }
@@ -2113,18 +2113,18 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_15 }
-            Reponses := array{"Ain", "Haute-Loire", "Haute-Savoie", "Cantal"}
+            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_16 }
-            Reponses := array{"Gironde", "Charente-Maritime", "Charente", "Pyrenees-Atlantiques"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Charente-Maritime", "Landes", "Correze"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_17 }
-            Reponses := array{"Deux-Sevres", "Charente", "Pyrenees-Atlantiques", "Charente-Maritime"}
-            BonneReponse := 3
+            Reponses := array{"Deux-Sevres", "Charente", "Charente-Maritime", "Haute-Vienne"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_18 }
@@ -2153,8 +2153,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_24 }
-            Reponses := array{"Correze", "Charente-Maritime", "Pyrenees-Atlantiques", "Dordogne"}
-            BonneReponse := 3
+            Reponses := array{"Correze", "Dordogne", "Vienne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_25 }
@@ -2163,8 +2163,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_26 }
-            Reponses := array{"Ardeche", "Haute-Savoie", "Puy-de-Dome", "Drome"}
-            BonneReponse := 3
+            Reponses := array{"Drome", "Loire", "Ardeche", "Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_27 }
@@ -2208,7 +2208,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_33 }
-            Reponses := array{"Landes", "Gironde", "Deux-Sevres", "Haute-Vienne"}
+            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
@@ -2233,7 +2233,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_38 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Isere", "Allier"}
+            Reponses := array{"Savoie", "Allier", "Isere", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
@@ -2243,8 +2243,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_40 }
-            Reponses := array{"Vienne", "Correze", "Landes", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Dordogne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_41 }
@@ -2253,13 +2253,13 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_42 }
-            Reponses := array{"Ain", "Haute-Savoie", "Loire", "Allier"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Savoie", "Savoie", "Ain", "Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_43 }
-            Reponses := array{"Drome", "Haute-Loire", "Cantal", "Haute-Savoie"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Ardeche", "Drome", "Haute-Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_44 }
@@ -2278,8 +2278,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_47 }
-            Reponses := array{"Jura", "Loiret", "Indre-et-Loire", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Vienne", "Creuse", "Haute-Vienne"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_48 }
@@ -2303,7 +2303,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_52 }
-            Reponses := array{"Meuse", "Moselle", "Meurthe-et-Moselle", "Haute-Marne"}
+            Reponses := array{"Moselle", "Bas-Rhin", "Meurthe-et-Moselle", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
@@ -2313,13 +2313,13 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_54 }
-            Reponses := array{"Marne", "Moselle", "Meurthe-et-Moselle", "Ardennes"}
+            Reponses := array{"Marne", "Vosges", "Meurthe-et-Moselle", "Ardennes"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_55 }
-            Reponses := array{"Meuse", "Moselle", "Aube", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Ardennes", "Vosges", "Meuse", "Moselle"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_56 }
@@ -2328,7 +2328,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_57 }
-            Reponses := array{"Vosges", "Marne", "Bas-Rhin", "Moselle"}
+            Reponses := array{"Marne", "Haut-Rhin", "Ardennes", "Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
@@ -2358,13 +2358,13 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_63 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Puy-de-Dome"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Allier", "Isere", "Haute-Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_64 }
-            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 3
+            Reponses := array{"Creuse", "Gironde", "Pyrenees-Atlantiques", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_65 }
@@ -2378,18 +2378,18 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_67 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Vosges", "Haute-Marne"}
-            BonneReponse := 0
-        question:
-            Enonce := "Que departamento frances es este?"
-            Image := option{ dep_carte.dmap_68 }
-            Reponses := array{"Pyrenees-Atlantiques", "Gers", "Haut-Rhin", "Meuse"}
+            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Bas-Rhin", "Haute-Marne"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
+            Image := option{ dep_carte.dmap_68 }
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_69 }
-            Reponses := array{"Rhone", "Mayotte", "Finistere", "Moselle"}
-            BonneReponse := 0
+            Reponses := array{"Allier", "Rhone", "Puy-de-Dome", "Haute-Savoie"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_70 }
@@ -2408,13 +2408,13 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_73 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Isere"}
-            BonneReponse := 0
+            Reponses := array{"Ardeche", "Puy-de-Dome", "Savoie", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_74 }
-            Reponses := array{"Isere", "Haute-Savoie", "Puy-de-Dome", "Ain"}
-            BonneReponse := 1
+            Reponses := array{"Rhone", "Loire", "Ain", "Haute-Savoie"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_75 }
@@ -2438,7 +2438,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_79 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Vienne"}
+            Reponses := array{"Deux-Sevres", "Creuse", "Correze", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
@@ -2473,8 +2473,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_86 }
-            Reponses := array{"Landes", "Gironde", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Charente", "Gironde", "Lot-et-Garonne"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_87 }
@@ -2483,8 +2483,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_88 }
-            Reponses := array{"Meuse", "Marne", "Vosges", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este?"
             Image := option{ dep_carte.dmap_89 }
@@ -2558,7 +2558,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_03 }
-            Reponses := array{"Savoie", "Ain", "Loire", "Allier"}
+            Reponses := array{"Savoie", "Ain", "Puy-de-Dome", "Allier"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2578,7 +2578,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_07 }
-            Reponses := array{"Haute-Savoie", "Ardeche", "Loire", "Puy-de-Dome"}
+            Reponses := array{"Loire", "Ardeche", "Haute-Loire", "Rhone"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2593,7 +2593,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_10 }
-            Reponses := array{"Aube", "Marne", "Haute-Marne", "Vosges"}
+            Reponses := array{"Aube", "Vosges", "Moselle", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2618,17 +2618,17 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_15 }
-            Reponses := array{"Loire", "Isere", "Ain", "Cantal"}
+            Reponses := array{"Ain", "Haute-Loire", "Isere", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_16 }
-            Reponses := array{"Dordogne", "Gironde", "Charente", "Correze"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Lot-et-Garonne", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_17 }
-            Reponses := array{"Haute-Vienne", "Charente", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Deux-Sevres", "Gironde", "Charente", "Charente-Maritime"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2638,8 +2638,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_19 }
-            Reponses := array{"Correze", "Vienne", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 0
+            Reponses := array{"Vienne", "Correze", "Creuse", "Haute-Vienne"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_21 }
@@ -2653,7 +2653,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_23 }
-            Reponses := array{"Vienne", "Correze", "Creuse", "Landes"}
+            Reponses := array{"Deux-Sevres", "Correze", "Creuse", "Landes"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2713,7 +2713,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_33 }
-            Reponses := array{"Charente", "Gironde", "Creuse", "Deux-Sevres"}
+            Reponses := array{"Pyrenees-Atlantiques", "Gironde", "Creuse", "Charente"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2738,7 +2738,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_38 }
-            Reponses := array{"Haute-Savoie", "Isere", "Ardeche", "Haute-Loire"}
+            Reponses := array{"Drome", "Isere", "Ardeche", "Haute-Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2748,7 +2748,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_40 }
-            Reponses := array{"Haute-Vienne", "Landes", "Charente-Maritime", "Correze"}
+            Reponses := array{"Vienne", "Landes", "Charente-Maritime", "Correze"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2763,7 +2763,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_43 }
-            Reponses := array{"Cantal", "Ardeche", "Puy-de-Dome", "Haute-Loire"}
+            Reponses := array{"Ardeche", "Isere", "Cantal", "Haute-Loire"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2783,8 +2783,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_47 }
-            Reponses := array{"Indre-et-Loire", "Manche", "Vienne", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Correze", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_48 }
@@ -2803,12 +2803,12 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_51 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Moselle"}
+            Reponses := array{"Haut-Rhin", "Marne", "Meuse", "Moselle"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_52 }
-            Reponses := array{"Bas-Rhin", "Haute-Marne", "Meuse", "Aube"}
+            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2818,12 +2818,12 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_54 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Ardennes", "Meuse", "Meurthe-et-Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_55 }
-            Reponses := array{"Meuse", "Marne", "Aube", "Vosges"}
+            Reponses := array{"Meuse", "Marne", "Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2833,7 +2833,7 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_57 }
-            Reponses := array{"Moselle", "Meurthe-et-Moselle", "Haute-Marne", "Aube"}
+            Reponses := array{"Moselle", "Haut-Rhin", "Haute-Marne", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2863,12 +2863,12 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Allier", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Allier", "Savoie", "Puy-de-Dome", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_64 }
-            Reponses := array{"Vienne", "Pyrenees-Atlantiques", "Gironde", "Creuse"}
+            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Creuse", "Deux-Sevres"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2883,18 +2883,18 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_67 }
-            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Vosges"}
+            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_68 }
-            Reponses := array{"Territoire de Belfort", "Haut-Rhin", "Gers", "Aude"}
-            BonneReponse := 1
+            Reponses := array{"Haut-Rhin", "Marne", "Ardennes", "Moselle"}
+            BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_69 }
-            Reponses := array{"Ardennes", "La Reunion", "Meurthe-et-Moselle", "Rhone"}
-            BonneReponse := 3
+            Reponses := array{"Cantal", "Rhone", "Ain", "Isere"}
+            BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_70 }
@@ -2913,12 +2913,12 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_73 }
-            Reponses := array{"Loire", "Ain", "Haute-Loire", "Savoie"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Ain", "Savoie", "Drome"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_74 }
-            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Savoie"}
+            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -2943,8 +2943,8 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_79 }
-            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Haute-Vienne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 3
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_80 }
@@ -2978,17 +2978,17 @@ MakeDepCarteQuestionsES() : []question =
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_86 }
-            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Charente-Maritime"}
+            Reponses := array{"Dordogne", "Vienne", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_87 }
-            Reponses := array{"Dordogne", "Deux-Sevres", "Landes", "Haute-Vienne"}
-            BonneReponse := 3
+            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Lot-et-Garonne"}
+            BonneReponse := 2
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
             Image := option{ dep_carte_pixel.dmpx_88 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Bas-Rhin"}
+            Reponses := array{"Vosges", "Marne", "Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Que departamento frances es este? (mapa pixelado)"
@@ -3086,12 +3086,12 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_07 }
-            Reponses := array{"Savoie", "Haute-Savoie", "Drome", "Ardeche"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Savoie", "Ardeche", "Rhone", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_08 }
-            Reponses := array{"Ardennes", "Bas-Rhin", "Meuse", "Marne"}
+            Reponses := array{"Ardennes", "Haut-Rhin", "Moselle", "Marne"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3101,8 +3101,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_10 }
-            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Aube", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Bas-Rhin", "Aube", "Vosges", "Haut-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_11 }
@@ -3126,18 +3126,18 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_15 }
-            Reponses := array{"Ain", "Haute-Loire", "Haute-Savoie", "Cantal"}
+            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_16 }
-            Reponses := array{"Gironde", "Charente-Maritime", "Charente", "Pyrenees-Atlantiques"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Charente-Maritime", "Landes", "Correze"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_17 }
-            Reponses := array{"Deux-Sevres", "Charente", "Pyrenees-Atlantiques", "Charente-Maritime"}
-            BonneReponse := 3
+            Reponses := array{"Deux-Sevres", "Charente", "Charente-Maritime", "Haute-Vienne"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_18 }
@@ -3166,8 +3166,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_24 }
-            Reponses := array{"Correze", "Charente-Maritime", "Pyrenees-Atlantiques", "Dordogne"}
-            BonneReponse := 3
+            Reponses := array{"Correze", "Dordogne", "Vienne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_25 }
@@ -3176,8 +3176,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_26 }
-            Reponses := array{"Ardeche", "Haute-Savoie", "Puy-de-Dome", "Drome"}
-            BonneReponse := 3
+            Reponses := array{"Drome", "Loire", "Ardeche", "Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_27 }
@@ -3221,7 +3221,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_33 }
-            Reponses := array{"Landes", "Gironde", "Deux-Sevres", "Haute-Vienne"}
+            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3246,7 +3246,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_38 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Isere", "Allier"}
+            Reponses := array{"Savoie", "Allier", "Isere", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3256,8 +3256,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_40 }
-            Reponses := array{"Vienne", "Correze", "Landes", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Dordogne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_41 }
@@ -3266,13 +3266,13 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_42 }
-            Reponses := array{"Ain", "Haute-Savoie", "Loire", "Allier"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Savoie", "Savoie", "Ain", "Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_43 }
-            Reponses := array{"Drome", "Haute-Loire", "Cantal", "Haute-Savoie"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Ardeche", "Drome", "Haute-Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_44 }
@@ -3291,8 +3291,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_47 }
-            Reponses := array{"Jura", "Loiret", "Indre-et-Loire", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Vienne", "Creuse", "Haute-Vienne"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_48 }
@@ -3316,7 +3316,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_52 }
-            Reponses := array{"Meuse", "Moselle", "Meurthe-et-Moselle", "Haute-Marne"}
+            Reponses := array{"Moselle", "Bas-Rhin", "Meurthe-et-Moselle", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3326,13 +3326,13 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_54 }
-            Reponses := array{"Marne", "Moselle", "Meurthe-et-Moselle", "Ardennes"}
+            Reponses := array{"Marne", "Vosges", "Meurthe-et-Moselle", "Ardennes"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_55 }
-            Reponses := array{"Meuse", "Moselle", "Aube", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Ardennes", "Vosges", "Meuse", "Moselle"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_56 }
@@ -3341,7 +3341,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_57 }
-            Reponses := array{"Vosges", "Marne", "Bas-Rhin", "Moselle"}
+            Reponses := array{"Marne", "Haut-Rhin", "Ardennes", "Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3371,13 +3371,13 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_63 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Puy-de-Dome"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Allier", "Isere", "Haute-Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_64 }
-            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 3
+            Reponses := array{"Creuse", "Gironde", "Pyrenees-Atlantiques", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_65 }
@@ -3391,18 +3391,18 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_67 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Vosges", "Haute-Marne"}
-            BonneReponse := 0
-        question:
-            Enonce := "Welches franzoesische Departement ist das?"
-            Image := option{ dep_carte.dmap_68 }
-            Reponses := array{"Pyrenees-Atlantiques", "Gers", "Haut-Rhin", "Meuse"}
+            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Bas-Rhin", "Haute-Marne"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
+            Image := option{ dep_carte.dmap_68 }
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_69 }
-            Reponses := array{"Rhone", "Mayotte", "Finistere", "Moselle"}
-            BonneReponse := 0
+            Reponses := array{"Allier", "Rhone", "Puy-de-Dome", "Haute-Savoie"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_70 }
@@ -3421,13 +3421,13 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_73 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Isere"}
-            BonneReponse := 0
+            Reponses := array{"Ardeche", "Puy-de-Dome", "Savoie", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_74 }
-            Reponses := array{"Isere", "Haute-Savoie", "Puy-de-Dome", "Ain"}
-            BonneReponse := 1
+            Reponses := array{"Rhone", "Loire", "Ain", "Haute-Savoie"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_75 }
@@ -3451,7 +3451,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_79 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Vienne"}
+            Reponses := array{"Deux-Sevres", "Creuse", "Correze", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
@@ -3486,8 +3486,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_86 }
-            Reponses := array{"Landes", "Gironde", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Charente", "Gironde", "Lot-et-Garonne"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_87 }
@@ -3496,8 +3496,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_88 }
-            Reponses := array{"Meuse", "Marne", "Vosges", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das?"
             Image := option{ dep_carte.dmap_89 }
@@ -3571,7 +3571,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_03 }
-            Reponses := array{"Savoie", "Ain", "Loire", "Allier"}
+            Reponses := array{"Savoie", "Ain", "Puy-de-Dome", "Allier"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3591,7 +3591,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_07 }
-            Reponses := array{"Haute-Savoie", "Ardeche", "Loire", "Puy-de-Dome"}
+            Reponses := array{"Loire", "Ardeche", "Haute-Loire", "Rhone"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3606,7 +3606,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_10 }
-            Reponses := array{"Aube", "Marne", "Haute-Marne", "Vosges"}
+            Reponses := array{"Aube", "Vosges", "Moselle", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3631,17 +3631,17 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_15 }
-            Reponses := array{"Loire", "Isere", "Ain", "Cantal"}
+            Reponses := array{"Ain", "Haute-Loire", "Isere", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_16 }
-            Reponses := array{"Dordogne", "Gironde", "Charente", "Correze"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Lot-et-Garonne", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_17 }
-            Reponses := array{"Haute-Vienne", "Charente", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Deux-Sevres", "Gironde", "Charente", "Charente-Maritime"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3651,8 +3651,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_19 }
-            Reponses := array{"Correze", "Vienne", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 0
+            Reponses := array{"Vienne", "Correze", "Creuse", "Haute-Vienne"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_21 }
@@ -3666,7 +3666,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_23 }
-            Reponses := array{"Vienne", "Correze", "Creuse", "Landes"}
+            Reponses := array{"Deux-Sevres", "Correze", "Creuse", "Landes"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3726,7 +3726,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_33 }
-            Reponses := array{"Charente", "Gironde", "Creuse", "Deux-Sevres"}
+            Reponses := array{"Pyrenees-Atlantiques", "Gironde", "Creuse", "Charente"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3751,7 +3751,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_38 }
-            Reponses := array{"Haute-Savoie", "Isere", "Ardeche", "Haute-Loire"}
+            Reponses := array{"Drome", "Isere", "Ardeche", "Haute-Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3761,7 +3761,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_40 }
-            Reponses := array{"Haute-Vienne", "Landes", "Charente-Maritime", "Correze"}
+            Reponses := array{"Vienne", "Landes", "Charente-Maritime", "Correze"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3776,7 +3776,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_43 }
-            Reponses := array{"Cantal", "Ardeche", "Puy-de-Dome", "Haute-Loire"}
+            Reponses := array{"Ardeche", "Isere", "Cantal", "Haute-Loire"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3796,8 +3796,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_47 }
-            Reponses := array{"Indre-et-Loire", "Manche", "Vienne", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Correze", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_48 }
@@ -3816,12 +3816,12 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_51 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Moselle"}
+            Reponses := array{"Haut-Rhin", "Marne", "Meuse", "Moselle"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_52 }
-            Reponses := array{"Bas-Rhin", "Haute-Marne", "Meuse", "Aube"}
+            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3831,12 +3831,12 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_54 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Ardennes", "Meuse", "Meurthe-et-Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_55 }
-            Reponses := array{"Meuse", "Marne", "Aube", "Vosges"}
+            Reponses := array{"Meuse", "Marne", "Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3846,7 +3846,7 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_57 }
-            Reponses := array{"Moselle", "Meurthe-et-Moselle", "Haute-Marne", "Aube"}
+            Reponses := array{"Moselle", "Haut-Rhin", "Haute-Marne", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3876,12 +3876,12 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Allier", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Allier", "Savoie", "Puy-de-Dome", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_64 }
-            Reponses := array{"Vienne", "Pyrenees-Atlantiques", "Gironde", "Creuse"}
+            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Creuse", "Deux-Sevres"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3896,18 +3896,18 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_67 }
-            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Vosges"}
+            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_68 }
-            Reponses := array{"Territoire de Belfort", "Haut-Rhin", "Gers", "Aude"}
-            BonneReponse := 1
+            Reponses := array{"Haut-Rhin", "Marne", "Ardennes", "Moselle"}
+            BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_69 }
-            Reponses := array{"Ardennes", "La Reunion", "Meurthe-et-Moselle", "Rhone"}
-            BonneReponse := 3
+            Reponses := array{"Cantal", "Rhone", "Ain", "Isere"}
+            BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_70 }
@@ -3926,12 +3926,12 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_73 }
-            Reponses := array{"Loire", "Ain", "Haute-Loire", "Savoie"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Ain", "Savoie", "Drome"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_74 }
-            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Savoie"}
+            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -3956,8 +3956,8 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_79 }
-            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Haute-Vienne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 3
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_80 }
@@ -3991,17 +3991,17 @@ MakeDepCarteQuestionsDE() : []question =
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_86 }
-            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Charente-Maritime"}
+            Reponses := array{"Dordogne", "Vienne", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_87 }
-            Reponses := array{"Dordogne", "Deux-Sevres", "Landes", "Haute-Vienne"}
-            BonneReponse := 3
+            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Lot-et-Garonne"}
+            BonneReponse := 2
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
             Image := option{ dep_carte_pixel.dmpx_88 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Bas-Rhin"}
+            Reponses := array{"Vosges", "Marne", "Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Welches franzoesische Departement ist das? (verpixelte Karte)"
@@ -4099,12 +4099,12 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_07 }
-            Reponses := array{"Savoie", "Haute-Savoie", "Drome", "Ardeche"}
-            BonneReponse := 3
+            Reponses := array{"Haute-Savoie", "Ardeche", "Rhone", "Drome"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_08 }
-            Reponses := array{"Ardennes", "Bas-Rhin", "Meuse", "Marne"}
+            Reponses := array{"Ardennes", "Haut-Rhin", "Moselle", "Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4114,8 +4114,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_10 }
-            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Aube", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Bas-Rhin", "Aube", "Vosges", "Haut-Rhin"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_11 }
@@ -4139,18 +4139,18 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_15 }
-            Reponses := array{"Ain", "Haute-Loire", "Haute-Savoie", "Cantal"}
+            Reponses := array{"Ain", "Puy-de-Dome", "Haute-Savoie", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_16 }
-            Reponses := array{"Gironde", "Charente-Maritime", "Charente", "Pyrenees-Atlantiques"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Charente-Maritime", "Landes", "Correze"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_17 }
-            Reponses := array{"Deux-Sevres", "Charente", "Pyrenees-Atlantiques", "Charente-Maritime"}
-            BonneReponse := 3
+            Reponses := array{"Deux-Sevres", "Charente", "Charente-Maritime", "Haute-Vienne"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_18 }
@@ -4179,8 +4179,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_24 }
-            Reponses := array{"Correze", "Charente-Maritime", "Pyrenees-Atlantiques", "Dordogne"}
-            BonneReponse := 3
+            Reponses := array{"Correze", "Dordogne", "Vienne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_25 }
@@ -4189,8 +4189,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_26 }
-            Reponses := array{"Ardeche", "Haute-Savoie", "Puy-de-Dome", "Drome"}
-            BonneReponse := 3
+            Reponses := array{"Drome", "Loire", "Ardeche", "Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_27 }
@@ -4234,7 +4234,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_33 }
-            Reponses := array{"Landes", "Gironde", "Deux-Sevres", "Haute-Vienne"}
+            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4259,7 +4259,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_38 }
-            Reponses := array{"Savoie", "Puy-de-Dome", "Isere", "Allier"}
+            Reponses := array{"Savoie", "Allier", "Isere", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4269,8 +4269,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_40 }
-            Reponses := array{"Vienne", "Correze", "Landes", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Pyrenees-Atlantiques", "Landes", "Dordogne", "Charente-Maritime"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_41 }
@@ -4279,13 +4279,13 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_42 }
-            Reponses := array{"Ain", "Haute-Savoie", "Loire", "Allier"}
-            BonneReponse := 2
+            Reponses := array{"Haute-Savoie", "Savoie", "Ain", "Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_43 }
-            Reponses := array{"Drome", "Haute-Loire", "Cantal", "Haute-Savoie"}
-            BonneReponse := 1
+            Reponses := array{"Puy-de-Dome", "Ardeche", "Drome", "Haute-Loire"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_44 }
@@ -4304,8 +4304,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_47 }
-            Reponses := array{"Jura", "Loiret", "Indre-et-Loire", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Vienne", "Creuse", "Haute-Vienne"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_48 }
@@ -4329,7 +4329,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_52 }
-            Reponses := array{"Meuse", "Moselle", "Meurthe-et-Moselle", "Haute-Marne"}
+            Reponses := array{"Moselle", "Bas-Rhin", "Meurthe-et-Moselle", "Haute-Marne"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4339,13 +4339,13 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_54 }
-            Reponses := array{"Marne", "Moselle", "Meurthe-et-Moselle", "Ardennes"}
+            Reponses := array{"Marne", "Vosges", "Meurthe-et-Moselle", "Ardennes"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_55 }
-            Reponses := array{"Meuse", "Moselle", "Aube", "Ardennes"}
-            BonneReponse := 0
+            Reponses := array{"Ardennes", "Vosges", "Meuse", "Moselle"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_56 }
@@ -4354,7 +4354,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_57 }
-            Reponses := array{"Vosges", "Marne", "Bas-Rhin", "Moselle"}
+            Reponses := array{"Marne", "Haut-Rhin", "Ardennes", "Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4384,13 +4384,13 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_63 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Puy-de-Dome"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Allier", "Isere", "Haute-Savoie"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_64 }
-            Reponses := array{"Charente-Maritime", "Deux-Sevres", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 3
+            Reponses := array{"Creuse", "Gironde", "Pyrenees-Atlantiques", "Deux-Sevres"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_65 }
@@ -4404,18 +4404,18 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_67 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Vosges", "Haute-Marne"}
-            BonneReponse := 0
-        question:
-            Enonce := "Quale dipartimento francese e questo?"
-            Image := option{ dep_carte.dmap_68 }
-            Reponses := array{"Pyrenees-Atlantiques", "Gers", "Haut-Rhin", "Meuse"}
+            Reponses := array{"Meurthe-et-Moselle", "Vosges", "Bas-Rhin", "Haute-Marne"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
+            Image := option{ dep_carte.dmap_68 }
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_69 }
-            Reponses := array{"Rhone", "Mayotte", "Finistere", "Moselle"}
-            BonneReponse := 0
+            Reponses := array{"Allier", "Rhone", "Puy-de-Dome", "Haute-Savoie"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_70 }
@@ -4434,13 +4434,13 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_73 }
-            Reponses := array{"Savoie", "Ardeche", "Haute-Savoie", "Isere"}
-            BonneReponse := 0
+            Reponses := array{"Ardeche", "Puy-de-Dome", "Savoie", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_74 }
-            Reponses := array{"Isere", "Haute-Savoie", "Puy-de-Dome", "Ain"}
-            BonneReponse := 1
+            Reponses := array{"Rhone", "Loire", "Ain", "Haute-Savoie"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_75 }
@@ -4464,7 +4464,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_79 }
-            Reponses := array{"Deux-Sevres", "Landes", "Correze", "Vienne"}
+            Reponses := array{"Deux-Sevres", "Creuse", "Correze", "Vienne"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
@@ -4499,8 +4499,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_86 }
-            Reponses := array{"Landes", "Gironde", "Vienne", "Charente"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Charente", "Gironde", "Lot-et-Garonne"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_87 }
@@ -4509,8 +4509,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_88 }
-            Reponses := array{"Meuse", "Marne", "Vosges", "Bas-Rhin"}
-            BonneReponse := 2
+            Reponses := array{"Vosges", "Meuse", "Marne", "Haut-Rhin"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo?"
             Image := option{ dep_carte.dmap_89 }
@@ -4584,7 +4584,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_03 }
-            Reponses := array{"Savoie", "Ain", "Loire", "Allier"}
+            Reponses := array{"Savoie", "Ain", "Puy-de-Dome", "Allier"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4604,7 +4604,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_07 }
-            Reponses := array{"Haute-Savoie", "Ardeche", "Loire", "Puy-de-Dome"}
+            Reponses := array{"Loire", "Ardeche", "Haute-Loire", "Rhone"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4619,7 +4619,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_10 }
-            Reponses := array{"Aube", "Marne", "Haute-Marne", "Vosges"}
+            Reponses := array{"Aube", "Vosges", "Moselle", "Haute-Marne"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4644,17 +4644,17 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_15 }
-            Reponses := array{"Loire", "Isere", "Ain", "Cantal"}
+            Reponses := array{"Ain", "Haute-Loire", "Isere", "Cantal"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_16 }
-            Reponses := array{"Dordogne", "Gironde", "Charente", "Correze"}
-            BonneReponse := 2
+            Reponses := array{"Charente", "Lot-et-Garonne", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_17 }
-            Reponses := array{"Haute-Vienne", "Charente", "Vienne", "Charente-Maritime"}
+            Reponses := array{"Deux-Sevres", "Gironde", "Charente", "Charente-Maritime"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4664,8 +4664,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_19 }
-            Reponses := array{"Correze", "Vienne", "Creuse", "Pyrenees-Atlantiques"}
-            BonneReponse := 0
+            Reponses := array{"Vienne", "Correze", "Creuse", "Haute-Vienne"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_21 }
@@ -4679,7 +4679,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_23 }
-            Reponses := array{"Vienne", "Correze", "Creuse", "Landes"}
+            Reponses := array{"Deux-Sevres", "Correze", "Creuse", "Landes"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4739,7 +4739,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_33 }
-            Reponses := array{"Charente", "Gironde", "Creuse", "Deux-Sevres"}
+            Reponses := array{"Pyrenees-Atlantiques", "Gironde", "Creuse", "Charente"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4764,7 +4764,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_38 }
-            Reponses := array{"Haute-Savoie", "Isere", "Ardeche", "Haute-Loire"}
+            Reponses := array{"Drome", "Isere", "Ardeche", "Haute-Savoie"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4774,7 +4774,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_40 }
-            Reponses := array{"Haute-Vienne", "Landes", "Charente-Maritime", "Correze"}
+            Reponses := array{"Vienne", "Landes", "Charente-Maritime", "Correze"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4789,7 +4789,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_43 }
-            Reponses := array{"Cantal", "Ardeche", "Puy-de-Dome", "Haute-Loire"}
+            Reponses := array{"Ardeche", "Isere", "Cantal", "Haute-Loire"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4809,8 +4809,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_47 }
-            Reponses := array{"Indre-et-Loire", "Manche", "Vienne", "Lot-et-Garonne"}
-            BonneReponse := 3
+            Reponses := array{"Lot-et-Garonne", "Correze", "Haute-Vienne", "Gironde"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_48 }
@@ -4829,12 +4829,12 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_51 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Moselle"}
+            Reponses := array{"Haut-Rhin", "Marne", "Meuse", "Moselle"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_52 }
-            Reponses := array{"Bas-Rhin", "Haute-Marne", "Meuse", "Aube"}
+            Reponses := array{"Vosges", "Haute-Marne", "Moselle", "Aube"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4844,12 +4844,12 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_54 }
-            Reponses := array{"Bas-Rhin", "Meuse", "Aube", "Meurthe-et-Moselle"}
+            Reponses := array{"Vosges", "Ardennes", "Meuse", "Meurthe-et-Moselle"}
             BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_55 }
-            Reponses := array{"Meuse", "Marne", "Aube", "Vosges"}
+            Reponses := array{"Meuse", "Marne", "Moselle", "Vosges"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4859,7 +4859,7 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_57 }
-            Reponses := array{"Moselle", "Meurthe-et-Moselle", "Haute-Marne", "Aube"}
+            Reponses := array{"Moselle", "Haut-Rhin", "Haute-Marne", "Aube"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4889,12 +4889,12 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_63 }
-            Reponses := array{"Ain", "Puy-de-Dome", "Allier", "Isere"}
-            BonneReponse := 1
+            Reponses := array{"Allier", "Savoie", "Puy-de-Dome", "Ain"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_64 }
-            Reponses := array{"Vienne", "Pyrenees-Atlantiques", "Gironde", "Creuse"}
+            Reponses := array{"Dordogne", "Pyrenees-Atlantiques", "Creuse", "Deux-Sevres"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4909,18 +4909,18 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_67 }
-            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Vosges"}
+            Reponses := array{"Bas-Rhin", "Marne", "Meurthe-et-Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_68 }
-            Reponses := array{"Territoire de Belfort", "Haut-Rhin", "Gers", "Aude"}
-            BonneReponse := 1
+            Reponses := array{"Haut-Rhin", "Marne", "Ardennes", "Moselle"}
+            BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_69 }
-            Reponses := array{"Ardennes", "La Reunion", "Meurthe-et-Moselle", "Rhone"}
-            BonneReponse := 3
+            Reponses := array{"Cantal", "Rhone", "Ain", "Isere"}
+            BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_70 }
@@ -4939,12 +4939,12 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_73 }
-            Reponses := array{"Loire", "Ain", "Haute-Loire", "Savoie"}
-            BonneReponse := 3
+            Reponses := array{"Puy-de-Dome", "Ain", "Savoie", "Drome"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_74 }
-            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Savoie"}
+            Reponses := array{"Ardeche", "Drome", "Haute-Savoie", "Rhone"}
             BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
@@ -4969,8 +4969,8 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_79 }
-            Reponses := array{"Haute-Vienne", "Gironde", "Deux-Sevres", "Creuse"}
-            BonneReponse := 2
+            Reponses := array{"Vienne", "Haute-Vienne", "Gironde", "Deux-Sevres"}
+            BonneReponse := 3
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_80 }
@@ -5004,17 +5004,17 @@ MakeDepCarteQuestionsIT() : []question =
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_86 }
-            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Charente-Maritime"}
+            Reponses := array{"Dordogne", "Vienne", "Deux-Sevres", "Charente-Maritime"}
             BonneReponse := 1
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_87 }
-            Reponses := array{"Dordogne", "Deux-Sevres", "Landes", "Haute-Vienne"}
-            BonneReponse := 3
+            Reponses := array{"Dordogne", "Vienne", "Haute-Vienne", "Lot-et-Garonne"}
+            BonneReponse := 2
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
             Image := option{ dep_carte_pixel.dmpx_88 }
-            Reponses := array{"Vosges", "Marne", "Meuse", "Bas-Rhin"}
+            Reponses := array{"Vosges", "Marne", "Moselle", "Haut-Rhin"}
             BonneReponse := 0
         question:
             Enonce := "Quale dipartimento francese e questo? (mappa pixelata)"
