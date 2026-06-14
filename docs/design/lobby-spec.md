@@ -2,7 +2,7 @@
 
 Extrait du bundle design Claude (`Lobby - Selection Quizz.html` + `lobby.css` + `styles.css`,
 copies à jour dans `docs/design/`). Référence 1920×1080. **Implémentée en Verse au pixel
-(quiz_manager.verse) avec textures cuites aux valeurs exactes (tools/textures/build_lobby_textures.py).**
+(quiz_manager.verse) avec textures cuites aux valeurs exactes (tools/textures/build_lobby.py).**
 
 ## Tokens (couleurs)
 | Token | Hex | Usage |

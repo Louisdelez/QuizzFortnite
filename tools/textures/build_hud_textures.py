@@ -5,7 +5,7 @@
 # alpha interieur configurable (panneaux translucides vs cles opaques).
 import struct, zlib, os
 
-OUT = "D:/QuizzFortnite/assets/hud_textures"
+OUT = "D:/QuizzFortnite/assets/jeu"
 os.makedirs(OUT, exist_ok=True)
 
 # (nom, largeur, hauteur, rayon, alpha_interieur 0-255)  -- doit matcher quiz_hud.verse

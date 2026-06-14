@@ -239,273 +239,40 @@ quiz_manager := class(creative_device):
     var RoundPlayers : []player = array{}             # joueurs du round en cours
     var ChainArmed : logic = false                    # anti double-enchainement
 
-    # ===== Donnees du lobby : categories Culture Generale (0), Jeux Video (1), Animes (2) =====
-    CatName   : []string  = array{"Culture Generale", "Jeux Video", "Animes"}
-    CatColHex : []string  = array{"FF8A3D", "8A5CFF", "FF5CA8"}
-    CatIcon   : []texture = array{ icons.ic_culture, icons.ic_gaming, icons.ic_anime }
-    CatTag    : []string  = array{"CULTURE G", "JEUX VIDEO", "ANIMES"}
-    CatTagW   : []float   = array{110.0, 128.0, 96.0}
+    # ===== Donnees du lobby : refonte en cours, une seule categorie (Drapeaux) =====
+    # Les autres categories (Jeux Video, Animes) et quizz reviendront un par un, retravailles.
+    CatName   : []string  = array{"Culture Generale"}
+    CatColHex : []string  = array{"FF8A3D"}
+    CatIcon   : []texture = array{ icons.ic_culture }
+    CatTag    : []string  = array{"CULTURE G"}
+    CatTagW   : []float   = array{110.0}
 
-    # 195/1025 questions par banque ; chaque session tire 25 questions au hasard dans le palier choisi.
-    QzName : []string = array{"Drapeaux du monde", "Capitales du monde", "Pokemon", "Naruto", "One Piece", "Dragon Ball", "Pays sur carte", "Animaux", "Monuments celebres", "Personnages historiques", "Tableaux celebres", "Elements chimiques", "Calcul mental", "Records geo", "Logos et marques", "Celebrites", "Clubs de foot", "Athletes", "Mythologie", "Espace", "Botanique", "Drapeaux regionaux", "Villes du monde", "Cinema", "Musique", "Litterature", "Dates historiques", "Corps humain", "Records naturels", "Inventions", "Dirigeants", "Sport", "Series TV", "Jeux video", "Drapeaux pixelises"}
-    QzCat  : []int    = array{0, 0, 1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
-    QzQ    : []int    = array{25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25}
+    # Un seul quizz actif : Drapeaux (3 paliers — Facile communs / Moyen moins communs /
+    # Difficile = tous, pixelises). Chaque session tire 25 questions au hasard dans le palier.
+    QzName : []string = array{"Drapeaux du monde"}
+    QzCat  : []int    = array{0}
+    QzQ    : []int    = array{25}
 
     # Position de spawn dans la salle de lobby (calee sur build_map_gltf.py : centre X=-1568).
     LobbySpawnPos()<transacts> : vector3 = vector3{ X := -1568.0, Y := 300.0, Z := 120.0 }
 
     # Palier de chaque question (index aligne sur MakeQuestions) — GENERE par build_flags.py.
-    FlagDiff : []int = array{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 0, 1, 1, 2, 0, 1, 0, 1, 1, 1, 2, 0, 0, 1, 1, 1, 2, 1, 1, 0, 2, 2, 1, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 0, 0, 0, 1, 0, 1, 1, 2, 1, 2, 2, 2, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1, 0, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2, 2, 1, 1, 2, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 0, 1, 2, 1, 1, 0}
+    FlagDiff : []int = array{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
 
 
     # Banque d'un quizz (0 = Drapeaux, 1 = Capitales, 2 = Pokemon) dans la langue demandee (0=FR 1=EN 2=ES 3=DE 4=IT).
     BankQuestionsOf(Gi : int, L : int) : []question =
+        # Refonte : un seul quizz actif (Drapeaux). Gi ignore pour l instant.
         var Qs : []question = array{}
-        if (Gi = 6):
-            if (L = 1) { set Qs = MakeCarteQuestionsEN() }
-            else if (L = 2) { set Qs = MakeCarteQuestionsES() }
-            else if (L = 3) { set Qs = MakeCarteQuestionsDE() }
-            else if (L = 4) { set Qs = MakeCarteQuestionsIT() }
-            else { set Qs = MakeCarteQuestions() }
-        else if (Gi = 7):
-            if (L = 1) { set Qs = MakeAnimauxQuestionsEN() }
-            else if (L = 2) { set Qs = MakeAnimauxQuestionsES() }
-            else if (L = 3) { set Qs = MakeAnimauxQuestionsDE() }
-            else if (L = 4) { set Qs = MakeAnimauxQuestionsIT() }
-            else { set Qs = MakeAnimauxQuestions() }
-        else if (Gi = 8):
-            if (L = 1) { set Qs = MakeMonumentsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeMonumentsQuestionsES() }
-            else if (L = 3) { set Qs = MakeMonumentsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeMonumentsQuestionsIT() }
-            else { set Qs = MakeMonumentsQuestions() }
-        else if (Gi = 9):
-            if (L = 1) { set Qs = MakePersosQuestionsEN() }
-            else if (L = 2) { set Qs = MakePersosQuestionsES() }
-            else if (L = 3) { set Qs = MakePersosQuestionsDE() }
-            else if (L = 4) { set Qs = MakePersosQuestionsIT() }
-            else { set Qs = MakePersosQuestions() }
-        else if (Gi = 10):
-            if (L = 1) { set Qs = MakeTableauxQuestionsEN() }
-            else if (L = 2) { set Qs = MakeTableauxQuestionsES() }
-            else if (L = 3) { set Qs = MakeTableauxQuestionsDE() }
-            else if (L = 4) { set Qs = MakeTableauxQuestionsIT() }
-            else { set Qs = MakeTableauxQuestions() }
-        else if (Gi = 11):
-            if (L = 1) { set Qs = MakeElementsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeElementsQuestionsES() }
-            else if (L = 3) { set Qs = MakeElementsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeElementsQuestionsIT() }
-            else { set Qs = MakeElementsQuestions() }
-        else if (Gi = 12):
-            set Qs = MakeCalculQuestions()   # langue-neutre (chiffres)
-        else if (Gi = 13):
-            if (L = 1) { set Qs = MakeRecordsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeRecordsQuestionsES() }
-            else if (L = 3) { set Qs = MakeRecordsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeRecordsQuestionsIT() }
-            else { set Qs = MakeRecordsQuestions() }
-        else if (Gi = 14):
-            if (L = 1) { set Qs = MakeLogosQuestionsEN() }
-            else if (L = 2) { set Qs = MakeLogosQuestionsES() }
-            else if (L = 3) { set Qs = MakeLogosQuestionsDE() }
-            else if (L = 4) { set Qs = MakeLogosQuestionsIT() }
-            else { set Qs = MakeLogosQuestions() }
-        else if (Gi = 15):
-            if (L = 1) { set Qs = MakeCelebritesQuestionsEN() }
-            else if (L = 2) { set Qs = MakeCelebritesQuestionsES() }
-            else if (L = 3) { set Qs = MakeCelebritesQuestionsDE() }
-            else if (L = 4) { set Qs = MakeCelebritesQuestionsIT() }
-            else { set Qs = MakeCelebritesQuestions() }
-        else if (Gi = 16):
-            if (L = 1) { set Qs = MakeClubsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeClubsQuestionsES() }
-            else if (L = 3) { set Qs = MakeClubsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeClubsQuestionsIT() }
-            else { set Qs = MakeClubsQuestions() }
-        else if (Gi = 17):
-            if (L = 1) { set Qs = MakeAthletesQuestionsEN() }
-            else if (L = 2) { set Qs = MakeAthletesQuestionsES() }
-            else if (L = 3) { set Qs = MakeAthletesQuestionsDE() }
-            else if (L = 4) { set Qs = MakeAthletesQuestionsIT() }
-            else { set Qs = MakeAthletesQuestions() }
-        else if (Gi = 18):
-            if (L = 1) { set Qs = MakeMythoQuestionsEN() }
-            else if (L = 2) { set Qs = MakeMythoQuestionsES() }
-            else if (L = 3) { set Qs = MakeMythoQuestionsDE() }
-            else if (L = 4) { set Qs = MakeMythoQuestionsIT() }
-            else { set Qs = MakeMythoQuestions() }
-        else if (Gi = 19):
-            if (L = 1) { set Qs = MakeEspaceQuestionsEN() }
-            else if (L = 2) { set Qs = MakeEspaceQuestionsES() }
-            else if (L = 3) { set Qs = MakeEspaceQuestionsDE() }
-            else if (L = 4) { set Qs = MakeEspaceQuestionsIT() }
-            else { set Qs = MakeEspaceQuestions() }
-        else if (Gi = 20):
-            if (L = 1) { set Qs = MakeBotaniqueQuestionsEN() }
-            else if (L = 2) { set Qs = MakeBotaniqueQuestionsES() }
-            else if (L = 3) { set Qs = MakeBotaniqueQuestionsDE() }
-            else if (L = 4) { set Qs = MakeBotaniqueQuestionsIT() }
-            else { set Qs = MakeBotaniqueQuestions() }
-        else if (Gi = 21):
-            if (L = 1) { set Qs = MakeRegionsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeRegionsQuestionsES() }
-            else if (L = 3) { set Qs = MakeRegionsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeRegionsQuestionsIT() }
-            else { set Qs = MakeRegionsQuestions() }
-        else if (Gi = 22):
-            if (L = 1) { set Qs = MakeVillesQuestionsEN() }
-            else if (L = 2) { set Qs = MakeVillesQuestionsES() }
-            else if (L = 3) { set Qs = MakeVillesQuestionsDE() }
-            else if (L = 4) { set Qs = MakeVillesQuestionsIT() }
-            else { set Qs = MakeVillesQuestions() }
-        else if (Gi = 23):
-            if (L = 1) { set Qs = MakeCinemaQuestionsEN() }
-            else if (L = 2) { set Qs = MakeCinemaQuestionsES() }
-            else if (L = 3) { set Qs = MakeCinemaQuestionsDE() }
-            else if (L = 4) { set Qs = MakeCinemaQuestionsIT() }
-            else { set Qs = MakeCinemaQuestions() }
-        else if (Gi = 24):
-            if (L = 1) { set Qs = MakeMusiqueQuestionsEN() }
-            else if (L = 2) { set Qs = MakeMusiqueQuestionsES() }
-            else if (L = 3) { set Qs = MakeMusiqueQuestionsDE() }
-            else if (L = 4) { set Qs = MakeMusiqueQuestionsIT() }
-            else { set Qs = MakeMusiqueQuestions() }
-        else if (Gi = 25):
-            if (L = 1) { set Qs = MakeLivresQuestionsEN() }
-            else if (L = 2) { set Qs = MakeLivresQuestionsES() }
-            else if (L = 3) { set Qs = MakeLivresQuestionsDE() }
-            else if (L = 4) { set Qs = MakeLivresQuestionsIT() }
-            else { set Qs = MakeLivresQuestions() }
-        else if (Gi = 26):
-            if (L = 1) { set Qs = MakeDatesQuestionsEN() }
-            else if (L = 2) { set Qs = MakeDatesQuestionsES() }
-            else if (L = 3) { set Qs = MakeDatesQuestionsDE() }
-            else if (L = 4) { set Qs = MakeDatesQuestionsIT() }
-            else { set Qs = MakeDatesQuestions() }
-        else if (Gi = 27):
-            if (L = 1) { set Qs = MakeAnatomieQuestionsEN() }
-            else if (L = 2) { set Qs = MakeAnatomieQuestionsES() }
-            else if (L = 3) { set Qs = MakeAnatomieQuestionsDE() }
-            else if (L = 4) { set Qs = MakeAnatomieQuestionsIT() }
-            else { set Qs = MakeAnatomieQuestions() }
-        else if (Gi = 28):
-            if (L = 1) { set Qs = MakeNatureQuestionsEN() }
-            else if (L = 2) { set Qs = MakeNatureQuestionsES() }
-            else if (L = 3) { set Qs = MakeNatureQuestionsDE() }
-            else if (L = 4) { set Qs = MakeNatureQuestionsIT() }
-            else { set Qs = MakeNatureQuestions() }
-        else if (Gi = 29):
-            if (L = 1) { set Qs = MakeInventionsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeInventionsQuestionsES() }
-            else if (L = 3) { set Qs = MakeInventionsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeInventionsQuestionsIT() }
-            else { set Qs = MakeInventionsQuestions() }
-        else if (Gi = 30):
-            if (L = 1) { set Qs = MakeDirigeantsQuestionsEN() }
-            else if (L = 2) { set Qs = MakeDirigeantsQuestionsES() }
-            else if (L = 3) { set Qs = MakeDirigeantsQuestionsDE() }
-            else if (L = 4) { set Qs = MakeDirigeantsQuestionsIT() }
-            else { set Qs = MakeDirigeantsQuestions() }
-        else if (Gi = 31):
-            if (L = 1) { set Qs = MakeSportQuestionsEN() }
-            else if (L = 2) { set Qs = MakeSportQuestionsES() }
-            else if (L = 3) { set Qs = MakeSportQuestionsDE() }
-            else if (L = 4) { set Qs = MakeSportQuestionsIT() }
-            else { set Qs = MakeSportQuestions() }
-        else if (Gi = 32):
-            if (L = 1) { set Qs = MakeSeriesQuestionsEN() }
-            else if (L = 2) { set Qs = MakeSeriesQuestionsES() }
-            else if (L = 3) { set Qs = MakeSeriesQuestionsDE() }
-            else if (L = 4) { set Qs = MakeSeriesQuestionsIT() }
-            else { set Qs = MakeSeriesQuestions() }
-        else if (Gi = 33):
-            if (L = 1) { set Qs = MakeJeuxVideoQuestionsEN() }
-            else if (L = 2) { set Qs = MakeJeuxVideoQuestionsES() }
-            else if (L = 3) { set Qs = MakeJeuxVideoQuestionsDE() }
-            else if (L = 4) { set Qs = MakeJeuxVideoQuestionsIT() }
-            else { set Qs = MakeJeuxVideoQuestions() }
-        else if (Gi = 34):
-            if (L = 1) { set Qs = MakeFlagsPixelQuestionsEN() }
-            else if (L = 2) { set Qs = MakeFlagsPixelQuestionsES() }
-            else if (L = 3) { set Qs = MakeFlagsPixelQuestionsDE() }
-            else if (L = 4) { set Qs = MakeFlagsPixelQuestionsIT() }
-            else { set Qs = MakeFlagsPixelQuestions() }
-        else if (Gi = 5):
-            if (L = 1) { set Qs = MakeDragonBallQuestionsEN() }
-            else if (L = 2) { set Qs = MakeDragonBallQuestionsES() }
-            else if (L = 3) { set Qs = MakeDragonBallQuestionsDE() }
-            else if (L = 4) { set Qs = MakeDragonBallQuestionsIT() }
-            else { set Qs = MakeDragonBallQuestions() }
-        else if (Gi = 4):
-            if (L = 1) { set Qs = MakeOnePieceQuestionsEN() }
-            else if (L = 2) { set Qs = MakeOnePieceQuestionsES() }
-            else if (L = 3) { set Qs = MakeOnePieceQuestionsDE() }
-            else if (L = 4) { set Qs = MakeOnePieceQuestionsIT() }
-            else { set Qs = MakeOnePieceQuestions() }
-        else if (Gi = 3):
-            if (L = 1) { set Qs = MakeNarutoQuestionsEN() }
-            else if (L = 2) { set Qs = MakeNarutoQuestionsES() }
-            else if (L = 3) { set Qs = MakeNarutoQuestionsDE() }
-            else if (L = 4) { set Qs = MakeNarutoQuestionsIT() }
-            else { set Qs = MakeNarutoQuestions() }
-        else if (Gi = 2):
-            if (L = 1) { set Qs = MakePokemonQuestionsEN() }
-            else if (L = 2) { set Qs = MakePokemonQuestionsES() }
-            else if (L = 3) { set Qs = MakePokemonQuestionsDE() }
-            else if (L = 4) { set Qs = MakePokemonQuestionsIT() }
-            else { set Qs = MakePokemonQuestions() }
-        else if (Gi = 1):
-            if (L = 1) { set Qs = MakeCapitalQuestionsEN() }
-            else if (L = 2) { set Qs = MakeCapitalQuestionsES() }
-            else if (L = 3) { set Qs = MakeCapitalQuestionsDE() }
-            else if (L = 4) { set Qs = MakeCapitalQuestionsIT() }
-            else { set Qs = MakeCapitalQuestions() }
-        else:
-            if (L = 1) { set Qs = MakeQuestionsEN() }
-            else if (L = 2) { set Qs = MakeQuestionsES() }
-            else if (L = 3) { set Qs = MakeQuestionsDE() }
-            else if (L = 4) { set Qs = MakeQuestionsIT() }
-            else { set Qs = MakeQuestions() }
+        if (L = 1) { set Qs = MakeQuestionsEN() }
+        else if (L = 2) { set Qs = MakeQuestionsES() }
+        else if (L = 3) { set Qs = MakeQuestionsDE() }
+        else if (L = 4) { set Qs = MakeQuestionsIT() }
+        else { set Qs = MakeQuestions() }
         Qs
 
     BankDiffsOf(Gi : int) : []int =
-        var Ds : []int = FlagDiff
-        if (Gi = 1) { set Ds = CapDiff }
-        else if (Gi = 2) { set Ds = PokeDiff }
-        else if (Gi = 3) { set Ds = NarutoDiff }
-        else if (Gi = 4) { set Ds = OnePieceDiff }
-        else if (Gi = 5) { set Ds = DragonBallDiff }
-        else if (Gi = 6) { set Ds = CarteDiff }
-        else if (Gi = 7) { set Ds = AnimauxDiff }
-        else if (Gi = 8) { set Ds = MonumentsDiff }
-        else if (Gi = 9) { set Ds = PersosDiff }
-        else if (Gi = 10) { set Ds = TableauxDiff }
-        else if (Gi = 11) { set Ds = ElementsDiff }
-        else if (Gi = 12) { set Ds = CalculDiff }
-        else if (Gi = 13) { set Ds = RecordsDiff }
-        else if (Gi = 14) { set Ds = LogosDiff }
-        else if (Gi = 15) { set Ds = CelebritesDiff }
-        else if (Gi = 16) { set Ds = ClubsDiff }
-        else if (Gi = 17) { set Ds = AthletesDiff }
-        else if (Gi = 18) { set Ds = MythoDiff }
-        else if (Gi = 19) { set Ds = EspaceDiff }
-        else if (Gi = 20) { set Ds = BotaniqueDiff }
-        else if (Gi = 21) { set Ds = RegionsDiff }
-        else if (Gi = 22) { set Ds = VillesDiff }
-        else if (Gi = 23) { set Ds = CinemaDiff }
-        else if (Gi = 24) { set Ds = MusiqueDiff }
-        else if (Gi = 25) { set Ds = LivresDiff }
-        else if (Gi = 26) { set Ds = DatesDiff }
-        else if (Gi = 27) { set Ds = AnatomieDiff }
-        else if (Gi = 28) { set Ds = NatureDiff }
-        else if (Gi = 29) { set Ds = InventionsDiff }
-        else if (Gi = 30) { set Ds = DirigeantsDiff }
-        else if (Gi = 31) { set Ds = SportDiff }
-        else if (Gi = 32) { set Ds = SeriesDiff }
-        else if (Gi = 33) { set Ds = JeuxVideoDiff }
-        else if (Gi = 34) { set Ds = FlagsPixelDiff }
-        Ds
+        FlagDiff
 
     # Questions du palier choisi pour le quizz donne (indices IDENTIQUES dans les 5 langues).
     QuestionsForDifficulty(Gi : int, Diff : int, L : int) : []question =
@@ -683,13 +450,13 @@ quiz_manager := class(creative_device):
         else if (N := Arr[0]) { set S = N }
         S
 
-    QzNameEN : []string = array{"World Flags", "World Capitals", "Pokemon", "Naruto", "One Piece", "Dragon Ball", "Countries on the Map", "Animals", "Famous Landmarks", "Historical Figures", "Famous Paintings", "Chemical Elements", "Mental Math", "Geo Records", "Logos and Brands", "Celebrities", "Football Clubs", "Athletes", "Mythology", "Space", "Botany", "Regional Flags", "World Cities", "Cinema", "Music", "Literature", "Historical Dates", "Human Body", "Natural Records", "Inventions", "World Leaders", "Sport", "TV Series", "Video Games", "Pixelated Flags"}
-    QzNameES : []string = array{"Banderas del mundo", "Capitales del mundo", "Pokemon", "Naruto", "One Piece", "Dragon Ball", "Paises en el mapa", "Animales", "Monumentos famosos", "Personajes historicos", "Cuadros famosos", "Elementos quimicos", "Calculo mental", "Records geograficos", "Logos y marcas", "Celebridades", "Clubes de futbol", "Atletas", "Mitologia", "Espacio", "Botanica", "Banderas regionales", "Ciudades del mundo", "Cine", "Musica", "Literatura", "Fechas historicas", "Cuerpo humano", "Records naturales", "Inventos", "Lideres mundiales", "Deporte", "Series de TV", "Videojuegos", "Banderas pixeladas"}
-    QzNameDE : []string = array{"Flaggen der Welt", "Hauptstaedte der Welt", "Pokemon", "Naruto", "One Piece", "Dragon Ball", "Laender auf der Karte", "Tiere", "Beruehmte Bauwerke", "Historische Personen", "Beruehmte Gemaelde", "Chemische Elemente", "Kopfrechnen", "Geo-Rekorde", "Logos und Marken", "Beruehmtheiten", "Fussballvereine", "Sportler", "Mythologie", "Weltraum", "Botanik", "Regionale Flaggen", "Staedte der Welt", "Kino", "Musik", "Literatur", "Historische Daten", "Menschlicher Koerper", "Naturrekorde", "Erfindungen", "Staatsfuehrer", "Sport", "TV-Serien", "Videospiele", "Verpixelte Flaggen"}
-    QzNameIT : []string = array{"Bandiere del mondo", "Capitali del mondo", "Pokemon", "Naruto", "One Piece", "Dragon Ball", "Paesi sulla mappa", "Animali", "Monumenti famosi", "Personaggi storici", "Quadri famosi", "Elementi chimici", "Calcolo mentale", "Record geografici", "Loghi e marche", "Celebrita", "Squadre di calcio", "Atleti", "Mitologia", "Spazio", "Botanica", "Bandiere regionali", "Citta del mondo", "Cinema", "Musica", "Letteratura", "Date storiche", "Corpo umano", "Record naturali", "Invenzioni", "Leader mondiali", "Sport", "Serie TV", "Videogiochi", "Bandiere pixelate"}
+    QzNameEN : []string = array{"World Flags"}
+    QzNameES : []string = array{"Banderas del mundo"}
+    QzNameDE : []string = array{"Flaggen der Welt"}
+    QzNameIT : []string = array{"Bandiere del mondo"}
     # Noms/tags de categorie par langue : un tableau {FR,EN,ES,DE,IT} par categorie.
-    CatNamesL : [][]string = array{array{"Culture Generale", "General Knowledge", "Cultura General", "Allgemeinwissen", "Cultura Generale"}, array{"Jeux Video", "Video Games", "Videojuegos", "Videospiele", "Videogiochi"}, array{"Animes", "Anime", "Animes", "Anime", "Anime"}}
-    CatTagsL : [][]string = array{array{"CULTURE G", "GENERAL", "CULTURA G", "WISSEN", "CULTURA G"}, array{"JEUX VIDEO", "VIDEO GAMES", "VIDEOJUEGOS", "VIDEOSPIELE", "VIDEOGIOCHI"}, array{"ANIMES", "ANIME", "ANIMES", "ANIME", "ANIME"}}
+    CatNamesL : [][]string = array{array{"Culture Generale", "General Knowledge", "Cultura General", "Allgemeinwissen", "Cultura Generale"}}
+    CatTagsL : [][]string = array{array{"CULTURE G", "GENERAL", "CULTURA G", "WISSEN", "CULTURA G"}}
 
     QuizNameOf(P : player, Gi : int) : string =
         L := LangOf(P)
@@ -747,17 +514,17 @@ quiz_manager := class(creative_device):
 
     # Texture du carre d'icone d'une categorie (degrade exact c -> c@69%). -1 = "Toutes".
     CatTexOf(Ci : int) : texture =
-        var T : texture = HUD.lobby_cat_all
-        if (Ci = 0) { set T = HUD.lobby_cat_0 }
-        if (Ci = 1) { set T = HUD.lobby_cat_1 }
-        if (Ci = 2) { set T = HUD.lobby_cat_2 }
-        if (Ci = 3) { set T = HUD.lobby_cat_3 }
-        if (Ci = 4) { set T = HUD.lobby_cat_4 }
-        if (Ci = 5) { set T = HUD.lobby_cat_5 }
-        if (Ci = 6) { set T = HUD.lobby_cat_6 }
-        if (Ci = 7) { set T = HUD.lobby_cat_7 }
-        if (Ci = 8) { set T = HUD.lobby_cat_8 }
-        if (Ci = 9) { set T = HUD.lobby_cat_9 }
+        var T : texture = lobby.lobby_cat_all
+        if (Ci = 0) { set T = lobby.lobby_cat_0 }
+        if (Ci = 1) { set T = lobby.lobby_cat_1 }
+        if (Ci = 2) { set T = lobby.lobby_cat_2 }
+        if (Ci = 3) { set T = lobby.lobby_cat_3 }
+        if (Ci = 4) { set T = lobby.lobby_cat_4 }
+        if (Ci = 5) { set T = lobby.lobby_cat_5 }
+        if (Ci = 6) { set T = lobby.lobby_cat_6 }
+        if (Ci = 7) { set T = lobby.lobby_cat_7 }
+        if (Ci = 8) { set T = lobby.lobby_cat_8 }
+        if (Ci = 9) { set T = lobby.lobby_cat_9 }
         T
 
     # Carre arrondi degrade d'une categorie + icone blanche centree.
@@ -772,7 +539,7 @@ quiz_manager := class(creative_device):
     TagPill(Txt : string, Col : color, W : float) : overlay =
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_tag, Col, W, 18.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_tag, Col, W, 18.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2(Txt, 11.0, LbWhite, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
 
     # Pastille d'info "N dispo" / "0/4" (fond blanc .08, radius 999, texte 12 mute).
@@ -848,7 +615,7 @@ quiz_manager := class(creative_device):
     ModalFrame(Inner : widget) : widget =
         overlay:
             Slots := array:
-                overlay_slot{ Widget := texture_block{ DefaultImage := HUD.lobby_modal }, HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Fill }
+                overlay_slot{ Widget := texture_block{ DefaultImage := lobby.lobby_modal }, HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Fill }
                 overlay_slot{ Widget := Inner, HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Fill, Padding := margin{ Left := 2.0, Top := 2.0, Right := 2.0, Bottom := 2.0 } }
 
     OpenLobby(Player : player) : void =
@@ -883,7 +650,7 @@ quiz_manager := class(creative_device):
         # badge fusee 50x50 (degrade brand, radius 14)
         Badge := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_badge, LbWhite, 50.0, 50.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_badge, LbWhite, 50.0, 50.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(icons.ic_rocket, LbWhite, 24.0, 24.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         Title := LbText2(Tr(Player, "SELECTION DU QUIZZ", "QUIZ SELECTION", "SELECCION DE QUIZ", "QUIZ-AUSWAHL", "SELEZIONE QUIZ"), 32.0, LbWhite, text_justification.Left)
         Subtitle := LbText2(Tr(Player, "Composez la playlist de la partie - jusqu'a 4 quizz", "Build the game playlist - up to 4 quizzes", "Crea la playlist de la partida - hasta 4 quiz", "Stelle die Playlist zusammen - bis zu 4 Quiz", "Componi la playlist della partita - fino a 4 quiz"), 14.0, LbDim, text_justification.Left)
@@ -920,13 +687,13 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbTex(FlagTex, LbWhite, 26.0, 18.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 10.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := LangLab, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 10.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := LbTex(icons.ic_chevron, LbDim, 16.0, 16.0), VerticalAlignment := vertical_alignment.Center }
-        LangBg := LbTex(HUD.lobby_btn, LbWhite, 170.0, 53.0)
+        LangBg := LbTex(lobby.lobby_btn, LbWhite, 170.0, 53.0)
         LangInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := LangBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LangRow, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         BtnLang := button{ Slot := button_slot{ Widget := LangInner } }
-        RegisterHover(BtnLang, LangBg, HUD.lobby_btn, HUD.lobby_btn_hi)
+        RegisterHover(BtnLang, LangBg, lobby.lobby_btn, lobby.lobby_btn_hi)
         BtnLang.OnClick().Subscribe(OnOpenLang)
         # pastille de RANG (embleme + palier + %), persistant entre sessions
         Pts := RankPtsOf(Player)
@@ -949,15 +716,15 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := RankLab, VerticalAlignment := vertical_alignment.Center }
         RankChip := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_rankchip, LbWhite, 185.0, 58.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_rankchip, LbWhite, 185.0, 58.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := RankRowH, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 8.0, Top := 0.0, Right := 16.0, Bottom := 0.0 } }
-        GearBg := LbTex(HUD.lobby_gear, LbWhite, 50.0, 50.0)
+        GearBg := LbTex(lobby.lobby_gear, LbWhite, 50.0, 50.0)
         GearInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := GearBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(icons.ic_gear, LbWhite, 22.0, 22.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         BtnSet := button{ Slot := button_slot{ Widget := GearInner } }
-        RegisterHover(BtnSet, GearBg, HUD.lobby_gear, HUD.lobby_gear_hi)
+        RegisterHover(BtnSet, GearBg, lobby.lobby_gear, lobby.lobby_gear_hi)
         BtnSet.OnClick().Subscribe(OnOpenSettings)
         RightHead := stack_box:
             Orientation := orientation.Horizontal
@@ -992,7 +759,7 @@ quiz_manager := class(creative_device):
         if (F := LobbyCatFilter[Player], F >= 0) { set FiltName = CatNameOf(Player, F) }
         SubIc := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_sub_ic, LbWhite, 38.0, 38.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_sub_ic, LbWhite, 38.0, 38.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(icons.ic_grid, LbWhite, 18.0, 18.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         FiltLab := stack_box:
             Orientation := orientation.Vertical
@@ -1011,14 +778,14 @@ quiz_manager := class(creative_device):
             Slots := array:
                 stack_box_slot{ Widget := FiltValT, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 8.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := LbTex(icons.ic_chevron, LbWhite, 16.0, 16.0), VerticalAlignment := vertical_alignment.Center }
-        FiltBg := LbTex(HUD.lobby_subbtn, LbWhite, 630.0, 68.0)
+        FiltBg := LbTex(lobby.lobby_subbtn, LbWhite, 630.0, 68.0)
         FiltInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := FiltBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := FiltLeft, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 16.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
                 overlay_slot{ Widget := FiltRight, HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 16.0, Bottom := 0.0 } }
         BtnFilt := button{ Slot := button_slot{ Widget := FiltInner } }
-        RegisterHover(BtnFilt, FiltBg, HUD.lobby_subbtn, HUD.lobby_subbtn_hi)
+        RegisterHover(BtnFilt, FiltBg, lobby.lobby_subbtn, lobby.lobby_subbtn_hi)
         BtnFilt.OnClick().Subscribe(OnOpenCat)
 
         # -- titre de liste (.lb-col__title : marge 4, gap 9, Anton 20 + pastille) --
@@ -1034,7 +801,7 @@ quiz_manager := class(creative_device):
             Slots := array:
                 overlay_slot{ Widget := LbSizer(630.0, 24.0), HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := ListHeadL, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
-                overlay_slot{ Widget := InfoPill(DispoT, HUD.lobby_pill, 78.0), HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 4.0, Bottom := 0.0 } }
+                overlay_slot{ Widget := InfoPill(DispoT, lobby.lobby_pill, 78.0), HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 4.0, Bottom := 0.0 } }
 
         # -- zone liste 630x443 : sous-canvas hote, SEUL ce contenu est reconstruit au
         #    scroll (la racine n'est pas re-ajoutee => curseur stable, pas de flicker) --
@@ -1049,7 +816,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := LH, HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Fill }
 
         # -- LIRE PLUS 630x48 (.lb-scrolldown : chevron 20 + Anton 17, descend d'1 carte) --
-        MoreBg := LbTex(HUD.lobby_more, LbWhite, 630.0, 48.0)
+        MoreBg := LbTex(lobby.lobby_more, LbWhite, 630.0, 48.0)
         MoreRow := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
@@ -1081,7 +848,7 @@ quiz_manager := class(creative_device):
         if (X := LobbyScroll[Player]) { set S = X }
         AtBottom : logic = if (S >= Cap) { true } else { false }
         if (Bg := LobbyMoreBg[Player]):
-            if (AtBottom?) { Bg.SetImage(HUD.lobby_more_off) } else { Bg.SetImage(HUD.lobby_more) }
+            if (AtBottom?) { Bg.SetImage(lobby.lobby_more_off) } else { Bg.SetImage(lobby.lobby_more) }
         if (Btn := LobbyMoreBtn[Player]):
             Btn.SetEnabled(if (AtBottom?) { false } else { true })
 
@@ -1122,7 +889,7 @@ quiz_manager := class(creative_device):
             Slots := array:
                 overlay_slot{ Widget := LbSizer(478.0, 24.0), HorizontalAlignment := horizontal_alignment.Fill, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2(Tr(Player, "File de la partie", "Game queue", "Cola de la partida", "Warteschlange", "Coda della partita"), 20.0, LbWhite, text_justification.Left), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 4.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
-                overlay_slot{ Widget := InfoPill(CntT, HUD.lobby_pill_sm, 54.0), HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 4.0, Bottom := 0.0 } }
+                overlay_slot{ Widget := InfoPill(CntT, lobby.lobby_pill_sm, 54.0), HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 4.0, Bottom := 0.0 } }
 
         # -- hote de la file : seul le contenu est reconstruit au refresh --
         QH := canvas{}
@@ -1186,7 +953,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := BtnDi }
 
         # -- VALIDER 478x65 (.lb-validate : check 20 + Anton 24 + "- N quizz" 13) --
-        ValBg := LbTex(HUD.lobby_valid, LbWhite, 478.0, 65.0)
+        ValBg := LbTex(lobby.lobby_valid, LbWhite, 478.0, 65.0)
         ValSmall := LbText2("", 13.0, LbWhite, text_justification.Left)
         ValRow := stack_box:
             Orientation := orientation.Horizontal
@@ -1229,7 +996,7 @@ quiz_manager := class(creative_device):
         HostOk := IsHost(Player)
         CanGo : logic = if (N > 0, HostOk?) { true } else { false }
         if (Bg := LobbyValidBg[Player]):
-            if (CanGo?) { Bg.SetImage(HUD.lobby_valid) } else { Bg.SetImage(HUD.lobby_valid_off) }
+            if (CanGo?) { Bg.SetImage(lobby.lobby_valid) } else { Bg.SetImage(lobby.lobby_valid_off) }
         if (B := LobbyValidBtn[Player]):
             B.SetEnabled(CanGo)
         if (T := LobbyValidTxt[Player]):
@@ -1253,7 +1020,7 @@ quiz_manager := class(creative_device):
     EmptySlot(P : player, I : int) : widget =
         Num := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_num, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_num, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2("{I + 1}", 17.0, LbDim, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         Row := stack_box:
             Orientation := orientation.Horizontal
@@ -1262,7 +1029,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbText2(Tr(P, "En attente d'un choix...", "Waiting for a pick...", "Esperando una eleccion...", "Warten auf eine Wahl...", "In attesa di una scelta..."), 15.0, LbMute, text_justification.Left), VerticalAlignment := vertical_alignment.Center }
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_slot_empty, LbWhite, 478.0, 54.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_slot_empty, LbWhite, 478.0, 54.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Row, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 12.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
 
     # Slot rempli : numero (brand), icone categorie 42, nom + "Choisi par PN - N q.", poubelle.
@@ -1276,7 +1043,7 @@ quiz_manager := class(creative_device):
         if (PIdx := Mod[PN - 1, 4], H := PColHex[PIdx]) { set PCol = MakeColorFromHex(H) }
         Num := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_num_on, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_num_on, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2("{I + 1}", 17.0, LbWhite, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         PDot := overlay:
             Slots := array:
@@ -1300,7 +1067,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := TxtCol, VerticalAlignment := vertical_alignment.Center }
         RmInner := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_rm, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_rm, LbWhite, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(icons.ic_trash, LbWhite, 15.0, 15.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         RmBtn := button{ Slot := button_slot{ Widget := RmInner } }
         Holder := slot_rm{ Mgr := Self, Idx := I }
@@ -1308,18 +1075,18 @@ quiz_manager := class(creative_device):
         set RmHolders += array{ Holder }
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_slot, LbWhite, 478.0, 66.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_slot, LbWhite, 478.0, 66.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LeftG, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 12.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
                 overlay_slot{ Widget := RmBtn, HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 12.0, Bottom := 0.0 } }
 
     # ===== Classe / Non classe (234x46, anneau + voile teinte or/cyan quand actif) =====
     RankBtn(Label : string, IconTex : texture, SelTint : color) : button =
-        Ring := LbTex(HUD.lobby_rank_on, SelTint, 238.0, 50.0)
+        Ring := LbTex(lobby.lobby_rank_on, SelTint, 238.0, 50.0)
         Ring.SetVisibility(widget_visibility.Hidden)
         set TmpRing += array{ Ring }
         Ico := LbTex(IconTex, LbMute, 18.0, 18.0)
         set TmpIco += array{ Ico }
-        Bg := LbTex(HUD.lobby_rank, LbWhite, 234.0, 46.0)
+        Bg := LbTex(lobby.lobby_rank, LbWhite, 234.0, 46.0)
         Row := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
@@ -1331,7 +1098,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := Ring, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Row, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         B := button{ Slot := button_slot{ Widget := Inner } }
-        RegisterHover(B, Bg, HUD.lobby_rank, HUD.lobby_rank_hi)
+        RegisterHover(B, Bg, lobby.lobby_rank, lobby.lobby_rank_hi)
         B
 
     SetRank(Player : player, Ranked : logic) : void =
@@ -1360,7 +1127,7 @@ quiz_manager := class(creative_device):
 
     # ===== Difficulte (152.7x58 : dots 8px + nom Anton 17, anneau couleur niveau) =====
     DiffBtn(Label : string, Dots : int, LvlCol : color) : button =
-        Ring := LbTex(HUD.lobby_diff_on, LvlCol, 156.7, 62.0)
+        Ring := LbTex(lobby.lobby_diff_on, LvlCol, 156.7, 62.0)
         Ring.SetVisibility(widget_visibility.Hidden)
         set TmpRing += array{ Ring }
         DOn := DotsRow(Dots, LvlCol)
@@ -1377,14 +1144,14 @@ quiz_manager := class(creative_device):
             Slots := array:
                 stack_box_slot{ Widget := DotsWrap, HorizontalAlignment := horizontal_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 0.0, Bottom := 5.0 } }
                 stack_box_slot{ Widget := LbText2(Label, 17.0, LbWhite, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center }
-        Bg := LbTex(HUD.lobby_diff, LbWhite, 152.7, 58.0)
+        Bg := LbTex(lobby.lobby_diff, LbWhite, 152.7, 58.0)
         Inner := overlay:
             Slots := array:
                 overlay_slot{ Widget := Bg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Ring, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Content, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         B := button{ Slot := button_slot{ Widget := Inner } }
-        RegisterHover(B, Bg, HUD.lobby_diff, HUD.lobby_diff_hi)
+        RegisterHover(B, Bg, lobby.lobby_diff, lobby.lobby_diff_hi)
         B
 
     SetDiff(Player : player, D : int) : void =
@@ -1447,14 +1214,14 @@ quiz_manager := class(creative_device):
             Slots := array:
                 stack_box_slot{ Widget := CatSquare(Ci, 50.0, 24.0, IcTint), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 14.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := TextCol, VerticalAlignment := vertical_alignment.Center }
-        AddBgTex := if (Queued?) { HUD.lobby_quizadd_on } else { HUD.lobby_quizadd }
+        AddBgTex := if (Queued?) { lobby.lobby_quizadd_on } else { lobby.lobby_quizadd }
         AddIcoTex := if (Queued?) { icons.ic_check } else { icons.ic_plus }
         AddIcoSz := if (Queued?) { 16.0 } else { 18.0 }   # design : check(16) / plus(18)
         AddSq := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbTex(AddBgTex, LbWhite, 34.0, 34.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(AddIcoTex, LbWhite, AddIcoSz, AddIcoSz), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
-        CardBg := LbTex(HUD.lobby_card, IcTint, 591.0, 76.0)
+        CardBg := LbTex(lobby.lobby_card, IcTint, 591.0, 76.0)
         Inner := overlay:
             Slots := array:
                 overlay_slot{ Widget := CardBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
@@ -1462,7 +1229,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := AddSq, HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 12.0, Bottom := 0.0 } }
         B := button{ Slot := button_slot{ Widget := Inner } }
         if (not Queued?):
-            RegisterHover(B, CardBg, HUD.lobby_card, HUD.lobby_card_hi)
+            RegisterHover(B, CardBg, lobby.lobby_card, lobby.lobby_card_hi)
         Holder := quiz_pick{ Mgr := Self, Gi := Gi }
         B.OnClick().Subscribe(Holder.OnClick)
         set PickHolders += array{ Holder }
@@ -1489,8 +1256,8 @@ quiz_manager := class(creative_device):
         AtTop : logic = if (Scroll <= 0) { true } else { false }
         AtBottom : logic = if (Scroll >= Cap) { true } else { false }
         # embouts fleches (grises + desactives en butee, design .is-disabled)
-        UpTex := if (AtTop?) { HUD.lobby_scrollcap_off } else { HUD.lobby_scrollcap }
-        DnTex := if (AtBottom?) { HUD.lobby_scrollcap_off } else { HUD.lobby_scrollcap }
+        UpTex := if (AtTop?) { lobby.lobby_scrollcap_off } else { lobby.lobby_scrollcap }
+        DnTex := if (AtBottom?) { lobby.lobby_scrollcap_off } else { lobby.lobby_scrollcap }
         UpInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbTex(UpTex, LbWhite, 26.0, 26.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
@@ -1513,11 +1280,11 @@ quiz_manager := class(creative_device):
         var Pos : float = 0.0
         if (Cap > 0, P := (Scroll * 1.0) / (Cap * 1.0)) { set Pos = P }
         ThumbY := (TrackH - TH) * Pos
-        Thumb := LbTex(HUD.lobby_thumb, LbWhite, 10.0, TH)
+        Thumb := LbTex(lobby.lobby_thumb, LbWhite, 10.0, TH)
         if (Total <= VisibleCards) { Thumb.SetVisibility(widget_visibility.Hidden) }
         Track := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_track, LbWhite, 12.0, TrackH), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_track, LbWhite, 12.0, TrackH), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Thumb, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top, Padding := margin{ Left := 0.0, Top := ThumbY, Right := 0.0, Bottom := 0.0 } }
         stack_box:
             Orientation := orientation.Vertical
@@ -1665,13 +1432,13 @@ quiz_manager := class(creative_device):
     # En-tete propre : retour 46x46 + titre Anton 28 (padding 22/24/18) + separateur.
     ShowSubPage(Player : player, TitleStr : string, BodyW : widget, CenterBody : logic) : void =
         if (PlayerUI := GetPlayerUI[Player]):
-            BackBg := LbTex(HUD.lobby_back, LbWhite, 46.0, 46.0)
+            BackBg := LbTex(lobby.lobby_back, LbWhite, 46.0, 46.0)
             BackInner := overlay:
                 Slots := array:
                     overlay_slot{ Widget := BackBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                     overlay_slot{ Widget := LbTex(icons.ic_back, LbWhite, 22.0, 22.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
             BtnBack := button{ Slot := button_slot{ Widget := BackInner } }
-            RegisterHover(BtnBack, BackBg, HUD.lobby_back, HUD.lobby_back_hi)
+            RegisterHover(BtnBack, BackBg, lobby.lobby_back, lobby.lobby_back_hi)
             BtnBack.OnClick().Subscribe(OnBackSub)
             HeadRow := stack_box:
                 Orientation := orientation.Horizontal
@@ -1752,7 +1519,7 @@ quiz_manager := class(creative_device):
         IcTint := if (Muted?) { LbGrey } else { Col }
         IcoBox := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.set_ic, IcTint, 48.0, 48.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.set_ic, IcTint, 48.0, 48.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(SndChanIcon(Chan), LbWhite, 22.0, 22.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         Texts := stack_box:
             Orientation := orientation.Vertical
@@ -1764,7 +1531,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := LbSizer(190.0, 48.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Texts, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
         # bouton mute (rouge quand coupe)
-        MuteTex := if (Muted?) { HUD.set_mute_on } else { HUD.set_mute }
+        MuteTex := if (Muted?) { lobby.set_mute_on } else { lobby.set_mute }
         MuteIco := if (Muted?) { icons.ic_mute } else { icons.ic_speaker }
         MuteInner := overlay:
             Slots := array:
@@ -1775,7 +1542,7 @@ quiz_manager := class(creative_device):
         MuteBtn.OnClick().Subscribe(MHolder.OnClick)
         set SndMuteHolders += array{ MHolder }
         # barre de volume : piste + remplissage + curseur + 10 zones cliquables
-        FillTex := if (Muted?) { HUD.set_fill_off } else { HUD.set_fill }
+        FillTex := if (Muted?) { lobby.set_fill_off } else { lobby.set_fill }
         FillTint := if (Muted?) { LbWhite } else { Col }
         var FillW : float = 264.0 * DispV * 0.01
         Fill := LbTex(FillTex, FillTint, FillW, 14.0)
@@ -1799,16 +1566,16 @@ quiz_manager := class(creative_device):
         Bar := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbSizer(264.0, 26.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
-                overlay_slot{ Widget := LbTex(HUD.set_track, LbWhite, 264.0, 14.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.set_track, LbWhite, 264.0, 14.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Fill, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
-                overlay_slot{ Widget := LbTex(HUD.set_knob, LbWhite, 22.0, 22.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := KnobPad, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
+                overlay_slot{ Widget := LbTex(lobby.set_knob, LbWhite, 22.0, 22.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := KnobPad, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
                 overlay_slot{ Widget := Zones, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
         Pct := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbSizer(56.0, 24.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2("{DispV}%", 17.0, TxtCol, text_justification.Right), HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center }
         # boutons -5 / +5 (.lb-vstep : verre, survol violet, desactives si coupe)
-        MinusBg := LbTex(HUD.set_step, LbWhite, 34.0, 34.0)
+        MinusBg := LbTex(lobby.set_step, LbWhite, 34.0, 34.0)
         MinusInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := MinusBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
@@ -1817,7 +1584,7 @@ quiz_manager := class(creative_device):
         SHolderM := snd_step{ Mgr := Self, Chan := Chan, Delta := -5 }
         MinusBtn.OnClick().Subscribe(SHolderM.OnClick)
         set SndStepHolders += array{ SHolderM }
-        PlusBg := LbTex(HUD.set_step, LbWhite, 34.0, 34.0)
+        PlusBg := LbTex(lobby.set_step, LbWhite, 34.0, 34.0)
         PlusInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := PlusBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
@@ -1832,8 +1599,8 @@ quiz_manager := class(creative_device):
             MinusBg.SetTint(LbGrey)
             PlusBg.SetTint(LbGrey)
         else:
-            RegisterHover(MinusBtn, MinusBg, HUD.set_step, HUD.set_step_hi)
-            RegisterHover(PlusBtn, PlusBg, HUD.set_step, HUD.set_step_hi)
+            RegisterHover(MinusBtn, MinusBg, lobby.set_step, lobby.set_step_hi)
+            RegisterHover(PlusBtn, PlusBg, lobby.set_step, lobby.set_step_hi)
         Row := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
@@ -1846,7 +1613,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := Pct, VerticalAlignment := vertical_alignment.Center }
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.set_row, LbWhite, 780.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.set_row, LbWhite, 780.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Row, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 18.0, Top := 0.0, Right := 18.0, Bottom := 0.0 } }
 
     BuildSndRows(P : player) : widget =
@@ -1906,8 +1673,8 @@ quiz_manager := class(creative_device):
     LangCard(Player : player, LangId : int, FlagTex : texture, Name : string, Native : string) : button =
         var IsSel : logic = false
         if (L := LobbyLang[Player], L = LangId) { set IsSel = true }
-        Bg := LbTex(HUD.lobby_langcard, LbWhite, 372.0, 86.0)
-        Ring := LbTex(HUD.lobby_langcard_on, LbViolet, 376.0, 90.0)
+        Bg := LbTex(lobby.lobby_langcard, LbWhite, 372.0, 86.0)
+        Ring := LbTex(lobby.lobby_langcard_on, LbViolet, 376.0, 90.0)
         if (not IsSel?) { Ring.SetVisibility(widget_visibility.Hidden) }
         TextCol := stack_box:
             Orientation := orientation.Vertical
@@ -1919,7 +1686,7 @@ quiz_manager := class(creative_device):
             Slots := array:
                 stack_box_slot{ Widget := LbTex(FlagTex, LbWhite, 62.0, 42.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 16.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := TextCol, VerticalAlignment := vertical_alignment.Center }
-        ChkBgTex := if (IsSel?) { HUD.lobby_chk_on } else { HUD.lobby_chk }
+        ChkBgTex := if (IsSel?) { lobby.lobby_chk_on } else { lobby.lobby_chk }
         ChkIco := LbTex(icons.ic_check, LbWhite, 16.0, 16.0)
         if (not IsSel?) { ChkIco.SetVisibility(widget_visibility.Hidden) }
         Chk := overlay:
@@ -1933,7 +1700,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := Left, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 20.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
                 overlay_slot{ Widget := Chk, HorizontalAlignment := horizontal_alignment.Right, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 20.0, Bottom := 0.0 } }
         B := button{ Slot := button_slot{ Widget := Inner } }
-        RegisterHover(B, Bg, HUD.lobby_langcard, HUD.lobby_langcard_hi)
+        RegisterHover(B, Bg, lobby.lobby_langcard, lobby.lobby_langcard_hi)
         if (LangId = 0) { B.OnClick().Subscribe(OnPickFR) }
         else if (LangId = 1) { B.OnClick().Subscribe(OnPickEN) }
         else if (LangId = 2) { B.OnClick().Subscribe(OnPickES) }
@@ -1978,8 +1745,8 @@ quiz_manager := class(creative_device):
         RingCol := if (Ci < 0) { LbWhite } else { ColOf(Ci) }   # is-on : --cc (#fff pour Toutes)
         var IsSel : logic = false
         if (F := LobbyCatFilter[Player], F = Ci) { set IsSel = true }
-        Bg := LbTex(HUD.lobby_catcard, LbWhite, 367.0, 78.0)
-        Ring := LbTex(HUD.lobby_catring, RingCol, 371.0, 82.0)
+        Bg := LbTex(lobby.lobby_catcard, LbWhite, 367.0, 78.0)
+        Ring := LbTex(lobby.lobby_catring, RingCol, 371.0, 82.0)
         if (not IsSel?) { Ring.SetVisibility(widget_visibility.Hidden) }
         TextCol := stack_box:
             Orientation := orientation.Vertical
@@ -1997,7 +1764,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := Ring, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Left, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 14.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
         B := button{ Slot := button_slot{ Widget := Inner } }
-        RegisterHover(B, Bg, HUD.lobby_catcard, HUD.lobby_catcard_hi)
+        RegisterHover(B, Bg, lobby.lobby_catcard, lobby.lobby_catcard_hi)
         Holder := cat_pick{ Mgr := Self, Ci := Ci }
         B.OnClick().Subscribe(Holder.OnClick)
         set CatHolders += array{ Holder }
@@ -2113,24 +1880,24 @@ quiz_manager := class(creative_device):
 
     # Embleme du palier (rank_textures/, importes dans Content/HUD).
     RankTexOf(T : int) : texture =
-        var X : texture = HUD.rank_00
-        if (T = 1) { set X = HUD.rank_01 }
-        if (T = 2) { set X = HUD.rank_02 }
-        if (T = 3) { set X = HUD.rank_03 }
-        if (T = 4) { set X = HUD.rank_04 }
-        if (T = 5) { set X = HUD.rank_05 }
-        if (T = 6) { set X = HUD.rank_06 }
-        if (T = 7) { set X = HUD.rank_07 }
-        if (T = 8) { set X = HUD.rank_08 }
-        if (T = 9) { set X = HUD.rank_09 }
-        if (T = 10) { set X = HUD.rank_10 }
-        if (T = 11) { set X = HUD.rank_11 }
-        if (T = 12) { set X = HUD.rank_12 }
-        if (T = 13) { set X = HUD.rank_13 }
-        if (T = 14) { set X = HUD.rank_14 }
-        if (T = 15) { set X = HUD.rank_15 }
-        if (T = 16) { set X = HUD.rank_16 }
-        if (T = 17) { set X = HUD.rank_17 }
+        var X : texture = rangs.rank_00
+        if (T = 1) { set X = rangs.rank_01 }
+        if (T = 2) { set X = rangs.rank_02 }
+        if (T = 3) { set X = rangs.rank_03 }
+        if (T = 4) { set X = rangs.rank_04 }
+        if (T = 5) { set X = rangs.rank_05 }
+        if (T = 6) { set X = rangs.rank_06 }
+        if (T = 7) { set X = rangs.rank_07 }
+        if (T = 8) { set X = rangs.rank_08 }
+        if (T = 9) { set X = rangs.rank_09 }
+        if (T = 10) { set X = rangs.rank_10 }
+        if (T = 11) { set X = rangs.rank_11 }
+        if (T = 12) { set X = rangs.rank_12 }
+        if (T = 13) { set X = rangs.rank_13 }
+        if (T = 14) { set X = rangs.rank_14 }
+        if (T = 15) { set X = rangs.rank_15 }
+        if (T = 16) { set X = rangs.rank_16 }
+        if (T = 17) { set X = rangs.rank_17 }
         X
 
     AgentPNum(A : agent) : int =
@@ -2156,13 +1923,13 @@ quiz_manager := class(creative_device):
     ResAvatar(A : agent, Sz : float, FontSz : float) : overlay =
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_av, AgentColor(A), Sz, Sz), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
-                overlay_slot{ Widget := LbTex(HUD.res_avring, LbWhite, Sz, Sz), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_av, AgentColor(A), Sz, Sz), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_avring, LbWhite, Sz, Sz), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2("P{AgentPNum(A)}", FontSz, LbWhite, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
 
     # Marche de podium (.eq-pod) : couronne (1er), avatar, pseudo, bloc colore.
     ResPod(E : leaderboard_entry, Rank : int) : widget =
-        var BlockTex : texture = HUD.res_pod3
+        var BlockTex : texture = resultats.res_pod3
         var BW : float = 158.0
         var BH : float = 98.0
         var Av : float = 80.0
@@ -2171,10 +1938,10 @@ quiz_manager := class(creative_device):
         var RankSz : float = 40.0
         var ScoreSz : float = 22.0
         if (Rank = 2):
-            set BlockTex = HUD.res_pod2
+            set BlockTex = resultats.res_pod2
             set BH = 120.0
         if (Rank = 1):
-            set BlockTex = HUD.res_pod1
+            set BlockTex = resultats.res_pod1
             set BW = 178.0
             set BH = 150.0
             set Av = 104.0
@@ -2204,7 +1971,7 @@ quiz_manager := class(creative_device):
         set Slots += array{ overlay_slot{ Widget := LbNameText(E.Agent, NameSz, LbWhite), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top, Padding := margin{ Left := 0.0, Top := CrownPad + Av + 9.0, Right := 0.0, Bottom := 0.0 } } }
         set Slots += array{ overlay_slot{ Widget := ResAvatar(E.Agent, Av, AvF), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top, Padding := margin{ Left := 0.0, Top := CrownPad, Right := 0.0, Bottom := 0.0 } } }
         if (Rank = 1):
-            set Slots += array{ overlay_slot{ Widget := LbTex(HUD.res_crown, LbWhite, 40.0, 40.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top } }
+            set Slots += array{ overlay_slot{ Widget := LbTex(resultats.res_crown, LbWhite, 40.0, 40.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top } }
         overlay{ Slots := Slots }
 
     # Podium top 3 (2e a gauche, 1er au centre, 3e a droite ; gap 18, ancres en bas).
@@ -2226,7 +1993,7 @@ quiz_manager := class(creative_device):
     ResRow(Player : player, E : leaderboard_entry, Rank : int) : widget =
         var IsMe : logic = false
         if (E.Agent = Player) { set IsMe = true }
-        RowTex := if (IsMe?) { HUD.res_row_me } else { HUD.res_row }
+        RowTex := if (IsMe?) { resultats.res_row_me } else { resultats.res_row }
         var G : int = 0
         if (P2 := player[E.Agent], Arr := BestSave[P2], X := Arr[1]) { set G = X }
         RankBox := overlay:
@@ -2246,7 +2013,7 @@ quiz_manager := class(creative_device):
             Slots := LeftSlots
         GoodChip := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_goodchip, LbWhite, 70.0, 24.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_goodchip, LbWhite, 70.0, 24.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := stack_box{ Orientation := orientation.Horizontal, Slots := array{ stack_box_slot{ Widget := LbTex(icons.ic_check, LbGreen, 14.0, 14.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 6.0, Bottom := 0.0 } }, stack_box_slot{ Widget := LbText2("{G}/{SessionQuestions}", 13.0, LbDim, text_justification.Center), VerticalAlignment := vertical_alignment.Center } } }, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         ScoreRow := stack_box:
             Orientation := orientation.Horizontal
@@ -2282,8 +2049,8 @@ quiz_manager := class(creative_device):
         Cap := if (Rest - ResVisibleRows > 0) { Rest - ResVisibleRows } else { 0 }
         AtTop : logic = if (Scroll <= 0) { true } else { false }
         AtBottom : logic = if (Scroll >= Cap) { true } else { false }
-        UpTex := if (AtTop?) { HUD.lobby_scrollcap_off } else { HUD.lobby_scrollcap }
-        DnTex := if (AtBottom?) { HUD.lobby_scrollcap_off } else { HUD.lobby_scrollcap }
+        UpTex := if (AtTop?) { lobby.lobby_scrollcap_off } else { lobby.lobby_scrollcap }
+        DnTex := if (AtBottom?) { lobby.lobby_scrollcap_off } else { lobby.lobby_scrollcap }
         UpInner := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbTex(UpTex, LbWhite, 26.0, 26.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
@@ -2305,11 +2072,11 @@ quiz_manager := class(creative_device):
         var Pos : float = 0.0
         if (Cap > 0, P := (Scroll * 1.0) / (Cap * 1.0)) { set Pos = P }
         ThumbY := (TrackH - TH) * Pos
-        Thumb := LbTex(HUD.lobby_thumb, LbWhite, 10.0, TH)
+        Thumb := LbTex(lobby.lobby_thumb, LbWhite, 10.0, TH)
         if (Rest <= ResVisibleRows) { Thumb.SetVisibility(widget_visibility.Hidden) }
         Track := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_track, LbWhite, 12.0, TrackH), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_track, LbWhite, 12.0, TrackH), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Thumb, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Top, Padding := margin{ Left := 0.0, Top := ThumbY, Right := 0.0, Bottom := 0.0 } }
         stack_box:
             Orientation := orientation.Vertical
@@ -2347,14 +2114,14 @@ quiz_manager := class(creative_device):
     ResChip(Inner : widget, W : float) : overlay =
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_chip, LbWhite, W, 34.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_chip, LbWhite, W, 34.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Inner, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
 
     # Carte stat 209x106 (.eq-stat) : icone 30 teintee, valeur 24 (+unite), libelle 11.
     ResStat(IcoTex : texture, IcoCol : color, Val : string, Unit : string, Label : string) : widget =
         IcoBox := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_statico, IcoCol, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_statico, IcoCol, 30.0, 30.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbTex(IcoTex, LbWhite, 17.0, 17.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         ValRow := stack_box:
             Orientation := orientation.Horizontal
@@ -2369,7 +2136,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbText2(Label, 11.0, LbDim, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center }
         overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_stat, LbWhite, 209.0, 106.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_stat, LbWhite, 209.0, 106.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Col, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
 
     # Colonne droite (.eq-you) : carte rang 427x192, points 427x84, 4 stats.
@@ -2402,11 +2169,11 @@ quiz_manager := class(creative_device):
         # barre de progression : remplissage degrade cyan->violet a Pct%
         var FillW : float = 296.0 * Pct * 0.01
         if (T >= 17) { set FillW = 296.0 }
-        Fill := LbTex(HUD.res_barfill, LbWhite, FillW, 13.0)
+        Fill := LbTex(resultats.res_barfill, LbWhite, FillW, 13.0)
         if (FillW < 9.0) { Fill.SetVisibility(widget_visibility.Hidden) }
         Bar := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_bar, LbWhite, 296.0, 13.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_bar, LbWhite, 296.0, 13.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := Fill, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
         PctLeft := stack_box:
             Orientation := orientation.Horizontal
@@ -2415,7 +2182,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbText2("-> {NextName}", 13.0, LbDim, text_justification.Left), VerticalAlignment := vertical_alignment.Center }
         GainChip := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_gainchip, LbWhite, 74.0, 24.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_gainchip, LbWhite, 74.0, 24.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := stack_box{ Orientation := orientation.Horizontal, Slots := array{ stack_box_slot{ Widget := LbTex(icons.ic_up, LbGreen, 11.0, 11.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 4.0, Bottom := 0.0 } }, stack_box_slot{ Widget := LbText2("+{Gain}%", 13.0, LbGreen, text_justification.Center), VerticalAlignment := vertical_alignment.Center } } }, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         if (Gain <= 0) { GainChip.SetVisibility(widget_visibility.Hidden) }
         PctRow := overlay:
@@ -2437,7 +2204,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := RankInfo, VerticalAlignment := vertical_alignment.Center }
         YouCard := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_rankcard, LbWhite, 427.0, 118.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_rankcard, LbWhite, 427.0, 118.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := RankRowFull, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 16.0, Top := 0.0, Right := 16.0, Bottom := 0.0 } }
         PtsCol := stack_box:
             Orientation := orientation.Vertical
@@ -2451,7 +2218,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := PtsCol, VerticalAlignment := vertical_alignment.Center }
         ScoreCard := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_scorecard, LbWhite, 427.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_scorecard, LbWhite, 427.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := ScoreRow, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         StatsR1 := stack_box:
             Orientation := orientation.Horizontal
@@ -2476,10 +2243,10 @@ quiz_manager := class(creative_device):
         Kicker := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
-                stack_box_slot{ Widget := LbTex(HUD.res_kline_l, LbCyan, 34.0, 2.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 10.0, Bottom := 0.0 } }
+                stack_box_slot{ Widget := LbTex(resultats.res_kline_l, LbCyan, 34.0, 2.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 10.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := LbTex(icons.ic_trophy, LbCyan, 18.0, 18.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 8.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := LbText2(Tr(Player, "QUIZZ TERMINE", "QUIZ FINISHED", "QUIZ TERMINADO", "QUIZ BEENDET", "QUIZ COMPLETATO"), 13.0, LbCyan, text_justification.Center), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 10.0, Bottom := 0.0 } }
-                stack_box_slot{ Widget := LbTex(HUD.res_kline_r, LbCyan, 34.0, 2.0), VerticalAlignment := vertical_alignment.Center }
+                stack_box_slot{ Widget := LbTex(resultats.res_kline_r, LbCyan, 34.0, 2.0), VerticalAlignment := vertical_alignment.Center }
         QuizNm := QuizNameOf(Player, CurrentQuiz)
         var DiffNm : string = DiffNameOf(Player, 1)
         var DiffCol : color = LbYellow
@@ -2523,7 +2290,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbText2(Tr(Player, "Top 10 - Meilleurs scores", "Top 10 - Best scores", "Top 10 - Mejores puntuaciones", "Top 10 - Beste Punktzahlen", "Top 10 - Migliori punteggi"), 19.0, LbWhite, text_justification.Left), VerticalAlignment := vertical_alignment.Center }
         CntPill := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.lobby_pill_sm, LbWhite, 54.0, 22.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(lobby.lobby_pill_sm, LbWhite, 54.0, 22.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := LbText2("{Hall.Length}/10", 12.0, LbMute, text_justification.Center), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         BoardTitle := overlay:
             Slots := array:
@@ -2553,7 +2320,7 @@ quiz_manager := class(creative_device):
         # actions (.eq-actions : Rejouer 439 + Retour 659, gap 14)
         HasNext : logic = if (QueuePos + 1 < LobbyQueue.Length) { true } else { false }
         ReplayLbl := if (HasNext?) { Tr(Player, "QUIZZ SUIVANT...", "NEXT QUIZ...", "SIGUIENTE QUIZ...", "NAECHSTES QUIZ...", "QUIZ SUCCESSIVO...") } else { Tr(Player, "REJOUER", "REPLAY", "REPETIR", "NOCHMAL", "RIGIOCA") }
-        GhostBg := LbTex(HUD.res_btn_ghost, LbWhite, 439.0, 65.0)
+        GhostBg := LbTex(resultats.res_btn_ghost, LbWhite, 439.0, 65.0)
         GhostRow := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
@@ -2564,7 +2331,7 @@ quiz_manager := class(creative_device):
                 overlay_slot{ Widget := GhostBg, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := GhostRow, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         BtnReplay := button{ Slot := button_slot{ Widget := GhostInner } }
-        RegisterHover(BtnReplay, GhostBg, HUD.res_btn_ghost, HUD.res_btn_ghost_hi)
+        RegisterHover(BtnReplay, GhostBg, resultats.res_btn_ghost, resultats.res_btn_ghost_hi)
         BtnReplay.OnClick().Subscribe(OnReplay)
         if (HasNext?):   # l'enchainement est automatique : pas de relance manuelle
             BtnReplay.SetEnabled(false)
@@ -2576,7 +2343,7 @@ quiz_manager := class(creative_device):
                 stack_box_slot{ Widget := LbText2(Tr(Player, "RETOUR A LA SELECTION", "BACK TO SELECTION", "VOLVER A LA SELECCION", "ZURUECK ZUR AUSWAHL", "TORNA ALLA SELEZIONE"), 23.0, LbWhite, text_justification.Center), VerticalAlignment := vertical_alignment.Center }
         PrimInner := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(HUD.res_btn_primary, LbWhite, 659.0, 65.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(resultats.res_btn_primary, LbWhite, 659.0, 65.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
                 overlay_slot{ Widget := PrimRow, HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         BtnBack := button{ Slot := button_slot{ Widget := PrimInner } }
         BtnBack.OnClick().Subscribe(OnBackSel)
@@ -2601,7 +2368,7 @@ quiz_manager := class(creative_device):
             if (set ResScroll[Player] = 0) {}
             Card := BuildResultsCard(Player)
             FullBg := texture_block:
-                DefaultImage := HUD.res_bg
+                DefaultImage := resultats.res_bg
             Root := canvas:
                 Slots := array:
                     canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 0.0 }, Maximum := vector2{ X := 1.0, Y := 1.0 } }, Offsets := margin{ Left := 0.0, Top := 0.0, Right := 0.0, Bottom := 0.0 }, Widget := FullBg }
@@ -2666,12 +2433,12 @@ quiz_manager := class(creative_device):
 
             Hud := quiz_hud{}
             Textures := hud_textures:
-                Banner := option{ HUD.hud_banner }
-                Board := option{ HUD.hud_board }
-                Card := option{ HUD.hud_card }
-                Key := option{ HUD.hud_key }
-                Timer := option{ HUD.hud_timer }
-                Chip := option{ HUD.hud_chip }
+                Banner := option{ jeu.hud_banner }
+                Board := option{ jeu.hud_board }
+                Card := option{ jeu.hud_card }
+                Key := option{ jeu.hud_key }
+                Timer := option{ jeu.hud_timer }
+                Chip := option{ jeu.hud_chip }
             Hud.Show(Player, Textures, option{ flags.flag_fr }, Tr(Player, "CLASSEMENT", "LEADERBOARD", "CLASIFICACION", "RANGLISTE", "CLASSIFICA"), Tr(Player, "QUESTION", "QUESTION", "PREGUNTA", "FRAGE", "DOMANDA"), Tr(Player, "SEC", "SEC", "SEG", "SEK", "SEC"))
             if (set Huds[Player] = Hud) {}
             # Rang competitif en haut a gauche pendant le round (classe uniquement).
@@ -2682,7 +2449,7 @@ quiz_manager := class(creative_device):
                 RPct := RankPctWithin(RPts)
                 RNm := if (N := RankNames[RT]) { N } else { "" }
                 RPctS := if (RT >= 17) { "MAX" } else { "{RPct}%" }
-                Hud.ShowRank(option{ HUD.hud_card }, RankTexOf(RT), Tr(Player, "RANG", "RANK", "RANGO", "RANG", "RANGO"), RNm, RPctS)
+                Hud.ShowRank(option{ jeu.hud_card }, RankTexOf(RT), Tr(Player, "RANG", "RANK", "RANGO", "RANG", "RANGO"), RNm, RPctS)
 
             CloseLobby(Player)
             CloseSub(Player)   # si le joueur etait sur la page Langue/Categorie
@@ -3153,7 +2920,7 @@ quiz_manager := class(creative_device):
         for (_P : GetPlayspace().GetPlayers()) { set N += 1 }
         N
 
-    # ===== Banque DRAPEAUX FR (195) — GENEREE par build_flags.py, NE PAS EDITER =====
+    # ===== Banque DRAPEAUX FR (390) — GENEREE par build_flags.py, NE PAS EDITER =====
     MakeQuestions() : []question =
         array:
             question:
@@ -4131,8 +3898,983 @@ quiz_manager := class(creative_device):
                 Image := option{ flags.flag_ar }
                 Reponses := array{"Uruguay", "Argentine", "Guatemala", "Salvador"}
                 BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_fr }
+                Reponses := array{"Russie", "Pays-Bas", "France", "Luxembourg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_de }
+                Reponses := array{"Allemagne", "Tchad", "Belgique", "Luxembourg"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_it }
+                Reponses := array{"Hongrie", "Italie", "Mexique", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_es }
+                Reponses := array{"Malte", "Norvege", "Espagne", "France"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pt }
+                Reponses := array{"Saint-Marin", "Portugal", "Suisse", "Belgique"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gb }
+                Reponses := array{"Liechtenstein", "Royaume-Uni", "Allemagne", "Belgique"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ie }
+                Reponses := array{"Cote d'Ivoire", "Irlande", "Mexique", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_be }
+                Reponses := array{"Royaume-Uni", "Tchad", "Allemagne", "Belgique"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_nl }
+                Reponses := array{"France", "Slovenie", "Croatie", "Pays-Bas"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lu }
+                Reponses := array{"Pays-Bas", "Slovaquie", "Luxembourg", "Slovenie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ch }
+                Reponses := array{"Finlande", "Georgie", "Danemark", "Suisse"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_at }
+                Reponses := array{"Autriche", "Lettonie", "Hongrie", "Estonie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mc }
+                Reponses := array{"Indonesie", "Monaco", "Pologne", "Singapour"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ad }
+                Reponses := array{"Andorre", "Moldavie", "Tchad", "Roumanie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_li }
+                Reponses := array{"Liechtenstein", "Pays-Bas", "Portugal", "Belgique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sm }
+                Reponses := array{"Royaume-Uni", "Islande", "France", "Saint-Marin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_va }
+                Reponses := array{"Vatican", "Saint-Marin", "Allemagne", "Suisse"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mt }
+                Reponses := array{"Malte", "Danemark", "Norvege", "Portugal"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_is }
+                Reponses := array{"Danemark", "Islande", "Suede", "Norvege"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_no }
+                Reponses := array{"Suede", "Danemark", "Islande", "Norvege"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_se }
+                Reponses := array{"Norvege", "Suede", "Danemark", "Finlande"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_dk }
+                Reponses := array{"Suede", "Finlande", "Suisse", "Danemark"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_fi }
+                Reponses := array{"Suede", "Finlande", "Islande", "Danemark"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pl }
+                Reponses := array{"Monaco", "Pologne", "Singapour", "Indonesie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cz }
+                Reponses := array{"Cuba", "Chili", "Tchequie", "Philippines"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sk }
+                Reponses := array{"Slovaquie", "Slovenie", "Croatie", "Serbie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_hu }
+                Reponses := array{"Estonie", "Autriche", "Lettonie", "Hongrie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_si }
+                Reponses := array{"Russie", "Serbie", "Pays-Bas", "Slovenie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_hr }
+                Reponses := array{"Serbie", "Croatie", "Russie", "Luxembourg"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ba }
+                Reponses := array{"Tchequie", "Slovenie", "Bosnie-Herzegovine", "Bielorussie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_rs }
+                Reponses := array{"Pays-Bas", "Slovaquie", "Serbie", "Luxembourg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_me }
+                Reponses := array{"Estonie", "Albanie", "Slovaquie", "Montenegro"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mk }
+                Reponses := array{"Tchequie", "Estonie", "Macedoine du Nord", "Lituanie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_al }
+                Reponses := array{"Grece", "Macedoine du Nord", "Albanie", "Lituanie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gr }
+                Reponses := array{"Grece", "Uruguay", "Israel", "Lituanie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bg }
+                Reponses := array{"Mexique", "Italie", "Bulgarie", "Hongrie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ro }
+                Reponses := array{"Andorre", "Tchad", "Roumanie", "Moldavie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_md }
+                Reponses := array{"Moldavie", "Roumanie", "Tchad", "Andorre"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ua }
+                Reponses := array{"Macedoine du Nord", "Bulgarie", "Estonie", "Ukraine"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_by }
+                Reponses := array{"Albanie", "Macedoine du Nord", "Lettonie", "Bielorussie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ru }
+                Reponses := array{"Slovaquie", "France", "Russie", "Pays-Bas"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ee }
+                Reponses := array{"Estonie", "Hongrie", "Lettonie", "Autriche"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lv }
+                Reponses := array{"Autriche", "Estonie", "Hongrie", "Lettonie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lt }
+                Reponses := array{"Lituanie", "Ghana", "Bolivie", "Ethiopie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cy }
+                Reponses := array{"Grece", "Chypre", "Hongrie", "Albanie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tr }
+                Reponses := array{"Pakistan", "Algerie", "Turquie", "Tunisie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_il }
+                Reponses := array{"Bahrein", "Uruguay", "Grece", "Israel"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ps }
+                Reponses := array{"Emirats arabes unis", "Irak", "Yemen", "Palestine"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lb }
+                Reponses := array{"Iran", "Liban", "Irak", "Koweit"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sy }
+                Reponses := array{"Palestine", "Emirats arabes unis", "Syrie", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_jo }
+                Reponses := array{"Jordanie", "Koweit", "Yemen", "Soudan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_iq }
+                Reponses := array{"Egypte", "Emirats arabes unis", "Palestine", "Irak"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ir }
+                Reponses := array{"Iran", "Oman", "Jordanie", "Armenie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sa }
+                Reponses := array{"Koweit", "Qatar", "Arabie saoudite", "Oman"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ye }
+                Reponses := array{"Syrie", "Jordanie", "Yemen", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_om }
+                Reponses := array{"Liban", "Irak", "Azerbaidjan", "Oman"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ae }
+                Reponses := array{"Emirats arabes unis", "Palestine", "Syrie", "Yemen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_qa }
+                Reponses := array{"Bahrein", "Qatar", "Turquie", "Emirats arabes unis"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bh }
+                Reponses := array{"Qatar", "Bahrein", "Emirats arabes unis", "Palestine"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kw }
+                Reponses := array{"Irak", "Soudan", "Koweit", "Jordanie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ge }
+                Reponses := array{"Azerbaidjan", "Suisse", "Danemark", "Georgie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_am }
+                Reponses := array{"Armenie", "Venezuela", "Colombie", "Syrie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_az }
+                Reponses := array{"Emirats arabes unis", "Ouzbekistan", "Turkmenistan", "Azerbaidjan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kz }
+                Reponses := array{"Turkmenistan", "Kazakhstan", "Ouzbekistan", "Afghanistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_uz }
+                Reponses := array{"Turkmenistan", "Ouzbekistan", "Azerbaidjan", "Tadjikistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tm }
+                Reponses := array{"Turkmenistan", "Ouzbekistan", "Azerbaidjan", "Kirghizistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kg }
+                Reponses := array{"Mongolie", "Turkmenistan", "Kirghizistan", "Kazakhstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tj }
+                Reponses := array{"Afghanistan", "Kirghizistan", "Tadjikistan", "Kazakhstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_af }
+                Reponses := array{"Kirghizistan", "Mongolie", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mn }
+                Reponses := array{"Mongolie", "Kirghizistan", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cn }
+                Reponses := array{"Vietnam", "Maroc", "Chine", "Sri Lanka"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_jp }
+                Reponses := array{"Malaisie", "Singapour", "Sri Lanka", "Japon"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kr }
+                Reponses := array{"Coree du Sud", "Coree du Nord", "Costa Rica", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kp }
+                Reponses := array{"Cuba", "Coree du Sud", "Coree du Nord", "Costa Rica"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_in }
+                Reponses := array{"Inde", "Irlande", "Niger", "Cote d'Ivoire"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pk }
+                Reponses := array{"Tunisie", "Turquie", "Pakistan", "Algerie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bd }
+                Reponses := array{"Laos", "Coree du Nord", "Coree du Sud", "Bangladesh"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lk }
+                Reponses := array{"Sri Lanka", "Singapour", "Laos", "Timor oriental"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_np }
+                Reponses := array{"Chine", "Bhoutan", "Nepal", "Indonesie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bt }
+                Reponses := array{"Japon", "Brunei", "Bhoutan", "Coree du Nord"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mv }
+                Reponses := array{"Coree du Sud", "Birmanie", "Chine", "Maldives"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mm }
+                Reponses := array{"Zimbabwe", "Birmanie", "Ghana", "Thailande"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_th }
+                Reponses := array{"Cambodge", "Costa Rica", "Thailande", "Cuba"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_la }
+                Reponses := array{"Bangladesh", "Thailande", "Cambodge", "Laos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kh }
+                Reponses := array{"Thailande", "Cambodge", "Laos", "Sri Lanka"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_vn }
+                Reponses := array{"Maroc", "Chine", "Vietnam", "Bhoutan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_my }
+                Reponses := array{"Liberia", "Malaisie", "Etats-Unis", "Pakistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sg }
+                Reponses := array{"Singapour", "Pologne", "Monaco", "Indonesie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_id }
+                Reponses := array{"Monaco", "Indonesie", "Pologne", "Singapour"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bn }
+                Reponses := array{"Singapour", "Brunei", "Vietnam", "Coree du Sud"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ph }
+                Reponses := array{"Philippines", "Tchequie", "Chili", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tl }
+                Reponses := array{"Laos", "Timor oriental", "Coree du Nord", "Chine"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_au }
+                Reponses := array{"Tuvalu", "Fidji", "Australie", "Nouvelle-Zelande"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_nz }
+                Reponses := array{"Tuvalu", "Nouvelle-Zelande", "Fidji", "Australie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pg }
+                Reponses := array{"Tonga", "Iles Marshall", "Papouasie-Nouvelle-Guinee", "Fidji"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_fj }
+                Reponses := array{"Australie", "Nouvelle-Zelande", "Tuvalu", "Fidji"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sb }
+                Reponses := array{"Iles Salomon", "Vanuatu", "Zimbabwe", "Mozambique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_vu }
+                Reponses := array{"Mozambique", "Zimbabwe", "Vanuatu", "Iles Salomon"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ws }
+                Reponses := array{"Tonga", "Samoa", "Fidji", "Papouasie-Nouvelle-Guinee"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_to }
+                Reponses := array{"Vanuatu", "Samoa", "Tonga", "Micronesie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tv }
+                Reponses := array{"Fidji", "Nouvelle-Zelande", "Australie", "Tuvalu"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ki }
+                Reponses := array{"Nauru", "Iles Marshall", "Palaos", "Kiribati"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_nr }
+                Reponses := array{"Kiribati", "Iles Marshall", "Nauru", "Palaos"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pw }
+                Reponses := array{"Nauru", "Kiribati", "Iles Marshall", "Palaos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_fm }
+                Reponses := array{"Micronesie", "Palaos", "Nauru", "Iles Marshall"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mh }
+                Reponses := array{"Nauru", "Iles Marshall", "Kiribati", "Micronesie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ma }
+                Reponses := array{"Vietnam", "Maroc", "Chine", "Namibie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_dz }
+                Reponses := array{"Algerie", "Turquie", "Pakistan", "Tunisie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tn }
+                Reponses := array{"Tunisie", "Pakistan", "Algerie", "Turquie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ly }
+                Reponses := array{"Libye", "Sao Tome-et-Principe", "Congo", "Centrafrique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_eg }
+                Reponses := array{"Irak", "Yemen", "Soudan", "Egypte"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sd }
+                Reponses := array{"Emirats arabes unis", "Koweit", "Palestine", "Soudan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ss }
+                Reponses := array{"Mozambique", "Comores", "Soudan du Sud", "Djibouti"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_et }
+                Reponses := array{"Lituanie", "Ghana", "Bolivie", "Ethiopie"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_er }
+                Reponses := array{"Burkina Faso", "Erythree", "Tchad", "Tanzanie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_dj }
+                Reponses := array{"Djibouti", "Libye", "Cote d'Ivoire", "Mauritanie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_so }
+                Reponses := array{"Somalie", "Namibie", "Mozambique", "Seychelles"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ke }
+                Reponses := array{"Ouganda", "Rwanda", "Kenya", "Tanzanie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ug }
+                Reponses := array{"Ouganda", "Rwanda", "Tanzanie", "Kenya"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tz }
+                Reponses := array{"Rwanda", "Ouganda", "Tanzanie", "Kenya"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_rw }
+                Reponses := array{"Tanzanie", "Rwanda", "Kenya", "Ouganda"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bi }
+                Reponses := array{"Burundi", "Centrafrique", "Nigeria", "Namibie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cd }
+                Reponses := array{"Congo", "Gabon", "RD Congo", "Guinee equatoriale"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cg }
+                Reponses := array{"Guinee equatoriale", "Congo", "RD Congo", "Gabon"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ga }
+                Reponses := array{"Gabon", "Congo", "RD Congo", "Guinee equatoriale"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gq }
+                Reponses := array{"RD Congo", "Guinee equatoriale", "Gabon", "Congo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cm }
+                Reponses := array{"Burkina Faso", "Cameroun", "Benin", "Mali"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cf }
+                Reponses := array{"Centrafrique", "Gambie", "Libye", "Mali"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_td }
+                Reponses := array{"Allemagne", "Andorre", "Tchad", "Moldavie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ne }
+                Reponses := array{"Italie", "Inde", "Niger", "Irlande"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ng }
+                Reponses := array{"Nigeria", "Rwanda", "Ghana", "Niger"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bj }
+                Reponses := array{"Guinee", "Mali", "Senegal", "Benin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tg }
+                Reponses := array{"Togo", "Malawi", "Afrique du Sud", "Gabon"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gh }
+                Reponses := array{"Mali", "Bolivie", "Ghana", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ci }
+                Reponses := array{"Cote d'Ivoire", "Niger", "Irlande", "Italie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lr }
+                Reponses := array{"Etats-Unis", "Liberia", "Malaisie", "Guinee equatoriale"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sl }
+                Reponses := array{"Djibouti", "Guinee-Bissau", "Sierra Leone", "Gambie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gn }
+                Reponses := array{"Senegal", "Ghana", "Guinee", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gw }
+                Reponses := array{"Rwanda", "Guinee-Bissau", "Liberia", "Djibouti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sn }
+                Reponses := array{"Benin", "Burkina Faso", "Guinee", "Senegal"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gm }
+                Reponses := array{"Malawi", "Gambie", "Rwanda", "Sao Tome-et-Principe"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ml }
+                Reponses := array{"Senegal", "Benin", "Mali", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bf }
+                Reponses := array{"Benin", "Burkina Faso", "Ghana", "Cameroun"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mr }
+                Reponses := array{"Guinee equatoriale", "Burkina Faso", "Mauritanie", "Ethiopie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cv }
+                Reponses := array{"Zimbabwe", "Cap-Vert", "Niger", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_st }
+                Reponses := array{"Nigeria", "Sao Tome-et-Principe", "Somalie", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ao }
+                Reponses := array{"Kenya", "Cameroun", "Seychelles", "Angola"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_zm }
+                Reponses := array{"Zambie", "Egypte", "Ghana", "Libye"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_zw }
+                Reponses := array{"Zimbabwe", "Ghana", "Birmanie", "Vanuatu"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mw }
+                Reponses := array{"Malawi", "Guinee equatoriale", "Djibouti", "Ethiopie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mz }
+                Reponses := array{"Zimbabwe", "Vanuatu", "Mozambique", "Iles Salomon"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mg }
+                Reponses := array{"Ouganda", "Maroc", "Ethiopie", "Madagascar"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_km }
+                Reponses := array{"Tunisie", "Nigeria", "Mozambique", "Comores"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mu }
+                Reponses := array{"Maurice", "Mali", "Ouganda", "Eswatini"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sc }
+                Reponses := array{"Seychelles", "Guinee-Bissau", "Ethiopie", "Angola"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_za }
+                Reponses := array{"Cote d'Ivoire", "Afrique du Sud", "Djibouti", "Madagascar"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_na }
+                Reponses := array{"Botswana", "Eswatini", "Namibie", "Lesotho"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bw }
+                Reponses := array{"Namibie", "Lesotho", "Botswana", "Eswatini"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ls }
+                Reponses := array{"Namibie", "Eswatini", "Botswana", "Lesotho"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sz }
+                Reponses := array{"Lesotho", "Namibie", "Botswana", "Eswatini"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_us }
+                Reponses := array{"Canada", "Malaisie", "Liberia", "Etats-Unis"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ca }
+                Reponses := array{"Mexique", "Etats-Unis", "Canada", "Tunisie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_mx }
+                Reponses := array{"Mexique", "Hongrie", "Bulgarie", "Italie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gt }
+                Reponses := array{"Nicaragua", "Honduras", "Guatemala", "Argentine"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bz }
+                Reponses := array{"Bahamas", "Nicaragua", "Belize", "Panama"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_hn }
+                Reponses := array{"Argentine", "Honduras", "Uruguay", "Salvador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sv }
+                Reponses := array{"Uruguay", "Nicaragua", "Guatemala", "Salvador"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ni }
+                Reponses := array{"Nicaragua", "Argentine", "Guatemala", "Salvador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cr }
+                Reponses := array{"Costa Rica", "Coree du Sud", "Cuba", "Thailande"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pa }
+                Reponses := array{"Jamaique", "Panama", "Costa Rica", "Haiti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bs }
+                Reponses := array{"Barbade", "Bahamas", "Sainte-Lucie", "Saint-Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cu }
+                Reponses := array{"Philippines", "Cuba", "Coree du Sud", "Chili"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_jm }
+                Reponses := array{"Republique dominicaine", "Saint-Kitts-et-Nevis", "Jamaique", "Sainte-Lucie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ht }
+                Reponses := array{"Bahamas", "Costa Rica", "Nicaragua", "Haiti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_do }
+                Reponses := array{"Jamaique", "Republique dominicaine", "Barbade", "Bahamas"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_kn }
+                Reponses := array{"Dominique", "Grenade", "Saint-Kitts-et-Nevis", "Saint-Vincent"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ag }
+                Reponses := array{"Antigua-et-Barbuda", "Saint-Kitts-et-Nevis", "Saint-Vincent", "Grenade"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_dm }
+                Reponses := array{"Grenade", "Sainte-Lucie", "Dominique", "Antigua-et-Barbuda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_lc }
+                Reponses := array{"Antigua-et-Barbuda", "Sainte-Lucie", "Saint-Kitts-et-Nevis", "Saint-Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_vc }
+                Reponses := array{"Grenade", "Dominique", "Saint-Vincent", "Sainte-Lucie"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bb }
+                Reponses := array{"Trinite-et-Tobago", "Barbade", "Costa Rica", "Panama"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gd }
+                Reponses := array{"Grenade", "Saint-Kitts-et-Nevis", "Sainte-Lucie", "Dominique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_tt }
+                Reponses := array{"Trinite-et-Tobago", "Antigua-et-Barbuda", "Costa Rica", "Dominique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_co }
+                Reponses := array{"Venezuela", "Colombie", "Equateur", "Armenie"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ve }
+                Reponses := array{"Armenie", "Venezuela", "Colombie", "Equateur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_gy }
+                Reponses := array{"Paraguay", "Guyana", "Suriname", "Perou"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_sr }
+                Reponses := array{"Suriname", "Guyana", "Paraguay", "Bolivie"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ec }
+                Reponses := array{"Equateur", "Venezuela", "Colombie", "Uruguay"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_pe }
+                Reponses := array{"Bresil", "Colombie", "Bolivie", "Perou"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_br }
+                Reponses := array{"Guyana", "Bresil", "Chili", "Uruguay"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_bo }
+                Reponses := array{"Lituanie", "Ethiopie", "Bolivie", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_py }
+                Reponses := array{"Paraguay", "Suriname", "Guyana", "Equateur"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_uy }
+                Reponses := array{"Argentine", "Grece", "Uruguay", "Nicaragua"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_cl }
+                Reponses := array{"Cuba", "Tchequie", "Philippines", "Chili"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quel est ce pays ? (drapeau pixelise)"
+                Image := option{ flags_pixel.fpx_ar }
+                Reponses := array{"Argentine", "Guatemala", "Nicaragua", "Uruguay"}
+                BonneReponse := 0
 
-    # ===== Banque DRAPEAUX EN (195) — memes tirages/indices que la banque FR =====
+    # ===== Banque DRAPEAUX EN (390) — memes tirages/indices que la banque FR =====
     MakeQuestionsEN() : []question =
         array:
             question:
@@ -5110,8 +5852,983 @@ quiz_manager := class(creative_device):
                 Image := option{ flags.flag_ar }
                 Reponses := array{"Uruguay", "Argentina", "Guatemala", "El Salvador"}
                 BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_fr }
+                Reponses := array{"Russia", "Netherlands", "France", "Luxembourg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_de }
+                Reponses := array{"Germany", "Chad", "Belgium", "Luxembourg"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_it }
+                Reponses := array{"Hungary", "Italy", "Mexico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_es }
+                Reponses := array{"Malta", "Norway", "Spain", "France"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pt }
+                Reponses := array{"San Marino", "Portugal", "Switzerland", "Belgium"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gb }
+                Reponses := array{"Liechtenstein", "United Kingdom", "Germany", "Belgium"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ie }
+                Reponses := array{"Ivory Coast", "Ireland", "Mexico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_be }
+                Reponses := array{"United Kingdom", "Chad", "Germany", "Belgium"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_nl }
+                Reponses := array{"France", "Slovenia", "Croatia", "Netherlands"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lu }
+                Reponses := array{"Netherlands", "Slovakia", "Luxembourg", "Slovenia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ch }
+                Reponses := array{"Finland", "Georgia", "Denmark", "Switzerland"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_at }
+                Reponses := array{"Austria", "Latvia", "Hungary", "Estonia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mc }
+                Reponses := array{"Indonesia", "Monaco", "Poland", "Singapore"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ad }
+                Reponses := array{"Andorra", "Moldova", "Chad", "Romania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_li }
+                Reponses := array{"Liechtenstein", "Netherlands", "Portugal", "Belgium"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sm }
+                Reponses := array{"United Kingdom", "Iceland", "France", "San Marino"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_va }
+                Reponses := array{"Vatican City", "San Marino", "Germany", "Switzerland"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mt }
+                Reponses := array{"Malta", "Denmark", "Norway", "Portugal"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_is }
+                Reponses := array{"Denmark", "Iceland", "Sweden", "Norway"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_no }
+                Reponses := array{"Sweden", "Denmark", "Iceland", "Norway"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_se }
+                Reponses := array{"Norway", "Sweden", "Denmark", "Finland"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_dk }
+                Reponses := array{"Sweden", "Finland", "Switzerland", "Denmark"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_fi }
+                Reponses := array{"Sweden", "Finland", "Iceland", "Denmark"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pl }
+                Reponses := array{"Monaco", "Poland", "Singapore", "Indonesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cz }
+                Reponses := array{"Cuba", "Chile", "Czechia", "Philippines"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sk }
+                Reponses := array{"Slovakia", "Slovenia", "Croatia", "Serbia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_hu }
+                Reponses := array{"Estonia", "Austria", "Latvia", "Hungary"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_si }
+                Reponses := array{"Russia", "Serbia", "Netherlands", "Slovenia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_hr }
+                Reponses := array{"Serbia", "Croatia", "Russia", "Luxembourg"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ba }
+                Reponses := array{"Czechia", "Slovenia", "Bosnia and Herzegovina", "Belarus"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_rs }
+                Reponses := array{"Netherlands", "Slovakia", "Serbia", "Luxembourg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_me }
+                Reponses := array{"Estonia", "Albania", "Slovakia", "Montenegro"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mk }
+                Reponses := array{"Czechia", "Estonia", "North Macedonia", "Lithuania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_al }
+                Reponses := array{"Greece", "North Macedonia", "Albania", "Lithuania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gr }
+                Reponses := array{"Greece", "Uruguay", "Israel", "Lithuania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bg }
+                Reponses := array{"Mexico", "Italy", "Bulgaria", "Hungary"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ro }
+                Reponses := array{"Andorra", "Chad", "Romania", "Moldova"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_md }
+                Reponses := array{"Moldova", "Romania", "Chad", "Andorra"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ua }
+                Reponses := array{"North Macedonia", "Bulgaria", "Estonia", "Ukraine"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_by }
+                Reponses := array{"Albania", "North Macedonia", "Latvia", "Belarus"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ru }
+                Reponses := array{"Slovakia", "France", "Russia", "Netherlands"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ee }
+                Reponses := array{"Estonia", "Hungary", "Latvia", "Austria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lv }
+                Reponses := array{"Austria", "Estonia", "Hungary", "Latvia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lt }
+                Reponses := array{"Lithuania", "Ghana", "Bolivia", "Ethiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cy }
+                Reponses := array{"Greece", "Cyprus", "Hungary", "Albania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tr }
+                Reponses := array{"Pakistan", "Algeria", "Turkey", "Tunisia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_il }
+                Reponses := array{"Bahrain", "Uruguay", "Greece", "Israel"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ps }
+                Reponses := array{"United Arab Emirates", "Iraq", "Yemen", "Palestine"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lb }
+                Reponses := array{"Iran", "Lebanon", "Iraq", "Kuwait"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sy }
+                Reponses := array{"Palestine", "United Arab Emirates", "Syria", "Iraq"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_jo }
+                Reponses := array{"Jordan", "Kuwait", "Yemen", "Sudan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_iq }
+                Reponses := array{"Egypt", "United Arab Emirates", "Palestine", "Iraq"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ir }
+                Reponses := array{"Iran", "Oman", "Jordan", "Armenia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sa }
+                Reponses := array{"Kuwait", "Qatar", "Saudi Arabia", "Oman"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ye }
+                Reponses := array{"Syria", "Jordan", "Yemen", "Iraq"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_om }
+                Reponses := array{"Lebanon", "Iraq", "Azerbaijan", "Oman"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ae }
+                Reponses := array{"United Arab Emirates", "Palestine", "Syria", "Yemen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_qa }
+                Reponses := array{"Bahrain", "Qatar", "Turkey", "United Arab Emirates"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bh }
+                Reponses := array{"Qatar", "Bahrain", "United Arab Emirates", "Palestine"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kw }
+                Reponses := array{"Iraq", "Sudan", "Kuwait", "Jordan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ge }
+                Reponses := array{"Azerbaijan", "Switzerland", "Denmark", "Georgia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_am }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Syria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_az }
+                Reponses := array{"United Arab Emirates", "Uzbekistan", "Turkmenistan", "Azerbaijan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kz }
+                Reponses := array{"Turkmenistan", "Kazakhstan", "Uzbekistan", "Afghanistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_uz }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaijan", "Tajikistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tm }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaijan", "Kyrgyzstan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kg }
+                Reponses := array{"Mongolia", "Turkmenistan", "Kyrgyzstan", "Kazakhstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tj }
+                Reponses := array{"Afghanistan", "Kyrgyzstan", "Tajikistan", "Kazakhstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_af }
+                Reponses := array{"Kyrgyzstan", "Mongolia", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mn }
+                Reponses := array{"Mongolia", "Kyrgyzstan", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cn }
+                Reponses := array{"Vietnam", "Morocco", "China", "Sri Lanka"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_jp }
+                Reponses := array{"Malaysia", "Singapore", "Sri Lanka", "Japan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kr }
+                Reponses := array{"South Korea", "North Korea", "Costa Rica", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kp }
+                Reponses := array{"Cuba", "South Korea", "North Korea", "Costa Rica"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_in }
+                Reponses := array{"India", "Ireland", "Niger", "Ivory Coast"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pk }
+                Reponses := array{"Tunisia", "Turkey", "Pakistan", "Algeria"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bd }
+                Reponses := array{"Laos", "North Korea", "South Korea", "Bangladesh"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lk }
+                Reponses := array{"Sri Lanka", "Singapore", "Laos", "East Timor"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_np }
+                Reponses := array{"China", "Bhutan", "Nepal", "Indonesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bt }
+                Reponses := array{"Japan", "Brunei", "Bhutan", "North Korea"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mv }
+                Reponses := array{"South Korea", "Myanmar", "China", "Maldives"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mm }
+                Reponses := array{"Zimbabwe", "Myanmar", "Ghana", "Thailand"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_th }
+                Reponses := array{"Cambodia", "Costa Rica", "Thailand", "Cuba"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_la }
+                Reponses := array{"Bangladesh", "Thailand", "Cambodia", "Laos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kh }
+                Reponses := array{"Thailand", "Cambodia", "Laos", "Sri Lanka"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_vn }
+                Reponses := array{"Morocco", "China", "Vietnam", "Bhutan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_my }
+                Reponses := array{"Liberia", "Malaysia", "United States", "Pakistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sg }
+                Reponses := array{"Singapore", "Poland", "Monaco", "Indonesia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_id }
+                Reponses := array{"Monaco", "Indonesia", "Poland", "Singapore"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bn }
+                Reponses := array{"Singapore", "Brunei", "Vietnam", "South Korea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ph }
+                Reponses := array{"Philippines", "Czechia", "Chile", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tl }
+                Reponses := array{"Laos", "East Timor", "North Korea", "China"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_au }
+                Reponses := array{"Tuvalu", "Fiji", "Australia", "New Zealand"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_nz }
+                Reponses := array{"Tuvalu", "New Zealand", "Fiji", "Australia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pg }
+                Reponses := array{"Tonga", "Marshall Islands", "Papua New Guinea", "Fiji"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_fj }
+                Reponses := array{"Australia", "New Zealand", "Tuvalu", "Fiji"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sb }
+                Reponses := array{"Solomon Islands", "Vanuatu", "Zimbabwe", "Mozambique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_vu }
+                Reponses := array{"Mozambique", "Zimbabwe", "Vanuatu", "Solomon Islands"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ws }
+                Reponses := array{"Tonga", "Samoa", "Fiji", "Papua New Guinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_to }
+                Reponses := array{"Vanuatu", "Samoa", "Tonga", "Micronesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tv }
+                Reponses := array{"Fiji", "New Zealand", "Australia", "Tuvalu"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ki }
+                Reponses := array{"Nauru", "Marshall Islands", "Palau", "Kiribati"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_nr }
+                Reponses := array{"Kiribati", "Marshall Islands", "Nauru", "Palau"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pw }
+                Reponses := array{"Nauru", "Kiribati", "Marshall Islands", "Palau"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_fm }
+                Reponses := array{"Micronesia", "Palau", "Nauru", "Marshall Islands"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mh }
+                Reponses := array{"Nauru", "Marshall Islands", "Kiribati", "Micronesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ma }
+                Reponses := array{"Vietnam", "Morocco", "China", "Namibia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_dz }
+                Reponses := array{"Algeria", "Turkey", "Pakistan", "Tunisia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tn }
+                Reponses := array{"Tunisia", "Pakistan", "Algeria", "Turkey"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ly }
+                Reponses := array{"Libya", "Sao Tome and Principe", "Congo", "Central African Republic"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_eg }
+                Reponses := array{"Iraq", "Yemen", "Sudan", "Egypt"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sd }
+                Reponses := array{"United Arab Emirates", "Kuwait", "Palestine", "Sudan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ss }
+                Reponses := array{"Mozambique", "Comoros", "South Sudan", "Djibouti"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_et }
+                Reponses := array{"Lithuania", "Ghana", "Bolivia", "Ethiopia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_er }
+                Reponses := array{"Burkina Faso", "Eritrea", "Chad", "Tanzania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_dj }
+                Reponses := array{"Djibouti", "Libya", "Ivory Coast", "Mauritania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_so }
+                Reponses := array{"Somalia", "Namibia", "Mozambique", "Seychelles"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ke }
+                Reponses := array{"Uganda", "Rwanda", "Kenya", "Tanzania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ug }
+                Reponses := array{"Uganda", "Rwanda", "Tanzania", "Kenya"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tz }
+                Reponses := array{"Rwanda", "Uganda", "Tanzania", "Kenya"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_rw }
+                Reponses := array{"Tanzania", "Rwanda", "Kenya", "Uganda"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bi }
+                Reponses := array{"Burundi", "Central African Republic", "Nigeria", "Namibia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cd }
+                Reponses := array{"Congo", "Gabon", "DR Congo", "Equatorial Guinea"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cg }
+                Reponses := array{"Equatorial Guinea", "Congo", "DR Congo", "Gabon"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ga }
+                Reponses := array{"Gabon", "Congo", "DR Congo", "Equatorial Guinea"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gq }
+                Reponses := array{"DR Congo", "Equatorial Guinea", "Gabon", "Congo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cm }
+                Reponses := array{"Burkina Faso", "Cameroon", "Benin", "Mali"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cf }
+                Reponses := array{"Central African Republic", "Gambia", "Libya", "Mali"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_td }
+                Reponses := array{"Germany", "Andorra", "Chad", "Moldova"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ne }
+                Reponses := array{"Italy", "India", "Niger", "Ireland"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ng }
+                Reponses := array{"Nigeria", "Rwanda", "Ghana", "Niger"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bj }
+                Reponses := array{"Guinea", "Mali", "Senegal", "Benin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tg }
+                Reponses := array{"Togo", "Malawi", "South Africa", "Gabon"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gh }
+                Reponses := array{"Mali", "Bolivia", "Ghana", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ci }
+                Reponses := array{"Ivory Coast", "Niger", "Ireland", "Italy"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lr }
+                Reponses := array{"United States", "Liberia", "Malaysia", "Equatorial Guinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sl }
+                Reponses := array{"Djibouti", "Guinea-Bissau", "Sierra Leone", "Gambia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gn }
+                Reponses := array{"Senegal", "Ghana", "Guinea", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gw }
+                Reponses := array{"Rwanda", "Guinea-Bissau", "Liberia", "Djibouti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sn }
+                Reponses := array{"Benin", "Burkina Faso", "Guinea", "Senegal"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gm }
+                Reponses := array{"Malawi", "Gambia", "Rwanda", "Sao Tome and Principe"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ml }
+                Reponses := array{"Senegal", "Benin", "Mali", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bf }
+                Reponses := array{"Benin", "Burkina Faso", "Ghana", "Cameroon"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mr }
+                Reponses := array{"Equatorial Guinea", "Burkina Faso", "Mauritania", "Ethiopia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cv }
+                Reponses := array{"Zimbabwe", "Cape Verde", "Niger", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_st }
+                Reponses := array{"Nigeria", "Sao Tome and Principe", "Somalia", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ao }
+                Reponses := array{"Kenya", "Cameroon", "Seychelles", "Angola"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_zm }
+                Reponses := array{"Zambia", "Egypt", "Ghana", "Libya"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_zw }
+                Reponses := array{"Zimbabwe", "Ghana", "Myanmar", "Vanuatu"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mw }
+                Reponses := array{"Malawi", "Equatorial Guinea", "Djibouti", "Ethiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mz }
+                Reponses := array{"Zimbabwe", "Vanuatu", "Mozambique", "Solomon Islands"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mg }
+                Reponses := array{"Uganda", "Morocco", "Ethiopia", "Madagascar"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_km }
+                Reponses := array{"Tunisia", "Nigeria", "Mozambique", "Comoros"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mu }
+                Reponses := array{"Mauritius", "Mali", "Uganda", "Eswatini"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sc }
+                Reponses := array{"Seychelles", "Guinea-Bissau", "Ethiopia", "Angola"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_za }
+                Reponses := array{"Ivory Coast", "South Africa", "Djibouti", "Madagascar"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_na }
+                Reponses := array{"Botswana", "Eswatini", "Namibia", "Lesotho"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bw }
+                Reponses := array{"Namibia", "Lesotho", "Botswana", "Eswatini"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ls }
+                Reponses := array{"Namibia", "Eswatini", "Botswana", "Lesotho"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sz }
+                Reponses := array{"Lesotho", "Namibia", "Botswana", "Eswatini"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_us }
+                Reponses := array{"Canada", "Malaysia", "Liberia", "United States"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ca }
+                Reponses := array{"Mexico", "United States", "Canada", "Tunisia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_mx }
+                Reponses := array{"Mexico", "Hungary", "Bulgaria", "Italy"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gt }
+                Reponses := array{"Nicaragua", "Honduras", "Guatemala", "Argentina"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bz }
+                Reponses := array{"Bahamas", "Nicaragua", "Belize", "Panama"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_hn }
+                Reponses := array{"Argentina", "Honduras", "Uruguay", "El Salvador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sv }
+                Reponses := array{"Uruguay", "Nicaragua", "Guatemala", "El Salvador"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ni }
+                Reponses := array{"Nicaragua", "Argentina", "Guatemala", "El Salvador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cr }
+                Reponses := array{"Costa Rica", "South Korea", "Cuba", "Thailand"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pa }
+                Reponses := array{"Jamaica", "Panama", "Costa Rica", "Haiti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bs }
+                Reponses := array{"Barbados", "Bahamas", "Saint Lucia", "Saint Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cu }
+                Reponses := array{"Philippines", "Cuba", "South Korea", "Chile"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_jm }
+                Reponses := array{"Dominican Republic", "Saint Kitts and Nevis", "Jamaica", "Saint Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ht }
+                Reponses := array{"Bahamas", "Costa Rica", "Nicaragua", "Haiti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_do }
+                Reponses := array{"Jamaica", "Dominican Republic", "Barbados", "Bahamas"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_kn }
+                Reponses := array{"Dominica", "Grenada", "Saint Kitts and Nevis", "Saint Vincent"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ag }
+                Reponses := array{"Antigua and Barbuda", "Saint Kitts and Nevis", "Saint Vincent", "Grenada"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_dm }
+                Reponses := array{"Grenada", "Saint Lucia", "Dominica", "Antigua and Barbuda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_lc }
+                Reponses := array{"Antigua and Barbuda", "Saint Lucia", "Saint Kitts and Nevis", "Saint Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_vc }
+                Reponses := array{"Grenada", "Dominica", "Saint Vincent", "Saint Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bb }
+                Reponses := array{"Trinidad and Tobago", "Barbados", "Costa Rica", "Panama"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gd }
+                Reponses := array{"Grenada", "Saint Kitts and Nevis", "Saint Lucia", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_tt }
+                Reponses := array{"Trinidad and Tobago", "Antigua and Barbuda", "Costa Rica", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_co }
+                Reponses := array{"Venezuela", "Colombia", "Ecuador", "Armenia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ve }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Ecuador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_gy }
+                Reponses := array{"Paraguay", "Guyana", "Suriname", "Peru"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_sr }
+                Reponses := array{"Suriname", "Guyana", "Paraguay", "Bolivia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ec }
+                Reponses := array{"Ecuador", "Venezuela", "Colombia", "Uruguay"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_pe }
+                Reponses := array{"Brazil", "Colombia", "Bolivia", "Peru"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_br }
+                Reponses := array{"Guyana", "Brazil", "Chile", "Uruguay"}
+                BonneReponse := 1
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_bo }
+                Reponses := array{"Lithuania", "Ethiopia", "Bolivia", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_py }
+                Reponses := array{"Paraguay", "Suriname", "Guyana", "Ecuador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_uy }
+                Reponses := array{"Argentina", "Greece", "Uruguay", "Nicaragua"}
+                BonneReponse := 2
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_cl }
+                Reponses := array{"Cuba", "Czechia", "Philippines", "Chile"}
+                BonneReponse := 3
+            question:
+                Enonce := "Which country is this? (pixelated flag)"
+                Image := option{ flags_pixel.fpx_ar }
+                Reponses := array{"Argentina", "Guatemala", "Nicaragua", "Uruguay"}
+                BonneReponse := 0
 
-    # ===== Banque DRAPEAUX ES (195) — memes tirages/indices que la banque FR =====
+    # ===== Banque DRAPEAUX ES (390) — memes tirages/indices que la banque FR =====
     MakeQuestionsES() : []question =
         array:
             question:
@@ -6089,8 +7806,983 @@ quiz_manager := class(creative_device):
                 Image := option{ flags.flag_ar }
                 Reponses := array{"Uruguay", "Argentina", "Guatemala", "El Salvador"}
                 BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_fr }
+                Reponses := array{"Rusia", "Paises Bajos", "Francia", "Luxemburgo"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_de }
+                Reponses := array{"Alemania", "Chad", "Belgica", "Luxemburgo"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_it }
+                Reponses := array{"Hungria", "Italia", "Mexico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_es }
+                Reponses := array{"Malta", "Noruega", "Espana", "Francia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pt }
+                Reponses := array{"San Marino", "Portugal", "Suiza", "Belgica"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gb }
+                Reponses := array{"Liechtenstein", "Reino Unido", "Alemania", "Belgica"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ie }
+                Reponses := array{"Costa de Marfil", "Irlanda", "Mexico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_be }
+                Reponses := array{"Reino Unido", "Chad", "Alemania", "Belgica"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_nl }
+                Reponses := array{"Francia", "Eslovenia", "Croacia", "Paises Bajos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lu }
+                Reponses := array{"Paises Bajos", "Eslovaquia", "Luxemburgo", "Eslovenia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ch }
+                Reponses := array{"Finlandia", "Georgia", "Dinamarca", "Suiza"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_at }
+                Reponses := array{"Austria", "Letonia", "Hungria", "Estonia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mc }
+                Reponses := array{"Indonesia", "Monaco", "Polonia", "Singapur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ad }
+                Reponses := array{"Andorra", "Moldavia", "Chad", "Rumania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_li }
+                Reponses := array{"Liechtenstein", "Paises Bajos", "Portugal", "Belgica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sm }
+                Reponses := array{"Reino Unido", "Islandia", "Francia", "San Marino"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_va }
+                Reponses := array{"Ciudad del Vaticano", "San Marino", "Alemania", "Suiza"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mt }
+                Reponses := array{"Malta", "Dinamarca", "Noruega", "Portugal"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_is }
+                Reponses := array{"Dinamarca", "Islandia", "Suecia", "Noruega"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_no }
+                Reponses := array{"Suecia", "Dinamarca", "Islandia", "Noruega"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_se }
+                Reponses := array{"Noruega", "Suecia", "Dinamarca", "Finlandia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_dk }
+                Reponses := array{"Suecia", "Finlandia", "Suiza", "Dinamarca"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_fi }
+                Reponses := array{"Suecia", "Finlandia", "Islandia", "Dinamarca"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pl }
+                Reponses := array{"Monaco", "Polonia", "Singapur", "Indonesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cz }
+                Reponses := array{"Cuba", "Chile", "Chequia", "Filipinas"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sk }
+                Reponses := array{"Eslovaquia", "Eslovenia", "Croacia", "Serbia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_hu }
+                Reponses := array{"Estonia", "Austria", "Letonia", "Hungria"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_si }
+                Reponses := array{"Rusia", "Serbia", "Paises Bajos", "Eslovenia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_hr }
+                Reponses := array{"Serbia", "Croacia", "Rusia", "Luxemburgo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ba }
+                Reponses := array{"Chequia", "Eslovenia", "Bosnia y Herzegovina", "Bielorrusia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_rs }
+                Reponses := array{"Paises Bajos", "Eslovaquia", "Serbia", "Luxemburgo"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_me }
+                Reponses := array{"Estonia", "Albania", "Eslovaquia", "Montenegro"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mk }
+                Reponses := array{"Chequia", "Estonia", "Macedonia del Norte", "Lituania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_al }
+                Reponses := array{"Grecia", "Macedonia del Norte", "Albania", "Lituania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gr }
+                Reponses := array{"Grecia", "Uruguay", "Israel", "Lituania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bg }
+                Reponses := array{"Mexico", "Italia", "Bulgaria", "Hungria"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ro }
+                Reponses := array{"Andorra", "Chad", "Rumania", "Moldavia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_md }
+                Reponses := array{"Moldavia", "Rumania", "Chad", "Andorra"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ua }
+                Reponses := array{"Macedonia del Norte", "Bulgaria", "Estonia", "Ucrania"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_by }
+                Reponses := array{"Albania", "Macedonia del Norte", "Letonia", "Bielorrusia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ru }
+                Reponses := array{"Eslovaquia", "Francia", "Rusia", "Paises Bajos"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ee }
+                Reponses := array{"Estonia", "Hungria", "Letonia", "Austria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lv }
+                Reponses := array{"Austria", "Estonia", "Hungria", "Letonia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lt }
+                Reponses := array{"Lituania", "Ghana", "Bolivia", "Etiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cy }
+                Reponses := array{"Grecia", "Chipre", "Hungria", "Albania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tr }
+                Reponses := array{"Pakistan", "Argelia", "Turquia", "Tunez"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_il }
+                Reponses := array{"Barein", "Uruguay", "Grecia", "Israel"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ps }
+                Reponses := array{"Emiratos Arabes Unidos", "Irak", "Yemen", "Palestina"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lb }
+                Reponses := array{"Iran", "Libano", "Irak", "Kuwait"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sy }
+                Reponses := array{"Palestina", "Emiratos Arabes Unidos", "Siria", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_jo }
+                Reponses := array{"Jordania", "Kuwait", "Yemen", "Sudan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_iq }
+                Reponses := array{"Egipto", "Emiratos Arabes Unidos", "Palestina", "Irak"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ir }
+                Reponses := array{"Iran", "Oman", "Jordania", "Armenia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sa }
+                Reponses := array{"Kuwait", "Catar", "Arabia Saudita", "Oman"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ye }
+                Reponses := array{"Siria", "Jordania", "Yemen", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_om }
+                Reponses := array{"Libano", "Irak", "Azerbaiyan", "Oman"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ae }
+                Reponses := array{"Emiratos Arabes Unidos", "Palestina", "Siria", "Yemen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_qa }
+                Reponses := array{"Barein", "Catar", "Turquia", "Emiratos Arabes Unidos"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bh }
+                Reponses := array{"Catar", "Barein", "Emiratos Arabes Unidos", "Palestina"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kw }
+                Reponses := array{"Irak", "Sudan", "Kuwait", "Jordania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ge }
+                Reponses := array{"Azerbaiyan", "Suiza", "Dinamarca", "Georgia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_am }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Siria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_az }
+                Reponses := array{"Emiratos Arabes Unidos", "Uzbekistan", "Turkmenistan", "Azerbaiyan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kz }
+                Reponses := array{"Turkmenistan", "Kazajistan", "Uzbekistan", "Afganistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_uz }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaiyan", "Tayikistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tm }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaiyan", "Kirguistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kg }
+                Reponses := array{"Mongolia", "Turkmenistan", "Kirguistan", "Kazajistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tj }
+                Reponses := array{"Afganistan", "Kirguistan", "Tayikistan", "Kazajistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_af }
+                Reponses := array{"Kirguistan", "Mongolia", "Afganistan", "Turkmenistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mn }
+                Reponses := array{"Mongolia", "Kirguistan", "Afganistan", "Turkmenistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cn }
+                Reponses := array{"Vietnam", "Marruecos", "China", "Sri Lanka"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_jp }
+                Reponses := array{"Malasia", "Singapur", "Sri Lanka", "Japon"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kr }
+                Reponses := array{"Corea del Sur", "Corea del Norte", "Costa Rica", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kp }
+                Reponses := array{"Cuba", "Corea del Sur", "Corea del Norte", "Costa Rica"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_in }
+                Reponses := array{"India", "Irlanda", "Niger", "Costa de Marfil"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pk }
+                Reponses := array{"Tunez", "Turquia", "Pakistan", "Argelia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bd }
+                Reponses := array{"Laos", "Corea del Norte", "Corea del Sur", "Banglades"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lk }
+                Reponses := array{"Sri Lanka", "Singapur", "Laos", "Timor Oriental"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_np }
+                Reponses := array{"China", "Butan", "Nepal", "Indonesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bt }
+                Reponses := array{"Japon", "Brunei", "Butan", "Corea del Norte"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mv }
+                Reponses := array{"Corea del Sur", "Birmania", "China", "Maldivas"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mm }
+                Reponses := array{"Zimbabue", "Birmania", "Ghana", "Tailandia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_th }
+                Reponses := array{"Camboya", "Costa Rica", "Tailandia", "Cuba"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_la }
+                Reponses := array{"Banglades", "Tailandia", "Camboya", "Laos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kh }
+                Reponses := array{"Tailandia", "Camboya", "Laos", "Sri Lanka"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_vn }
+                Reponses := array{"Marruecos", "China", "Vietnam", "Butan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_my }
+                Reponses := array{"Liberia", "Malasia", "Estados Unidos", "Pakistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sg }
+                Reponses := array{"Singapur", "Polonia", "Monaco", "Indonesia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_id }
+                Reponses := array{"Monaco", "Indonesia", "Polonia", "Singapur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bn }
+                Reponses := array{"Singapur", "Brunei", "Vietnam", "Corea del Sur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ph }
+                Reponses := array{"Filipinas", "Chequia", "Chile", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tl }
+                Reponses := array{"Laos", "Timor Oriental", "Corea del Norte", "China"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_au }
+                Reponses := array{"Tuvalu", "Fiyi", "Australia", "Nueva Zelanda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_nz }
+                Reponses := array{"Tuvalu", "Nueva Zelanda", "Fiyi", "Australia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pg }
+                Reponses := array{"Tonga", "Islas Marshall", "Papua Nueva Guinea", "Fiyi"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_fj }
+                Reponses := array{"Australia", "Nueva Zelanda", "Tuvalu", "Fiyi"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sb }
+                Reponses := array{"Islas Salomon", "Vanuatu", "Zimbabue", "Mozambique"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_vu }
+                Reponses := array{"Mozambique", "Zimbabue", "Vanuatu", "Islas Salomon"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ws }
+                Reponses := array{"Tonga", "Samoa", "Fiyi", "Papua Nueva Guinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_to }
+                Reponses := array{"Vanuatu", "Samoa", "Tonga", "Micronesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tv }
+                Reponses := array{"Fiyi", "Nueva Zelanda", "Australia", "Tuvalu"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ki }
+                Reponses := array{"Nauru", "Islas Marshall", "Palaos", "Kiribati"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_nr }
+                Reponses := array{"Kiribati", "Islas Marshall", "Nauru", "Palaos"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pw }
+                Reponses := array{"Nauru", "Kiribati", "Islas Marshall", "Palaos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_fm }
+                Reponses := array{"Micronesia", "Palaos", "Nauru", "Islas Marshall"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mh }
+                Reponses := array{"Nauru", "Islas Marshall", "Kiribati", "Micronesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ma }
+                Reponses := array{"Vietnam", "Marruecos", "China", "Namibia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_dz }
+                Reponses := array{"Argelia", "Turquia", "Pakistan", "Tunez"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tn }
+                Reponses := array{"Tunez", "Pakistan", "Argelia", "Turquia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ly }
+                Reponses := array{"Libia", "Santo Tome y Principe", "Congo", "Republica Centroafricana"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_eg }
+                Reponses := array{"Irak", "Yemen", "Sudan", "Egipto"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sd }
+                Reponses := array{"Emiratos Arabes Unidos", "Kuwait", "Palestina", "Sudan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ss }
+                Reponses := array{"Mozambique", "Comoras", "Sudan del Sur", "Yibuti"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_et }
+                Reponses := array{"Lituania", "Ghana", "Bolivia", "Etiopia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_er }
+                Reponses := array{"Burkina Faso", "Eritrea", "Chad", "Tanzania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_dj }
+                Reponses := array{"Yibuti", "Libia", "Costa de Marfil", "Mauritania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_so }
+                Reponses := array{"Somalia", "Namibia", "Mozambique", "Seychelles"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ke }
+                Reponses := array{"Uganda", "Ruanda", "Kenia", "Tanzania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ug }
+                Reponses := array{"Uganda", "Ruanda", "Tanzania", "Kenia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tz }
+                Reponses := array{"Ruanda", "Uganda", "Tanzania", "Kenia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_rw }
+                Reponses := array{"Tanzania", "Ruanda", "Kenia", "Uganda"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bi }
+                Reponses := array{"Burundi", "Republica Centroafricana", "Nigeria", "Namibia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cd }
+                Reponses := array{"Congo", "Gabon", "RD del Congo", "Guinea Ecuatorial"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cg }
+                Reponses := array{"Guinea Ecuatorial", "Congo", "RD del Congo", "Gabon"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ga }
+                Reponses := array{"Gabon", "Congo", "RD del Congo", "Guinea Ecuatorial"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gq }
+                Reponses := array{"RD del Congo", "Guinea Ecuatorial", "Gabon", "Congo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cm }
+                Reponses := array{"Burkina Faso", "Camerun", "Benin", "Mali"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cf }
+                Reponses := array{"Republica Centroafricana", "Gambia", "Libia", "Mali"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_td }
+                Reponses := array{"Alemania", "Andorra", "Chad", "Moldavia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ne }
+                Reponses := array{"Italia", "India", "Niger", "Irlanda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ng }
+                Reponses := array{"Nigeria", "Ruanda", "Ghana", "Niger"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bj }
+                Reponses := array{"Guinea", "Mali", "Senegal", "Benin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tg }
+                Reponses := array{"Togo", "Malaui", "Sudafrica", "Gabon"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gh }
+                Reponses := array{"Mali", "Bolivia", "Ghana", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ci }
+                Reponses := array{"Costa de Marfil", "Niger", "Irlanda", "Italia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lr }
+                Reponses := array{"Estados Unidos", "Liberia", "Malasia", "Guinea Ecuatorial"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sl }
+                Reponses := array{"Yibuti", "Guinea-Bisau", "Sierra Leona", "Gambia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gn }
+                Reponses := array{"Senegal", "Ghana", "Guinea", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gw }
+                Reponses := array{"Ruanda", "Guinea-Bisau", "Liberia", "Yibuti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sn }
+                Reponses := array{"Benin", "Burkina Faso", "Guinea", "Senegal"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gm }
+                Reponses := array{"Malaui", "Gambia", "Ruanda", "Santo Tome y Principe"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ml }
+                Reponses := array{"Senegal", "Benin", "Mali", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bf }
+                Reponses := array{"Benin", "Burkina Faso", "Ghana", "Camerun"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mr }
+                Reponses := array{"Guinea Ecuatorial", "Burkina Faso", "Mauritania", "Etiopia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cv }
+                Reponses := array{"Zimbabue", "Cabo Verde", "Niger", "Sierra Leona"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_st }
+                Reponses := array{"Nigeria", "Santo Tome y Principe", "Somalia", "Sierra Leona"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ao }
+                Reponses := array{"Kenia", "Camerun", "Seychelles", "Angola"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_zm }
+                Reponses := array{"Zambia", "Egipto", "Ghana", "Libia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_zw }
+                Reponses := array{"Zimbabue", "Ghana", "Birmania", "Vanuatu"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mw }
+                Reponses := array{"Malaui", "Guinea Ecuatorial", "Yibuti", "Etiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mz }
+                Reponses := array{"Zimbabue", "Vanuatu", "Mozambique", "Islas Salomon"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mg }
+                Reponses := array{"Uganda", "Marruecos", "Etiopia", "Madagascar"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_km }
+                Reponses := array{"Tunez", "Nigeria", "Mozambique", "Comoras"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mu }
+                Reponses := array{"Mauricio", "Mali", "Uganda", "Esuatini"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sc }
+                Reponses := array{"Seychelles", "Guinea-Bisau", "Etiopia", "Angola"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_za }
+                Reponses := array{"Costa de Marfil", "Sudafrica", "Yibuti", "Madagascar"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_na }
+                Reponses := array{"Botsuana", "Esuatini", "Namibia", "Lesoto"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bw }
+                Reponses := array{"Namibia", "Lesoto", "Botsuana", "Esuatini"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ls }
+                Reponses := array{"Namibia", "Esuatini", "Botsuana", "Lesoto"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sz }
+                Reponses := array{"Lesoto", "Namibia", "Botsuana", "Esuatini"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_us }
+                Reponses := array{"Canada", "Malasia", "Liberia", "Estados Unidos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ca }
+                Reponses := array{"Mexico", "Estados Unidos", "Canada", "Tunez"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_mx }
+                Reponses := array{"Mexico", "Hungria", "Bulgaria", "Italia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gt }
+                Reponses := array{"Nicaragua", "Honduras", "Guatemala", "Argentina"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bz }
+                Reponses := array{"Bahamas", "Nicaragua", "Belice", "Panama"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_hn }
+                Reponses := array{"Argentina", "Honduras", "Uruguay", "El Salvador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sv }
+                Reponses := array{"Uruguay", "Nicaragua", "Guatemala", "El Salvador"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ni }
+                Reponses := array{"Nicaragua", "Argentina", "Guatemala", "El Salvador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cr }
+                Reponses := array{"Costa Rica", "Corea del Sur", "Cuba", "Tailandia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pa }
+                Reponses := array{"Jamaica", "Panama", "Costa Rica", "Haiti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bs }
+                Reponses := array{"Barbados", "Bahamas", "Santa Lucia", "San Vicente"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cu }
+                Reponses := array{"Filipinas", "Cuba", "Corea del Sur", "Chile"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_jm }
+                Reponses := array{"Republica Dominicana", "San Cristobal y Nieves", "Jamaica", "Santa Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ht }
+                Reponses := array{"Bahamas", "Costa Rica", "Nicaragua", "Haiti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_do }
+                Reponses := array{"Jamaica", "Republica Dominicana", "Barbados", "Bahamas"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_kn }
+                Reponses := array{"Dominica", "Granada", "San Cristobal y Nieves", "San Vicente"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ag }
+                Reponses := array{"Antigua y Barbuda", "San Cristobal y Nieves", "San Vicente", "Granada"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_dm }
+                Reponses := array{"Granada", "Santa Lucia", "Dominica", "Antigua y Barbuda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_lc }
+                Reponses := array{"Antigua y Barbuda", "Santa Lucia", "San Cristobal y Nieves", "San Vicente"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_vc }
+                Reponses := array{"Granada", "Dominica", "San Vicente", "Santa Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bb }
+                Reponses := array{"Trinidad y Tobago", "Barbados", "Costa Rica", "Panama"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gd }
+                Reponses := array{"Granada", "San Cristobal y Nieves", "Santa Lucia", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_tt }
+                Reponses := array{"Trinidad y Tobago", "Antigua y Barbuda", "Costa Rica", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_co }
+                Reponses := array{"Venezuela", "Colombia", "Ecuador", "Armenia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ve }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Ecuador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_gy }
+                Reponses := array{"Paraguay", "Guyana", "Surinam", "Peru"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_sr }
+                Reponses := array{"Surinam", "Guyana", "Paraguay", "Bolivia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ec }
+                Reponses := array{"Ecuador", "Venezuela", "Colombia", "Uruguay"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_pe }
+                Reponses := array{"Brasil", "Colombia", "Bolivia", "Peru"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_br }
+                Reponses := array{"Guyana", "Brasil", "Chile", "Uruguay"}
+                BonneReponse := 1
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_bo }
+                Reponses := array{"Lituania", "Etiopia", "Bolivia", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_py }
+                Reponses := array{"Paraguay", "Surinam", "Guyana", "Ecuador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_uy }
+                Reponses := array{"Argentina", "Grecia", "Uruguay", "Nicaragua"}
+                BonneReponse := 2
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_cl }
+                Reponses := array{"Cuba", "Chequia", "Filipinas", "Chile"}
+                BonneReponse := 3
+            question:
+                Enonce := "Que pais es este? (bandera pixelada)"
+                Image := option{ flags_pixel.fpx_ar }
+                Reponses := array{"Argentina", "Guatemala", "Nicaragua", "Uruguay"}
+                BonneReponse := 0
 
-    # ===== Banque DRAPEAUX DE (195) — memes tirages/indices que la banque FR =====
+    # ===== Banque DRAPEAUX DE (390) — memes tirages/indices que la banque FR =====
     MakeQuestionsDE() : []question =
         array:
             question:
@@ -7068,8 +9760,983 @@ quiz_manager := class(creative_device):
                 Image := option{ flags.flag_ar }
                 Reponses := array{"Uruguay", "Argentinien", "Guatemala", "El Salvador"}
                 BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_fr }
+                Reponses := array{"Russland", "Niederlande", "Frankreich", "Luxemburg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_de }
+                Reponses := array{"Deutschland", "Tschad", "Belgien", "Luxemburg"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_it }
+                Reponses := array{"Ungarn", "Italien", "Mexiko", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_es }
+                Reponses := array{"Malta", "Norwegen", "Spanien", "Frankreich"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pt }
+                Reponses := array{"San Marino", "Portugal", "Schweiz", "Belgien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gb }
+                Reponses := array{"Liechtenstein", "Vereinigtes Koenigreich", "Deutschland", "Belgien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ie }
+                Reponses := array{"Elfenbeinkueste", "Irland", "Mexiko", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_be }
+                Reponses := array{"Vereinigtes Koenigreich", "Tschad", "Deutschland", "Belgien"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_nl }
+                Reponses := array{"Frankreich", "Slowenien", "Kroatien", "Niederlande"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lu }
+                Reponses := array{"Niederlande", "Slowakei", "Luxemburg", "Slowenien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ch }
+                Reponses := array{"Finnland", "Georgien", "Daenemark", "Schweiz"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_at }
+                Reponses := array{"Oesterreich", "Lettland", "Ungarn", "Estland"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mc }
+                Reponses := array{"Indonesien", "Monaco", "Polen", "Singapur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ad }
+                Reponses := array{"Andorra", "Moldau", "Tschad", "Rumaenien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_li }
+                Reponses := array{"Liechtenstein", "Niederlande", "Portugal", "Belgien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sm }
+                Reponses := array{"Vereinigtes Koenigreich", "Island", "Frankreich", "San Marino"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_va }
+                Reponses := array{"Vatikanstadt", "San Marino", "Deutschland", "Schweiz"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mt }
+                Reponses := array{"Malta", "Daenemark", "Norwegen", "Portugal"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_is }
+                Reponses := array{"Daenemark", "Island", "Schweden", "Norwegen"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_no }
+                Reponses := array{"Schweden", "Daenemark", "Island", "Norwegen"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_se }
+                Reponses := array{"Norwegen", "Schweden", "Daenemark", "Finnland"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_dk }
+                Reponses := array{"Schweden", "Finnland", "Schweiz", "Daenemark"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_fi }
+                Reponses := array{"Schweden", "Finnland", "Island", "Daenemark"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pl }
+                Reponses := array{"Monaco", "Polen", "Singapur", "Indonesien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cz }
+                Reponses := array{"Kuba", "Chile", "Tschechien", "Philippinen"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sk }
+                Reponses := array{"Slowakei", "Slowenien", "Kroatien", "Serbien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_hu }
+                Reponses := array{"Estland", "Oesterreich", "Lettland", "Ungarn"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_si }
+                Reponses := array{"Russland", "Serbien", "Niederlande", "Slowenien"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_hr }
+                Reponses := array{"Serbien", "Kroatien", "Russland", "Luxemburg"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ba }
+                Reponses := array{"Tschechien", "Slowenien", "Bosnien und Herzegowina", "Belarus"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_rs }
+                Reponses := array{"Niederlande", "Slowakei", "Serbien", "Luxemburg"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_me }
+                Reponses := array{"Estland", "Albanien", "Slowakei", "Montenegro"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mk }
+                Reponses := array{"Tschechien", "Estland", "Nordmazedonien", "Litauen"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_al }
+                Reponses := array{"Griechenland", "Nordmazedonien", "Albanien", "Litauen"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gr }
+                Reponses := array{"Griechenland", "Uruguay", "Israel", "Litauen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bg }
+                Reponses := array{"Mexiko", "Italien", "Bulgarien", "Ungarn"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ro }
+                Reponses := array{"Andorra", "Tschad", "Rumaenien", "Moldau"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_md }
+                Reponses := array{"Moldau", "Rumaenien", "Tschad", "Andorra"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ua }
+                Reponses := array{"Nordmazedonien", "Bulgarien", "Estland", "Ukraine"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_by }
+                Reponses := array{"Albanien", "Nordmazedonien", "Lettland", "Belarus"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ru }
+                Reponses := array{"Slowakei", "Frankreich", "Russland", "Niederlande"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ee }
+                Reponses := array{"Estland", "Ungarn", "Lettland", "Oesterreich"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lv }
+                Reponses := array{"Oesterreich", "Estland", "Ungarn", "Lettland"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lt }
+                Reponses := array{"Litauen", "Ghana", "Bolivien", "Aethiopien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cy }
+                Reponses := array{"Griechenland", "Zypern", "Ungarn", "Albanien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tr }
+                Reponses := array{"Pakistan", "Algerien", "Tuerkei", "Tunesien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_il }
+                Reponses := array{"Bahrain", "Uruguay", "Griechenland", "Israel"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ps }
+                Reponses := array{"Vereinigte Arabische Emirate", "Irak", "Jemen", "Palaestina"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lb }
+                Reponses := array{"Iran", "Libanon", "Irak", "Kuwait"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sy }
+                Reponses := array{"Palaestina", "Vereinigte Arabische Emirate", "Syrien", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_jo }
+                Reponses := array{"Jordanien", "Kuwait", "Jemen", "Sudan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_iq }
+                Reponses := array{"Aegypten", "Vereinigte Arabische Emirate", "Palaestina", "Irak"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ir }
+                Reponses := array{"Iran", "Oman", "Jordanien", "Armenien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sa }
+                Reponses := array{"Kuwait", "Katar", "Saudi-Arabien", "Oman"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ye }
+                Reponses := array{"Syrien", "Jordanien", "Jemen", "Irak"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_om }
+                Reponses := array{"Libanon", "Irak", "Aserbaidschan", "Oman"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ae }
+                Reponses := array{"Vereinigte Arabische Emirate", "Palaestina", "Syrien", "Jemen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_qa }
+                Reponses := array{"Bahrain", "Katar", "Tuerkei", "Vereinigte Arabische Emirate"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bh }
+                Reponses := array{"Katar", "Bahrain", "Vereinigte Arabische Emirate", "Palaestina"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kw }
+                Reponses := array{"Irak", "Sudan", "Kuwait", "Jordanien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ge }
+                Reponses := array{"Aserbaidschan", "Schweiz", "Daenemark", "Georgien"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_am }
+                Reponses := array{"Armenien", "Venezuela", "Kolumbien", "Syrien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_az }
+                Reponses := array{"Vereinigte Arabische Emirate", "Usbekistan", "Turkmenistan", "Aserbaidschan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kz }
+                Reponses := array{"Turkmenistan", "Kasachstan", "Usbekistan", "Afghanistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_uz }
+                Reponses := array{"Turkmenistan", "Usbekistan", "Aserbaidschan", "Tadschikistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tm }
+                Reponses := array{"Turkmenistan", "Usbekistan", "Aserbaidschan", "Kirgisistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kg }
+                Reponses := array{"Mongolei", "Turkmenistan", "Kirgisistan", "Kasachstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tj }
+                Reponses := array{"Afghanistan", "Kirgisistan", "Tadschikistan", "Kasachstan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_af }
+                Reponses := array{"Kirgisistan", "Mongolei", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mn }
+                Reponses := array{"Mongolei", "Kirgisistan", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cn }
+                Reponses := array{"Vietnam", "Marokko", "China", "Sri Lanka"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_jp }
+                Reponses := array{"Malaysia", "Singapur", "Sri Lanka", "Japan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kr }
+                Reponses := array{"Suedkorea", "Nordkorea", "Costa Rica", "Kuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kp }
+                Reponses := array{"Kuba", "Suedkorea", "Nordkorea", "Costa Rica"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_in }
+                Reponses := array{"Indien", "Irland", "Niger", "Elfenbeinkueste"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pk }
+                Reponses := array{"Tunesien", "Tuerkei", "Pakistan", "Algerien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bd }
+                Reponses := array{"Laos", "Nordkorea", "Suedkorea", "Bangladesch"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lk }
+                Reponses := array{"Sri Lanka", "Singapur", "Laos", "Osttimor"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_np }
+                Reponses := array{"China", "Bhutan", "Nepal", "Indonesien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bt }
+                Reponses := array{"Japan", "Brunei", "Bhutan", "Nordkorea"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mv }
+                Reponses := array{"Suedkorea", "Myanmar", "China", "Malediven"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mm }
+                Reponses := array{"Simbabwe", "Myanmar", "Ghana", "Thailand"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_th }
+                Reponses := array{"Kambodscha", "Costa Rica", "Thailand", "Kuba"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_la }
+                Reponses := array{"Bangladesch", "Thailand", "Kambodscha", "Laos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kh }
+                Reponses := array{"Thailand", "Kambodscha", "Laos", "Sri Lanka"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_vn }
+                Reponses := array{"Marokko", "China", "Vietnam", "Bhutan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_my }
+                Reponses := array{"Liberia", "Malaysia", "Vereinigte Staaten", "Pakistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sg }
+                Reponses := array{"Singapur", "Polen", "Monaco", "Indonesien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_id }
+                Reponses := array{"Monaco", "Indonesien", "Polen", "Singapur"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bn }
+                Reponses := array{"Singapur", "Brunei", "Vietnam", "Suedkorea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ph }
+                Reponses := array{"Philippinen", "Tschechien", "Chile", "Kuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tl }
+                Reponses := array{"Laos", "Osttimor", "Nordkorea", "China"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_au }
+                Reponses := array{"Tuvalu", "Fidschi", "Australien", "Neuseeland"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_nz }
+                Reponses := array{"Tuvalu", "Neuseeland", "Fidschi", "Australien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pg }
+                Reponses := array{"Tonga", "Marshallinseln", "Papua-Neuguinea", "Fidschi"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_fj }
+                Reponses := array{"Australien", "Neuseeland", "Tuvalu", "Fidschi"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sb }
+                Reponses := array{"Salomonen", "Vanuatu", "Simbabwe", "Mosambik"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_vu }
+                Reponses := array{"Mosambik", "Simbabwe", "Vanuatu", "Salomonen"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ws }
+                Reponses := array{"Tonga", "Samoa", "Fidschi", "Papua-Neuguinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_to }
+                Reponses := array{"Vanuatu", "Samoa", "Tonga", "Mikronesien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tv }
+                Reponses := array{"Fidschi", "Neuseeland", "Australien", "Tuvalu"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ki }
+                Reponses := array{"Nauru", "Marshallinseln", "Palau", "Kiribati"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_nr }
+                Reponses := array{"Kiribati", "Marshallinseln", "Nauru", "Palau"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pw }
+                Reponses := array{"Nauru", "Kiribati", "Marshallinseln", "Palau"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_fm }
+                Reponses := array{"Mikronesien", "Palau", "Nauru", "Marshallinseln"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mh }
+                Reponses := array{"Nauru", "Marshallinseln", "Kiribati", "Mikronesien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ma }
+                Reponses := array{"Vietnam", "Marokko", "China", "Namibia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_dz }
+                Reponses := array{"Algerien", "Tuerkei", "Pakistan", "Tunesien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tn }
+                Reponses := array{"Tunesien", "Pakistan", "Algerien", "Tuerkei"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ly }
+                Reponses := array{"Libyen", "Sao Tome und Principe", "Kongo", "Zentralafrikanische Republik"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_eg }
+                Reponses := array{"Irak", "Jemen", "Sudan", "Aegypten"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sd }
+                Reponses := array{"Vereinigte Arabische Emirate", "Kuwait", "Palaestina", "Sudan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ss }
+                Reponses := array{"Mosambik", "Komoren", "Suedsudan", "Dschibuti"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_et }
+                Reponses := array{"Litauen", "Ghana", "Bolivien", "Aethiopien"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_er }
+                Reponses := array{"Burkina Faso", "Eritrea", "Tschad", "Tansania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_dj }
+                Reponses := array{"Dschibuti", "Libyen", "Elfenbeinkueste", "Mauretanien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_so }
+                Reponses := array{"Somalia", "Namibia", "Mosambik", "Seychellen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ke }
+                Reponses := array{"Uganda", "Ruanda", "Kenia", "Tansania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ug }
+                Reponses := array{"Uganda", "Ruanda", "Tansania", "Kenia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tz }
+                Reponses := array{"Ruanda", "Uganda", "Tansania", "Kenia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_rw }
+                Reponses := array{"Tansania", "Ruanda", "Kenia", "Uganda"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bi }
+                Reponses := array{"Burundi", "Zentralafrikanische Republik", "Nigeria", "Namibia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cd }
+                Reponses := array{"Kongo", "Gabun", "DR Kongo", "Aequatorialguinea"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cg }
+                Reponses := array{"Aequatorialguinea", "Kongo", "DR Kongo", "Gabun"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ga }
+                Reponses := array{"Gabun", "Kongo", "DR Kongo", "Aequatorialguinea"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gq }
+                Reponses := array{"DR Kongo", "Aequatorialguinea", "Gabun", "Kongo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cm }
+                Reponses := array{"Burkina Faso", "Kamerun", "Benin", "Mali"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cf }
+                Reponses := array{"Zentralafrikanische Republik", "Gambia", "Libyen", "Mali"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_td }
+                Reponses := array{"Deutschland", "Andorra", "Tschad", "Moldau"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ne }
+                Reponses := array{"Italien", "Indien", "Niger", "Irland"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ng }
+                Reponses := array{"Nigeria", "Ruanda", "Ghana", "Niger"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bj }
+                Reponses := array{"Guinea", "Mali", "Senegal", "Benin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tg }
+                Reponses := array{"Togo", "Malawi", "Suedafrika", "Gabun"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gh }
+                Reponses := array{"Mali", "Bolivien", "Ghana", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ci }
+                Reponses := array{"Elfenbeinkueste", "Niger", "Irland", "Italien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lr }
+                Reponses := array{"Vereinigte Staaten", "Liberia", "Malaysia", "Aequatorialguinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sl }
+                Reponses := array{"Dschibuti", "Guinea-Bissau", "Sierra Leone", "Gambia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gn }
+                Reponses := array{"Senegal", "Ghana", "Guinea", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gw }
+                Reponses := array{"Ruanda", "Guinea-Bissau", "Liberia", "Dschibuti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sn }
+                Reponses := array{"Benin", "Burkina Faso", "Guinea", "Senegal"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gm }
+                Reponses := array{"Malawi", "Gambia", "Ruanda", "Sao Tome und Principe"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ml }
+                Reponses := array{"Senegal", "Benin", "Mali", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bf }
+                Reponses := array{"Benin", "Burkina Faso", "Ghana", "Kamerun"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mr }
+                Reponses := array{"Aequatorialguinea", "Burkina Faso", "Mauretanien", "Aethiopien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cv }
+                Reponses := array{"Simbabwe", "Kap Verde", "Niger", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_st }
+                Reponses := array{"Nigeria", "Sao Tome und Principe", "Somalia", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ao }
+                Reponses := array{"Kenia", "Kamerun", "Seychellen", "Angola"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_zm }
+                Reponses := array{"Sambia", "Aegypten", "Ghana", "Libyen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_zw }
+                Reponses := array{"Simbabwe", "Ghana", "Myanmar", "Vanuatu"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mw }
+                Reponses := array{"Malawi", "Aequatorialguinea", "Dschibuti", "Aethiopien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mz }
+                Reponses := array{"Simbabwe", "Vanuatu", "Mosambik", "Salomonen"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mg }
+                Reponses := array{"Uganda", "Marokko", "Aethiopien", "Madagaskar"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_km }
+                Reponses := array{"Tunesien", "Nigeria", "Mosambik", "Komoren"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mu }
+                Reponses := array{"Mauritius", "Mali", "Uganda", "Eswatini"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sc }
+                Reponses := array{"Seychellen", "Guinea-Bissau", "Aethiopien", "Angola"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_za }
+                Reponses := array{"Elfenbeinkueste", "Suedafrika", "Dschibuti", "Madagaskar"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_na }
+                Reponses := array{"Botswana", "Eswatini", "Namibia", "Lesotho"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bw }
+                Reponses := array{"Namibia", "Lesotho", "Botswana", "Eswatini"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ls }
+                Reponses := array{"Namibia", "Eswatini", "Botswana", "Lesotho"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sz }
+                Reponses := array{"Lesotho", "Namibia", "Botswana", "Eswatini"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_us }
+                Reponses := array{"Kanada", "Malaysia", "Liberia", "Vereinigte Staaten"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ca }
+                Reponses := array{"Mexiko", "Vereinigte Staaten", "Kanada", "Tunesien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_mx }
+                Reponses := array{"Mexiko", "Ungarn", "Bulgarien", "Italien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gt }
+                Reponses := array{"Nicaragua", "Honduras", "Guatemala", "Argentinien"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bz }
+                Reponses := array{"Bahamas", "Nicaragua", "Belize", "Panama"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_hn }
+                Reponses := array{"Argentinien", "Honduras", "Uruguay", "El Salvador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sv }
+                Reponses := array{"Uruguay", "Nicaragua", "Guatemala", "El Salvador"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ni }
+                Reponses := array{"Nicaragua", "Argentinien", "Guatemala", "El Salvador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cr }
+                Reponses := array{"Costa Rica", "Suedkorea", "Kuba", "Thailand"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pa }
+                Reponses := array{"Jamaika", "Panama", "Costa Rica", "Haiti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bs }
+                Reponses := array{"Barbados", "Bahamas", "St. Lucia", "St. Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cu }
+                Reponses := array{"Philippinen", "Kuba", "Suedkorea", "Chile"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_jm }
+                Reponses := array{"Dominikanische Republik", "St. Kitts und Nevis", "Jamaika", "St. Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ht }
+                Reponses := array{"Bahamas", "Costa Rica", "Nicaragua", "Haiti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_do }
+                Reponses := array{"Jamaika", "Dominikanische Republik", "Barbados", "Bahamas"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_kn }
+                Reponses := array{"Dominica", "Grenada", "St. Kitts und Nevis", "St. Vincent"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ag }
+                Reponses := array{"Antigua und Barbuda", "St. Kitts und Nevis", "St. Vincent", "Grenada"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_dm }
+                Reponses := array{"Grenada", "St. Lucia", "Dominica", "Antigua und Barbuda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_lc }
+                Reponses := array{"Antigua und Barbuda", "St. Lucia", "St. Kitts und Nevis", "St. Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_vc }
+                Reponses := array{"Grenada", "Dominica", "St. Vincent", "St. Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bb }
+                Reponses := array{"Trinidad und Tobago", "Barbados", "Costa Rica", "Panama"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gd }
+                Reponses := array{"Grenada", "St. Kitts und Nevis", "St. Lucia", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_tt }
+                Reponses := array{"Trinidad und Tobago", "Antigua und Barbuda", "Costa Rica", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_co }
+                Reponses := array{"Venezuela", "Kolumbien", "Ecuador", "Armenien"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ve }
+                Reponses := array{"Armenien", "Venezuela", "Kolumbien", "Ecuador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_gy }
+                Reponses := array{"Paraguay", "Guyana", "Suriname", "Peru"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_sr }
+                Reponses := array{"Suriname", "Guyana", "Paraguay", "Bolivien"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ec }
+                Reponses := array{"Ecuador", "Venezuela", "Kolumbien", "Uruguay"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_pe }
+                Reponses := array{"Brasilien", "Kolumbien", "Bolivien", "Peru"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_br }
+                Reponses := array{"Guyana", "Brasilien", "Chile", "Uruguay"}
+                BonneReponse := 1
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_bo }
+                Reponses := array{"Litauen", "Aethiopien", "Bolivien", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_py }
+                Reponses := array{"Paraguay", "Suriname", "Guyana", "Ecuador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_uy }
+                Reponses := array{"Argentinien", "Griechenland", "Uruguay", "Nicaragua"}
+                BonneReponse := 2
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_cl }
+                Reponses := array{"Kuba", "Tschechien", "Philippinen", "Chile"}
+                BonneReponse := 3
+            question:
+                Enonce := "Welches Land ist das? (verpixelte Flagge)"
+                Image := option{ flags_pixel.fpx_ar }
+                Reponses := array{"Argentinien", "Guatemala", "Nicaragua", "Uruguay"}
+                BonneReponse := 0
 
-    # ===== Banque DRAPEAUX IT (195) — memes tirages/indices que la banque FR =====
+    # ===== Banque DRAPEAUX IT (390) — memes tirages/indices que la banque FR =====
     MakeQuestionsIT() : []question =
         array:
             question:
@@ -8047,6 +11714,981 @@ quiz_manager := class(creative_device):
                 Image := option{ flags.flag_ar }
                 Reponses := array{"Uruguay", "Argentina", "Guatemala", "El Salvador"}
                 BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_fr }
+                Reponses := array{"Russia", "Paesi Bassi", "Francia", "Lussemburgo"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_de }
+                Reponses := array{"Germania", "Ciad", "Belgio", "Lussemburgo"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_it }
+                Reponses := array{"Ungheria", "Italia", "Messico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_es }
+                Reponses := array{"Malta", "Norvegia", "Spagna", "Francia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pt }
+                Reponses := array{"San Marino", "Portogallo", "Svizzera", "Belgio"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gb }
+                Reponses := array{"Liechtenstein", "Regno Unito", "Germania", "Belgio"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ie }
+                Reponses := array{"Costa d'Avorio", "Irlanda", "Messico", "Niger"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_be }
+                Reponses := array{"Regno Unito", "Ciad", "Germania", "Belgio"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_nl }
+                Reponses := array{"Francia", "Slovenia", "Croazia", "Paesi Bassi"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lu }
+                Reponses := array{"Paesi Bassi", "Slovacchia", "Lussemburgo", "Slovenia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ch }
+                Reponses := array{"Finlandia", "Georgia", "Danimarca", "Svizzera"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_at }
+                Reponses := array{"Austria", "Lettonia", "Ungheria", "Estonia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mc }
+                Reponses := array{"Indonesia", "Monaco", "Polonia", "Singapore"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ad }
+                Reponses := array{"Andorra", "Moldavia", "Ciad", "Romania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_li }
+                Reponses := array{"Liechtenstein", "Paesi Bassi", "Portogallo", "Belgio"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sm }
+                Reponses := array{"Regno Unito", "Islanda", "Francia", "San Marino"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_va }
+                Reponses := array{"Citta del Vaticano", "San Marino", "Germania", "Svizzera"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mt }
+                Reponses := array{"Malta", "Danimarca", "Norvegia", "Portogallo"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_is }
+                Reponses := array{"Danimarca", "Islanda", "Svezia", "Norvegia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_no }
+                Reponses := array{"Svezia", "Danimarca", "Islanda", "Norvegia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_se }
+                Reponses := array{"Norvegia", "Svezia", "Danimarca", "Finlandia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_dk }
+                Reponses := array{"Svezia", "Finlandia", "Svizzera", "Danimarca"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_fi }
+                Reponses := array{"Svezia", "Finlandia", "Islanda", "Danimarca"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pl }
+                Reponses := array{"Monaco", "Polonia", "Singapore", "Indonesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cz }
+                Reponses := array{"Cuba", "Cile", "Cechia", "Filippine"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sk }
+                Reponses := array{"Slovacchia", "Slovenia", "Croazia", "Serbia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_hu }
+                Reponses := array{"Estonia", "Austria", "Lettonia", "Ungheria"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_si }
+                Reponses := array{"Russia", "Serbia", "Paesi Bassi", "Slovenia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_hr }
+                Reponses := array{"Serbia", "Croazia", "Russia", "Lussemburgo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ba }
+                Reponses := array{"Cechia", "Slovenia", "Bosnia ed Erzegovina", "Bielorussia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_rs }
+                Reponses := array{"Paesi Bassi", "Slovacchia", "Serbia", "Lussemburgo"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_me }
+                Reponses := array{"Estonia", "Albania", "Slovacchia", "Montenegro"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mk }
+                Reponses := array{"Cechia", "Estonia", "Macedonia del Nord", "Lituania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_al }
+                Reponses := array{"Grecia", "Macedonia del Nord", "Albania", "Lituania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gr }
+                Reponses := array{"Grecia", "Uruguay", "Israele", "Lituania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bg }
+                Reponses := array{"Messico", "Italia", "Bulgaria", "Ungheria"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ro }
+                Reponses := array{"Andorra", "Ciad", "Romania", "Moldavia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_md }
+                Reponses := array{"Moldavia", "Romania", "Ciad", "Andorra"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ua }
+                Reponses := array{"Macedonia del Nord", "Bulgaria", "Estonia", "Ucraina"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_by }
+                Reponses := array{"Albania", "Macedonia del Nord", "Lettonia", "Bielorussia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ru }
+                Reponses := array{"Slovacchia", "Francia", "Russia", "Paesi Bassi"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ee }
+                Reponses := array{"Estonia", "Ungheria", "Lettonia", "Austria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lv }
+                Reponses := array{"Austria", "Estonia", "Ungheria", "Lettonia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lt }
+                Reponses := array{"Lituania", "Ghana", "Bolivia", "Etiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cy }
+                Reponses := array{"Grecia", "Cipro", "Ungheria", "Albania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tr }
+                Reponses := array{"Pakistan", "Algeria", "Turchia", "Tunisia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_il }
+                Reponses := array{"Bahrein", "Uruguay", "Grecia", "Israele"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ps }
+                Reponses := array{"Emirati Arabi Uniti", "Iraq", "Yemen", "Palestina"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lb }
+                Reponses := array{"Iran", "Libano", "Iraq", "Kuwait"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sy }
+                Reponses := array{"Palestina", "Emirati Arabi Uniti", "Siria", "Iraq"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_jo }
+                Reponses := array{"Giordania", "Kuwait", "Yemen", "Sudan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_iq }
+                Reponses := array{"Egitto", "Emirati Arabi Uniti", "Palestina", "Iraq"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ir }
+                Reponses := array{"Iran", "Oman", "Giordania", "Armenia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sa }
+                Reponses := array{"Kuwait", "Qatar", "Arabia Saudita", "Oman"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ye }
+                Reponses := array{"Siria", "Giordania", "Yemen", "Iraq"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_om }
+                Reponses := array{"Libano", "Iraq", "Azerbaigian", "Oman"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ae }
+                Reponses := array{"Emirati Arabi Uniti", "Palestina", "Siria", "Yemen"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_qa }
+                Reponses := array{"Bahrein", "Qatar", "Turchia", "Emirati Arabi Uniti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bh }
+                Reponses := array{"Qatar", "Bahrein", "Emirati Arabi Uniti", "Palestina"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kw }
+                Reponses := array{"Iraq", "Sudan", "Kuwait", "Giordania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ge }
+                Reponses := array{"Azerbaigian", "Svizzera", "Danimarca", "Georgia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_am }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Siria"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_az }
+                Reponses := array{"Emirati Arabi Uniti", "Uzbekistan", "Turkmenistan", "Azerbaigian"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kz }
+                Reponses := array{"Turkmenistan", "Kazakistan", "Uzbekistan", "Afghanistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_uz }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaigian", "Tagikistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tm }
+                Reponses := array{"Turkmenistan", "Uzbekistan", "Azerbaigian", "Kirghizistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kg }
+                Reponses := array{"Mongolia", "Turkmenistan", "Kirghizistan", "Kazakistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tj }
+                Reponses := array{"Afghanistan", "Kirghizistan", "Tagikistan", "Kazakistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_af }
+                Reponses := array{"Kirghizistan", "Mongolia", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mn }
+                Reponses := array{"Mongolia", "Kirghizistan", "Afghanistan", "Turkmenistan"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cn }
+                Reponses := array{"Vietnam", "Marocco", "Cina", "Sri Lanka"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_jp }
+                Reponses := array{"Malesia", "Singapore", "Sri Lanka", "Giappone"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kr }
+                Reponses := array{"Corea del Sud", "Corea del Nord", "Costa Rica", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kp }
+                Reponses := array{"Cuba", "Corea del Sud", "Corea del Nord", "Costa Rica"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_in }
+                Reponses := array{"India", "Irlanda", "Niger", "Costa d'Avorio"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pk }
+                Reponses := array{"Tunisia", "Turchia", "Pakistan", "Algeria"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bd }
+                Reponses := array{"Laos", "Corea del Nord", "Corea del Sud", "Bangladesh"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lk }
+                Reponses := array{"Sri Lanka", "Singapore", "Laos", "Timor Est"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_np }
+                Reponses := array{"Cina", "Bhutan", "Nepal", "Indonesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bt }
+                Reponses := array{"Giappone", "Brunei", "Bhutan", "Corea del Nord"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mv }
+                Reponses := array{"Corea del Sud", "Birmania", "Cina", "Maldive"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mm }
+                Reponses := array{"Zimbabwe", "Birmania", "Ghana", "Thailandia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_th }
+                Reponses := array{"Cambogia", "Costa Rica", "Thailandia", "Cuba"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_la }
+                Reponses := array{"Bangladesh", "Thailandia", "Cambogia", "Laos"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kh }
+                Reponses := array{"Thailandia", "Cambogia", "Laos", "Sri Lanka"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_vn }
+                Reponses := array{"Marocco", "Cina", "Vietnam", "Bhutan"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_my }
+                Reponses := array{"Liberia", "Malesia", "Stati Uniti", "Pakistan"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sg }
+                Reponses := array{"Singapore", "Polonia", "Monaco", "Indonesia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_id }
+                Reponses := array{"Monaco", "Indonesia", "Polonia", "Singapore"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bn }
+                Reponses := array{"Singapore", "Brunei", "Vietnam", "Corea del Sud"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ph }
+                Reponses := array{"Filippine", "Cechia", "Cile", "Cuba"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tl }
+                Reponses := array{"Laos", "Timor Est", "Corea del Nord", "Cina"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_au }
+                Reponses := array{"Tuvalu", "Figi", "Australia", "Nuova Zelanda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_nz }
+                Reponses := array{"Tuvalu", "Nuova Zelanda", "Figi", "Australia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pg }
+                Reponses := array{"Tonga", "Isole Marshall", "Papua Nuova Guinea", "Figi"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_fj }
+                Reponses := array{"Australia", "Nuova Zelanda", "Tuvalu", "Figi"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sb }
+                Reponses := array{"Isole Salomone", "Vanuatu", "Zimbabwe", "Mozambico"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_vu }
+                Reponses := array{"Mozambico", "Zimbabwe", "Vanuatu", "Isole Salomone"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ws }
+                Reponses := array{"Tonga", "Samoa", "Figi", "Papua Nuova Guinea"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_to }
+                Reponses := array{"Vanuatu", "Samoa", "Tonga", "Micronesia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tv }
+                Reponses := array{"Figi", "Nuova Zelanda", "Australia", "Tuvalu"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ki }
+                Reponses := array{"Nauru", "Isole Marshall", "Palau", "Kiribati"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_nr }
+                Reponses := array{"Kiribati", "Isole Marshall", "Nauru", "Palau"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pw }
+                Reponses := array{"Nauru", "Kiribati", "Isole Marshall", "Palau"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_fm }
+                Reponses := array{"Micronesia", "Palau", "Nauru", "Isole Marshall"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mh }
+                Reponses := array{"Nauru", "Isole Marshall", "Kiribati", "Micronesia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ma }
+                Reponses := array{"Vietnam", "Marocco", "Cina", "Namibia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_dz }
+                Reponses := array{"Algeria", "Turchia", "Pakistan", "Tunisia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tn }
+                Reponses := array{"Tunisia", "Pakistan", "Algeria", "Turchia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ly }
+                Reponses := array{"Libia", "Sao Tome e Principe", "Congo", "Repubblica Centrafricana"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_eg }
+                Reponses := array{"Iraq", "Yemen", "Sudan", "Egitto"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sd }
+                Reponses := array{"Emirati Arabi Uniti", "Kuwait", "Palestina", "Sudan"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ss }
+                Reponses := array{"Mozambico", "Comore", "Sudan del Sud", "Gibuti"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_et }
+                Reponses := array{"Lituania", "Ghana", "Bolivia", "Etiopia"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_er }
+                Reponses := array{"Burkina Faso", "Eritrea", "Ciad", "Tanzania"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_dj }
+                Reponses := array{"Gibuti", "Libia", "Costa d'Avorio", "Mauritania"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_so }
+                Reponses := array{"Somalia", "Namibia", "Mozambico", "Seychelles"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ke }
+                Reponses := array{"Uganda", "Ruanda", "Kenya", "Tanzania"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ug }
+                Reponses := array{"Uganda", "Ruanda", "Tanzania", "Kenya"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tz }
+                Reponses := array{"Ruanda", "Uganda", "Tanzania", "Kenya"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_rw }
+                Reponses := array{"Tanzania", "Ruanda", "Kenya", "Uganda"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bi }
+                Reponses := array{"Burundi", "Repubblica Centrafricana", "Nigeria", "Namibia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cd }
+                Reponses := array{"Congo", "Gabon", "RD Congo", "Guinea Equatoriale"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cg }
+                Reponses := array{"Guinea Equatoriale", "Congo", "RD Congo", "Gabon"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ga }
+                Reponses := array{"Gabon", "Congo", "RD Congo", "Guinea Equatoriale"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gq }
+                Reponses := array{"RD Congo", "Guinea Equatoriale", "Gabon", "Congo"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cm }
+                Reponses := array{"Burkina Faso", "Camerun", "Benin", "Mali"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cf }
+                Reponses := array{"Repubblica Centrafricana", "Gambia", "Libia", "Mali"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_td }
+                Reponses := array{"Germania", "Andorra", "Ciad", "Moldavia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ne }
+                Reponses := array{"Italia", "India", "Niger", "Irlanda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ng }
+                Reponses := array{"Nigeria", "Ruanda", "Ghana", "Niger"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bj }
+                Reponses := array{"Guinea", "Mali", "Senegal", "Benin"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tg }
+                Reponses := array{"Togo", "Malawi", "Sudafrica", "Gabon"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gh }
+                Reponses := array{"Mali", "Bolivia", "Ghana", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ci }
+                Reponses := array{"Costa d'Avorio", "Niger", "Irlanda", "Italia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lr }
+                Reponses := array{"Stati Uniti", "Liberia", "Malesia", "Guinea Equatoriale"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sl }
+                Reponses := array{"Gibuti", "Guinea-Bissau", "Sierra Leone", "Gambia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gn }
+                Reponses := array{"Senegal", "Ghana", "Guinea", "Burkina Faso"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gw }
+                Reponses := array{"Ruanda", "Guinea-Bissau", "Liberia", "Gibuti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sn }
+                Reponses := array{"Benin", "Burkina Faso", "Guinea", "Senegal"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gm }
+                Reponses := array{"Malawi", "Gambia", "Ruanda", "Sao Tome e Principe"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ml }
+                Reponses := array{"Senegal", "Benin", "Mali", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bf }
+                Reponses := array{"Benin", "Burkina Faso", "Ghana", "Camerun"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mr }
+                Reponses := array{"Guinea Equatoriale", "Burkina Faso", "Mauritania", "Etiopia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cv }
+                Reponses := array{"Zimbabwe", "Capo Verde", "Niger", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_st }
+                Reponses := array{"Nigeria", "Sao Tome e Principe", "Somalia", "Sierra Leone"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ao }
+                Reponses := array{"Kenya", "Camerun", "Seychelles", "Angola"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_zm }
+                Reponses := array{"Zambia", "Egitto", "Ghana", "Libia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_zw }
+                Reponses := array{"Zimbabwe", "Ghana", "Birmania", "Vanuatu"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mw }
+                Reponses := array{"Malawi", "Guinea Equatoriale", "Gibuti", "Etiopia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mz }
+                Reponses := array{"Zimbabwe", "Vanuatu", "Mozambico", "Isole Salomone"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mg }
+                Reponses := array{"Uganda", "Marocco", "Etiopia", "Madagascar"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_km }
+                Reponses := array{"Tunisia", "Nigeria", "Mozambico", "Comore"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mu }
+                Reponses := array{"Mauritius", "Mali", "Uganda", "Eswatini"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sc }
+                Reponses := array{"Seychelles", "Guinea-Bissau", "Etiopia", "Angola"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_za }
+                Reponses := array{"Costa d'Avorio", "Sudafrica", "Gibuti", "Madagascar"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_na }
+                Reponses := array{"Botswana", "Eswatini", "Namibia", "Lesotho"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bw }
+                Reponses := array{"Namibia", "Lesotho", "Botswana", "Eswatini"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ls }
+                Reponses := array{"Namibia", "Eswatini", "Botswana", "Lesotho"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sz }
+                Reponses := array{"Lesotho", "Namibia", "Botswana", "Eswatini"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_us }
+                Reponses := array{"Canada", "Malesia", "Liberia", "Stati Uniti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ca }
+                Reponses := array{"Messico", "Stati Uniti", "Canada", "Tunisia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_mx }
+                Reponses := array{"Messico", "Ungheria", "Bulgaria", "Italia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gt }
+                Reponses := array{"Nicaragua", "Honduras", "Guatemala", "Argentina"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bz }
+                Reponses := array{"Bahamas", "Nicaragua", "Belize", "Panama"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_hn }
+                Reponses := array{"Argentina", "Honduras", "Uruguay", "El Salvador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sv }
+                Reponses := array{"Uruguay", "Nicaragua", "Guatemala", "El Salvador"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ni }
+                Reponses := array{"Nicaragua", "Argentina", "Guatemala", "El Salvador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cr }
+                Reponses := array{"Costa Rica", "Corea del Sud", "Cuba", "Thailandia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pa }
+                Reponses := array{"Giamaica", "Panama", "Costa Rica", "Haiti"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bs }
+                Reponses := array{"Barbados", "Bahamas", "Santa Lucia", "Saint Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cu }
+                Reponses := array{"Filippine", "Cuba", "Corea del Sud", "Cile"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_jm }
+                Reponses := array{"Repubblica Dominicana", "Saint Kitts e Nevis", "Giamaica", "Santa Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ht }
+                Reponses := array{"Bahamas", "Costa Rica", "Nicaragua", "Haiti"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_do }
+                Reponses := array{"Giamaica", "Repubblica Dominicana", "Barbados", "Bahamas"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_kn }
+                Reponses := array{"Dominica", "Grenada", "Saint Kitts e Nevis", "Saint Vincent"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ag }
+                Reponses := array{"Antigua e Barbuda", "Saint Kitts e Nevis", "Saint Vincent", "Grenada"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_dm }
+                Reponses := array{"Grenada", "Santa Lucia", "Dominica", "Antigua e Barbuda"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_lc }
+                Reponses := array{"Antigua e Barbuda", "Santa Lucia", "Saint Kitts e Nevis", "Saint Vincent"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_vc }
+                Reponses := array{"Grenada", "Dominica", "Saint Vincent", "Santa Lucia"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bb }
+                Reponses := array{"Trinidad e Tobago", "Barbados", "Costa Rica", "Panama"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gd }
+                Reponses := array{"Grenada", "Saint Kitts e Nevis", "Santa Lucia", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_tt }
+                Reponses := array{"Trinidad e Tobago", "Antigua e Barbuda", "Costa Rica", "Dominica"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_co }
+                Reponses := array{"Venezuela", "Colombia", "Ecuador", "Armenia"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ve }
+                Reponses := array{"Armenia", "Venezuela", "Colombia", "Ecuador"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_gy }
+                Reponses := array{"Paraguay", "Guyana", "Suriname", "Peru"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_sr }
+                Reponses := array{"Suriname", "Guyana", "Paraguay", "Bolivia"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ec }
+                Reponses := array{"Ecuador", "Venezuela", "Colombia", "Uruguay"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_pe }
+                Reponses := array{"Brasile", "Colombia", "Bolivia", "Peru"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_br }
+                Reponses := array{"Guyana", "Brasile", "Cile", "Uruguay"}
+                BonneReponse := 1
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_bo }
+                Reponses := array{"Lituania", "Etiopia", "Bolivia", "Ghana"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_py }
+                Reponses := array{"Paraguay", "Suriname", "Guyana", "Ecuador"}
+                BonneReponse := 0
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_uy }
+                Reponses := array{"Argentina", "Grecia", "Uruguay", "Nicaragua"}
+                BonneReponse := 2
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_cl }
+                Reponses := array{"Cuba", "Cechia", "Filippine", "Cile"}
+                BonneReponse := 3
+            question:
+                Enonce := "Quale paese e questo? (bandiera pixelata)"
+                Image := option{ flags_pixel.fpx_ar }
+                Reponses := array{"Argentina", "Guatemala", "Nicaragua", "Uruguay"}
+                BonneReponse := 0
 
     # Palier de chaque question capitale (aligne sur MakeCapitalQuestions) — GENERE.
     CapDiff : []int = array{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 2, 1, 2, 2, 2, 0, 1, 1, 2, 0, 1, 0, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0, 1, 0, 1, 1, 2, 1, 2, 2, 2, 0, 2, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 1, 0, 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 0, 1, 0, 2, 2, 2, 2, 2, 1, 1, 2, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 0, 1, 2, 2, 1, 1, 0}

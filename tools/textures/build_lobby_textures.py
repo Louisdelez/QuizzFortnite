@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ============================================================
-#  build_lobby_textures.py — Textures du LOBBY "Selection du Quizz"
+#  build_lobby.py — Textures du LOBBY "Selection du Quizz"
 #  Reproduction EXACTE du design (docs/design/lobby-design.css) :
 #  degrades, verres translucides (blanc a faible alpha + bordure),
 #  anneaux de selection (blancs => teintes en Verse), pointilles.
@@ -9,7 +9,7 @@
 # ============================================================
 import struct, zlib, os, math
 
-OUT = "D:/QuizzFortnite/assets/lobby_textures"
+OUT = "D:/QuizzFortnite/assets/lobby"
 os.makedirs(OUT, exist_ok=True)
 
 # ---- Tokens du design (styles.css / lobby.css) ----

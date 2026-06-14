@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # ============================================================
-#  build_results_textures.py — Ecran "Fin de Quizz - Resultats"
+#  build_resultats.py — Ecran "Fin de Quizz - Resultats"
 #  Reproduction EXACTE du design (docs/design/end-quiz.css).
-#  Textures cuites (degrades/verres/anneaux) -> results_textures/
+#  Textures cuites (degrades/verres/anneaux) -> resultats/
 #  a importer dans Content/HUD (namespace Verse `HUD.`).
 # ============================================================
 import os, math
 from PIL import Image, ImageDraw
 
-OUT = "D:/QuizzFortnite/assets/results_textures"
+OUT = "D:/QuizzFortnite/assets/resultats"
 os.makedirs(OUT, exist_ok=True)
 SS = 4
 

@@ -34,10 +34,10 @@ python banks/build_flags_pixel.py  # drapeaux pixelisés (source : assets/flags/
 ## 🎨 textures/ — interface
 
 ```bash
-python textures/build_hud_textures.py      # panneaux arrondis du HUD
-python textures/build_lobby_textures.py    # lobby
-python textures/build_rank_textures.py     # 18 emblèmes de rangs
-python textures/build_results_textures.py  # écran de fin
+python textures/build_jeu.py      # panneaux arrondis du HUD
+python textures/build_lobby.py    # lobby
+python textures/build_rangs.py     # 18 emblèmes de rangs
+python textures/build_resultats.py  # écran de fin
 python textures/build_icons.py             # icônes Lucide (cache lucide_svgs/)
 python textures/build_sfx.py               # effets sonores
 ```

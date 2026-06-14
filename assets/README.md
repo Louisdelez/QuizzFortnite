@@ -46,10 +46,10 @@ Voir le pipeline complet dans [`../STRUCTURE.md`](../STRUCTURE.md).
 
 | Dossier `assets/` | Usage | Généré par |
 |-------------------|-------|------------|
-| `hud_textures/`     | Panneaux arrondis du HUD                 | `tools/textures/build_hud_textures.py` |
-| `lobby_textures/`   | Lobby (sélection de quiz)                | `tools/textures/build_lobby_textures.py` |
-| `rank_textures/`    | Emblèmes des 18 rangs                    | `tools/textures/build_rank_textures.py` |
-| `results_textures/` | Écran de fin (podium, stats)             | `tools/textures/build_results_textures.py` |
+| `jeu/`     | Panneaux arrondis du HUD                 | `tools/textures/build_jeu.py` |
+| `lobby/`   | Lobby (sélection de quiz)                | `tools/textures/build_lobby.py` |
+| `rangs/`    | Emblèmes des 18 rangs                    | `tools/textures/build_rangs.py` |
+| `resultats/` | Écran de fin (podium, stats)             | `tools/textures/build_resultats.py` |
 | `icons/`            | Icônes lobby/menu + drapeaux de langue   | `tools/textures/build_icons.py`, `build_lang_flags.py` |
 | `sfx/`              | Effets sonores                           | `tools/textures/build_sfx.py` |
 

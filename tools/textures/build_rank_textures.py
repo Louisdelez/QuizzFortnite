@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # ============================================================
-#  build_rank_textures.py — 18 emblemes de rang (systeme Fortnite)
+#  build_rangs.py — 18 emblemes de rang (systeme Fortnite)
 #  Bronze I-III, Argent I-III, Or I-III, Platine I-III,
 #  Diamant I-III, Elite, Champion, Irreel.
 #  Emblemes ORIGINAUX reprenant l'identite couleur des rangs
 #  officiels (les vrais assets Epic ne sont pas importables).
 #  Badge hexagonal metallique + pips de division. 128x128 RGBA.
-#  Sortie : rank_textures/rank_00.png .. rank_17.png
+#  Sortie : rangs/rank_00.png .. rank_17.png
 # ============================================================
 import os, math
 from PIL import Image, ImageDraw
 
-OUT = "D:/QuizzFortnite/assets/rank_textures"
+OUT = "D:/QuizzFortnite/assets/rangs"
 os.makedirs(OUT, exist_ok=True)
 SS = 4
 S = 128 * SS
