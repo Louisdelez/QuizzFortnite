@@ -14,24 +14,41 @@
   de la map (`SpawnProp`), détection par position, UI, score… tout est en code.
 - **Génération procédurale** — la map s'allonge automatiquement selon la taille de la banque de questions.
 - **Architecture pro modulaire** — un fichier `.verse` par responsabilité.
+- **Lobby de sélection** — choix du **quizz**, de la **difficulté** (Facile / Moyen / Difficile) et de
+  la **langue**, au pixel près d'une maquette dédiée.
+- **5 langues** — FR / EN / ES / DE / IT : UI **et** questions/réponses traduites, chaque joueur dans sa langue.
 - **Multijoueur** — état indépendant par joueur (score, progression, série).
-- **UI Verse** — question, 4 réponses colorées, score, **chronomètre**, **feedback Correct/Faux/Timeout**, **classement final partagé**.
+- **UI Verse** — question, 4 réponses colorées, score, **chronomètre**, **feedback Correct/Faux/Timeout**.
+- **Rangs persistants** — 18 paliers sauvegardés entre les sessions, emblèmes dédiés.
+- **Écran de résultats** — podium, classement partagé, stats, gains de rang.
 - **Scoring riche** — points par question + **combo** (série) + **bonus de rapidité**.
-- **Outils** — un générateur Python qui prévisualise la map et produit la géométrie 3D importable.
+- **Outils** — générateurs Python : banques de questions multilingues, textures d'UI, géométrie 3D de la map.
+
+> 🚧 **État du contenu (refonte en cours, 2026-06) :** 6 quizz **actifs**, chacun à 3 difficultés
+> (25 questions au hasard par partie) : **Drapeaux du monde**, **Pays sur carte**, **Capitales du monde**
+> (195 pays) ; **Drapeaux des départements** & **Départements sur carte** (101 dép. FR, métropole + DOM) ;
+> **Culture Générale** (900 questions texte, universelles). Pour les quizz à image, le palier Difficile
+> montre l'image **pixelisée** ; les quizz texte graduent par difficulté. Tout est jouable en **5 langues**
+> (FR/EN/ES/DE/IT). Les autres quizz du dépôt sont **dormants**.
 
 ## 📁 Structure du dépôt
 
 ```
-verse/      Le code Verse du quiz (cœur du projet) — 7 modules
-docs/       Documentation complète et hiérarchisée (00 → 08)
-tools/      Générateurs Python (aperçu, géométrie OBJ, script éditeur, MCP)
+verse/      Le code Verse du quiz (cœur) — 7 modules moteur + ~35 banques (1 active, le reste dormant)  [tracké]
+tools/      Générateurs Python — lib/ banks/ textures/ map/                              [tracké]
+assets/     Images / audio / 3D GÉNÉRÉS (staging d'import UEFN)                           [gitignoré]
+docs/       Documentation hiérarchisée (00 → 08) + design/                               [tracké]
+maps/       Le vrai projet UEFN local                                                    [gitignoré]
 ```
+
+> 🗺️ **Carte complète + pipeline de build + contraintes :** [`STRUCTURE.md`](./STRUCTURE.md).
 
 | Dossier | Contenu |
 |---------|---------|
-| [`verse/`](./verse) | Code Verse prêt à l'emploi (`quiz_manager`, `map_builder`, `quiz_hud`, …). Voir [`verse/README.md`](./verse/README.md). |
+| [`verse/`](./verse) | Code Verse prêt à l'emploi (`quiz_manager`, `map_builder`, `quiz_hud`, …) + banques `*_bank.verse`. Voir [`verse/README.md`](./verse/README.md). |
+| [`tools/`](./tools) | Générateurs Python rangés en `lib/`, `banks/`, `textures/`, `map/`. Voir [`tools/README.md`](./tools/README.md). |
+| [`assets/`](./assets) | Médias générés (gitignorés, régénérables). Manifeste : [`assets/README.md`](./assets/README.md). |
 | [`docs/`](./docs) | Guide complet : prérequis, conception, **architecture Verse**, génération, création hors UEFN, tests, publication. Voir [`docs/README.md`](./docs/README.md). |
-| [`tools/`](./tools) | `generate_quiz.py`, `build_map_obj.py`, `build_map.py`, exemple MCP. Voir [`tools/README.md`](./tools/README.md). |
 
 ## 🚀 Démarrage rapide
 

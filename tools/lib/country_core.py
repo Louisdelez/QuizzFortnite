@@ -1,0 +1,101 @@
+# Table pays partagée (extraite de build_flags.py) :
+# C = [(iso2, nom_fr_ascii, region, palier 0/1/2), ...] — 195 pays.
+# Utilisée par build_carte.py (et réutilisable par d'autres quizz géo).
+
+C = [
+    ("fr", "France", "EUR_W", 0), ("de", "Allemagne", "EUR_W", 0), ("it", "Italie", "EUR_W", 0),
+    ("es", "Espagne", "EUR_W", 0), ("pt", "Portugal", "EUR_W", 0), ("gb", "Royaume-Uni", "EUR_W", 0),
+    ("ie", "Irlande", "EUR_W", 0), ("be", "Belgique", "EUR_W", 0), ("nl", "Pays-Bas", "EUR_W", 0),
+    ("lu", "Luxembourg", "EUR_W", 1), ("ch", "Suisse", "EUR_W", 0), ("at", "Autriche", "EUR_W", 0),
+    ("mc", "Monaco", "EUR_W", 1), ("ad", "Andorre", "EUR_W", 2), ("li", "Liechtenstein", "EUR_W", 2),
+    ("sm", "Saint-Marin", "EUR_W", 2), ("va", "Vatican", "EUR_W", 1), ("mt", "Malte", "EUR_W", 1),
+    ("is", "Islande", "EUR_W", 1), ("no", "Norvege", "EUR_W", 0), ("se", "Suede", "EUR_W", 0),
+    ("dk", "Danemark", "EUR_W", 0), ("fi", "Finlande", "EUR_W", 0),
+    ("pl", "Pologne", "EUR_E", 0), ("cz", "Tchequie", "EUR_E", 1), ("sk", "Slovaquie", "EUR_E", 2),
+    ("hu", "Hongrie", "EUR_E", 1), ("si", "Slovenie", "EUR_E", 2), ("hr", "Croatie", "EUR_E", 1),
+    ("ba", "Bosnie-Herzegovine", "EUR_E", 2), ("rs", "Serbie", "EUR_E", 1), ("me", "Montenegro", "EUR_E", 2),
+    ("mk", "Macedoine du Nord", "EUR_E", 2), ("al", "Albanie", "EUR_E", 1), ("gr", "Grece", "EUR_E", 0),
+    ("bg", "Bulgarie", "EUR_E", 1), ("ro", "Roumanie", "EUR_E", 1), ("md", "Moldavie", "EUR_E", 2),
+    ("ua", "Ukraine", "EUR_E", 0), ("by", "Bielorussie", "EUR_E", 1), ("ru", "Russie", "EUR_E", 0),
+    ("ee", "Estonie", "EUR_E", 1), ("lv", "Lettonie", "EUR_E", 1), ("lt", "Lituanie", "EUR_E", 1),
+    ("cy", "Chypre", "EUR_E", 2),
+    ("tr", "Turquie", "MEAST", 0), ("il", "Israel", "MEAST", 0), ("ps", "Palestine", "MEAST", 1),
+    ("lb", "Liban", "MEAST", 1), ("sy", "Syrie", "MEAST", 1), ("jo", "Jordanie", "MEAST", 2),
+    ("iq", "Irak", "MEAST", 1), ("ir", "Iran", "MEAST", 1), ("sa", "Arabie saoudite", "MEAST", 0),
+    ("ye", "Yemen", "MEAST", 2), ("om", "Oman", "MEAST", 2), ("ae", "Emirats arabes unis", "MEAST", 1),
+    ("qa", "Qatar", "MEAST", 1), ("bh", "Bahrein", "MEAST", 2), ("kw", "Koweit", "MEAST", 1),
+    ("ge", "Georgie", "MEAST", 2), ("am", "Armenie", "MEAST", 2), ("az", "Azerbaidjan", "MEAST", 2),
+    ("kz", "Kazakhstan", "ASIA_C", 1), ("uz", "Ouzbekistan", "ASIA_C", 2), ("tm", "Turkmenistan", "ASIA_C", 2),
+    ("kg", "Kirghizistan", "ASIA_C", 2), ("tj", "Tadjikistan", "ASIA_C", 2), ("af", "Afghanistan", "ASIA_C", 1),
+    ("mn", "Mongolie", "ASIA_C", 1),
+    ("cn", "Chine", "ASIA", 0), ("jp", "Japon", "ASIA", 0), ("kr", "Coree du Sud", "ASIA", 0),
+    ("kp", "Coree du Nord", "ASIA", 1), ("in", "Inde", "ASIA", 0), ("pk", "Pakistan", "ASIA", 1),
+    ("bd", "Bangladesh", "ASIA", 1), ("lk", "Sri Lanka", "ASIA", 2), ("np", "Nepal", "ASIA", 1),
+    ("bt", "Bhoutan", "ASIA", 2), ("mv", "Maldives", "ASIA", 2), ("mm", "Birmanie", "ASIA", 2),
+    ("th", "Thailande", "ASIA", 0), ("la", "Laos", "ASIA", 2), ("kh", "Cambodge", "ASIA", 1),
+    ("vn", "Vietnam", "ASIA", 0), ("my", "Malaisie", "ASIA", 1), ("sg", "Singapour", "ASIA", 1),
+    ("id", "Indonesie", "ASIA", 1), ("bn", "Brunei", "ASIA", 2), ("ph", "Philippines", "ASIA", 1),
+    ("tl", "Timor oriental", "ASIA", 2),
+    ("au", "Australie", "OCE", 0), ("nz", "Nouvelle-Zelande", "OCE", 0),
+    ("pg", "Papouasie-Nouvelle-Guinee", "OCE", 2), ("fj", "Fidji", "OCE", 2),
+    ("sb", "Iles Salomon", "OCE", 2), ("vu", "Vanuatu", "OCE", 2), ("ws", "Samoa", "OCE", 2),
+    ("to", "Tonga", "OCE", 2), ("tv", "Tuvalu", "OCE", 2), ("ki", "Kiribati", "OCE", 2),
+    ("nr", "Nauru", "OCE", 2), ("pw", "Palaos", "OCE", 2), ("fm", "Micronesie", "OCE", 2),
+    ("mh", "Iles Marshall", "OCE", 2),
+    ("ma", "Maroc", "AFR", 0), ("dz", "Algerie", "AFR", 0), ("tn", "Tunisie", "AFR", 0),
+    ("ly", "Libye", "AFR", 1), ("eg", "Egypte", "AFR", 0), ("sd", "Soudan", "AFR", 2),
+    ("ss", "Soudan du Sud", "AFR", 2), ("et", "Ethiopie", "AFR", 1), ("er", "Erythree", "AFR", 2),
+    ("dj", "Djibouti", "AFR", 2), ("so", "Somalie", "AFR", 1), ("ke", "Kenya", "AFR", 1),
+    ("ug", "Ouganda", "AFR", 2), ("tz", "Tanzanie", "AFR", 1), ("rw", "Rwanda", "AFR", 2),
+    ("bi", "Burundi", "AFR", 2), ("cd", "RD Congo", "AFR", 1), ("cg", "Congo", "AFR", 2),
+    ("ga", "Gabon", "AFR", 2), ("gq", "Guinee equatoriale", "AFR", 2), ("cm", "Cameroun", "AFR", 1),
+    ("cf", "Centrafrique", "AFR", 2), ("td", "Tchad", "AFR", 2), ("ne", "Niger", "AFR", 2),
+    ("ng", "Nigeria", "AFR", 1), ("bj", "Benin", "AFR", 2), ("tg", "Togo", "AFR", 2),
+    ("gh", "Ghana", "AFR", 1), ("ci", "Cote d'Ivoire", "AFR", 1), ("lr", "Liberia", "AFR", 2),
+    ("sl", "Sierra Leone", "AFR", 2), ("gn", "Guinee", "AFR", 2), ("gw", "Guinee-Bissau", "AFR", 2),
+    ("sn", "Senegal", "AFR", 1), ("gm", "Gambie", "AFR", 2), ("ml", "Mali", "AFR", 1),
+    ("bf", "Burkina Faso", "AFR", 2), ("mr", "Mauritanie", "AFR", 2), ("cv", "Cap-Vert", "AFR", 2),
+    ("st", "Sao Tome-et-Principe", "AFR", 2), ("ao", "Angola", "AFR", 1), ("zm", "Zambie", "AFR", 2),
+    ("zw", "Zimbabwe", "AFR", 1), ("mw", "Malawi", "AFR", 2), ("mz", "Mozambique", "AFR", 2),
+    ("mg", "Madagascar", "AFR", 1), ("km", "Comores", "AFR", 2), ("mu", "Maurice", "AFR", 2),
+    ("sc", "Seychelles", "AFR", 2), ("za", "Afrique du Sud", "AFR", 0), ("na", "Namibie", "AFR", 2),
+    ("bw", "Botswana", "AFR", 2), ("ls", "Lesotho", "AFR", 2), ("sz", "Eswatini", "AFR", 2),
+    ("us", "Etats-Unis", "AMER_N", 0), ("ca", "Canada", "AMER_N", 0), ("mx", "Mexique", "AMER_N", 0),
+    ("gt", "Guatemala", "AMER_C", 2), ("bz", "Belize", "AMER_C", 2), ("hn", "Honduras", "AMER_C", 2),
+    ("sv", "Salvador", "AMER_C", 2), ("ni", "Nicaragua", "AMER_C", 2), ("cr", "Costa Rica", "AMER_C", 1),
+    ("pa", "Panama", "AMER_C", 1), ("bs", "Bahamas", "AMER_C", 2), ("cu", "Cuba", "AMER_C", 0),
+    ("jm", "Jamaique", "AMER_C", 1), ("ht", "Haiti", "AMER_C", 1), ("do", "Republique dominicaine", "AMER_C", 1),
+    ("kn", "Saint-Kitts-et-Nevis", "AMER_C", 2), ("ag", "Antigua-et-Barbuda", "AMER_C", 2),
+    ("dm", "Dominique", "AMER_C", 2), ("lc", "Sainte-Lucie", "AMER_C", 2), ("vc", "Saint-Vincent", "AMER_C", 2),
+    ("bb", "Barbade", "AMER_C", 2), ("gd", "Grenade", "AMER_C", 2), ("tt", "Trinite-et-Tobago", "AMER_C", 2),
+    ("co", "Colombie", "AMER_S", 1), ("ve", "Venezuela", "AMER_S", 1), ("gy", "Guyana", "AMER_S", 2),
+    ("sr", "Suriname", "AMER_S", 2), ("ec", "Equateur", "AMER_S", 1), ("pe", "Perou", "AMER_S", 1),
+    ("br", "Bresil", "AMER_S", 0), ("bo", "Bolivie", "AMER_S", 1), ("py", "Paraguay", "AMER_S", 2),
+    ("uy", "Uruguay", "AMER_S", 1), ("cl", "Chili", "AMER_S", 1), ("ar", "Argentine", "AMER_S", 0),
+]
+assert len(C) == 195, len(C)
+NAME = {iso: n for iso, n, _, _ in C}
+REGION = {iso: r for iso, _, r, _ in C}
+TIER = {iso: t for iso, _, _, t in C}
+
+# Palier FACILE partagé : ~65 pays communs / connus (drapeau ET silhouette).
+# Sert aux quizz géo à 3 difficultés (build_flags.py, build_carte.py) :
+#   FACILE = pays de EASY (image normale), MOYEN = le reste (image normale),
+#   DIFFICILE = les 195 pays (image pixelisée).
+EASY = {
+    # Europe de l'Ouest / Nord
+    "fr", "de", "it", "es", "pt", "gb", "ie", "be", "nl", "ch", "at",
+    "no", "se", "dk", "fi", "mc", "va", "is",
+    # Europe de l'Est / Balkans
+    "pl", "gr", "ua", "ru", "cz", "hu", "hr", "rs", "ro",
+    # Moyen-Orient
+    "tr", "il", "ps", "sa", "ir", "ae", "qa",
+    # Asie
+    "cn", "jp", "kr", "kp", "in", "pk", "th", "vn", "id", "sg", "my", "ph",
+    # Oceanie
+    "au", "nz",
+    # Afrique
+    "ma", "dz", "tn", "eg", "za", "ng", "ke",
+    # Ameriques
+    "us", "ca", "mx", "br", "ar", "co", "ve", "pe", "cl", "cu", "jm",
+}

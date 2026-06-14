@@ -1,9 +1,9 @@
-# ── Fichiers generes par les outils tools/ (regenerables) ──
-tools/layout.json
-tools/placement_manifest.json
-tools/quiz_map.obj
-tools/quiz_map.mtl
-tools/*.verse.txt
+# ── Fichiers generes par les outils tools/ (regenerables, ou qu'ils soient) ──
+tools/**/layout.json
+tools/**/placement_manifest.json
+tools/**/quiz_map.obj
+tools/**/quiz_map.mtl
+tools/**/*.verse.txt
 
 # ── Config locale MCP + serveur tiers cloné (ne pas committer) ──
 .mcp.json
@@ -35,35 +35,9 @@ Build/
 *.tmp
 
 # ── Assets générés (images / audio / 3D) — régénérables par tools/, lourds, certains sous licence tierce ──
-animaux/
-athletes/
-botanique/
-carte/
-celebrites/
-clubs/
-dragonball/
-espace/
-flags/
-flags_pixel/
-hud_textures/
-icons/
-jeuxvideo/
-lobby_textures/
-logos/
-monuments/
-music/
-mytho/
-naruto/
-onepiece/
-persos/
-pokemon/
-pokemon_manquants/
-rank_textures/
-regions/
-results_textures/
-series/
-sfx/
-tableaux/
+# Tout le contenu de assets/ est ignoré SAUF son manifeste documentaire.
+assets/*
+!assets/README.md
 *.glb
 SSL_CERT_FILE_backup.txt
 tools/_*

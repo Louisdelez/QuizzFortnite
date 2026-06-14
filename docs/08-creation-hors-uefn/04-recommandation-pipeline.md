@@ -48,7 +48,7 @@ Le chemin le plus court et fiable pour avoir ta map **créée à l'avance par mo
 
 1. Active le **Python editor scripting** (bêta) dans UEFN.
 2. Importe le mesh une fois.
-3. Lance **`tools/build_map.py`** → place le mesh + tous les **repères** automatiquement.
+3. Lance **`tools/map/build_map.py`** → place le mesh + tous les **repères** automatiquement.
 4. (option **MCP**) connecte le serveur MCP → **je pilote** le placement en direct.
 - 📖 [`03-python-et-mcp.md`](./03-python-et-mcp.md).
 

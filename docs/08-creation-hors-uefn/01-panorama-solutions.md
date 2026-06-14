@@ -37,7 +37,7 @@ d'UEFN, puis l'importer. Avec, pour chacune, la **faisabilité** et si **je (Cla
   **converti en FBX/glTF** (Blender, 30 s).
 - On importe la **géométrie** (sol, murs, 4 portails par question). UEFN **génère la collision**
   automatiquement. Orientation : avant = **+X**.
-- ✅ **Je le fais déjà** : `tools/build_map_obj.py` produit `quiz_map.obj` (+ manifeste).
+- ✅ **Je le fais déjà** : `tools/map/build_map_obj.py` produit `quiz_map.obj` (+ manifeste).
 - ⚠️ Limite : un mesh = **décor**. Les **devices** (quiz_manager) et la **logique Verse** s'ajoutent
   **ensuite** dans UEFN (voir [`04-recommandation-pipeline.md`](./04-recommandation-pipeline.md)).
 - 📖 Détail : [`02-mesh-import.md`](./02-mesh-import.md).
