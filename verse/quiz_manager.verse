@@ -5,6 +5,7 @@ using { /Fortnite.com/UI }
 using { /UnrealEngine.com/Temporary/UI }
 using { /Verse.org/Assets }
 using { /Verse.org/Colors }
+using { /Verse.org/Random }
 using { /Verse.org/Simulation }
 using { /UnrealEngine.com/Temporary/SpatialMath }
 using { /UnrealEngine.com/Temporary/Diagnostics }
@@ -19,8 +20,10 @@ using { /UnrealEngine.com/Temporary/Diagnostics }
 # Unite : points de pourcentage cumules ; 100 pts = 1 palier (18 paliers, 0..1700).
 var RankPts : weak_map(player, int) = map{}
 
-# UEFN limite a 4 variables persistantes par projet : on regroupe en tableaux.
-# Meilleur round classe par joueur : {Score, BonnesReponses} (TOP 10 des resultats).
+# UEFN limite le nombre de variables persistantes : on REGROUPE tout en 3 weak_map.
+# Meilleur score PAR (quizz x difficulte), entrelace : index 2*combo = score, 2*combo+1 = bonnes reps.
+# combo = Gi*3 + Diff. + le TOTAL DES FLAMMES stocke a l'index reserve FlameSlot (250).
+# Persistant par joueur -> retrouve a la reconnexion ; alimente le TOP 10 par combo.
 var BestSave : weak_map(player, []int) = map{}
 # Reglages AUDIO par joueur (alignes sur les sons du jeu) :
 #  {vol General, vol Musique, vol Effets, vol Chrono, vol Clics,
@@ -229,11 +232,15 @@ quiz_manager := class(creative_device):
     var TmpIco : []texture_block = array{}
     var TmpDotsOn : []widget = array{}
     var TmpDotsOff : []widget = array{}
-    MapVersion : string = "v0.3.0"                    # affichee en bas a gauche de l'ecran
+    MapVersion : string = "BETA v0.3.0"               # affichee en bas a gauche de l'ecran
+    RepoUrl    : string = "github.com/louisdelez/quizzfortnite"   # lien depot (texte, UEFN n'ouvre pas d'URL)
     MaxQueue : int = 4
     VisibleCards : int = 5                            # 5 cartes de 76px + gaps 9 dans la liste de 443px
     SessionQuestions : int = 25                       # questions par partie (= segments du couloir)
     var CurrentQuiz : int = 0                         # quizz joue (indice dans QzName)
+    # Permutations des reponses du round (1 par question), generees par le chef et
+    # PARTAGEES a tout le groupe -> memes questions, memes reponses, meme ordre des reponses.
+    var SessionPerms : [][]int = array{}
     # --- Playlist : la file s'enchaine round apres round (round 1 = quizz 1...) ---
     var QueuePos : int = 0                            # position courante dans la file
     var RoundPlayers : []player = array{}             # joueurs du round en cours
@@ -247,11 +254,11 @@ quiz_manager := class(creative_device):
     CatTag    : []string  = array{"CULTURE G"}
     CatTagW   : []float   = array{110.0}
 
-    # Un seul quizz actif : Drapeaux (3 paliers — Facile communs / Moyen moins communs /
+    # Quizz actifs (chacun 3 paliers — Facile communs / Moyen moins communs /
     # Difficile = tous, pixelises). Chaque session tire 25 questions au hasard dans le palier.
-    QzName : []string = array{"Drapeaux du monde"}
-    QzCat  : []int    = array{0}
-    QzQ    : []int    = array{25}
+    QzName : []string = array{"Drapeaux du monde", "Pays sur carte", "Drapeaux des departements de France", "Departements de France sur carte", "Capitales du monde", "Culture Generale"}
+    QzCat  : []int    = array{0, 0, 0, 0, 0, 0}
+    QzQ    : []int    = array{25, 25, 25, 25, 25, 25}
 
     # Position de spawn dans la salle de lobby (calee sur build_map_gltf.py : centre X=-1568).
     LobbySpawnPos()<transacts> : vector3 = vector3{ X := -1568.0, Y := 300.0, Z := 120.0 }
@@ -262,17 +269,57 @@ quiz_manager := class(creative_device):
 
     # Banque d'un quizz (0 = Drapeaux, 1 = Capitales, 2 = Pokemon) dans la langue demandee (0=FR 1=EN 2=ES 3=DE 4=IT).
     BankQuestionsOf(Gi : int, L : int) : []question =
-        # Refonte : un seul quizz actif (Drapeaux). Gi ignore pour l instant.
+        # Quizz actifs : 0 = Drapeaux monde (integre), 1 = Pays sur carte (carte_bank),
+        # 2 = Drapeaux departements (depflags_bank), 3 = Departements sur carte (depcarte_bank),
+        # 4 = Capitales du monde (banque CAPITALES integree, texte seul),
+        # 5 = Culture Generale (culture_bank.verse, texte seul, 900 q).
         var Qs : []question = array{}
-        if (L = 1) { set Qs = MakeQuestionsEN() }
-        else if (L = 2) { set Qs = MakeQuestionsES() }
-        else if (L = 3) { set Qs = MakeQuestionsDE() }
-        else if (L = 4) { set Qs = MakeQuestionsIT() }
-        else { set Qs = MakeQuestions() }
+        if (Gi = 5):
+            if (L = 1) { set Qs = MakeCultureQuestionsEN() }
+            else if (L = 2) { set Qs = MakeCultureQuestionsES() }
+            else if (L = 3) { set Qs = MakeCultureQuestionsDE() }
+            else if (L = 4) { set Qs = MakeCultureQuestionsIT() }
+            else { set Qs = MakeCultureQuestions() }
+        else if (Gi = 4):
+            if (L = 1) { set Qs = MakeCapitalQuestionsEN() }
+            else if (L = 2) { set Qs = MakeCapitalQuestionsES() }
+            else if (L = 3) { set Qs = MakeCapitalQuestionsDE() }
+            else if (L = 4) { set Qs = MakeCapitalQuestionsIT() }
+            else { set Qs = MakeCapitalQuestions() }
+        else if (Gi = 1):
+            if (L = 1) { set Qs = MakeCarteQuestionsEN() }
+            else if (L = 2) { set Qs = MakeCarteQuestionsES() }
+            else if (L = 3) { set Qs = MakeCarteQuestionsDE() }
+            else if (L = 4) { set Qs = MakeCarteQuestionsIT() }
+            else { set Qs = MakeCarteQuestions() }
+        else if (Gi = 2):
+            if (L = 1) { set Qs = MakeDepFlagsQuestionsEN() }
+            else if (L = 2) { set Qs = MakeDepFlagsQuestionsES() }
+            else if (L = 3) { set Qs = MakeDepFlagsQuestionsDE() }
+            else if (L = 4) { set Qs = MakeDepFlagsQuestionsIT() }
+            else { set Qs = MakeDepFlagsQuestions() }
+        else if (Gi = 3):
+            if (L = 1) { set Qs = MakeDepCarteQuestionsEN() }
+            else if (L = 2) { set Qs = MakeDepCarteQuestionsES() }
+            else if (L = 3) { set Qs = MakeDepCarteQuestionsDE() }
+            else if (L = 4) { set Qs = MakeDepCarteQuestionsIT() }
+            else { set Qs = MakeDepCarteQuestions() }
+        else:
+            if (L = 1) { set Qs = MakeQuestionsEN() }
+            else if (L = 2) { set Qs = MakeQuestionsES() }
+            else if (L = 3) { set Qs = MakeQuestionsDE() }
+            else if (L = 4) { set Qs = MakeQuestionsIT() }
+            else { set Qs = MakeQuestions() }
         Qs
 
     BankDiffsOf(Gi : int) : []int =
-        FlagDiff
+        var Ds : []int = FlagDiff
+        if (Gi = 1) { set Ds = CarteDiff }
+        else if (Gi = 2) { set Ds = DepFlagsDiff }
+        else if (Gi = 3) { set Ds = DepCarteDiff }
+        else if (Gi = 4) { set Ds = CapDiff }
+        else if (Gi = 5) { set Ds = CultureDiff }
+        Ds
 
     # Questions du palier choisi pour le quizz donne (indices IDENTIQUES dans les 5 langues).
     QuestionsForDifficulty(Gi : int, Diff : int, L : int) : []question =
@@ -293,6 +340,41 @@ quiz_manager := class(creative_device):
     # Les N premiers elements d'un tableau (tirage de session dans l'ordre melange).
     TakeFirst(Arr : []int, N : int) : []int =
         for (I := 0..Arr.Length - 1, I < N, X := Arr[I]) { X }
+
+    # ===== Brassage des reponses (runtime, partage dans le groupe) =====
+    # Retire l'element a l'index Idx (reconstruction fonctionnelle).
+    RemoveAtI(Arr : []int, Idx : int) : []int =
+        for (K := 0..Arr.Length - 1, K <> Idx, X := Arr[K]) { X }
+
+    # Permutation aleatoire de [0,1,2,3] (tirage sans remise via le RNG moteur).
+    RandomPerm4() : []int =
+        var Rem : []int = array{0, 1, 2, 3}
+        var Res : []int = array{}
+        loop:
+            if (Rem.Length <= 0) { break }
+            if (J := GetRandomInt(0, Rem.Length - 1), P := Rem[J]):
+                set Res += array{ P }
+                set Rem = RemoveAtI(Rem, J)
+            else:
+                break
+        Res
+
+    # Genere SessionQuestions permutations (1 par question) -> a diffuser a tout le groupe.
+    MakeSessionPerms(N : int) : [][]int =
+        for (I := 0..N - 1) { RandomPerm4() }
+
+    # Applique une permutation aux 4 reponses d'une question + remappe la bonne reponse.
+    # Identite/securite : si Perm n'est pas valide, renvoie Q inchangee.
+    ApplyPerm(Q : question, Perm : []int) : question =
+        var Out : question = Q
+        if (Perm.Length = 4):
+            NewRep := for (K : Perm, R := Q.Reponses[K]) { R }
+            var NB : int = Q.BonneReponse
+            for (I := 0..Perm.Length - 1, K := Perm[I], K = Q.BonneReponse):
+                set NB = I
+            if (NewRep.Length = Q.Reponses.Length):
+                set Out = question{ Enonce := Q.Enonce, Reponses := NewRep, BonneReponse := NB, Points := Q.Points, Image := Q.Image }
+        Out
 
     # ===== Demarrage =====
     OnBegin<override>()<suspends> : void =
@@ -316,6 +398,10 @@ quiz_manager := class(creative_device):
 
     OnPlayerAdded(Player : player) : void =
         InitPlayer(Player)
+        # demarre le comptage des heures consecutives (la nouvelle generation invalide une ancienne boucle)
+        NewGen := FlameGenOf(Player) + 1
+        if (set FlameGen[Player] = NewGen) {}
+        spawn { FlameLoop(Player, NewGen) }
 
     OnPlayerRemoved(Player : player) : void =
         # si le chef quitte, le premier joueur restant devient chef (boutons reactives)
@@ -363,9 +449,10 @@ quiz_manager := class(creative_device):
                 set NextPNum += 1
             if (not HostPlayer?):                    # le 1er arrive = chef de groupe
                 set HostPlayer = option{ Player }
-            # Charge le meilleur score SAUVEGARDE du joueur dans le TOP 10 de session.
-            if (Arr := BestSave[Player], BS := Arr[0]):
-                UpdateHall(Player, BS)
+            # Charge les meilleurs scores SAUVEGARDES du joueur dans le TOP 10 de CHAQUE combo.
+            for (C := 0..QzName.Length * 3 - 1):
+                Sc := BestComboScore(Player, C)
+                if (Sc > 0) { UpdateHallC(C, Player, Sc, BestComboGood(Player, C)) }
 
             # Teleport au lobby (confirme correct : sans lui on spawn dans le couloir).
             if (Char := Player.GetFortCharacter[]):
@@ -450,10 +537,10 @@ quiz_manager := class(creative_device):
         else if (N := Arr[0]) { set S = N }
         S
 
-    QzNameEN : []string = array{"World Flags"}
-    QzNameES : []string = array{"Banderas del mundo"}
-    QzNameDE : []string = array{"Flaggen der Welt"}
-    QzNameIT : []string = array{"Bandiere del mondo"}
+    QzNameEN : []string = array{"World Flags", "Countries on the Map", "French Department Flags", "French Departments on the Map", "World Capitals", "General Knowledge"}
+    QzNameES : []string = array{"Banderas del mundo", "Paises en el mapa", "Banderas de los departamentos de Francia", "Departamentos de Francia en el mapa", "Capitales del mundo", "Cultura General"}
+    QzNameDE : []string = array{"Flaggen der Welt", "Laender auf der Karte", "Flaggen der Departements Frankreichs", "Departements Frankreichs auf der Karte", "Hauptstaedte der Welt", "Allgemeinwissen"}
+    QzNameIT : []string = array{"Bandiere del mondo", "Paesi sulla mappa", "Bandiere dei dipartimenti francesi", "Dipartimenti francesi sulla mappa", "Capitali del mondo", "Cultura Generale"}
     # Noms/tags de categorie par langue : un tableau {FR,EN,ES,DE,IT} par categorie.
     CatNamesL : [][]string = array{array{"Culture Generale", "General Knowledge", "Cultura General", "Allgemeinwissen", "Cultura Generale"}}
     CatTagsL : [][]string = array{array{"CULTURE G", "GENERAL", "CULTURA G", "WISSEN", "CULTURA G"}}
@@ -608,7 +695,7 @@ quiz_manager := class(creative_device):
             Slots := array:
                 canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 0.0 }, Maximum := vector2{ X := 1.0, Y := 1.0 } }, Offsets := margin{ Left := 0.0, Top := 0.0, Right := 0.0, Bottom := 0.0 }, Widget := FullBg }
                 canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.5 }, Maximum := vector2{ X := 0.5, Y := 0.5 } }, Alignment := vector2{ X := 0.5, Y := 0.5 }, Offsets := margin{ Left := 0.0, Top := 0.0, Right := 1180.0, Bottom := 760.0 }, SizeToContent := false, Widget := Modal }
-                canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 1.0 }, Maximum := vector2{ X := 0.0, Y := 1.0 } }, Alignment := vector2{ X := 0.0, Y := 1.0 }, Offsets := margin{ Left := 18.0, Top := -14.0, Right := 120.0, Bottom := 20.0 }, SizeToContent := true, Widget := LbText2(MapVersion, 12.0, LbMute, text_justification.Left) }
+                canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 1.0 }, Maximum := vector2{ X := 0.0, Y := 1.0 } }, Alignment := vector2{ X := 0.0, Y := 1.0 }, Offsets := margin{ Left := 18.0, Top := -16.0, Right := 480.0, Bottom := 22.0 }, SizeToContent := true, Widget := stack_box{ Orientation := orientation.Horizontal, Slots := array{ stack_box_slot{ Widget := LbText2(MapVersion, 12.0, LbMute, text_justification.Left), VerticalAlignment := vertical_alignment.Center }, stack_box_slot{ Widget := LbTex(icons.ic_github, LbMute, 13.0, 13.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 12.0, Top := 0.0, Right := 9.0, Bottom := 0.0 } }, stack_box_slot{ Widget := LbText2(RepoUrl, 12.0, LbMute, text_justification.Left), VerticalAlignment := vertical_alignment.Center } } } }
 
     # Fenetre 1180x760 : la texture porte degrade + bordure 2px + lisere haut exacts.
     # Le contenu remplit l'interieur de la bordure (1176x756).
@@ -699,16 +786,18 @@ quiz_manager := class(creative_device):
         Pts := RankPtsOf(Player)
         T := RankTierOf(Pts)
         Pct := RankPctWithin(Pts)
+        Unr := IsUnranked(Player)
         RName := if (N := RankNames[T]) { N } else { "" }
         PctS := if (T >= 17) { "MAX" } else { "{Pct}%" }
+        RLine := if (Unr?) { "Unranked" } else { "{RName} - {PctS}" }
         RankLab := stack_box:
             Orientation := orientation.Vertical
             Slots := array:
                 stack_box_slot{ Widget := LbText2(Tr(Player, "RANG", "RANK", "RANGO", "RANG", "RANGO"), 11.0, LbMute, text_justification.Left) }
-                stack_box_slot{ Widget := LbText2("{RName} - {PctS}", 16.0, LbWhite, text_justification.Left), Padding := margin{ Left := 0.0, Top := 1.0, Right := 0.0, Bottom := 0.0 } }
+                stack_box_slot{ Widget := LbText2(RLine, 16.0, LbWhite, text_justification.Left), Padding := margin{ Left := 0.0, Top := 1.0, Right := 0.0, Bottom := 0.0 } }
         Plate := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(RankTexOf(T), LbWhite, 40.0, 40.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(RankEmblemFor(Player), LbWhite, 40.0, 40.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         RankRowH := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
@@ -726,9 +815,26 @@ quiz_manager := class(creative_device):
         BtnSet := button{ Slot := button_slot{ Widget := GearInner } }
         RegisterHover(BtnSet, GearBg, lobby.lobby_gear, lobby.lobby_gear_hi)
         BtnSet.OnClick().Subscribe(OnOpenSettings)
+        # pastille FLAMMES (heures consecutives), a GAUCHE du rang
+        FlameN := FlamesOf(Player)
+        FlameTxtCol := stack_box:
+            Orientation := orientation.Vertical
+            Slots := array:
+                stack_box_slot{ Widget := LbText2("{FlameN}", 22.0, LbWhite, text_justification.Left) }
+                stack_box_slot{ Widget := LbText2("HEURES", 10.0, MakeColorFromHex("FFCB7A"), text_justification.Left), Padding := margin{ Left := 0.0, Top := 1.0, Right := 0.0, Bottom := 0.0 } }
+        FlameRowH := stack_box:
+            Orientation := orientation.Horizontal
+            Slots := array:
+                stack_box_slot{ Widget := LbTex(icons.ic_flame, MakeColorFromHex("FF9F1C"), 26.0, 26.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 9.0, Bottom := 0.0 } }
+                stack_box_slot{ Widget := FlameTxtCol, VerticalAlignment := vertical_alignment.Center }
+        StreakChip := overlay:
+            Slots := array:
+                overlay_slot{ Widget := LbTex(lobby.lobby_streak, LbWhite, 120.0, 58.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := FlameRowH, HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 13.0, Top := 0.0, Right := 0.0, Bottom := 0.0 } }
         RightHead := stack_box:
             Orientation := orientation.Horizontal
             Slots := array:
+                stack_box_slot{ Widget := StreakChip, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 12.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := RankChip, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 12.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := BtnLang, VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 12.0, Bottom := 0.0 } }
                 stack_box_slot{ Widget := BtnSet, VerticalAlignment := vertical_alignment.Center }
@@ -1036,7 +1142,7 @@ quiz_manager := class(creative_device):
     FilledSlot(P : player, I : int, Gi : int) : widget =
         Ci := if (X := QzCat[Gi]) { X } else { 0 }
         Name := QuizNameOf(P, Gi)
-        Qn := if (Q := QzQ[Gi]) { Q } else { 0 }
+        Qn := BankDiffsOf(Gi).Length   # total de la banque (somme des 3 difficultes), pas les 25/round
         var PN : int = I + 1
         if (Who := LobbyQueueBy[I], X := PlayerNum[Who]) { set PN = X }
         var PCol : color = LbRed
@@ -1170,10 +1276,33 @@ quiz_manager := class(creative_device):
                 else { W.SetVisibility(widget_visibility.Visible) }
 
     # ===== Liste de quizz =====
+    # Ordre ALPHABETIQUE des quizz par langue (indices Gi). Precalcule (pas de tri de string en Verse).
+    # ⚠️ Si on ajoute/retire un quizz, mettre a jour ces ordres (les Gi absents seront ajoutes a la fin).
+    AlphaOrder(P : player) : []int =
+        L := LangOf(P)
+        var O : []int = array{4, 5, 3, 2, 0, 1}        # FR
+        if (L = 1) { set O = array{1, 2, 3, 5, 4, 0} }  # EN
+        else if (L = 2) { set O = array{2, 0, 4, 5, 3, 1} }  # ES
+        else if (L = 3) { set O = array{5, 3, 2, 0, 4, 1} }  # DE
+        else if (L = 4) { set O = array{2, 0, 4, 5, 3, 1} }  # IT
+        O
+
     FilteredIdx(Player : player) : []int =
         var F : int = -1
         if (X := LobbyCatFilter[Player]) { set F = X }
-        for (I := 0..QzName.Length - 1, C := QzCat[I], ((F < 0) or (C = F))) { I }
+        Order := AlphaOrder(Player)
+        var Out : []int = array{}
+        # 1) quizz dans l'ordre alphabetique (filtres par categorie)
+        for (Gi : Order):
+            if (Gi >= 0, Gi < QzName.Length, C := QzCat[Gi], (F < 0) or (C = F)):
+                set Out += array{ Gi }
+        # 2) securite : quizz actifs absents de l'ordre -> ajoutes a la fin
+        for (I := 0..QzName.Length - 1):
+            var Seen : logic = false
+            for (G : Order, G = I) { set Seen = true }
+            if (not Seen?, C := QzCat[I], (F < 0) or (C = F)):
+                set Out += array{ I }
+        Out
 
     IsQueued(Gi : int) : logic =
         var R : logic = false
@@ -1190,7 +1319,7 @@ quiz_manager := class(creative_device):
     QuizCardFor(Player : player, Gi : int) : button =
         Ci := if (X := QzCat[Gi]) { X } else { 0 }
         Name := QuizNameOf(Player, Gi)
-        Qn := if (Q := QzQ[Gi]) { Q } else { 0 }
+        Qn := BankDiffsOf(Gi).Length   # total de la banque (somme des 3 difficultes), pas les 25/round
         TagTxt := CatTagOf(Player, Ci)
         TagW := if (T := CatTagW[Ci]) { T } else { 100.0 }
         Queued := IsQueued(Gi)
@@ -1203,7 +1332,7 @@ quiz_manager := class(creative_device):
             Orientation := orientation.Horizontal
             Slots := array:
                 stack_box_slot{ Widget := TagPill(TagTxt, TagCol, TagW), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 0.0, Top := 0.0, Right := 8.0, Bottom := 0.0 } }
-                stack_box_slot{ Widget := LbText2("{Qn} questions", 13.0, MetaCol, text_justification.Left), VerticalAlignment := vertical_alignment.Center }
+                stack_box_slot{ Widget := LbText2(Tr(Player, "Base de donnees de {Qn} questions", "Database of {Qn} questions", "Base de datos de {Qn} preguntas", "Datenbank mit {Qn} Fragen", "Database di {Qn} domande"), 13.0, MetaCol, text_justification.Left), VerticalAlignment := vertical_alignment.Center }
         TextCol := stack_box:
             Orientation := orientation.Vertical
             Slots := array:
@@ -1524,8 +1653,8 @@ quiz_manager := class(creative_device):
         Texts := stack_box:
             Orientation := orientation.Vertical
             Slots := array:
-                stack_box_slot{ Widget := LbText2(SndChanName(P, Chan), 16.0, TxtCol, text_justification.Left) }
-                stack_box_slot{ Widget := LbText2(SndChanSub(P, Chan), 11.0, SubCol, text_justification.Left), Padding := margin{ Left := 0.0, Top := 2.0, Right := 0.0, Bottom := 0.0 } }
+                stack_box_slot{ Widget := LbText2(SndChanName(P, Chan), 16.0, TxtCol, text_justification.Left), HorizontalAlignment := horizontal_alignment.Left }
+                stack_box_slot{ Widget := LbText2(SndChanSub(P, Chan), 11.0, SubCol, text_justification.Left), HorizontalAlignment := horizontal_alignment.Left, Padding := margin{ Left := 0.0, Top := 2.0, Right := 0.0, Bottom := 0.0 } }
         TextsBox := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbSizer(190.0, 48.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
@@ -1808,18 +1937,62 @@ quiz_manager := class(creative_device):
     RankNames : []string = array{"Bronze I","Bronze II","Bronze III","Silver I","Silver II","Silver III","Gold I","Gold II","Gold III","Platinum I","Platinum II","Platinum III","Diamond I","Diamond II","Diamond III","Elite","Champion","Unreal"}
     MaxRankPts : int = 1700    # palier 17 (Irreel) atteint, plus de progression au-dela
     var ResLastGain : [player]int = map{}   # % gagne au dernier round (affiche aux resultats)
-    var Hall : []leaderboard_entry = array{}   # TOP 10 des meilleurs scores sauvegardes
-                                               # (charge depuis BestScore quand un joueur rejoint)
+    # TOP 10 par (quizz x difficulte) : map combo -> classement. Reconstruit a partir des
+    # meilleurs scores persistes (BestSave) des joueurs presents sur le serveur.
+    var HallByCombo : [int][]leaderboard_entry = map{}
+    # "Hall" = le classement du combo AFFICHE (rempli juste avant l'ecran de resultats) ;
+    # les fonctions de rendu lisent ce champ.
+    var Hall : []leaderboard_entry = array{}
 
     TakeEntries(Arr : []leaderboard_entry, N : int) : []leaderboard_entry =
         for (I := 0..Arr.Length - 1, I < N, E := Arr[I]) { E }
 
-    # Insere/actualise le meilleur score d'un joueur dans le TOP 10 (trie + tronque).
-    UpdateHall(P : player, Score : int) : void =
+    # combo = indice unique (quizz, difficulte).
+    Combo(Gi : int, Diff : int) : int = Gi * 3 + Diff
+
+    # Affectation fonctionnelle Arr[Idx] = V (Verse evite set Arr[i]=).
+    SetAtI(Arr : []int, Idx : int, V : int) : []int =
+        for (K := 0..Arr.Length - 1, X := Arr[K]) { if (K = Idx) { V } else { X } }
+
+    # Meilleur score / bonnes reponses persistes d'un joueur pour un combo.
+    BestComboScore(P : player, C : int) : int =
+        var V : int = 0
+        if (Arr := BestSave[P], X := Arr[2 * C]) { set V = X }
+        V
+    BestComboGood(P : player, C : int) : int =
+        var V : int = 0
+        if (Arr := BestSave[P], X := Arr[2 * C + 1]) { set V = X }
+        V
+
+    # Sauvegarde persistante du meilleur score d'un combo (garde le max).
+    SaveBestCombo(P : player, Gi : int, Diff : int, Score : int, Good : int) : void =
+        C := Combo(Gi, Diff)
+        Need := 2 * C + 2
+        var Arr : []int = array{}
+        if (Old := BestSave[P]) { set Arr = Old }
+        loop:
+            if (Arr.Length >= Need) { break }
+            set Arr += array{ 0 }
+        var Cur : int = 0
+        if (X := Arr[2 * C]) { set Cur = X }
+        if (Score > Cur):
+            set Arr = SetAtI(Arr, 2 * C, Score)
+            set Arr = SetAtI(Arr, 2 * C + 1, Good)
+            if (set BestSave[P] = Arr) {}
+
+    HallGet(C : int) : []leaderboard_entry =
+        var R : []leaderboard_entry = array{}
+        if (X := HallByCombo[C]) { set R = X }
+        R
+
+    # Insere/actualise le meilleur score d'un joueur dans le TOP 10 d'un combo.
+    UpdateHallC(C : int, P : player, Score : int, Good : int) : void =
+        Cur := HallGet(C)                       # hisse hors de l'iterable du for
         var Kept : []leaderboard_entry = array{}
-        for (E : Hall, not E.Agent = P) { set Kept += array{ E } }
-        set Kept += array{ leaderboard_entry{ Agent := P, Score := Score } }
-        set Hall = TakeEntries(SortEntries(Kept), 10)
+        for (E : Cur, not E.Agent = P) { set Kept += array{ E } }
+        set Kept += array{ leaderboard_entry{ Agent := P, Score := Score, Good := Good } }
+        Top := TakeEntries(SortEntries(Kept), 10)   # hisse hors de la condition if(set ...)
+        if (set HallByCombo[C] = Top) {}
 
     RankPtsOf(P : player) : int =
         var N : int = 0
@@ -1899,6 +2072,64 @@ quiz_manager := class(creative_device):
         if (T = 16) { set X = rangs.rank_16 }
         if (T = 17) { set X = rangs.rank_17 }
         X
+
+    # UNRANKED : tant qu'aucun round CLASSE n'a ete joue, pas d'entree RankPts -> "?".
+    IsUnranked(P : player) : logic =
+        var U : logic = true
+        if (RankPts[P]) { set U = false }
+        U
+
+    # Embleme a afficher : "?" si non classe, sinon l'embleme du palier.
+    RankEmblemFor(P : player) : texture =
+        var Tex : texture = rangs.rank_unranked
+        Unr := IsUnranked(P)
+        if (not Unr?) { set Tex = RankTexOf(RankTierOf(RankPtsOf(P))) }
+        Tex
+
+    # ===== FLAMMES (heures pleines consecutives) =====
+    # Stockees dans BestSave a un index reserve (pas de 4e weak_map -> limite UEFN respectee).
+    FlameSlot : int = 250
+    var FlameGen : [player]int = map{}   # incremente a chaque (re)connexion : invalide l'ancienne boucle
+
+    FlamesOf(P : player) : int =
+        var N : int = 0
+        if (Arr := BestSave[P], X := Arr[FlameSlot]) { set N = X }
+        N
+
+    # Ecrit le total de flammes dans BestSave[FlameSlot] (pad si besoin).
+    SaveFlames(P : player, N : int) : void =
+        var Arr : []int = array{}
+        if (Old := BestSave[P]) { set Arr = Old }
+        loop:
+            if (Arr.Length >= FlameSlot + 1) { break }
+            set Arr += array{ 0 }
+        set Arr = SetAtI(Arr, FlameSlot, N)
+        if (set BestSave[P] = Arr) {}
+
+    FlameGenOf(P : player) : int =
+        var G : int = 0
+        if (X := FlameGen[P]) { set G = X }
+        G
+
+    # Boucle par joueur : +1 flamme par HEURE PLEINE restee connecte (consecutif).
+    # La progression (Mins) est locale a la session : perdue si deconnexion avant 60 min.
+    FlameLoop(P : player, Gen : int)<suspends> : void =
+        var Mins : int = 0
+        loop:
+            Sleep(60.0)                                  # 1 minute
+            CurGen := FlameGenOf(P)                       # hisse hors de la condition if
+            if (CurGen <> Gen) { break }                 # une nouvelle session a demarre -> stop
+            Ps := GetPlayspace().GetPlayers()
+            var Present : logic = false
+            for (Pl : Ps, Pl = P) { set Present = true }
+            if (not Present?) { break }                  # deconnecte -> heure non pleine perdue
+            set Mins += 1
+            if (Mins >= 60):
+                set Mins = 0
+                SaveFlames(P, FlamesOf(P) + 1)               # +1 flamme (persiste dans BestSave)
+                var InLobby : logic = false
+                if (X := LobbyShown[P]) { set InLobby = X }
+                if (InLobby?) { RebuildLobby(P) }            # maj live de la pastille si au lobby
 
     AgentPNum(A : agent) : int =
         var N : int = 1
@@ -1995,7 +2226,7 @@ quiz_manager := class(creative_device):
         if (E.Agent = Player) { set IsMe = true }
         RowTex := if (IsMe?) { resultats.res_row_me } else { resultats.res_row }
         var G : int = 0
-        if (P2 := player[E.Agent], Arr := BestSave[P2], X := Arr[1]) { set G = X }
+        set G = E.Good
         RankBox := overlay:
             Slots := array:
                 overlay_slot{ Widget := LbSizer(26.0, 24.0), HorizontalAlignment := horizontal_alignment.Left, VerticalAlignment := vertical_alignment.Center }
@@ -2159,13 +2390,14 @@ quiz_manager := class(creative_device):
         Pts := RankPtsOf(Player)
         T := RankTierOf(Pts)
         Pct := RankPctWithin(Pts)
-        RName := if (N := RankNames[T]) { N } else { "" }
+        Unr := IsUnranked(Player)
+        RName := if (Unr?) { "Unranked" } else { if (N := RankNames[T]) { N } else { "" } }
         NextName := if (T >= 17) { "MAX" } else { if (N2 := RankNames[T + 1]) { N2 } else { "" } }
         var Gain : int = 0
         if (X := ResLastGain[Player]) { set Gain = X }
         Badge := overlay:
             Slots := array:
-                overlay_slot{ Widget := LbTex(RankTexOf(T), LbWhite, 84.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
+                overlay_slot{ Widget := LbTex(RankEmblemFor(Player), LbWhite, 84.0, 84.0), HorizontalAlignment := horizontal_alignment.Center, VerticalAlignment := vertical_alignment.Center }
         # barre de progression : remplissage degrade cyan->violet a Pct%
         var FillW : float = 296.0 * Pct * 0.01
         if (T >= 17) { set FillW = 296.0 }
@@ -2373,7 +2605,7 @@ quiz_manager := class(creative_device):
                 Slots := array:
                     canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 0.0 }, Maximum := vector2{ X := 1.0, Y := 1.0 } }, Offsets := margin{ Left := 0.0, Top := 0.0, Right := 0.0, Bottom := 0.0 }, Widget := FullBg }
                     canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.5, Y := 0.5 }, Maximum := vector2{ X := 0.5, Y := 0.5 } }, Alignment := vector2{ X := 0.5, Y := 0.5 }, Offsets := margin{ Left := 0.0, Top := 0.0, Right := 1180.0, Bottom := 828.0 }, SizeToContent := false, Widget := Card }
-                    canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 1.0 }, Maximum := vector2{ X := 0.0, Y := 1.0 } }, Alignment := vector2{ X := 0.0, Y := 1.0 }, Offsets := margin{ Left := 18.0, Top := -14.0, Right := 120.0, Bottom := 20.0 }, SizeToContent := true, Widget := LbText2(MapVersion, 12.0, LbMute, text_justification.Left) }
+                    canvas_slot{ Anchors := anchors{ Minimum := vector2{ X := 0.0, Y := 1.0 }, Maximum := vector2{ X := 0.0, Y := 1.0 } }, Alignment := vector2{ X := 0.0, Y := 1.0 }, Offsets := margin{ Left := 18.0, Top := -16.0, Right := 480.0, Bottom := 22.0 }, SizeToContent := true, Widget := stack_box{ Orientation := orientation.Horizontal, Slots := array{ stack_box_slot{ Widget := LbText2(MapVersion, 12.0, LbMute, text_justification.Left), VerticalAlignment := vertical_alignment.Center }, stack_box_slot{ Widget := LbTex(icons.ic_github, LbMute, 13.0, 13.0), VerticalAlignment := vertical_alignment.Center, Padding := margin{ Left := 12.0, Top := 0.0, Right := 9.0, Bottom := 0.0 } }, stack_box_slot{ Widget := LbText2(RepoUrl, 12.0, LbMute, text_justification.Left), VerticalAlignment := vertical_alignment.Center } } } }
             PlayerUI.AddWidget(Root, player_ui_slot{ InputMode := ui_input_mode.All, ZOrder := 20 })
             if (set ResCanvas[Player] = Root) {}
 
@@ -2416,12 +2648,17 @@ quiz_manager := class(creative_device):
         set BankES = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 2) }
         set BankDE = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 3) }
         set BankIT = question_bank{ Questions := QuestionsForDifficulty(Gi, Diff, 4) }
-        if (Randomize?) { TakeFirst(Bank.ShuffledOrder(), SessionQuestions) }
-        else { TakeFirst(Bank.DefaultOrder(), SessionQuestions) }
+        var Ord : []int = array{}
+        if (Randomize?) { set Ord = TakeFirst(Bank.ShuffledOrder(), SessionQuestions) }
+        else { set Ord = TakeFirst(Bank.DefaultOrder(), SessionQuestions) }
+        # melange des reponses pour CE round, partage a tous les joueurs du groupe
+        set SessionPerms = MakeSessionPerms(Ord.Length)
+        Ord
 
     StartQuizForPlayer(Player : player, Order : []int)<suspends> : void =
         if (State := Registry.Get[Player]):
             set State.Order = Order
+            set State.AnswerPerms = SessionPerms   # memes permutations pour tout le groupe
             set State.Position = 0
             set State.Score = 0
             set State.Streak = 0
@@ -2447,9 +2684,10 @@ quiz_manager := class(creative_device):
                 RPts := RankPtsOf(Player)
                 RT := RankTierOf(RPts)
                 RPct := RankPctWithin(RPts)
-                RNm := if (N := RankNames[RT]) { N } else { "" }
-                RPctS := if (RT >= 17) { "MAX" } else { "{RPct}%" }
-                Hud.ShowRank(option{ jeu.hud_card }, RankTexOf(RT), Tr(Player, "RANG", "RANK", "RANGO", "RANG", "RANGO"), RNm, RPctS)
+                RUnr := IsUnranked(Player)
+                RNm := if (RUnr?) { "Unranked" } else { if (N := RankNames[RT]) { N } else { "" } }
+                RPctS := if (RUnr?) { "" } else { if (RT >= 17) { "MAX" } else { "{RPct}%" } }
+                Hud.ShowRank(option{ jeu.hud_card }, RankEmblemFor(Player), Tr(Player, "RANG", "RANK", "RANGO", "RANG", "RANGO"), RNm, RPctS)
 
             CloseLobby(Player)
             CloseSub(Player)   # si le joueur etait sur la page Langue/Categorie
@@ -2469,9 +2707,10 @@ quiz_manager := class(creative_device):
             State := Registry.Get[Agent]
             not State.Finished?
             QIndex := State.CurrentQuestionIndex[]
-            Q := QB.GetQuestion[QIndex]
+            Q0 := QB.GetQuestion[QIndex]
             Hud := Huds[Agent]
         then:
+            Q := ApplyPerm(Q0, State.CurrentPerm())   # melange des reponses (hors condition failable)
             Hud.SetQuestion(Q)
             Hud.SetQNum(State.Position + 1, State.Order.Length)   # 25 de session, pas la banque entiere
             set State.TimeLeft = QuestionTimeSeconds
@@ -2543,9 +2782,10 @@ quiz_manager := class(creative_device):
             not State.Finished?
             not State.Locked?
             QIndex := State.CurrentQuestionIndex[]
-            Q := Bank.GetQuestion[QIndex]
+            Q0 := Bank.GetQuestion[QIndex]
         then:
             set State.Locked = true
+            Q := ApplyPerm(Q0, State.CurrentPerm())   # meme melange qu'a l'affichage
             if (Index = Q.BonneReponse):
                 OnCorrect(Agent, State, Q, Index)
             else:
@@ -2833,13 +3073,13 @@ quiz_manager := class(creative_device):
             PlayResultsMusic(P)
             if (TierAfter > TierBefore) { PlayFx(P, 1, SfxRankUp) }
             else { PlayFx(P, 1, SfxFanfare) }
-            # Meilleur score classe : sauvegarde persistante + entree au TOP 10.
+            # Meilleur score classe : sauvegarde persistante PAR (quizz x difficulte) + TOP 10 du combo.
+            DiffC := if (D := LobbyDiff[P]) { D } else { 1 }
+            Cmb := Combo(CurrentQuiz, DiffC)
             if (Ranked?):
-                var Prev : int = 0
-                if (Arr := BestSave[P], B := Arr[0]) { set Prev = B }
-                if (State.Score > Prev):
-                    if (set BestSave[P] = array{ State.Score, State.Good }) {}
-                    UpdateHall(P, State.Score)
+                SaveBestCombo(P, CurrentQuiz, DiffC, State.Score, State.Good)
+                UpdateHallC(Cmb, P, BestComboScore(P, Cmb), BestComboGood(P, Cmb))
+            set Hall = HallGet(Cmb)   # le classement affiche aux resultats = celui du combo joue
             if (Hud := Huds[Agent]) { Hud.Hide(P) }
             ShowResults(P)
         Print("Quiz termine - score {State.Score}")

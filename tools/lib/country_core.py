@@ -77,3 +77,25 @@ assert len(C) == 195, len(C)
 NAME = {iso: n for iso, n, _, _ in C}
 REGION = {iso: r for iso, _, r, _ in C}
 TIER = {iso: t for iso, _, _, t in C}
+
+# Palier FACILE partagé : ~65 pays communs / connus (drapeau ET silhouette).
+# Sert aux quizz géo à 3 difficultés (build_flags.py, build_carte.py) :
+#   FACILE = pays de EASY (image normale), MOYEN = le reste (image normale),
+#   DIFFICILE = les 195 pays (image pixelisée).
+EASY = {
+    # Europe de l'Ouest / Nord
+    "fr", "de", "it", "es", "pt", "gb", "ie", "be", "nl", "ch", "at",
+    "no", "se", "dk", "fi", "mc", "va", "is",
+    # Europe de l'Est / Balkans
+    "pl", "gr", "ua", "ru", "cz", "hu", "hr", "rs", "ro",
+    # Moyen-Orient
+    "tr", "il", "ps", "sa", "ir", "ae", "qa",
+    # Asie
+    "cn", "jp", "kr", "kp", "in", "pk", "th", "vn", "id", "sg", "my", "ph",
+    # Oceanie
+    "au", "nz",
+    # Afrique
+    "ma", "dz", "tn", "eg", "za", "ng", "ke",
+    # Ameriques
+    "us", "ca", "mx", "br", "ar", "co", "ve", "pe", "cl", "cu", "jm",
+}

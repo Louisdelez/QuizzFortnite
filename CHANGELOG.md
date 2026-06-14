@@ -13,7 +13,16 @@ et le projet suit le [Semantic Versioning](https://semver.org/lang/fr/).
 - **Localisation 5 langues** FR / EN / ES / DE / IT : UI **et** banques (questions + réponses)
   traduites ; chaque joueur joue dans sa langue, le groupe partage le même tirage.
 - **Rangs persistants** : 18 paliers sauvegardés entre sessions (`weak_map`), emblèmes dédiés.
+- **Scores persistants par quizz × difficulté** : meilleur score (+ bonnes réponses) de chaque joueur
+  sauvegardé **par combo** (`BestSave` entrelacé, `weak_map` par joueur) → retrouvé à la reconnexion.
+  **TOP 10 séparé par quizz × difficulté** (`HallByCombo`), reconstruit à partir des records persistés
+  des joueurs présents sur le serveur, affiché à l'écran de résultats. (Pas de classement global
+  inter-serveurs : Verse ne persiste que par joueur — limite UEFN assumée.)
 - **Écran de résultats** : podium, classement partagé, stats, gains de rang.
+- **Brassage aléatoire complet et partagé** : à chaque round, tirage aléatoire des questions, de leur
+  ordre **et de l'ordre des réponses A/B/C/D** (au runtime, RNG moteur). Le **chef génère les
+  permutations** et les **diffuse à tout le groupe** → tous les amis ont **mêmes questions, mêmes
+  réponses, même ordre des réponses** (équitable). Anti-par-cœur : les positions changent à chaque partie.
 - **~35 banques de questions** générées par Python (Drapeaux, Capitales, Pokémon, Naruto, One Piece,
   Dragon Ball, Culture Générale ×N, Sport, etc.) — multilingues.
 - **Pipeline d'outils** rangé : `tools/lib` (données partagées), `tools/banks` (générateurs de banques),
@@ -28,6 +37,21 @@ et le projet suit le [Semantic Versioning](https://semver.org/lang/fr/).
   dans le dépôt mais **dormants**, retirés de la map UEFN ; ils reviendront un par un, retravaillés).
 - **Réorganisation des assets** : dossiers d'images alignés et **à plat** dans le Content UEFN
   (contrainte de module Verse) ; dossiers de textures renommés (`jeu`, `lobby`, `rangs`, `resultats`).
+
+### Ajouté — quizz géographie (2026-06)
+- **Pays sur carte** réactivé sur le modèle 3 paliers (silhouettes Natural Earth, Difficile = pixelisé).
+- **Drapeaux des départements** (101 dép. FR + outre-mer) : drapeau si officiel (Wikidata P41) sinon
+  blason (P94), images Wikimedia Commons ; 3 paliers (Difficile = pixelisé).
+- **Départements sur carte** (101) : silhouettes (geojson gregoiredavid), 3 paliers (Difficile = pixelisé).
+- **Capitales du monde** (195) réactivé : texte seul (question + 4 capitales), 3 paliers par notoriété
+  (pièges Berne/Canberra/Ottawa/Brasilia/Pretoria/Ankara/Rabat relevés), 5 langues.
+- Données départements mutualisées dans `tools/lib/depts_core.py` (codes INSEE, noms ASCII, régions).
+
+### Ajouté — système de flammes (2026-06)
+- **Flammes = heures pleines consécutives** : +1 flamme par **heure** restée connecté **d'affilée**
+  (la progression d'une session est perdue si on se déconnecte avant 60 min). Le **total** de flammes
+  est **persistant par joueur** (`weak_map`, 4ᵉ variable) → conservé à la reconnexion. Pastille
+  **« 🔥 N / HEURES »** ajoutée dans l'en-tête du lobby, **à gauche du rang** (d'après la maquette).
 
 ### À venir
 - Réactivation progressive des autres quizz (un par un, « propre »).

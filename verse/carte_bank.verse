@@ -1,12 +1,13 @@
 using { /Verse.org/Assets }
 
 # ============================================================
-#  carte_bank.verse — Banque du quizz PAYS SUR CARTE (195).
-#  GENERE par tools/build_carte.py — NE PAS EDITER A LA MAIN.
+#  carte_bank.verse — Banque du quizz PAYS SUR CARTE (390 = 195 normales + 195 pixelisees).
+#  GENERE par tools/banks/build_carte.py — NE PAS EDITER A LA MAIN.
 #  Silhouettes Natural Earth (domaine public). Tirages identiques x5 langues.
+#  3 paliers : Facile (communs) / Moyen / Difficile (pixelise).
 # ============================================================
 
-CarteDiff : []int = array{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 0, 1, 1, 2, 0, 1, 0, 1, 1, 1, 2, 0, 0, 1, 1, 1, 2, 1, 1, 0, 2, 2, 1, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 0, 0, 0, 1, 0, 1, 1, 2, 1, 2, 2, 2, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 1, 0, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2, 2, 1, 1, 2, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 0, 1, 2, 1, 1, 0}
+CarteDiff : []int = array{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
 
 
 MakeCarteQuestionsFR() : []question =
@@ -986,6 +987,981 @@ MakeCarteQuestionsFR() : []question =
             Image := option{ carte.map_ar }
             Reponses := array{"Guyana", "Chili", "Uruguay", "Argentine"}
             BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_fr }
+            Reponses := array{"Vatican", "Italie", "France", "Belgique"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_de }
+            Reponses := array{"Belgique", "Liechtenstein", "Italie", "Allemagne"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_it }
+            Reponses := array{"Danemark", "Italie", "Andorre", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_es }
+            Reponses := array{"Espagne", "Monaco", "Suede", "Autriche"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pt }
+            Reponses := array{"Allemagne", "Andorre", "Suisse", "Portugal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gb }
+            Reponses := array{"Irlande", "Royaume-Uni", "Liechtenstein", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ie }
+            Reponses := array{"Autriche", "Monaco", "Andorre", "Irlande"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_be }
+            Reponses := array{"Vatican", "France", "Saint-Marin", "Belgique"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_nl }
+            Reponses := array{"Suisse", "Pays-Bas", "Portugal", "Suede"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lu }
+            Reponses := array{"Luxembourg", "Royaume-Uni", "Irlande", "Monaco"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ch }
+            Reponses := array{"Liechtenstein", "Malte", "Suisse", "Espagne"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_at }
+            Reponses := array{"Andorre", "Liechtenstein", "Autriche", "Luxembourg"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mc }
+            Reponses := array{"Royaume-Uni", "Saint-Marin", "Liechtenstein", "Monaco"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ad }
+            Reponses := array{"Pays-Bas", "Andorre", "Norvege", "Portugal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_li }
+            Reponses := array{"France", "Danemark", "Islande", "Liechtenstein"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sm }
+            Reponses := array{"Italie", "Saint-Marin", "Suisse", "Irlande"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_va }
+            Reponses := array{"Luxembourg", "Royaume-Uni", "Vatican", "Espagne"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mt }
+            Reponses := array{"Espagne", "Allemagne", "Liechtenstein", "Malte"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_is }
+            Reponses := array{"Suisse", "Andorre", "Islande", "Portugal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_no }
+            Reponses := array{"Autriche", "Luxembourg", "Malte", "Norvege"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_se }
+            Reponses := array{"Autriche", "Suisse", "Suede", "Allemagne"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_dk }
+            Reponses := array{"Portugal", "Danemark", "Saint-Marin", "Espagne"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_fi }
+            Reponses := array{"Liechtenstein", "Allemagne", "Finlande", "Danemark"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pl }
+            Reponses := array{"Roumanie", "Pologne", "Lituanie", "Tchequie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cz }
+            Reponses := array{"Tchequie", "Roumanie", "Hongrie", "Bielorussie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sk }
+            Reponses := array{"Estonie", "Chypre", "Montenegro", "Slovaquie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_hu }
+            Reponses := array{"Ukraine", "Hongrie", "Lettonie", "Bielorussie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_si }
+            Reponses := array{"Tchequie", "Bielorussie", "Montenegro", "Slovenie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_hr }
+            Reponses := array{"Ukraine", "Croatie", "Chypre", "Slovaquie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ba }
+            Reponses := array{"Serbie", "Grece", "Albanie", "Bosnie-Herzegovine"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_rs }
+            Reponses := array{"Serbie", "Grece", "Russie", "Pologne"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_me }
+            Reponses := array{"Chypre", "Montenegro", "Russie", "Grece"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mk }
+            Reponses := array{"Macedoine du Nord", "Slovenie", "Bosnie-Herzegovine", "Estonie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_al }
+            Reponses := array{"Tchequie", "Moldavie", "Croatie", "Albanie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gr }
+            Reponses := array{"Grece", "Lituanie", "Macedoine du Nord", "Chypre"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bg }
+            Reponses := array{"Chypre", "Albanie", "Bulgarie", "Croatie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ro }
+            Reponses := array{"Ukraine", "Russie", "Macedoine du Nord", "Roumanie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_md }
+            Reponses := array{"Lettonie", "Chypre", "Hongrie", "Moldavie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ua }
+            Reponses := array{"Lettonie", "Slovenie", "Ukraine", "Grece"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_by }
+            Reponses := array{"Bielorussie", "Slovenie", "Moldavie", "Chypre"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ru }
+            Reponses := array{"Macedoine du Nord", "Lettonie", "Russie", "Serbie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ee }
+            Reponses := array{"Estonie", "Moldavie", "Slovaquie", "Hongrie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lv }
+            Reponses := array{"Slovaquie", "Lettonie", "Hongrie", "Pologne"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lt }
+            Reponses := array{"Ukraine", "Lituanie", "Lettonie", "Moldavie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cy }
+            Reponses := array{"Pologne", "Chypre", "Bulgarie", "Macedoine du Nord"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tr }
+            Reponses := array{"Arabie saoudite", "Turquie", "Emirats arabes unis", "Qatar"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_il }
+            Reponses := array{"Koweit", "Irak", "Qatar", "Israel"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ps }
+            Reponses := array{"Palestine", "Armenie", "Azerbaidjan", "Irak"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lb }
+            Reponses := array{"Armenie", "Liban", "Georgie", "Bahrein"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sy }
+            Reponses := array{"Iran", "Syrie", "Georgie", "Azerbaidjan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_jo }
+            Reponses := array{"Yemen", "Jordanie", "Iran", "Emirats arabes unis"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_iq }
+            Reponses := array{"Israel", "Bahrein", "Irak", "Georgie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ir }
+            Reponses := array{"Qatar", "Yemen", "Iran", "Emirats arabes unis"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sa }
+            Reponses := array{"Irak", "Arabie saoudite", "Armenie", "Koweit"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ye }
+            Reponses := array{"Koweit", "Yemen", "Syrie", "Irak"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_om }
+            Reponses := array{"Palestine", "Oman", "Syrie", "Azerbaidjan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ae }
+            Reponses := array{"Georgie", "Emirats arabes unis", "Bahrein", "Arabie saoudite"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_qa }
+            Reponses := array{"Qatar", "Georgie", "Azerbaidjan", "Arabie saoudite"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bh }
+            Reponses := array{"Irak", "Liban", "Bahrein", "Azerbaidjan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kw }
+            Reponses := array{"Palestine", "Bahrein", "Israel", "Koweit"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ge }
+            Reponses := array{"Bahrein", "Palestine", "Syrie", "Georgie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_am }
+            Reponses := array{"Armenie", "Palestine", "Emirats arabes unis", "Koweit"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_az }
+            Reponses := array{"Irak", "Azerbaidjan", "Palestine", "Turquie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kz }
+            Reponses := array{"Kazakhstan", "Mongolie", "Tadjikistan", "Turkmenistan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_uz }
+            Reponses := array{"Mongolie", "Ouzbekistan", "Kazakhstan", "Tadjikistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tm }
+            Reponses := array{"Kirghizistan", "Turkmenistan", "Mongolie", "Ouzbekistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kg }
+            Reponses := array{"Turkmenistan", "Mongolie", "Kazakhstan", "Kirghizistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tj }
+            Reponses := array{"Afghanistan", "Tadjikistan", "Mongolie", "Kirghizistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_af }
+            Reponses := array{"Mongolie", "Afghanistan", "Kirghizistan", "Kazakhstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mn }
+            Reponses := array{"Ouzbekistan", "Mongolie", "Turkmenistan", "Kazakhstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cn }
+            Reponses := array{"Pakistan", "Bangladesh", "Chine", "Inde"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_jp }
+            Reponses := array{"Singapour", "Japon", "Cambodge", "Nepal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kr }
+            Reponses := array{"Bangladesh", "Coree du Sud", "Coree du Nord", "Brunei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kp }
+            Reponses := array{"Birmanie", "Coree du Sud", "Coree du Nord", "Chine"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_in }
+            Reponses := array{"Inde", "Timor oriental", "Bhoutan", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pk }
+            Reponses := array{"Sri Lanka", "Nepal", "Cambodge", "Pakistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bd }
+            Reponses := array{"Bangladesh", "Philippines", "Malaisie", "Maldives"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lk }
+            Reponses := array{"Laos", "Vietnam", "Coree du Sud", "Sri Lanka"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_np }
+            Reponses := array{"Indonesie", "Philippines", "Inde", "Nepal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bt }
+            Reponses := array{"Bhoutan", "Sri Lanka", "Coree du Sud", "Brunei"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mv }
+            Reponses := array{"Laos", "Sri Lanka", "Vietnam", "Maldives"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mm }
+            Reponses := array{"Brunei", "Bhoutan", "Birmanie", "Pakistan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_th }
+            Reponses := array{"Coree du Nord", "Bangladesh", "Thailande", "Chine"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_la }
+            Reponses := array{"Thailande", "Timor oriental", "Laos", "Cambodge"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kh }
+            Reponses := array{"Cambodge", "Birmanie", "Thailande", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_vn }
+            Reponses := array{"Indonesie", "Nepal", "Inde", "Vietnam"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_my }
+            Reponses := array{"Vietnam", "Malaisie", "Sri Lanka", "Laos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sg }
+            Reponses := array{"Sri Lanka", "Laos", "Coree du Sud", "Singapour"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_id }
+            Reponses := array{"Thailande", "Chine", "Indonesie", "Brunei"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bn }
+            Reponses := array{"Coree du Sud", "Inde", "Brunei", "Philippines"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ph }
+            Reponses := array{"Thailande", "Nepal", "Philippines", "Indonesie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tl }
+            Reponses := array{"Singapour", "Bhoutan", "Nepal", "Timor oriental"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_au }
+            Reponses := array{"Australie", "Samoa", "Tonga", "Nouvelle-Zelande"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_nz }
+            Reponses := array{"Australie", "Palaos", "Nouvelle-Zelande", "Samoa"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pg }
+            Reponses := array{"Tonga", "Australie", "Papouasie-Nouvelle-Guinee", "Kiribati"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_fj }
+            Reponses := array{"Australie", "Fidji", "Kiribati", "Palaos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sb }
+            Reponses := array{"Vanuatu", "Iles Salomon", "Micronesie", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_vu }
+            Reponses := array{"Iles Salomon", "Papouasie-Nouvelle-Guinee", "Vanuatu", "Tuvalu"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ws }
+            Reponses := array{"Tonga", "Kiribati", "Samoa", "Iles Salomon"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_to }
+            Reponses := array{"Nouvelle-Zelande", "Iles Marshall", "Nauru", "Tonga"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tv }
+            Reponses := array{"Micronesie", "Samoa", "Tuvalu", "Iles Marshall"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ki }
+            Reponses := array{"Tuvalu", "Fidji", "Nauru", "Kiribati"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_nr }
+            Reponses := array{"Tonga", "Fidji", "Australie", "Nauru"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pw }
+            Reponses := array{"Tuvalu", "Nouvelle-Zelande", "Palaos", "Papouasie-Nouvelle-Guinee"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_fm }
+            Reponses := array{"Samoa", "Micronesie", "Kiribati", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mh }
+            Reponses := array{"Iles Marshall", "Nouvelle-Zelande", "Vanuatu", "Tonga"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ma }
+            Reponses := array{"Maroc", "Algerie", "Angola", "Zambie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_dz }
+            Reponses := array{"Algerie", "Liberia", "Senegal", "Guinee equatoriale"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tn }
+            Reponses := array{"Kenya", "Cap-Vert", "Tunisie", "Nigeria"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ly }
+            Reponses := array{"Botswana", "Togo", "Mali", "Libye"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_eg }
+            Reponses := array{"Madagascar", "Afrique du Sud", "Egypte", "Guinee"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sd }
+            Reponses := array{"Kenya", "Soudan", "Gambie", "Cap-Vert"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ss }
+            Reponses := array{"Congo", "Soudan du Sud", "Guinee", "Tanzanie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_et }
+            Reponses := array{"Ethiopie", "Liberia", "Namibie", "Centrafrique"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_er }
+            Reponses := array{"Malawi", "Ouganda", "Erythree", "Rwanda"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_dj }
+            Reponses := array{"Seychelles", "Soudan", "Rwanda", "Djibouti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_so }
+            Reponses := array{"Sao Tome-et-Principe", "Maurice", "Congo", "Somalie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ke }
+            Reponses := array{"Cameroun", "Congo", "Kenya", "Centrafrique"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ug }
+            Reponses := array{"Ouganda", "Benin", "Maroc", "Namibie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tz }
+            Reponses := array{"Tanzanie", "Ouganda", "Rwanda", "Soudan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_rw }
+            Reponses := array{"Liberia", "Rwanda", "Soudan du Sud", "Benin"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bi }
+            Reponses := array{"Ouganda", "Tanzanie", "Burundi", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cd }
+            Reponses := array{"Guinee", "Kenya", "Namibie", "RD Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cg }
+            Reponses := array{"Libye", "Mozambique", "Madagascar", "Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ga }
+            Reponses := array{"Seychelles", "Rwanda", "Cap-Vert", "Gabon"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gq }
+            Reponses := array{"Guinee equatoriale", "Ouganda", "Somalie", "Seychelles"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cm }
+            Reponses := array{"Tchad", "Malawi", "Cameroun", "Mali"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cf }
+            Reponses := array{"Zambie", "Ethiopie", "Sierra Leone", "Centrafrique"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_td }
+            Reponses := array{"Sao Tome-et-Principe", "Djibouti", "Tchad", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ne }
+            Reponses := array{"Niger", "Gambie", "Tanzanie", "Centrafrique"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ng }
+            Reponses := array{"Tchad", "Erythree", "Guinee equatoriale", "Nigeria"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bj }
+            Reponses := array{"Soudan du Sud", "Congo", "Benin", "Mozambique"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tg }
+            Reponses := array{"Egypte", "Zimbabwe", "Togo", "Burundi"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gh }
+            Reponses := array{"Congo", "Benin", "Tanzanie", "Ghana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ci }
+            Reponses := array{"Sao Tome-et-Principe", "Cote d'Ivoire", "Soudan", "Soudan du Sud"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lr }
+            Reponses := array{"Burkina Faso", "Niger", "Zambie", "Liberia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sl }
+            Reponses := array{"Tchad", "Libye", "Sierra Leone", "Ethiopie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gn }
+            Reponses := array{"Sierra Leone", "Maroc", "Guinee", "Maurice"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gw }
+            Reponses := array{"Guinee", "Guinee-Bissau", "Mozambique", "Lesotho"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sn }
+            Reponses := array{"Senegal", "Sierra Leone", "Zambie", "Ouganda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gm }
+            Reponses := array{"Sao Tome-et-Principe", "Djibouti", "Ouganda", "Gambie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ml }
+            Reponses := array{"Afrique du Sud", "Mali", "Zimbabwe", "Nigeria"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bf }
+            Reponses := array{"Burkina Faso", "Soudan du Sud", "Libye", "Kenya"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mr }
+            Reponses := array{"Sierra Leone", "Algerie", "Mauritanie", "Maroc"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cv }
+            Reponses := array{"Namibie", "Sao Tome-et-Principe", "Cap-Vert", "Soudan du Sud"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_st }
+            Reponses := array{"Sao Tome-et-Principe", "Centrafrique", "Sierra Leone", "Namibie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ao }
+            Reponses := array{"Guinee", "Lesotho", "Angola", "Senegal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_zm }
+            Reponses := array{"Algerie", "RD Congo", "Liberia", "Zambie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_zw }
+            Reponses := array{"Gabon", "Kenya", "Zimbabwe", "Sierra Leone"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mw }
+            Reponses := array{"Ethiopie", "Burkina Faso", "Malawi", "Guinee-Bissau"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mz }
+            Reponses := array{"Lesotho", "Mozambique", "Namibie", "Angola"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mg }
+            Reponses := array{"Soudan", "Madagascar", "Mauritanie", "Congo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_km }
+            Reponses := array{"Angola", "Togo", "Algerie", "Comores"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mu }
+            Reponses := array{"Comores", "Maroc", "Maurice", "Guinee equatoriale"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sc }
+            Reponses := array{"RD Congo", "Seychelles", "Burundi", "Djibouti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_za }
+            Reponses := array{"Mozambique", "Seychelles", "Afrique du Sud", "Lesotho"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_na }
+            Reponses := array{"Namibie", "Tchad", "Egypte", "Eswatini"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bw }
+            Reponses := array{"Soudan", "Guinee-Bissau", "Mauritanie", "Botswana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ls }
+            Reponses := array{"Botswana", "Liberia", "Niger", "Lesotho"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sz }
+            Reponses := array{"Congo", "Mozambique", "Senegal", "Eswatini"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_us }
+            Reponses := array{"Maurice", "Canada", "Mexique", "Etats-Unis"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ca }
+            Reponses := array{"Etats-Unis", "Canada", "Mexique", "Sao Tome-et-Principe"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_mx }
+            Reponses := array{"Indonesie", "Etats-Unis", "Canada", "Mexique"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gt }
+            Reponses := array{"Belize", "Republique dominicaine", "Guatemala", "Trinite-et-Tobago"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bz }
+            Reponses := array{"Panama", "Bahamas", "Nicaragua", "Belize"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_hn }
+            Reponses := array{"Honduras", "Belize", "Panama", "Barbade"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sv }
+            Reponses := array{"Salvador", "Costa Rica", "Bahamas", "Sainte-Lucie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ni }
+            Reponses := array{"Saint-Kitts-et-Nevis", "Salvador", "Saint-Vincent", "Nicaragua"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cr }
+            Reponses := array{"Sainte-Lucie", "Nicaragua", "Haiti", "Costa Rica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pa }
+            Reponses := array{"Cuba", "Panama", "Saint-Kitts-et-Nevis", "Jamaique"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bs }
+            Reponses := array{"Bahamas", "Grenade", "Antigua-et-Barbuda", "Guatemala"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cu }
+            Reponses := array{"Cuba", "Barbade", "Trinite-et-Tobago", "Haiti"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_jm }
+            Reponses := array{"Belize", "Republique dominicaine", "Grenade", "Jamaique"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ht }
+            Reponses := array{"Bahamas", "Haiti", "Republique dominicaine", "Costa Rica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_do }
+            Reponses := array{"Republique dominicaine", "Dominique", "Sainte-Lucie", "Salvador"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_kn }
+            Reponses := array{"Saint-Kitts-et-Nevis", "Salvador", "Guatemala", "Belize"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ag }
+            Reponses := array{"Salvador", "Antigua-et-Barbuda", "Bahamas", "Honduras"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_dm }
+            Reponses := array{"Jamaique", "Saint-Kitts-et-Nevis", "Barbade", "Dominique"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_lc }
+            Reponses := array{"Cuba", "Sainte-Lucie", "Belize", "Nicaragua"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_vc }
+            Reponses := array{"Republique dominicaine", "Panama", "Guatemala", "Saint-Vincent"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bb }
+            Reponses := array{"Barbade", "Costa Rica", "Panama", "Dominique"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gd }
+            Reponses := array{"Belize", "Grenade", "Nicaragua", "Salvador"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_tt }
+            Reponses := array{"Grenade", "Haiti", "Jamaique", "Trinite-et-Tobago"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_co }
+            Reponses := array{"Bolivie", "Venezuela", "Equateur", "Colombie"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ve }
+            Reponses := array{"Venezuela", "Equateur", "Perou", "Colombie"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_gy }
+            Reponses := array{"Uruguay", "Guyana", "Chili", "Paraguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_sr }
+            Reponses := array{"Suriname", "Perou", "Bresil", "Chili"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ec }
+            Reponses := array{"Bolivie", "Suriname", "Uruguay", "Equateur"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_pe }
+            Reponses := array{"Venezuela", "Perou", "Bolivie", "Uruguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_br }
+            Reponses := array{"Bresil", "Equateur", "Paraguay", "Venezuela"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_bo }
+            Reponses := array{"Chili", "Bresil", "Bolivie", "Paraguay"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_py }
+            Reponses := array{"Chili", "Bolivie", "Paraguay", "Colombie"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_uy }
+            Reponses := array{"Venezuela", "Uruguay", "Bolivie", "Argentine"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_cl }
+            Reponses := array{"Bresil", "Chili", "Equateur", "Bolivie"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quel est ce pays ? (carte pixelisee)"
+            Image := option{ carte_pixel.mpx_ar }
+            Reponses := array{"Bresil", "Argentine", "Colombie", "Uruguay"}
+            BonneReponse := 1
 
 MakeCarteQuestions() : []question =
     MakeCarteQuestionsFR()
@@ -1967,6 +2943,981 @@ MakeCarteQuestionsEN() : []question =
             Image := option{ carte.map_ar }
             Reponses := array{"Guyana", "Chile", "Uruguay", "Argentina"}
             BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_fr }
+            Reponses := array{"Vatican City", "Italy", "France", "Belgium"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_de }
+            Reponses := array{"Belgium", "Liechtenstein", "Italy", "Germany"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_it }
+            Reponses := array{"Denmark", "Italy", "Andorra", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_es }
+            Reponses := array{"Spain", "Monaco", "Sweden", "Austria"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pt }
+            Reponses := array{"Germany", "Andorra", "Switzerland", "Portugal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gb }
+            Reponses := array{"Ireland", "United Kingdom", "Liechtenstein", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ie }
+            Reponses := array{"Austria", "Monaco", "Andorra", "Ireland"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_be }
+            Reponses := array{"Vatican City", "France", "San Marino", "Belgium"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_nl }
+            Reponses := array{"Switzerland", "Netherlands", "Portugal", "Sweden"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lu }
+            Reponses := array{"Luxembourg", "United Kingdom", "Ireland", "Monaco"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ch }
+            Reponses := array{"Liechtenstein", "Malta", "Switzerland", "Spain"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_at }
+            Reponses := array{"Andorra", "Liechtenstein", "Austria", "Luxembourg"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mc }
+            Reponses := array{"United Kingdom", "San Marino", "Liechtenstein", "Monaco"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ad }
+            Reponses := array{"Netherlands", "Andorra", "Norway", "Portugal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_li }
+            Reponses := array{"France", "Denmark", "Iceland", "Liechtenstein"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sm }
+            Reponses := array{"Italy", "San Marino", "Switzerland", "Ireland"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_va }
+            Reponses := array{"Luxembourg", "United Kingdom", "Vatican City", "Spain"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mt }
+            Reponses := array{"Spain", "Germany", "Liechtenstein", "Malta"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_is }
+            Reponses := array{"Switzerland", "Andorra", "Iceland", "Portugal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_no }
+            Reponses := array{"Austria", "Luxembourg", "Malta", "Norway"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_se }
+            Reponses := array{"Austria", "Switzerland", "Sweden", "Germany"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_dk }
+            Reponses := array{"Portugal", "Denmark", "San Marino", "Spain"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_fi }
+            Reponses := array{"Liechtenstein", "Germany", "Finland", "Denmark"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pl }
+            Reponses := array{"Romania", "Poland", "Lithuania", "Czechia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cz }
+            Reponses := array{"Czechia", "Romania", "Hungary", "Belarus"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sk }
+            Reponses := array{"Estonia", "Cyprus", "Montenegro", "Slovakia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_hu }
+            Reponses := array{"Ukraine", "Hungary", "Latvia", "Belarus"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_si }
+            Reponses := array{"Czechia", "Belarus", "Montenegro", "Slovenia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_hr }
+            Reponses := array{"Ukraine", "Croatia", "Cyprus", "Slovakia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ba }
+            Reponses := array{"Serbia", "Greece", "Albania", "Bosnia and Herzegovina"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_rs }
+            Reponses := array{"Serbia", "Greece", "Russia", "Poland"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_me }
+            Reponses := array{"Cyprus", "Montenegro", "Russia", "Greece"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mk }
+            Reponses := array{"North Macedonia", "Slovenia", "Bosnia and Herzegovina", "Estonia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_al }
+            Reponses := array{"Czechia", "Moldova", "Croatia", "Albania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gr }
+            Reponses := array{"Greece", "Lithuania", "North Macedonia", "Cyprus"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bg }
+            Reponses := array{"Cyprus", "Albania", "Bulgaria", "Croatia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ro }
+            Reponses := array{"Ukraine", "Russia", "North Macedonia", "Romania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_md }
+            Reponses := array{"Latvia", "Cyprus", "Hungary", "Moldova"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ua }
+            Reponses := array{"Latvia", "Slovenia", "Ukraine", "Greece"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_by }
+            Reponses := array{"Belarus", "Slovenia", "Moldova", "Cyprus"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ru }
+            Reponses := array{"North Macedonia", "Latvia", "Russia", "Serbia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ee }
+            Reponses := array{"Estonia", "Moldova", "Slovakia", "Hungary"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lv }
+            Reponses := array{"Slovakia", "Latvia", "Hungary", "Poland"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lt }
+            Reponses := array{"Ukraine", "Lithuania", "Latvia", "Moldova"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cy }
+            Reponses := array{"Poland", "Cyprus", "Bulgaria", "North Macedonia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tr }
+            Reponses := array{"Saudi Arabia", "Turkey", "United Arab Emirates", "Qatar"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_il }
+            Reponses := array{"Kuwait", "Iraq", "Qatar", "Israel"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ps }
+            Reponses := array{"Palestine", "Armenia", "Azerbaijan", "Iraq"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lb }
+            Reponses := array{"Armenia", "Lebanon", "Georgia", "Bahrain"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sy }
+            Reponses := array{"Iran", "Syria", "Georgia", "Azerbaijan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_jo }
+            Reponses := array{"Yemen", "Jordan", "Iran", "United Arab Emirates"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_iq }
+            Reponses := array{"Israel", "Bahrain", "Iraq", "Georgia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ir }
+            Reponses := array{"Qatar", "Yemen", "Iran", "United Arab Emirates"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sa }
+            Reponses := array{"Iraq", "Saudi Arabia", "Armenia", "Kuwait"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ye }
+            Reponses := array{"Kuwait", "Yemen", "Syria", "Iraq"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_om }
+            Reponses := array{"Palestine", "Oman", "Syria", "Azerbaijan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ae }
+            Reponses := array{"Georgia", "United Arab Emirates", "Bahrain", "Saudi Arabia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_qa }
+            Reponses := array{"Qatar", "Georgia", "Azerbaijan", "Saudi Arabia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bh }
+            Reponses := array{"Iraq", "Lebanon", "Bahrain", "Azerbaijan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kw }
+            Reponses := array{"Palestine", "Bahrain", "Israel", "Kuwait"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ge }
+            Reponses := array{"Bahrain", "Palestine", "Syria", "Georgia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_am }
+            Reponses := array{"Armenia", "Palestine", "United Arab Emirates", "Kuwait"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_az }
+            Reponses := array{"Iraq", "Azerbaijan", "Palestine", "Turkey"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kz }
+            Reponses := array{"Kazakhstan", "Mongolia", "Tajikistan", "Turkmenistan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_uz }
+            Reponses := array{"Mongolia", "Uzbekistan", "Kazakhstan", "Tajikistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tm }
+            Reponses := array{"Kyrgyzstan", "Turkmenistan", "Mongolia", "Uzbekistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kg }
+            Reponses := array{"Turkmenistan", "Mongolia", "Kazakhstan", "Kyrgyzstan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tj }
+            Reponses := array{"Afghanistan", "Tajikistan", "Mongolia", "Kyrgyzstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_af }
+            Reponses := array{"Mongolia", "Afghanistan", "Kyrgyzstan", "Kazakhstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mn }
+            Reponses := array{"Uzbekistan", "Mongolia", "Turkmenistan", "Kazakhstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cn }
+            Reponses := array{"Pakistan", "Bangladesh", "China", "India"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_jp }
+            Reponses := array{"Singapore", "Japan", "Cambodia", "Nepal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kr }
+            Reponses := array{"Bangladesh", "South Korea", "North Korea", "Brunei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kp }
+            Reponses := array{"Myanmar", "South Korea", "North Korea", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_in }
+            Reponses := array{"India", "East Timor", "Bhutan", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pk }
+            Reponses := array{"Sri Lanka", "Nepal", "Cambodia", "Pakistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bd }
+            Reponses := array{"Bangladesh", "Philippines", "Malaysia", "Maldives"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lk }
+            Reponses := array{"Laos", "Vietnam", "South Korea", "Sri Lanka"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_np }
+            Reponses := array{"Indonesia", "Philippines", "India", "Nepal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bt }
+            Reponses := array{"Bhutan", "Sri Lanka", "South Korea", "Brunei"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mv }
+            Reponses := array{"Laos", "Sri Lanka", "Vietnam", "Maldives"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mm }
+            Reponses := array{"Brunei", "Bhutan", "Myanmar", "Pakistan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_th }
+            Reponses := array{"North Korea", "Bangladesh", "Thailand", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_la }
+            Reponses := array{"Thailand", "East Timor", "Laos", "Cambodia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kh }
+            Reponses := array{"Cambodia", "Myanmar", "Thailand", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_vn }
+            Reponses := array{"Indonesia", "Nepal", "India", "Vietnam"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_my }
+            Reponses := array{"Vietnam", "Malaysia", "Sri Lanka", "Laos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sg }
+            Reponses := array{"Sri Lanka", "Laos", "South Korea", "Singapore"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_id }
+            Reponses := array{"Thailand", "China", "Indonesia", "Brunei"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bn }
+            Reponses := array{"South Korea", "India", "Brunei", "Philippines"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ph }
+            Reponses := array{"Thailand", "Nepal", "Philippines", "Indonesia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tl }
+            Reponses := array{"Singapore", "Bhutan", "Nepal", "East Timor"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_au }
+            Reponses := array{"Australia", "Samoa", "Tonga", "New Zealand"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_nz }
+            Reponses := array{"Australia", "Palau", "New Zealand", "Samoa"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pg }
+            Reponses := array{"Tonga", "Australia", "Papua New Guinea", "Kiribati"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_fj }
+            Reponses := array{"Australia", "Fiji", "Kiribati", "Palau"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sb }
+            Reponses := array{"Vanuatu", "Solomon Islands", "Micronesia", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_vu }
+            Reponses := array{"Solomon Islands", "Papua New Guinea", "Vanuatu", "Tuvalu"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ws }
+            Reponses := array{"Tonga", "Kiribati", "Samoa", "Solomon Islands"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_to }
+            Reponses := array{"New Zealand", "Marshall Islands", "Nauru", "Tonga"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tv }
+            Reponses := array{"Micronesia", "Samoa", "Tuvalu", "Marshall Islands"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ki }
+            Reponses := array{"Tuvalu", "Fiji", "Nauru", "Kiribati"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_nr }
+            Reponses := array{"Tonga", "Fiji", "Australia", "Nauru"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pw }
+            Reponses := array{"Tuvalu", "New Zealand", "Palau", "Papua New Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_fm }
+            Reponses := array{"Samoa", "Micronesia", "Kiribati", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mh }
+            Reponses := array{"Marshall Islands", "New Zealand", "Vanuatu", "Tonga"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ma }
+            Reponses := array{"Morocco", "Algeria", "Angola", "Zambia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_dz }
+            Reponses := array{"Algeria", "Liberia", "Senegal", "Equatorial Guinea"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tn }
+            Reponses := array{"Kenya", "Cape Verde", "Tunisia", "Nigeria"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ly }
+            Reponses := array{"Botswana", "Togo", "Mali", "Libya"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_eg }
+            Reponses := array{"Madagascar", "South Africa", "Egypt", "Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sd }
+            Reponses := array{"Kenya", "Sudan", "Gambia", "Cape Verde"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ss }
+            Reponses := array{"Congo", "South Sudan", "Guinea", "Tanzania"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_et }
+            Reponses := array{"Ethiopia", "Liberia", "Namibia", "Central African Republic"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_er }
+            Reponses := array{"Malawi", "Uganda", "Eritrea", "Rwanda"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_dj }
+            Reponses := array{"Seychelles", "Sudan", "Rwanda", "Djibouti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_so }
+            Reponses := array{"Sao Tome and Principe", "Mauritius", "Congo", "Somalia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ke }
+            Reponses := array{"Cameroon", "Congo", "Kenya", "Central African Republic"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ug }
+            Reponses := array{"Uganda", "Benin", "Morocco", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tz }
+            Reponses := array{"Tanzania", "Uganda", "Rwanda", "Sudan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_rw }
+            Reponses := array{"Liberia", "Rwanda", "South Sudan", "Benin"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bi }
+            Reponses := array{"Uganda", "Tanzania", "Burundi", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cd }
+            Reponses := array{"Guinea", "Kenya", "Namibia", "DR Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cg }
+            Reponses := array{"Libya", "Mozambique", "Madagascar", "Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ga }
+            Reponses := array{"Seychelles", "Rwanda", "Cape Verde", "Gabon"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gq }
+            Reponses := array{"Equatorial Guinea", "Uganda", "Somalia", "Seychelles"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cm }
+            Reponses := array{"Chad", "Malawi", "Cameroon", "Mali"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cf }
+            Reponses := array{"Zambia", "Ethiopia", "Sierra Leone", "Central African Republic"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_td }
+            Reponses := array{"Sao Tome and Principe", "Djibouti", "Chad", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ne }
+            Reponses := array{"Niger", "Gambia", "Tanzania", "Central African Republic"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ng }
+            Reponses := array{"Chad", "Eritrea", "Equatorial Guinea", "Nigeria"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bj }
+            Reponses := array{"South Sudan", "Congo", "Benin", "Mozambique"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tg }
+            Reponses := array{"Egypt", "Zimbabwe", "Togo", "Burundi"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gh }
+            Reponses := array{"Congo", "Benin", "Tanzania", "Ghana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ci }
+            Reponses := array{"Sao Tome and Principe", "Ivory Coast", "Sudan", "South Sudan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lr }
+            Reponses := array{"Burkina Faso", "Niger", "Zambia", "Liberia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sl }
+            Reponses := array{"Chad", "Libya", "Sierra Leone", "Ethiopia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gn }
+            Reponses := array{"Sierra Leone", "Morocco", "Guinea", "Mauritius"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gw }
+            Reponses := array{"Guinea", "Guinea-Bissau", "Mozambique", "Lesotho"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sn }
+            Reponses := array{"Senegal", "Sierra Leone", "Zambia", "Uganda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gm }
+            Reponses := array{"Sao Tome and Principe", "Djibouti", "Uganda", "Gambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ml }
+            Reponses := array{"South Africa", "Mali", "Zimbabwe", "Nigeria"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bf }
+            Reponses := array{"Burkina Faso", "South Sudan", "Libya", "Kenya"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mr }
+            Reponses := array{"Sierra Leone", "Algeria", "Mauritania", "Morocco"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cv }
+            Reponses := array{"Namibia", "Sao Tome and Principe", "Cape Verde", "South Sudan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_st }
+            Reponses := array{"Sao Tome and Principe", "Central African Republic", "Sierra Leone", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ao }
+            Reponses := array{"Guinea", "Lesotho", "Angola", "Senegal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_zm }
+            Reponses := array{"Algeria", "DR Congo", "Liberia", "Zambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_zw }
+            Reponses := array{"Gabon", "Kenya", "Zimbabwe", "Sierra Leone"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mw }
+            Reponses := array{"Ethiopia", "Burkina Faso", "Malawi", "Guinea-Bissau"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mz }
+            Reponses := array{"Lesotho", "Mozambique", "Namibia", "Angola"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mg }
+            Reponses := array{"Sudan", "Madagascar", "Mauritania", "Congo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_km }
+            Reponses := array{"Angola", "Togo", "Algeria", "Comoros"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mu }
+            Reponses := array{"Comoros", "Morocco", "Mauritius", "Equatorial Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sc }
+            Reponses := array{"DR Congo", "Seychelles", "Burundi", "Djibouti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_za }
+            Reponses := array{"Mozambique", "Seychelles", "South Africa", "Lesotho"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_na }
+            Reponses := array{"Namibia", "Chad", "Egypt", "Eswatini"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bw }
+            Reponses := array{"Sudan", "Guinea-Bissau", "Mauritania", "Botswana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ls }
+            Reponses := array{"Botswana", "Liberia", "Niger", "Lesotho"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sz }
+            Reponses := array{"Congo", "Mozambique", "Senegal", "Eswatini"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_us }
+            Reponses := array{"Mauritius", "Canada", "Mexico", "United States"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ca }
+            Reponses := array{"United States", "Canada", "Mexico", "Sao Tome and Principe"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_mx }
+            Reponses := array{"Indonesia", "United States", "Canada", "Mexico"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gt }
+            Reponses := array{"Belize", "Dominican Republic", "Guatemala", "Trinidad and Tobago"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bz }
+            Reponses := array{"Panama", "Bahamas", "Nicaragua", "Belize"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_hn }
+            Reponses := array{"Honduras", "Belize", "Panama", "Barbados"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sv }
+            Reponses := array{"El Salvador", "Costa Rica", "Bahamas", "Saint Lucia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ni }
+            Reponses := array{"Saint Kitts and Nevis", "El Salvador", "Saint Vincent", "Nicaragua"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cr }
+            Reponses := array{"Saint Lucia", "Nicaragua", "Haiti", "Costa Rica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pa }
+            Reponses := array{"Cuba", "Panama", "Saint Kitts and Nevis", "Jamaica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bs }
+            Reponses := array{"Bahamas", "Grenada", "Antigua and Barbuda", "Guatemala"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cu }
+            Reponses := array{"Cuba", "Barbados", "Trinidad and Tobago", "Haiti"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_jm }
+            Reponses := array{"Belize", "Dominican Republic", "Grenada", "Jamaica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ht }
+            Reponses := array{"Bahamas", "Haiti", "Dominican Republic", "Costa Rica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_do }
+            Reponses := array{"Dominican Republic", "Dominica", "Saint Lucia", "El Salvador"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_kn }
+            Reponses := array{"Saint Kitts and Nevis", "El Salvador", "Guatemala", "Belize"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ag }
+            Reponses := array{"El Salvador", "Antigua and Barbuda", "Bahamas", "Honduras"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_dm }
+            Reponses := array{"Jamaica", "Saint Kitts and Nevis", "Barbados", "Dominica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_lc }
+            Reponses := array{"Cuba", "Saint Lucia", "Belize", "Nicaragua"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_vc }
+            Reponses := array{"Dominican Republic", "Panama", "Guatemala", "Saint Vincent"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bb }
+            Reponses := array{"Barbados", "Costa Rica", "Panama", "Dominica"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gd }
+            Reponses := array{"Belize", "Grenada", "Nicaragua", "El Salvador"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_tt }
+            Reponses := array{"Grenada", "Haiti", "Jamaica", "Trinidad and Tobago"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_co }
+            Reponses := array{"Bolivia", "Venezuela", "Ecuador", "Colombia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ve }
+            Reponses := array{"Venezuela", "Ecuador", "Peru", "Colombia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_gy }
+            Reponses := array{"Uruguay", "Guyana", "Chile", "Paraguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_sr }
+            Reponses := array{"Suriname", "Peru", "Brazil", "Chile"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ec }
+            Reponses := array{"Bolivia", "Suriname", "Uruguay", "Ecuador"}
+            BonneReponse := 3
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_pe }
+            Reponses := array{"Venezuela", "Peru", "Bolivia", "Uruguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_br }
+            Reponses := array{"Brazil", "Ecuador", "Paraguay", "Venezuela"}
+            BonneReponse := 0
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_bo }
+            Reponses := array{"Chile", "Brazil", "Bolivia", "Paraguay"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_py }
+            Reponses := array{"Chile", "Bolivia", "Paraguay", "Colombia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_uy }
+            Reponses := array{"Venezuela", "Uruguay", "Bolivia", "Argentina"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_cl }
+            Reponses := array{"Brazil", "Chile", "Ecuador", "Bolivia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Which country is this? (pixelated map)"
+            Image := option{ carte_pixel.mpx_ar }
+            Reponses := array{"Brazil", "Argentina", "Colombia", "Uruguay"}
+            BonneReponse := 1
 
 MakeCarteQuestionsES() : []question =
     array:
@@ -2945,6 +4896,981 @@ MakeCarteQuestionsES() : []question =
             Image := option{ carte.map_ar }
             Reponses := array{"Guyana", "Chile", "Uruguay", "Argentina"}
             BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_fr }
+            Reponses := array{"Ciudad del Vaticano", "Italia", "Francia", "Belgica"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_de }
+            Reponses := array{"Belgica", "Liechtenstein", "Italia", "Alemania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_it }
+            Reponses := array{"Dinamarca", "Italia", "Andorra", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_es }
+            Reponses := array{"Espana", "Monaco", "Suecia", "Austria"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pt }
+            Reponses := array{"Alemania", "Andorra", "Suiza", "Portugal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gb }
+            Reponses := array{"Irlanda", "Reino Unido", "Liechtenstein", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ie }
+            Reponses := array{"Austria", "Monaco", "Andorra", "Irlanda"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_be }
+            Reponses := array{"Ciudad del Vaticano", "Francia", "San Marino", "Belgica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_nl }
+            Reponses := array{"Suiza", "Paises Bajos", "Portugal", "Suecia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lu }
+            Reponses := array{"Luxemburgo", "Reino Unido", "Irlanda", "Monaco"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ch }
+            Reponses := array{"Liechtenstein", "Malta", "Suiza", "Espana"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_at }
+            Reponses := array{"Andorra", "Liechtenstein", "Austria", "Luxemburgo"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mc }
+            Reponses := array{"Reino Unido", "San Marino", "Liechtenstein", "Monaco"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ad }
+            Reponses := array{"Paises Bajos", "Andorra", "Noruega", "Portugal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_li }
+            Reponses := array{"Francia", "Dinamarca", "Islandia", "Liechtenstein"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sm }
+            Reponses := array{"Italia", "San Marino", "Suiza", "Irlanda"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_va }
+            Reponses := array{"Luxemburgo", "Reino Unido", "Ciudad del Vaticano", "Espana"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mt }
+            Reponses := array{"Espana", "Alemania", "Liechtenstein", "Malta"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_is }
+            Reponses := array{"Suiza", "Andorra", "Islandia", "Portugal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_no }
+            Reponses := array{"Austria", "Luxemburgo", "Malta", "Noruega"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_se }
+            Reponses := array{"Austria", "Suiza", "Suecia", "Alemania"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_dk }
+            Reponses := array{"Portugal", "Dinamarca", "San Marino", "Espana"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_fi }
+            Reponses := array{"Liechtenstein", "Alemania", "Finlandia", "Dinamarca"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pl }
+            Reponses := array{"Rumania", "Polonia", "Lituania", "Chequia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cz }
+            Reponses := array{"Chequia", "Rumania", "Hungria", "Bielorrusia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sk }
+            Reponses := array{"Estonia", "Chipre", "Montenegro", "Eslovaquia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_hu }
+            Reponses := array{"Ucrania", "Hungria", "Letonia", "Bielorrusia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_si }
+            Reponses := array{"Chequia", "Bielorrusia", "Montenegro", "Eslovenia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_hr }
+            Reponses := array{"Ucrania", "Croacia", "Chipre", "Eslovaquia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ba }
+            Reponses := array{"Serbia", "Grecia", "Albania", "Bosnia y Herzegovina"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_rs }
+            Reponses := array{"Serbia", "Grecia", "Rusia", "Polonia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_me }
+            Reponses := array{"Chipre", "Montenegro", "Rusia", "Grecia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mk }
+            Reponses := array{"Macedonia del Norte", "Eslovenia", "Bosnia y Herzegovina", "Estonia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_al }
+            Reponses := array{"Chequia", "Moldavia", "Croacia", "Albania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gr }
+            Reponses := array{"Grecia", "Lituania", "Macedonia del Norte", "Chipre"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bg }
+            Reponses := array{"Chipre", "Albania", "Bulgaria", "Croacia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ro }
+            Reponses := array{"Ucrania", "Rusia", "Macedonia del Norte", "Rumania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_md }
+            Reponses := array{"Letonia", "Chipre", "Hungria", "Moldavia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ua }
+            Reponses := array{"Letonia", "Eslovenia", "Ucrania", "Grecia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_by }
+            Reponses := array{"Bielorrusia", "Eslovenia", "Moldavia", "Chipre"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ru }
+            Reponses := array{"Macedonia del Norte", "Letonia", "Rusia", "Serbia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ee }
+            Reponses := array{"Estonia", "Moldavia", "Eslovaquia", "Hungria"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lv }
+            Reponses := array{"Eslovaquia", "Letonia", "Hungria", "Polonia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lt }
+            Reponses := array{"Ucrania", "Lituania", "Letonia", "Moldavia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cy }
+            Reponses := array{"Polonia", "Chipre", "Bulgaria", "Macedonia del Norte"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tr }
+            Reponses := array{"Arabia Saudita", "Turquia", "Emiratos Arabes Unidos", "Catar"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_il }
+            Reponses := array{"Kuwait", "Irak", "Catar", "Israel"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ps }
+            Reponses := array{"Palestina", "Armenia", "Azerbaiyan", "Irak"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lb }
+            Reponses := array{"Armenia", "Libano", "Georgia", "Barein"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sy }
+            Reponses := array{"Iran", "Siria", "Georgia", "Azerbaiyan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_jo }
+            Reponses := array{"Yemen", "Jordania", "Iran", "Emiratos Arabes Unidos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_iq }
+            Reponses := array{"Israel", "Barein", "Irak", "Georgia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ir }
+            Reponses := array{"Catar", "Yemen", "Iran", "Emiratos Arabes Unidos"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sa }
+            Reponses := array{"Irak", "Arabia Saudita", "Armenia", "Kuwait"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ye }
+            Reponses := array{"Kuwait", "Yemen", "Siria", "Irak"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_om }
+            Reponses := array{"Palestina", "Oman", "Siria", "Azerbaiyan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ae }
+            Reponses := array{"Georgia", "Emiratos Arabes Unidos", "Barein", "Arabia Saudita"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_qa }
+            Reponses := array{"Catar", "Georgia", "Azerbaiyan", "Arabia Saudita"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bh }
+            Reponses := array{"Irak", "Libano", "Barein", "Azerbaiyan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kw }
+            Reponses := array{"Palestina", "Barein", "Israel", "Kuwait"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ge }
+            Reponses := array{"Barein", "Palestina", "Siria", "Georgia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_am }
+            Reponses := array{"Armenia", "Palestina", "Emiratos Arabes Unidos", "Kuwait"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_az }
+            Reponses := array{"Irak", "Azerbaiyan", "Palestina", "Turquia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kz }
+            Reponses := array{"Kazajistan", "Mongolia", "Tayikistan", "Turkmenistan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_uz }
+            Reponses := array{"Mongolia", "Uzbekistan", "Kazajistan", "Tayikistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tm }
+            Reponses := array{"Kirguistan", "Turkmenistan", "Mongolia", "Uzbekistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kg }
+            Reponses := array{"Turkmenistan", "Mongolia", "Kazajistan", "Kirguistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tj }
+            Reponses := array{"Afganistan", "Tayikistan", "Mongolia", "Kirguistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_af }
+            Reponses := array{"Mongolia", "Afganistan", "Kirguistan", "Kazajistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mn }
+            Reponses := array{"Uzbekistan", "Mongolia", "Turkmenistan", "Kazajistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cn }
+            Reponses := array{"Pakistan", "Banglades", "China", "India"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_jp }
+            Reponses := array{"Singapur", "Japon", "Camboya", "Nepal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kr }
+            Reponses := array{"Banglades", "Corea del Sur", "Corea del Norte", "Brunei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kp }
+            Reponses := array{"Birmania", "Corea del Sur", "Corea del Norte", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_in }
+            Reponses := array{"India", "Timor Oriental", "Butan", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pk }
+            Reponses := array{"Sri Lanka", "Nepal", "Camboya", "Pakistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bd }
+            Reponses := array{"Banglades", "Filipinas", "Malasia", "Maldivas"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lk }
+            Reponses := array{"Laos", "Vietnam", "Corea del Sur", "Sri Lanka"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_np }
+            Reponses := array{"Indonesia", "Filipinas", "India", "Nepal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bt }
+            Reponses := array{"Butan", "Sri Lanka", "Corea del Sur", "Brunei"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mv }
+            Reponses := array{"Laos", "Sri Lanka", "Vietnam", "Maldivas"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mm }
+            Reponses := array{"Brunei", "Butan", "Birmania", "Pakistan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_th }
+            Reponses := array{"Corea del Norte", "Banglades", "Tailandia", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_la }
+            Reponses := array{"Tailandia", "Timor Oriental", "Laos", "Camboya"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kh }
+            Reponses := array{"Camboya", "Birmania", "Tailandia", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_vn }
+            Reponses := array{"Indonesia", "Nepal", "India", "Vietnam"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_my }
+            Reponses := array{"Vietnam", "Malasia", "Sri Lanka", "Laos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sg }
+            Reponses := array{"Sri Lanka", "Laos", "Corea del Sur", "Singapur"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_id }
+            Reponses := array{"Tailandia", "China", "Indonesia", "Brunei"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bn }
+            Reponses := array{"Corea del Sur", "India", "Brunei", "Filipinas"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ph }
+            Reponses := array{"Tailandia", "Nepal", "Filipinas", "Indonesia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tl }
+            Reponses := array{"Singapur", "Butan", "Nepal", "Timor Oriental"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_au }
+            Reponses := array{"Australia", "Samoa", "Tonga", "Nueva Zelanda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_nz }
+            Reponses := array{"Australia", "Palaos", "Nueva Zelanda", "Samoa"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pg }
+            Reponses := array{"Tonga", "Australia", "Papua Nueva Guinea", "Kiribati"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_fj }
+            Reponses := array{"Australia", "Fiyi", "Kiribati", "Palaos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sb }
+            Reponses := array{"Vanuatu", "Islas Salomon", "Micronesia", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_vu }
+            Reponses := array{"Islas Salomon", "Papua Nueva Guinea", "Vanuatu", "Tuvalu"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ws }
+            Reponses := array{"Tonga", "Kiribati", "Samoa", "Islas Salomon"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_to }
+            Reponses := array{"Nueva Zelanda", "Islas Marshall", "Nauru", "Tonga"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tv }
+            Reponses := array{"Micronesia", "Samoa", "Tuvalu", "Islas Marshall"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ki }
+            Reponses := array{"Tuvalu", "Fiyi", "Nauru", "Kiribati"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_nr }
+            Reponses := array{"Tonga", "Fiyi", "Australia", "Nauru"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pw }
+            Reponses := array{"Tuvalu", "Nueva Zelanda", "Palaos", "Papua Nueva Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_fm }
+            Reponses := array{"Samoa", "Micronesia", "Kiribati", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mh }
+            Reponses := array{"Islas Marshall", "Nueva Zelanda", "Vanuatu", "Tonga"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ma }
+            Reponses := array{"Marruecos", "Argelia", "Angola", "Zambia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_dz }
+            Reponses := array{"Argelia", "Liberia", "Senegal", "Guinea Ecuatorial"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tn }
+            Reponses := array{"Kenia", "Cabo Verde", "Tunez", "Nigeria"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ly }
+            Reponses := array{"Botsuana", "Togo", "Mali", "Libia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_eg }
+            Reponses := array{"Madagascar", "Sudafrica", "Egipto", "Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sd }
+            Reponses := array{"Kenia", "Sudan", "Gambia", "Cabo Verde"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ss }
+            Reponses := array{"Congo", "Sudan del Sur", "Guinea", "Tanzania"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_et }
+            Reponses := array{"Etiopia", "Liberia", "Namibia", "Republica Centroafricana"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_er }
+            Reponses := array{"Malaui", "Uganda", "Eritrea", "Ruanda"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_dj }
+            Reponses := array{"Seychelles", "Sudan", "Ruanda", "Yibuti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_so }
+            Reponses := array{"Santo Tome y Principe", "Mauricio", "Congo", "Somalia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ke }
+            Reponses := array{"Camerun", "Congo", "Kenia", "Republica Centroafricana"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ug }
+            Reponses := array{"Uganda", "Benin", "Marruecos", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tz }
+            Reponses := array{"Tanzania", "Uganda", "Ruanda", "Sudan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_rw }
+            Reponses := array{"Liberia", "Ruanda", "Sudan del Sur", "Benin"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bi }
+            Reponses := array{"Uganda", "Tanzania", "Burundi", "Zimbabue"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cd }
+            Reponses := array{"Guinea", "Kenia", "Namibia", "RD del Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cg }
+            Reponses := array{"Libia", "Mozambique", "Madagascar", "Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ga }
+            Reponses := array{"Seychelles", "Ruanda", "Cabo Verde", "Gabon"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gq }
+            Reponses := array{"Guinea Ecuatorial", "Uganda", "Somalia", "Seychelles"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cm }
+            Reponses := array{"Chad", "Malaui", "Camerun", "Mali"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cf }
+            Reponses := array{"Zambia", "Etiopia", "Sierra Leona", "Republica Centroafricana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_td }
+            Reponses := array{"Santo Tome y Principe", "Yibuti", "Chad", "Zimbabue"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ne }
+            Reponses := array{"Niger", "Gambia", "Tanzania", "Republica Centroafricana"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ng }
+            Reponses := array{"Chad", "Eritrea", "Guinea Ecuatorial", "Nigeria"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bj }
+            Reponses := array{"Sudan del Sur", "Congo", "Benin", "Mozambique"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tg }
+            Reponses := array{"Egipto", "Zimbabue", "Togo", "Burundi"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gh }
+            Reponses := array{"Congo", "Benin", "Tanzania", "Ghana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ci }
+            Reponses := array{"Santo Tome y Principe", "Costa de Marfil", "Sudan", "Sudan del Sur"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lr }
+            Reponses := array{"Burkina Faso", "Niger", "Zambia", "Liberia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sl }
+            Reponses := array{"Chad", "Libia", "Sierra Leona", "Etiopia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gn }
+            Reponses := array{"Sierra Leona", "Marruecos", "Guinea", "Mauricio"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gw }
+            Reponses := array{"Guinea", "Guinea-Bisau", "Mozambique", "Lesoto"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sn }
+            Reponses := array{"Senegal", "Sierra Leona", "Zambia", "Uganda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gm }
+            Reponses := array{"Santo Tome y Principe", "Yibuti", "Uganda", "Gambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ml }
+            Reponses := array{"Sudafrica", "Mali", "Zimbabue", "Nigeria"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bf }
+            Reponses := array{"Burkina Faso", "Sudan del Sur", "Libia", "Kenia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mr }
+            Reponses := array{"Sierra Leona", "Argelia", "Mauritania", "Marruecos"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cv }
+            Reponses := array{"Namibia", "Santo Tome y Principe", "Cabo Verde", "Sudan del Sur"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_st }
+            Reponses := array{"Santo Tome y Principe", "Republica Centroafricana", "Sierra Leona", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ao }
+            Reponses := array{"Guinea", "Lesoto", "Angola", "Senegal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_zm }
+            Reponses := array{"Argelia", "RD del Congo", "Liberia", "Zambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_zw }
+            Reponses := array{"Gabon", "Kenia", "Zimbabue", "Sierra Leona"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mw }
+            Reponses := array{"Etiopia", "Burkina Faso", "Malaui", "Guinea-Bisau"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mz }
+            Reponses := array{"Lesoto", "Mozambique", "Namibia", "Angola"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mg }
+            Reponses := array{"Sudan", "Madagascar", "Mauritania", "Congo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_km }
+            Reponses := array{"Angola", "Togo", "Argelia", "Comoras"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mu }
+            Reponses := array{"Comoras", "Marruecos", "Mauricio", "Guinea Ecuatorial"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sc }
+            Reponses := array{"RD del Congo", "Seychelles", "Burundi", "Yibuti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_za }
+            Reponses := array{"Mozambique", "Seychelles", "Sudafrica", "Lesoto"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_na }
+            Reponses := array{"Namibia", "Chad", "Egipto", "Esuatini"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bw }
+            Reponses := array{"Sudan", "Guinea-Bisau", "Mauritania", "Botsuana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ls }
+            Reponses := array{"Botsuana", "Liberia", "Niger", "Lesoto"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sz }
+            Reponses := array{"Congo", "Mozambique", "Senegal", "Esuatini"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_us }
+            Reponses := array{"Mauricio", "Canada", "Mexico", "Estados Unidos"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ca }
+            Reponses := array{"Estados Unidos", "Canada", "Mexico", "Santo Tome y Principe"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_mx }
+            Reponses := array{"Indonesia", "Estados Unidos", "Canada", "Mexico"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gt }
+            Reponses := array{"Belice", "Republica Dominicana", "Guatemala", "Trinidad y Tobago"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bz }
+            Reponses := array{"Panama", "Bahamas", "Nicaragua", "Belice"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_hn }
+            Reponses := array{"Honduras", "Belice", "Panama", "Barbados"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sv }
+            Reponses := array{"El Salvador", "Costa Rica", "Bahamas", "Santa Lucia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ni }
+            Reponses := array{"San Cristobal y Nieves", "El Salvador", "San Vicente", "Nicaragua"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cr }
+            Reponses := array{"Santa Lucia", "Nicaragua", "Haiti", "Costa Rica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pa }
+            Reponses := array{"Cuba", "Panama", "San Cristobal y Nieves", "Jamaica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bs }
+            Reponses := array{"Bahamas", "Granada", "Antigua y Barbuda", "Guatemala"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cu }
+            Reponses := array{"Cuba", "Barbados", "Trinidad y Tobago", "Haiti"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_jm }
+            Reponses := array{"Belice", "Republica Dominicana", "Granada", "Jamaica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ht }
+            Reponses := array{"Bahamas", "Haiti", "Republica Dominicana", "Costa Rica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_do }
+            Reponses := array{"Republica Dominicana", "Dominica", "Santa Lucia", "El Salvador"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_kn }
+            Reponses := array{"San Cristobal y Nieves", "El Salvador", "Guatemala", "Belice"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ag }
+            Reponses := array{"El Salvador", "Antigua y Barbuda", "Bahamas", "Honduras"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_dm }
+            Reponses := array{"Jamaica", "San Cristobal y Nieves", "Barbados", "Dominica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_lc }
+            Reponses := array{"Cuba", "Santa Lucia", "Belice", "Nicaragua"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_vc }
+            Reponses := array{"Republica Dominicana", "Panama", "Guatemala", "San Vicente"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bb }
+            Reponses := array{"Barbados", "Costa Rica", "Panama", "Dominica"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gd }
+            Reponses := array{"Belice", "Granada", "Nicaragua", "El Salvador"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_tt }
+            Reponses := array{"Granada", "Haiti", "Jamaica", "Trinidad y Tobago"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_co }
+            Reponses := array{"Bolivia", "Venezuela", "Ecuador", "Colombia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ve }
+            Reponses := array{"Venezuela", "Ecuador", "Peru", "Colombia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_gy }
+            Reponses := array{"Uruguay", "Guyana", "Chile", "Paraguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_sr }
+            Reponses := array{"Surinam", "Peru", "Brasil", "Chile"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ec }
+            Reponses := array{"Bolivia", "Surinam", "Uruguay", "Ecuador"}
+            BonneReponse := 3
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_pe }
+            Reponses := array{"Venezuela", "Peru", "Bolivia", "Uruguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_br }
+            Reponses := array{"Brasil", "Ecuador", "Paraguay", "Venezuela"}
+            BonneReponse := 0
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_bo }
+            Reponses := array{"Chile", "Brasil", "Bolivia", "Paraguay"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_py }
+            Reponses := array{"Chile", "Bolivia", "Paraguay", "Colombia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_uy }
+            Reponses := array{"Venezuela", "Uruguay", "Bolivia", "Argentina"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_cl }
+            Reponses := array{"Brasil", "Chile", "Ecuador", "Bolivia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Que pais es este? (mapa pixelado)"
+            Image := option{ carte_pixel.mpx_ar }
+            Reponses := array{"Brasil", "Argentina", "Colombia", "Uruguay"}
+            BonneReponse := 1
 
 MakeCarteQuestionsDE() : []question =
     array:
@@ -3923,6 +6849,981 @@ MakeCarteQuestionsDE() : []question =
             Image := option{ carte.map_ar }
             Reponses := array{"Guyana", "Chile", "Uruguay", "Argentinien"}
             BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_fr }
+            Reponses := array{"Vatikanstadt", "Italien", "Frankreich", "Belgien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_de }
+            Reponses := array{"Belgien", "Liechtenstein", "Italien", "Deutschland"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_it }
+            Reponses := array{"Daenemark", "Italien", "Andorra", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_es }
+            Reponses := array{"Spanien", "Monaco", "Schweden", "Oesterreich"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pt }
+            Reponses := array{"Deutschland", "Andorra", "Schweiz", "Portugal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gb }
+            Reponses := array{"Irland", "Vereinigtes Koenigreich", "Liechtenstein", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ie }
+            Reponses := array{"Oesterreich", "Monaco", "Andorra", "Irland"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_be }
+            Reponses := array{"Vatikanstadt", "Frankreich", "San Marino", "Belgien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_nl }
+            Reponses := array{"Schweiz", "Niederlande", "Portugal", "Schweden"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lu }
+            Reponses := array{"Luxemburg", "Vereinigtes Koenigreich", "Irland", "Monaco"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ch }
+            Reponses := array{"Liechtenstein", "Malta", "Schweiz", "Spanien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_at }
+            Reponses := array{"Andorra", "Liechtenstein", "Oesterreich", "Luxemburg"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mc }
+            Reponses := array{"Vereinigtes Koenigreich", "San Marino", "Liechtenstein", "Monaco"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ad }
+            Reponses := array{"Niederlande", "Andorra", "Norwegen", "Portugal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_li }
+            Reponses := array{"Frankreich", "Daenemark", "Island", "Liechtenstein"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sm }
+            Reponses := array{"Italien", "San Marino", "Schweiz", "Irland"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_va }
+            Reponses := array{"Luxemburg", "Vereinigtes Koenigreich", "Vatikanstadt", "Spanien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mt }
+            Reponses := array{"Spanien", "Deutschland", "Liechtenstein", "Malta"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_is }
+            Reponses := array{"Schweiz", "Andorra", "Island", "Portugal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_no }
+            Reponses := array{"Oesterreich", "Luxemburg", "Malta", "Norwegen"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_se }
+            Reponses := array{"Oesterreich", "Schweiz", "Schweden", "Deutschland"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_dk }
+            Reponses := array{"Portugal", "Daenemark", "San Marino", "Spanien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_fi }
+            Reponses := array{"Liechtenstein", "Deutschland", "Finnland", "Daenemark"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pl }
+            Reponses := array{"Rumaenien", "Polen", "Litauen", "Tschechien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cz }
+            Reponses := array{"Tschechien", "Rumaenien", "Ungarn", "Belarus"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sk }
+            Reponses := array{"Estland", "Zypern", "Montenegro", "Slowakei"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_hu }
+            Reponses := array{"Ukraine", "Ungarn", "Lettland", "Belarus"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_si }
+            Reponses := array{"Tschechien", "Belarus", "Montenegro", "Slowenien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_hr }
+            Reponses := array{"Ukraine", "Kroatien", "Zypern", "Slowakei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ba }
+            Reponses := array{"Serbien", "Griechenland", "Albanien", "Bosnien und Herzegowina"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_rs }
+            Reponses := array{"Serbien", "Griechenland", "Russland", "Polen"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_me }
+            Reponses := array{"Zypern", "Montenegro", "Russland", "Griechenland"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mk }
+            Reponses := array{"Nordmazedonien", "Slowenien", "Bosnien und Herzegowina", "Estland"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_al }
+            Reponses := array{"Tschechien", "Moldau", "Kroatien", "Albanien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gr }
+            Reponses := array{"Griechenland", "Litauen", "Nordmazedonien", "Zypern"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bg }
+            Reponses := array{"Zypern", "Albanien", "Bulgarien", "Kroatien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ro }
+            Reponses := array{"Ukraine", "Russland", "Nordmazedonien", "Rumaenien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_md }
+            Reponses := array{"Lettland", "Zypern", "Ungarn", "Moldau"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ua }
+            Reponses := array{"Lettland", "Slowenien", "Ukraine", "Griechenland"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_by }
+            Reponses := array{"Belarus", "Slowenien", "Moldau", "Zypern"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ru }
+            Reponses := array{"Nordmazedonien", "Lettland", "Russland", "Serbien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ee }
+            Reponses := array{"Estland", "Moldau", "Slowakei", "Ungarn"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lv }
+            Reponses := array{"Slowakei", "Lettland", "Ungarn", "Polen"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lt }
+            Reponses := array{"Ukraine", "Litauen", "Lettland", "Moldau"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cy }
+            Reponses := array{"Polen", "Zypern", "Bulgarien", "Nordmazedonien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tr }
+            Reponses := array{"Saudi-Arabien", "Tuerkei", "Vereinigte Arabische Emirate", "Katar"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_il }
+            Reponses := array{"Kuwait", "Irak", "Katar", "Israel"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ps }
+            Reponses := array{"Palaestina", "Armenien", "Aserbaidschan", "Irak"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lb }
+            Reponses := array{"Armenien", "Libanon", "Georgien", "Bahrain"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sy }
+            Reponses := array{"Iran", "Syrien", "Georgien", "Aserbaidschan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_jo }
+            Reponses := array{"Jemen", "Jordanien", "Iran", "Vereinigte Arabische Emirate"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_iq }
+            Reponses := array{"Israel", "Bahrain", "Irak", "Georgien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ir }
+            Reponses := array{"Katar", "Jemen", "Iran", "Vereinigte Arabische Emirate"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sa }
+            Reponses := array{"Irak", "Saudi-Arabien", "Armenien", "Kuwait"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ye }
+            Reponses := array{"Kuwait", "Jemen", "Syrien", "Irak"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_om }
+            Reponses := array{"Palaestina", "Oman", "Syrien", "Aserbaidschan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ae }
+            Reponses := array{"Georgien", "Vereinigte Arabische Emirate", "Bahrain", "Saudi-Arabien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_qa }
+            Reponses := array{"Katar", "Georgien", "Aserbaidschan", "Saudi-Arabien"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bh }
+            Reponses := array{"Irak", "Libanon", "Bahrain", "Aserbaidschan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kw }
+            Reponses := array{"Palaestina", "Bahrain", "Israel", "Kuwait"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ge }
+            Reponses := array{"Bahrain", "Palaestina", "Syrien", "Georgien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_am }
+            Reponses := array{"Armenien", "Palaestina", "Vereinigte Arabische Emirate", "Kuwait"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_az }
+            Reponses := array{"Irak", "Aserbaidschan", "Palaestina", "Tuerkei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kz }
+            Reponses := array{"Kasachstan", "Mongolei", "Tadschikistan", "Turkmenistan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_uz }
+            Reponses := array{"Mongolei", "Usbekistan", "Kasachstan", "Tadschikistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tm }
+            Reponses := array{"Kirgisistan", "Turkmenistan", "Mongolei", "Usbekistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kg }
+            Reponses := array{"Turkmenistan", "Mongolei", "Kasachstan", "Kirgisistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tj }
+            Reponses := array{"Afghanistan", "Tadschikistan", "Mongolei", "Kirgisistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_af }
+            Reponses := array{"Mongolei", "Afghanistan", "Kirgisistan", "Kasachstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mn }
+            Reponses := array{"Usbekistan", "Mongolei", "Turkmenistan", "Kasachstan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cn }
+            Reponses := array{"Pakistan", "Bangladesch", "China", "Indien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_jp }
+            Reponses := array{"Singapur", "Japan", "Kambodscha", "Nepal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kr }
+            Reponses := array{"Bangladesch", "Suedkorea", "Nordkorea", "Brunei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kp }
+            Reponses := array{"Myanmar", "Suedkorea", "Nordkorea", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_in }
+            Reponses := array{"Indien", "Osttimor", "Bhutan", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pk }
+            Reponses := array{"Sri Lanka", "Nepal", "Kambodscha", "Pakistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bd }
+            Reponses := array{"Bangladesch", "Philippinen", "Malaysia", "Malediven"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lk }
+            Reponses := array{"Laos", "Vietnam", "Suedkorea", "Sri Lanka"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_np }
+            Reponses := array{"Indonesien", "Philippinen", "Indien", "Nepal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bt }
+            Reponses := array{"Bhutan", "Sri Lanka", "Suedkorea", "Brunei"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mv }
+            Reponses := array{"Laos", "Sri Lanka", "Vietnam", "Malediven"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mm }
+            Reponses := array{"Brunei", "Bhutan", "Myanmar", "Pakistan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_th }
+            Reponses := array{"Nordkorea", "Bangladesch", "Thailand", "China"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_la }
+            Reponses := array{"Thailand", "Osttimor", "Laos", "Kambodscha"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kh }
+            Reponses := array{"Kambodscha", "Myanmar", "Thailand", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_vn }
+            Reponses := array{"Indonesien", "Nepal", "Indien", "Vietnam"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_my }
+            Reponses := array{"Vietnam", "Malaysia", "Sri Lanka", "Laos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sg }
+            Reponses := array{"Sri Lanka", "Laos", "Suedkorea", "Singapur"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_id }
+            Reponses := array{"Thailand", "China", "Indonesien", "Brunei"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bn }
+            Reponses := array{"Suedkorea", "Indien", "Brunei", "Philippinen"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ph }
+            Reponses := array{"Thailand", "Nepal", "Philippinen", "Indonesien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tl }
+            Reponses := array{"Singapur", "Bhutan", "Nepal", "Osttimor"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_au }
+            Reponses := array{"Australien", "Samoa", "Tonga", "Neuseeland"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_nz }
+            Reponses := array{"Australien", "Palau", "Neuseeland", "Samoa"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pg }
+            Reponses := array{"Tonga", "Australien", "Papua-Neuguinea", "Kiribati"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_fj }
+            Reponses := array{"Australien", "Fidschi", "Kiribati", "Palau"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sb }
+            Reponses := array{"Vanuatu", "Salomonen", "Mikronesien", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_vu }
+            Reponses := array{"Salomonen", "Papua-Neuguinea", "Vanuatu", "Tuvalu"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ws }
+            Reponses := array{"Tonga", "Kiribati", "Samoa", "Salomonen"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_to }
+            Reponses := array{"Neuseeland", "Marshallinseln", "Nauru", "Tonga"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tv }
+            Reponses := array{"Mikronesien", "Samoa", "Tuvalu", "Marshallinseln"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ki }
+            Reponses := array{"Tuvalu", "Fidschi", "Nauru", "Kiribati"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_nr }
+            Reponses := array{"Tonga", "Fidschi", "Australien", "Nauru"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pw }
+            Reponses := array{"Tuvalu", "Neuseeland", "Palau", "Papua-Neuguinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_fm }
+            Reponses := array{"Samoa", "Mikronesien", "Kiribati", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mh }
+            Reponses := array{"Marshallinseln", "Neuseeland", "Vanuatu", "Tonga"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ma }
+            Reponses := array{"Marokko", "Algerien", "Angola", "Sambia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_dz }
+            Reponses := array{"Algerien", "Liberia", "Senegal", "Aequatorialguinea"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tn }
+            Reponses := array{"Kenia", "Kap Verde", "Tunesien", "Nigeria"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ly }
+            Reponses := array{"Botswana", "Togo", "Mali", "Libyen"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_eg }
+            Reponses := array{"Madagaskar", "Suedafrika", "Aegypten", "Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sd }
+            Reponses := array{"Kenia", "Sudan", "Gambia", "Kap Verde"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ss }
+            Reponses := array{"Kongo", "Suedsudan", "Guinea", "Tansania"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_et }
+            Reponses := array{"Aethiopien", "Liberia", "Namibia", "Zentralafrikanische Republik"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_er }
+            Reponses := array{"Malawi", "Uganda", "Eritrea", "Ruanda"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_dj }
+            Reponses := array{"Seychellen", "Sudan", "Ruanda", "Dschibuti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_so }
+            Reponses := array{"Sao Tome und Principe", "Mauritius", "Kongo", "Somalia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ke }
+            Reponses := array{"Kamerun", "Kongo", "Kenia", "Zentralafrikanische Republik"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ug }
+            Reponses := array{"Uganda", "Benin", "Marokko", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tz }
+            Reponses := array{"Tansania", "Uganda", "Ruanda", "Sudan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_rw }
+            Reponses := array{"Liberia", "Ruanda", "Suedsudan", "Benin"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bi }
+            Reponses := array{"Uganda", "Tansania", "Burundi", "Simbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cd }
+            Reponses := array{"Guinea", "Kenia", "Namibia", "DR Kongo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cg }
+            Reponses := array{"Libyen", "Mosambik", "Madagaskar", "Kongo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ga }
+            Reponses := array{"Seychellen", "Ruanda", "Kap Verde", "Gabun"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gq }
+            Reponses := array{"Aequatorialguinea", "Uganda", "Somalia", "Seychellen"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cm }
+            Reponses := array{"Tschad", "Malawi", "Kamerun", "Mali"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cf }
+            Reponses := array{"Sambia", "Aethiopien", "Sierra Leone", "Zentralafrikanische Republik"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_td }
+            Reponses := array{"Sao Tome und Principe", "Dschibuti", "Tschad", "Simbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ne }
+            Reponses := array{"Niger", "Gambia", "Tansania", "Zentralafrikanische Republik"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ng }
+            Reponses := array{"Tschad", "Eritrea", "Aequatorialguinea", "Nigeria"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bj }
+            Reponses := array{"Suedsudan", "Kongo", "Benin", "Mosambik"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tg }
+            Reponses := array{"Aegypten", "Simbabwe", "Togo", "Burundi"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gh }
+            Reponses := array{"Kongo", "Benin", "Tansania", "Ghana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ci }
+            Reponses := array{"Sao Tome und Principe", "Elfenbeinkueste", "Sudan", "Suedsudan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lr }
+            Reponses := array{"Burkina Faso", "Niger", "Sambia", "Liberia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sl }
+            Reponses := array{"Tschad", "Libyen", "Sierra Leone", "Aethiopien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gn }
+            Reponses := array{"Sierra Leone", "Marokko", "Guinea", "Mauritius"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gw }
+            Reponses := array{"Guinea", "Guinea-Bissau", "Mosambik", "Lesotho"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sn }
+            Reponses := array{"Senegal", "Sierra Leone", "Sambia", "Uganda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gm }
+            Reponses := array{"Sao Tome und Principe", "Dschibuti", "Uganda", "Gambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ml }
+            Reponses := array{"Suedafrika", "Mali", "Simbabwe", "Nigeria"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bf }
+            Reponses := array{"Burkina Faso", "Suedsudan", "Libyen", "Kenia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mr }
+            Reponses := array{"Sierra Leone", "Algerien", "Mauretanien", "Marokko"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cv }
+            Reponses := array{"Namibia", "Sao Tome und Principe", "Kap Verde", "Suedsudan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_st }
+            Reponses := array{"Sao Tome und Principe", "Zentralafrikanische Republik", "Sierra Leone", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ao }
+            Reponses := array{"Guinea", "Lesotho", "Angola", "Senegal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_zm }
+            Reponses := array{"Algerien", "DR Kongo", "Liberia", "Sambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_zw }
+            Reponses := array{"Gabun", "Kenia", "Simbabwe", "Sierra Leone"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mw }
+            Reponses := array{"Aethiopien", "Burkina Faso", "Malawi", "Guinea-Bissau"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mz }
+            Reponses := array{"Lesotho", "Mosambik", "Namibia", "Angola"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mg }
+            Reponses := array{"Sudan", "Madagaskar", "Mauretanien", "Kongo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_km }
+            Reponses := array{"Angola", "Togo", "Algerien", "Komoren"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mu }
+            Reponses := array{"Komoren", "Marokko", "Mauritius", "Aequatorialguinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sc }
+            Reponses := array{"DR Kongo", "Seychellen", "Burundi", "Dschibuti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_za }
+            Reponses := array{"Mosambik", "Seychellen", "Suedafrika", "Lesotho"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_na }
+            Reponses := array{"Namibia", "Tschad", "Aegypten", "Eswatini"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bw }
+            Reponses := array{"Sudan", "Guinea-Bissau", "Mauretanien", "Botswana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ls }
+            Reponses := array{"Botswana", "Liberia", "Niger", "Lesotho"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sz }
+            Reponses := array{"Kongo", "Mosambik", "Senegal", "Eswatini"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_us }
+            Reponses := array{"Mauritius", "Kanada", "Mexiko", "Vereinigte Staaten"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ca }
+            Reponses := array{"Vereinigte Staaten", "Kanada", "Mexiko", "Sao Tome und Principe"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_mx }
+            Reponses := array{"Indonesien", "Vereinigte Staaten", "Kanada", "Mexiko"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gt }
+            Reponses := array{"Belize", "Dominikanische Republik", "Guatemala", "Trinidad und Tobago"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bz }
+            Reponses := array{"Panama", "Bahamas", "Nicaragua", "Belize"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_hn }
+            Reponses := array{"Honduras", "Belize", "Panama", "Barbados"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sv }
+            Reponses := array{"El Salvador", "Costa Rica", "Bahamas", "St. Lucia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ni }
+            Reponses := array{"St. Kitts und Nevis", "El Salvador", "St. Vincent", "Nicaragua"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cr }
+            Reponses := array{"St. Lucia", "Nicaragua", "Haiti", "Costa Rica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pa }
+            Reponses := array{"Kuba", "Panama", "St. Kitts und Nevis", "Jamaika"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bs }
+            Reponses := array{"Bahamas", "Grenada", "Antigua und Barbuda", "Guatemala"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cu }
+            Reponses := array{"Kuba", "Barbados", "Trinidad und Tobago", "Haiti"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_jm }
+            Reponses := array{"Belize", "Dominikanische Republik", "Grenada", "Jamaika"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ht }
+            Reponses := array{"Bahamas", "Haiti", "Dominikanische Republik", "Costa Rica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_do }
+            Reponses := array{"Dominikanische Republik", "Dominica", "St. Lucia", "El Salvador"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_kn }
+            Reponses := array{"St. Kitts und Nevis", "El Salvador", "Guatemala", "Belize"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ag }
+            Reponses := array{"El Salvador", "Antigua und Barbuda", "Bahamas", "Honduras"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_dm }
+            Reponses := array{"Jamaika", "St. Kitts und Nevis", "Barbados", "Dominica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_lc }
+            Reponses := array{"Kuba", "St. Lucia", "Belize", "Nicaragua"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_vc }
+            Reponses := array{"Dominikanische Republik", "Panama", "Guatemala", "St. Vincent"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bb }
+            Reponses := array{"Barbados", "Costa Rica", "Panama", "Dominica"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gd }
+            Reponses := array{"Belize", "Grenada", "Nicaragua", "El Salvador"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_tt }
+            Reponses := array{"Grenada", "Haiti", "Jamaika", "Trinidad und Tobago"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_co }
+            Reponses := array{"Bolivien", "Venezuela", "Ecuador", "Kolumbien"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ve }
+            Reponses := array{"Venezuela", "Ecuador", "Peru", "Kolumbien"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_gy }
+            Reponses := array{"Uruguay", "Guyana", "Chile", "Paraguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_sr }
+            Reponses := array{"Suriname", "Peru", "Brasilien", "Chile"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ec }
+            Reponses := array{"Bolivien", "Suriname", "Uruguay", "Ecuador"}
+            BonneReponse := 3
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_pe }
+            Reponses := array{"Venezuela", "Peru", "Bolivien", "Uruguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_br }
+            Reponses := array{"Brasilien", "Ecuador", "Paraguay", "Venezuela"}
+            BonneReponse := 0
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_bo }
+            Reponses := array{"Chile", "Brasilien", "Bolivien", "Paraguay"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_py }
+            Reponses := array{"Chile", "Bolivien", "Paraguay", "Kolumbien"}
+            BonneReponse := 2
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_uy }
+            Reponses := array{"Venezuela", "Uruguay", "Bolivien", "Argentinien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_cl }
+            Reponses := array{"Brasilien", "Chile", "Ecuador", "Bolivien"}
+            BonneReponse := 1
+        question:
+            Enonce := "Welches Land ist das? (verpixelte Karte)"
+            Image := option{ carte_pixel.mpx_ar }
+            Reponses := array{"Brasilien", "Argentinien", "Kolumbien", "Uruguay"}
+            BonneReponse := 1
 
 MakeCarteQuestionsIT() : []question =
     array:
@@ -4901,3 +8802,978 @@ MakeCarteQuestionsIT() : []question =
             Image := option{ carte.map_ar }
             Reponses := array{"Guyana", "Cile", "Uruguay", "Argentina"}
             BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_fr }
+            Reponses := array{"Citta del Vaticano", "Italia", "Francia", "Belgio"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_de }
+            Reponses := array{"Belgio", "Liechtenstein", "Italia", "Germania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_it }
+            Reponses := array{"Danimarca", "Italia", "Andorra", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_es }
+            Reponses := array{"Spagna", "Monaco", "Svezia", "Austria"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pt }
+            Reponses := array{"Germania", "Andorra", "Svizzera", "Portogallo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gb }
+            Reponses := array{"Irlanda", "Regno Unito", "Liechtenstein", "Monaco"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ie }
+            Reponses := array{"Austria", "Monaco", "Andorra", "Irlanda"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_be }
+            Reponses := array{"Citta del Vaticano", "Francia", "San Marino", "Belgio"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_nl }
+            Reponses := array{"Svizzera", "Paesi Bassi", "Portogallo", "Svezia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lu }
+            Reponses := array{"Lussemburgo", "Regno Unito", "Irlanda", "Monaco"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ch }
+            Reponses := array{"Liechtenstein", "Malta", "Svizzera", "Spagna"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_at }
+            Reponses := array{"Andorra", "Liechtenstein", "Austria", "Lussemburgo"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mc }
+            Reponses := array{"Regno Unito", "San Marino", "Liechtenstein", "Monaco"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ad }
+            Reponses := array{"Paesi Bassi", "Andorra", "Norvegia", "Portogallo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_li }
+            Reponses := array{"Francia", "Danimarca", "Islanda", "Liechtenstein"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sm }
+            Reponses := array{"Italia", "San Marino", "Svizzera", "Irlanda"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_va }
+            Reponses := array{"Lussemburgo", "Regno Unito", "Citta del Vaticano", "Spagna"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mt }
+            Reponses := array{"Spagna", "Germania", "Liechtenstein", "Malta"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_is }
+            Reponses := array{"Svizzera", "Andorra", "Islanda", "Portogallo"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_no }
+            Reponses := array{"Austria", "Lussemburgo", "Malta", "Norvegia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_se }
+            Reponses := array{"Austria", "Svizzera", "Svezia", "Germania"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_dk }
+            Reponses := array{"Portogallo", "Danimarca", "San Marino", "Spagna"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_fi }
+            Reponses := array{"Liechtenstein", "Germania", "Finlandia", "Danimarca"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pl }
+            Reponses := array{"Romania", "Polonia", "Lituania", "Cechia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cz }
+            Reponses := array{"Cechia", "Romania", "Ungheria", "Bielorussia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sk }
+            Reponses := array{"Estonia", "Cipro", "Montenegro", "Slovacchia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_hu }
+            Reponses := array{"Ucraina", "Ungheria", "Lettonia", "Bielorussia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_si }
+            Reponses := array{"Cechia", "Bielorussia", "Montenegro", "Slovenia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_hr }
+            Reponses := array{"Ucraina", "Croazia", "Cipro", "Slovacchia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ba }
+            Reponses := array{"Serbia", "Grecia", "Albania", "Bosnia ed Erzegovina"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_rs }
+            Reponses := array{"Serbia", "Grecia", "Russia", "Polonia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_me }
+            Reponses := array{"Cipro", "Montenegro", "Russia", "Grecia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mk }
+            Reponses := array{"Macedonia del Nord", "Slovenia", "Bosnia ed Erzegovina", "Estonia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_al }
+            Reponses := array{"Cechia", "Moldavia", "Croazia", "Albania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gr }
+            Reponses := array{"Grecia", "Lituania", "Macedonia del Nord", "Cipro"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bg }
+            Reponses := array{"Cipro", "Albania", "Bulgaria", "Croazia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ro }
+            Reponses := array{"Ucraina", "Russia", "Macedonia del Nord", "Romania"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_md }
+            Reponses := array{"Lettonia", "Cipro", "Ungheria", "Moldavia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ua }
+            Reponses := array{"Lettonia", "Slovenia", "Ucraina", "Grecia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_by }
+            Reponses := array{"Bielorussia", "Slovenia", "Moldavia", "Cipro"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ru }
+            Reponses := array{"Macedonia del Nord", "Lettonia", "Russia", "Serbia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ee }
+            Reponses := array{"Estonia", "Moldavia", "Slovacchia", "Ungheria"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lv }
+            Reponses := array{"Slovacchia", "Lettonia", "Ungheria", "Polonia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lt }
+            Reponses := array{"Ucraina", "Lituania", "Lettonia", "Moldavia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cy }
+            Reponses := array{"Polonia", "Cipro", "Bulgaria", "Macedonia del Nord"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tr }
+            Reponses := array{"Arabia Saudita", "Turchia", "Emirati Arabi Uniti", "Qatar"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_il }
+            Reponses := array{"Kuwait", "Iraq", "Qatar", "Israele"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ps }
+            Reponses := array{"Palestina", "Armenia", "Azerbaigian", "Iraq"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lb }
+            Reponses := array{"Armenia", "Libano", "Georgia", "Bahrein"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sy }
+            Reponses := array{"Iran", "Siria", "Georgia", "Azerbaigian"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_jo }
+            Reponses := array{"Yemen", "Giordania", "Iran", "Emirati Arabi Uniti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_iq }
+            Reponses := array{"Israele", "Bahrein", "Iraq", "Georgia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ir }
+            Reponses := array{"Qatar", "Yemen", "Iran", "Emirati Arabi Uniti"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sa }
+            Reponses := array{"Iraq", "Arabia Saudita", "Armenia", "Kuwait"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ye }
+            Reponses := array{"Kuwait", "Yemen", "Siria", "Iraq"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_om }
+            Reponses := array{"Palestina", "Oman", "Siria", "Azerbaigian"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ae }
+            Reponses := array{"Georgia", "Emirati Arabi Uniti", "Bahrein", "Arabia Saudita"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_qa }
+            Reponses := array{"Qatar", "Georgia", "Azerbaigian", "Arabia Saudita"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bh }
+            Reponses := array{"Iraq", "Libano", "Bahrein", "Azerbaigian"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kw }
+            Reponses := array{"Palestina", "Bahrein", "Israele", "Kuwait"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ge }
+            Reponses := array{"Bahrein", "Palestina", "Siria", "Georgia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_am }
+            Reponses := array{"Armenia", "Palestina", "Emirati Arabi Uniti", "Kuwait"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_az }
+            Reponses := array{"Iraq", "Azerbaigian", "Palestina", "Turchia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kz }
+            Reponses := array{"Kazakistan", "Mongolia", "Tagikistan", "Turkmenistan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_uz }
+            Reponses := array{"Mongolia", "Uzbekistan", "Kazakistan", "Tagikistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tm }
+            Reponses := array{"Kirghizistan", "Turkmenistan", "Mongolia", "Uzbekistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kg }
+            Reponses := array{"Turkmenistan", "Mongolia", "Kazakistan", "Kirghizistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tj }
+            Reponses := array{"Afghanistan", "Tagikistan", "Mongolia", "Kirghizistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_af }
+            Reponses := array{"Mongolia", "Afghanistan", "Kirghizistan", "Kazakistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mn }
+            Reponses := array{"Uzbekistan", "Mongolia", "Turkmenistan", "Kazakistan"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cn }
+            Reponses := array{"Pakistan", "Bangladesh", "Cina", "India"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_jp }
+            Reponses := array{"Singapore", "Giappone", "Cambogia", "Nepal"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kr }
+            Reponses := array{"Bangladesh", "Corea del Sud", "Corea del Nord", "Brunei"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kp }
+            Reponses := array{"Birmania", "Corea del Sud", "Corea del Nord", "Cina"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_in }
+            Reponses := array{"India", "Timor Est", "Bhutan", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pk }
+            Reponses := array{"Sri Lanka", "Nepal", "Cambogia", "Pakistan"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bd }
+            Reponses := array{"Bangladesh", "Filippine", "Malesia", "Maldive"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lk }
+            Reponses := array{"Laos", "Vietnam", "Corea del Sud", "Sri Lanka"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_np }
+            Reponses := array{"Indonesia", "Filippine", "India", "Nepal"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bt }
+            Reponses := array{"Bhutan", "Sri Lanka", "Corea del Sud", "Brunei"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mv }
+            Reponses := array{"Laos", "Sri Lanka", "Vietnam", "Maldive"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mm }
+            Reponses := array{"Brunei", "Bhutan", "Birmania", "Pakistan"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_th }
+            Reponses := array{"Corea del Nord", "Bangladesh", "Thailandia", "Cina"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_la }
+            Reponses := array{"Thailandia", "Timor Est", "Laos", "Cambogia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kh }
+            Reponses := array{"Cambogia", "Birmania", "Thailandia", "Sri Lanka"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_vn }
+            Reponses := array{"Indonesia", "Nepal", "India", "Vietnam"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_my }
+            Reponses := array{"Vietnam", "Malesia", "Sri Lanka", "Laos"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sg }
+            Reponses := array{"Sri Lanka", "Laos", "Corea del Sud", "Singapore"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_id }
+            Reponses := array{"Thailandia", "Cina", "Indonesia", "Brunei"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bn }
+            Reponses := array{"Corea del Sud", "India", "Brunei", "Filippine"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ph }
+            Reponses := array{"Thailandia", "Nepal", "Filippine", "Indonesia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tl }
+            Reponses := array{"Singapore", "Bhutan", "Nepal", "Timor Est"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_au }
+            Reponses := array{"Australia", "Samoa", "Tonga", "Nuova Zelanda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_nz }
+            Reponses := array{"Australia", "Palau", "Nuova Zelanda", "Samoa"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pg }
+            Reponses := array{"Tonga", "Australia", "Papua Nuova Guinea", "Kiribati"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_fj }
+            Reponses := array{"Australia", "Figi", "Kiribati", "Palau"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sb }
+            Reponses := array{"Vanuatu", "Isole Salomone", "Micronesia", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_vu }
+            Reponses := array{"Isole Salomone", "Papua Nuova Guinea", "Vanuatu", "Tuvalu"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ws }
+            Reponses := array{"Tonga", "Kiribati", "Samoa", "Isole Salomone"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_to }
+            Reponses := array{"Nuova Zelanda", "Isole Marshall", "Nauru", "Tonga"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tv }
+            Reponses := array{"Micronesia", "Samoa", "Tuvalu", "Isole Marshall"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ki }
+            Reponses := array{"Tuvalu", "Figi", "Nauru", "Kiribati"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_nr }
+            Reponses := array{"Tonga", "Figi", "Australia", "Nauru"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pw }
+            Reponses := array{"Tuvalu", "Nuova Zelanda", "Palau", "Papua Nuova Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_fm }
+            Reponses := array{"Samoa", "Micronesia", "Kiribati", "Tuvalu"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mh }
+            Reponses := array{"Isole Marshall", "Nuova Zelanda", "Vanuatu", "Tonga"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ma }
+            Reponses := array{"Marocco", "Algeria", "Angola", "Zambia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_dz }
+            Reponses := array{"Algeria", "Liberia", "Senegal", "Guinea Equatoriale"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tn }
+            Reponses := array{"Kenya", "Capo Verde", "Tunisia", "Nigeria"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ly }
+            Reponses := array{"Botswana", "Togo", "Mali", "Libia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_eg }
+            Reponses := array{"Madagascar", "Sudafrica", "Egitto", "Guinea"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sd }
+            Reponses := array{"Kenya", "Sudan", "Gambia", "Capo Verde"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ss }
+            Reponses := array{"Congo", "Sudan del Sud", "Guinea", "Tanzania"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_et }
+            Reponses := array{"Etiopia", "Liberia", "Namibia", "Repubblica Centrafricana"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_er }
+            Reponses := array{"Malawi", "Uganda", "Eritrea", "Ruanda"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_dj }
+            Reponses := array{"Seychelles", "Sudan", "Ruanda", "Gibuti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_so }
+            Reponses := array{"Sao Tome e Principe", "Mauritius", "Congo", "Somalia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ke }
+            Reponses := array{"Camerun", "Congo", "Kenya", "Repubblica Centrafricana"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ug }
+            Reponses := array{"Uganda", "Benin", "Marocco", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tz }
+            Reponses := array{"Tanzania", "Uganda", "Ruanda", "Sudan"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_rw }
+            Reponses := array{"Liberia", "Ruanda", "Sudan del Sud", "Benin"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bi }
+            Reponses := array{"Uganda", "Tanzania", "Burundi", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cd }
+            Reponses := array{"Guinea", "Kenya", "Namibia", "RD Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cg }
+            Reponses := array{"Libia", "Mozambico", "Madagascar", "Congo"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ga }
+            Reponses := array{"Seychelles", "Ruanda", "Capo Verde", "Gabon"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gq }
+            Reponses := array{"Guinea Equatoriale", "Uganda", "Somalia", "Seychelles"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cm }
+            Reponses := array{"Ciad", "Malawi", "Camerun", "Mali"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cf }
+            Reponses := array{"Zambia", "Etiopia", "Sierra Leone", "Repubblica Centrafricana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_td }
+            Reponses := array{"Sao Tome e Principe", "Gibuti", "Ciad", "Zimbabwe"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ne }
+            Reponses := array{"Niger", "Gambia", "Tanzania", "Repubblica Centrafricana"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ng }
+            Reponses := array{"Ciad", "Eritrea", "Guinea Equatoriale", "Nigeria"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bj }
+            Reponses := array{"Sudan del Sud", "Congo", "Benin", "Mozambico"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tg }
+            Reponses := array{"Egitto", "Zimbabwe", "Togo", "Burundi"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gh }
+            Reponses := array{"Congo", "Benin", "Tanzania", "Ghana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ci }
+            Reponses := array{"Sao Tome e Principe", "Costa d'Avorio", "Sudan", "Sudan del Sud"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lr }
+            Reponses := array{"Burkina Faso", "Niger", "Zambia", "Liberia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sl }
+            Reponses := array{"Ciad", "Libia", "Sierra Leone", "Etiopia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gn }
+            Reponses := array{"Sierra Leone", "Marocco", "Guinea", "Mauritius"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gw }
+            Reponses := array{"Guinea", "Guinea-Bissau", "Mozambico", "Lesotho"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sn }
+            Reponses := array{"Senegal", "Sierra Leone", "Zambia", "Uganda"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gm }
+            Reponses := array{"Sao Tome e Principe", "Gibuti", "Uganda", "Gambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ml }
+            Reponses := array{"Sudafrica", "Mali", "Zimbabwe", "Nigeria"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bf }
+            Reponses := array{"Burkina Faso", "Sudan del Sud", "Libia", "Kenya"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mr }
+            Reponses := array{"Sierra Leone", "Algeria", "Mauritania", "Marocco"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cv }
+            Reponses := array{"Namibia", "Sao Tome e Principe", "Capo Verde", "Sudan del Sud"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_st }
+            Reponses := array{"Sao Tome e Principe", "Repubblica Centrafricana", "Sierra Leone", "Namibia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ao }
+            Reponses := array{"Guinea", "Lesotho", "Angola", "Senegal"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_zm }
+            Reponses := array{"Algeria", "RD Congo", "Liberia", "Zambia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_zw }
+            Reponses := array{"Gabon", "Kenya", "Zimbabwe", "Sierra Leone"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mw }
+            Reponses := array{"Etiopia", "Burkina Faso", "Malawi", "Guinea-Bissau"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mz }
+            Reponses := array{"Lesotho", "Mozambico", "Namibia", "Angola"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mg }
+            Reponses := array{"Sudan", "Madagascar", "Mauritania", "Congo"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_km }
+            Reponses := array{"Angola", "Togo", "Algeria", "Comore"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mu }
+            Reponses := array{"Comore", "Marocco", "Mauritius", "Guinea Equatoriale"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sc }
+            Reponses := array{"RD Congo", "Seychelles", "Burundi", "Gibuti"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_za }
+            Reponses := array{"Mozambico", "Seychelles", "Sudafrica", "Lesotho"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_na }
+            Reponses := array{"Namibia", "Ciad", "Egitto", "Eswatini"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bw }
+            Reponses := array{"Sudan", "Guinea-Bissau", "Mauritania", "Botswana"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ls }
+            Reponses := array{"Botswana", "Liberia", "Niger", "Lesotho"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sz }
+            Reponses := array{"Congo", "Mozambico", "Senegal", "Eswatini"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_us }
+            Reponses := array{"Mauritius", "Canada", "Messico", "Stati Uniti"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ca }
+            Reponses := array{"Stati Uniti", "Canada", "Messico", "Sao Tome e Principe"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_mx }
+            Reponses := array{"Indonesia", "Stati Uniti", "Canada", "Messico"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gt }
+            Reponses := array{"Belize", "Repubblica Dominicana", "Guatemala", "Trinidad e Tobago"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bz }
+            Reponses := array{"Panama", "Bahamas", "Nicaragua", "Belize"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_hn }
+            Reponses := array{"Honduras", "Belize", "Panama", "Barbados"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sv }
+            Reponses := array{"El Salvador", "Costa Rica", "Bahamas", "Santa Lucia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ni }
+            Reponses := array{"Saint Kitts e Nevis", "El Salvador", "Saint Vincent", "Nicaragua"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cr }
+            Reponses := array{"Santa Lucia", "Nicaragua", "Haiti", "Costa Rica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pa }
+            Reponses := array{"Cuba", "Panama", "Saint Kitts e Nevis", "Giamaica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bs }
+            Reponses := array{"Bahamas", "Grenada", "Antigua e Barbuda", "Guatemala"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cu }
+            Reponses := array{"Cuba", "Barbados", "Trinidad e Tobago", "Haiti"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_jm }
+            Reponses := array{"Belize", "Repubblica Dominicana", "Grenada", "Giamaica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ht }
+            Reponses := array{"Bahamas", "Haiti", "Repubblica Dominicana", "Costa Rica"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_do }
+            Reponses := array{"Repubblica Dominicana", "Dominica", "Santa Lucia", "El Salvador"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_kn }
+            Reponses := array{"Saint Kitts e Nevis", "El Salvador", "Guatemala", "Belize"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ag }
+            Reponses := array{"El Salvador", "Antigua e Barbuda", "Bahamas", "Honduras"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_dm }
+            Reponses := array{"Giamaica", "Saint Kitts e Nevis", "Barbados", "Dominica"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_lc }
+            Reponses := array{"Cuba", "Santa Lucia", "Belize", "Nicaragua"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_vc }
+            Reponses := array{"Repubblica Dominicana", "Panama", "Guatemala", "Saint Vincent"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bb }
+            Reponses := array{"Barbados", "Costa Rica", "Panama", "Dominica"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gd }
+            Reponses := array{"Belize", "Grenada", "Nicaragua", "El Salvador"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_tt }
+            Reponses := array{"Grenada", "Haiti", "Giamaica", "Trinidad e Tobago"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_co }
+            Reponses := array{"Bolivia", "Venezuela", "Ecuador", "Colombia"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ve }
+            Reponses := array{"Venezuela", "Ecuador", "Peru", "Colombia"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_gy }
+            Reponses := array{"Uruguay", "Guyana", "Cile", "Paraguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_sr }
+            Reponses := array{"Suriname", "Peru", "Brasile", "Cile"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ec }
+            Reponses := array{"Bolivia", "Suriname", "Uruguay", "Ecuador"}
+            BonneReponse := 3
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_pe }
+            Reponses := array{"Venezuela", "Peru", "Bolivia", "Uruguay"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_br }
+            Reponses := array{"Brasile", "Ecuador", "Paraguay", "Venezuela"}
+            BonneReponse := 0
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_bo }
+            Reponses := array{"Cile", "Brasile", "Bolivia", "Paraguay"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_py }
+            Reponses := array{"Cile", "Bolivia", "Paraguay", "Colombia"}
+            BonneReponse := 2
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_uy }
+            Reponses := array{"Venezuela", "Uruguay", "Bolivia", "Argentina"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_cl }
+            Reponses := array{"Brasile", "Cile", "Ecuador", "Bolivia"}
+            BonneReponse := 1
+        question:
+            Enonce := "Quale paese e questo? (mappa pixelata)"
+            Image := option{ carte_pixel.mpx_ar }
+            Reponses := array{"Brasile", "Argentina", "Colombia", "Uruguay"}
+            BonneReponse := 1

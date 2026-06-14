@@ -20,6 +20,7 @@ CYAN_D  = (28, 143, 203)   # #1C8FCB
 GREEN1  = (43, 224, 122)   # #2BE07A (haut du bouton Valider)
 GREEN_D = (14, 155, 69)    # --c-deep #0E9B45
 RED     = (255, 61, 87)    # --a / --bad #FF3D57
+ORANGE  = (255, 159, 28)   # #FF9F1C (pastille de flammes .lb-streak)
 MODAL_T = (36, 48, 86)     # #243056
 MODAL_B = (22, 30, 58)     # #161E3A
 WHITE   = (255, 255, 255)
@@ -219,6 +220,7 @@ grad_btn("lobby_sub_ic",    38, 38, 10, CYAN, CYAN_D, ba=0.30)      # .lb-subbtn
 glass("lobby_tag",         100, 18,  6, 1.0,   0.0, bw=0)        # .lb-tag (teinte categorie)
 glass("lobby_pill",         78, 22, 11, 0.08,  0.0, bw=0)        # pastille "N dispo"
 glass("lobby_pill_sm",      54, 22, 11, 0.08,  0.0, bw=0)        # pastille "0/4"
+glass("lobby_streak",      120, 58, 14, 0.18,  0.50, bw=2.0, fill_col=ORANGE, border_col=ORANGE)  # .lb-streak (pastille flammes)
 
 # --- Sous-pages ---
 glass("lobby_back",         46, 46, 13, 0.08,  0.30)            # .lb-back

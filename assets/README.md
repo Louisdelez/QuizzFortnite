@@ -4,10 +4,11 @@
 > Seul ce `README.md` est tracké. Ne committe jamais les images/audio : ils sont lourds,
 > et certains sont sous licence tierce. Pour les recréer : lance le script `tools/` correspondant.
 
-> 🔧 **Refonte en cours (2026-06) :** un seul quizz est actuellement **actif** en jeu — **Drapeaux
-> du monde** (3 difficultés : Facile = drapeaux communs, Moyen = moins communs, Difficile = les 195
-> pixelisés). Les autres dossiers/banques ci-dessous existent mais sont **dormants** (retirés du
-> lobby et de la map UEFN) — ils reviendront un par un, retravaillés.
+> 🔧 **Refonte en cours (2026-06) :** quizz **actifs** en jeu — **Drapeaux du monde**, **Pays sur
+> carte**, **Capitales du monde** (195 pays ; Capitales = texte seul, sans image), **Drapeaux des
+> départements** et **Départements sur carte** (101 dép. FR + DOM). 3 difficultés chacun (Difficile =
+> image **pixelisée**, sauf Capitales graduées par notoriété). Les autres dossiers/banques ci-dessous
+> existent mais sont **dormants** (retirés du lobby et de la map UEFN) — ils reviendront un par un.
 
 ## À quoi sert ce dossier
 
@@ -26,7 +27,12 @@ Voir le pipeline complet dans [`../STRUCTURE.md`](../STRUCTURE.md).
 | `animaux/`        | Animaux (Culture G.)       | `tools/banks/build_animaux.py`    | `verse/animaux_bank.verse` |
 | `athletes/`       | Athlètes (Sport)           | `tools/banks/build_athletes.py`   | `verse/athletes_bank.verse` |
 | `botanique/`      | Botanique / Nature         | `tools/banks/build_botanique.py`  | `verse/botanique_bank.verse` |
-| `carte/`          | Silhouettes de pays (Géo)  | `tools/banks/build_carte.py`      | `verse/carte_bank.verse` |
+| `carte/`          | Silhouettes de pays (Géo)  | `tools/banks/build_carte.py`      | banque **Pays sur carte** (Facile/Moyen), `verse/carte_bank.verse` |
+| `carte_pixel/`    | Silhouettes pixelisées     | `tools/banks/build_carte.py`      | banque **Pays sur carte** (palier Difficile) |
+| `dep_flags/`      | Drapeaux/blasons des dép. FR | `tools/banks/build_depts_flags.py` | banque **Drapeaux des départements** (Facile/Moyen) — drapeau sinon blason (Wikimedia) |
+| `dep_flags_pixel/`| Idem pixelisés             | `tools/banks/build_depts_flags.py`| banque **Drapeaux des départements** (palier Difficile) |
+| `dep_carte/`      | Silhouettes des dép. FR    | `tools/banks/build_depts_carte.py`| banque **Départements sur carte** (Facile/Moyen) |
+| `dep_carte_pixel/`| Idem pixelisées            | `tools/banks/build_depts_carte.py`| banque **Départements sur carte** (palier Difficile) |
 | `celebrites/`     | Célébrités                 | `tools/banks/build_celebrites.py` | `verse/celebrites_bank.verse` |
 | `clubs/`          | Logos de clubs (Sport)     | `tools/banks/build_clubs.py`      | `verse/clubs_bank.verse` |
 | `dragonball/`     | Dragon Ball (Animés)       | `tools/banks/build_dragonball.py` | `verse/dragonball_bank.verse` |

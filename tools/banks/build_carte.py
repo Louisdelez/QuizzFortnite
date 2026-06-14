@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
 # ============================================================
-#  build_carte.py — Quizz "Pays sur carte" (195 silhouettes)
+#  build_carte.py — Quizz "Pays sur carte" (195 silhouettes, 3 paliers)
+#
+#  UN SEUL quizz, 3 difficultes (le moteur filtre par palier) :
+#    0 = FACILE    : ~65 pays communs/connus    -> silhouette NORMALE
+#    1 = MOYEN     : ~130 pays moins connus       -> silhouette NORMALE
+#    2 = DIFFICILE : les 195 pays                  -> silhouette PIXELISEE
+#
+#  Banque = 390 questions :
+#    [195 silhouettes normales] (palier 0/1 selon EASY de country_core)
+#  + [195 silhouettes pixelisees] (palier 2, tous les pays)
+#  CarteDiff est aligne sur cet ordre.
+#
+#  Pipeline :
 #  1. Telecharge Natural Earth 10m admin_0_countries (GeoJSON, domaine public).
 #  2. Rend la silhouette de chaque pays (blanc sur fond sombre, 246x164) :
-#     - exclut les territoires lointains (outre-mer : Guyane pour la France,
-#       Alaska/Hawai pour les USA...) -> silhouette "principale" reconnaissable
-#     - gere l'antimeridien (Russie, Fidji) et les trous (Lesotho)
-#     Sortie : carte/map_<iso>.png
-#  3. Genere verse/carte_bank.verse : CarteDiff (paliers des drapeaux) +
-#     MakeCarteQuestions()/EN/ES/DE/IT (noms pays ×5 langues, memes tirages).
+#     exclut les territoires lointains, gere l'antimeridien et les trous.
+#       -> assets/carte/map_<iso>.png
+#  3. Pixelise chaque silhouette (bloc PIX px) -> assets/carte_pixel/mpx_<iso>.png
+#  4. Genere verse/carte_bank.verse : CarteDiff(390) + MakeCarteQuestions()/EN/ES/DE/IT
+#     (noms pays x5 langues, memes tirages ; distracteurs = meme region).
+#
+#  --bank-only : ne re-rend ni ne re-pixelise les images.
 # ============================================================
 import json, math, os, random, sys, urllib.request
 from PIL import Image, ImageDraw
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from country_core import C, NAME, REGION, TIER
+from country_core import C, NAME, REGION, EASY
 from country_en import EN
 from country_es import ES
 from country_de import DE
@@ -23,16 +36,22 @@ BANK_ONLY = "--bank-only" in sys.argv
 
 ROOT = "D:/QuizzFortnite"
 OUT = f"{ROOT}/assets/carte"
+OUT_PX = f"{ROOT}/assets/carte_pixel"
 os.makedirs(OUT, exist_ok=True)
+os.makedirs(OUT_PX, exist_ok=True)
 
 CANVAS_W, CANVAS_H = 246, 164
 INNER_W, INNER_H = 216, 134     # marges
 BG = (26, 26, 42, 255)
 FILL = (232, 236, 248, 255)
 SS = 4                           # supersampling
+PIX = 9                          # taille du bloc de pixelisation (palier Difficile)
 
 GEO = f"{ROOT}/tools/_ne10m_countries.geojson"
 GEO_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson"
+
+def tier_normal(iso):
+    return 0 if iso in EASY else 1
 
 def ring_area(r):
     a = 0.0
@@ -45,7 +64,6 @@ def centroid(r):
     return sum(xs)/len(xs), sum(ys)/len(ys)
 
 def render_country(iso, polys):
-    # polys : liste de polygones [ [outer, hole1, ...], ... ]
     # 1) antimeridien : si l'etendue > 180, decale les lons negatives
     lons = [p[0] for poly in polys for ring in poly for p in ring]
     if max(lons) - min(lons) > 180:
@@ -84,43 +102,61 @@ def render_country(iso, polys):
     img = img.resize((CANVAS_W, CANVAS_H), Image.LANCZOS)
     img.convert("RGB").save(f"{OUT}/map_{iso}.png", optimize=True)
 
+def pixelize(iso):
+    src = f"{OUT}/map_{iso}.png"
+    img = Image.open(src).convert("RGB")
+    small = img.resize((max(1, CANVAS_W // PIX), max(1, CANVAS_H // PIX)), Image.BILINEAR)
+    pix = small.resize((CANVAS_W, CANVAS_H), Image.NEAREST)
+    pix.save(f"{OUT_PX}/mpx_{iso}.png", optimize=True)
+
 if not BANK_ONLY:
-    if not os.path.exists(GEO):
-        print("Telechargement Natural Earth 10m (~25 Mo)...")
-        urllib.request.urlretrieve(GEO_URL, GEO)
-    print("Lecture GeoJSON...")
-    gj = json.load(open(GEO, encoding="utf-8"))
-    shapes = {}
-    for f in gj["features"]:
-        pr = f["properties"]
-        iso = (pr.get("ISO_A2_EH") or pr.get("ISO_A2") or "").lower()
-        if iso == "-99":
-            iso = (pr.get("ISO_A2") or "").lower()
-        if iso not in NAME: continue
-        g = f["geometry"]
-        if g["type"] == "Polygon":
-            polys = [g["coordinates"]]
-        elif g["type"] == "MultiPolygon":
-            polys = g["coordinates"]
-        else:
-            continue
-        shapes.setdefault(iso, []).extend(polys)
-    missing = [iso for iso, _, _, _ in C if iso not in shapes]
+    missing = [iso for iso, *_ in C if not os.path.exists(f"{OUT}/map_{iso}.png")]
     if missing:
-        print("MANQUANTS dans Natural Earth:", missing); sys.exit(1)
-    print("Rendu des 195 silhouettes...")
-    for i, (iso, _, _, _) in enumerate(C, 1):
-        render_country(iso, shapes[iso])
-        if i % 40 == 0: print(f"  {i}/195...")
-    print(f"OK : 195 silhouettes dans {OUT}")
+        if not os.path.exists(GEO):
+            print("Telechargement Natural Earth 10m (~25 Mo)...")
+            urllib.request.urlretrieve(GEO_URL, GEO)
+        print("Lecture GeoJSON...")
+        gj = json.load(open(GEO, encoding="utf-8"))
+        shapes = {}
+        for f in gj["features"]:
+            pr = f["properties"]
+            iso = (pr.get("ISO_A2_EH") or pr.get("ISO_A2") or "").lower()
+            if iso == "-99":
+                iso = (pr.get("ISO_A2") or "").lower()
+            if iso not in NAME: continue
+            g = f["geometry"]
+            if g["type"] == "Polygon":
+                polys = [g["coordinates"]]
+            elif g["type"] == "MultiPolygon":
+                polys = g["coordinates"]
+            else:
+                continue
+            shapes.setdefault(iso, []).extend(polys)
+        absent = [iso for iso in missing if iso not in shapes]
+        if absent:
+            print("MANQUANTS dans Natural Earth:", absent); sys.exit(1)
+        print(f"Rendu de {len(missing)} silhouettes manquantes...")
+        for iso in missing:
+            render_country(iso, shapes[iso])
+    else:
+        print("(silhouettes normales deja presentes -> pas de rendu)")
+    print("Pixelisation des 195 silhouettes...")
+    for iso, *_ in C:
+        pixelize(iso)
+    print(f"OK : silhouettes normales dans {OUT}, pixelisees dans {OUT_PX}")
+else:
+    print("(--bank-only : images non re-generees)")
 
 # ---------------- banque Verse ----------------
-ENONCE = {"FR": "Quel est ce pays ?", "EN": "Which country is this?",
-          "ES": "Que pais es este?", "DE": "Welches Land ist das?",
-          "IT": "Quale paese e questo?"}
+ENONCE_N = {"FR": "Quel est ce pays ?", "EN": "Which country is this?",
+            "ES": "Que pais es este?", "DE": "Welches Land ist das?",
+            "IT": "Quale paese e questo?"}
+ENONCE_P = {"FR": "Quel est ce pays ? (carte pixelisee)", "EN": "Which country is this? (pixelated map)",
+            "ES": "Que pais es este? (mapa pixelado)", "DE": "Welches Land ist das? (verpixelte Karte)",
+            "IT": "Quale paese e questo? (mappa pixelata)"}
 
-def distractors(iso):
-    rng = random.Random("carte-" + iso)
+def distractors(iso, seed):
+    rng = random.Random(seed + iso)
     pool = [x for x, _, r, _ in C if r == REGION[iso] and x != iso]
     rng.shuffle(pool)
     picks = pool[:3]
@@ -131,26 +167,38 @@ def distractors(iso):
     correct = rng.randrange(4)
     return picks, correct
 
+def q_block(iso, name_of, enonce, img_ref, seed):
+    picks, correct = distractors(iso, seed)
+    answers = [iso] + picks
+    answers[0], answers[correct] = answers[correct], answers[0]
+    return [
+        "        question:",
+        '            Enonce := "%s"' % enonce,
+        "            Image := option{ %s }" % img_ref,
+        "            Reponses := array{%s}" % ", ".join('"%s"' % name_of(a) for a in answers),
+        "            BonneReponse := %d" % answers.index(iso),
+    ]
+
 def bank(tag, name_of):
+    t = tag if tag else "FR"
     out = ["MakeCarteQuestions%s() : []question =" % tag, "    array:"]
-    for iso, _, _, _ in C:
-        picks, correct = distractors(iso)
-        answers = [iso] + picks
-        answers[0], answers[correct] = answers[correct], answers[0]
-        out.append("        question:")
-        out.append('            Enonce := "%s"' % ENONCE[tag if tag else "FR"])
-        out.append("            Image := option{ carte.map_%s }" % iso)
-        out.append("            Reponses := array{%s}" % ", ".join('"%s"' % name_of(a) for a in answers))
-        out.append("            BonneReponse := %d" % answers.index(iso))
+    # 195 silhouettes NORMALES (palier 0/1)
+    for iso, *_ in C:
+        out += q_block(iso, name_of, ENONCE_N[t], "carte.map_%s" % iso, "carte-")
+    # 195 silhouettes PIXELISEES (palier 2)
+    for iso, *_ in C:
+        out += q_block(iso, name_of, ENONCE_P[t], "carte_pixel.mpx_%s" % iso, "carte-px-")
     return "\n".join(out)
 
-diffs = ", ".join(str(t) for *_, t in C)
+# CarteDiff : [tier normal x195] + [2 x195]
+diffs = ", ".join([str(tier_normal(iso)) for iso, *_ in C] + ["2"] * len(C))
 header = """using { /Verse.org/Assets }
 
 # ============================================================
-#  carte_bank.verse — Banque du quizz PAYS SUR CARTE (195).
-#  GENERE par tools/build_carte.py — NE PAS EDITER A LA MAIN.
+#  carte_bank.verse — Banque du quizz PAYS SUR CARTE (390 = 195 normales + 195 pixelisees).
+#  GENERE par tools/banks/build_carte.py — NE PAS EDITER A LA MAIN.
 #  Silhouettes Natural Earth (domaine public). Tirages identiques x5 langues.
+#  3 paliers : Facile (communs) / Moyen / Difficile (pixelise).
 # ============================================================
 
 CarteDiff : []int = array{%s}
@@ -167,6 +215,7 @@ blocks.append(bank("IT", lambda i: IT[i]))
 dst = f"{ROOT}/verse/carte_bank.verse"
 with open(dst, "w", encoding="utf-8", newline="\n") as f:
     f.write("\n\n".join(blocks) + "\n")
-print(f"OK : {dst} genere ({sum(1 for _ in open(dst, encoding='utf-8'))} lignes)")
-print("Paliers : %d/%d/%d" % (diffs.split(', ').count('0') if False else sum(1 for *_, t in C if t==0),
-      sum(1 for *_, t in C if t==1), sum(1 for *_, t in C if t==2)))
+ts = [tier_normal(iso) for iso, *_ in C]
+print(f"OK : {dst} genere")
+print("Paliers : Facile=%d (normal) / Moyen=%d (normal) / Difficile=%d (pixelise)"
+      % (ts.count(0), ts.count(1), len(C)))

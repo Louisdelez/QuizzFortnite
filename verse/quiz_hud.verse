@@ -37,6 +37,7 @@ hud_textures := struct:
 leaderboard_entry := struct:
     Agent : agent
     Score : int = 0
+    Good : int = 0   # bonnes reponses associees a ce score (affichage TOP 10)
 
 quiz_hud := class:
     var MaybeCanvas : ?canvas = false

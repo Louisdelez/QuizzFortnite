@@ -24,10 +24,12 @@
 - **Scoring riche** — points par question + **combo** (série) + **bonus de rapidité**.
 - **Outils** — générateurs Python : banques de questions multilingues, textures d'UI, géométrie 3D de la map.
 
-> 🚧 **État du contenu (refonte en cours, 2026-06) :** un seul quizz est actuellement **actif** —
-> **Drapeaux du monde** (195 pays, 3 difficultés : Facile = drapeaux communs · Moyen = moins communs ·
-> Difficile = **tous, pixelisés** ; 25 questions tirées au hasard par partie). Les autres quizz
-> existent dans le dépôt mais sont **dormants** ; ils reviennent un par un, retravaillés « propre ».
+> 🚧 **État du contenu (refonte en cours, 2026-06) :** 6 quizz **actifs**, chacun à 3 difficultés
+> (25 questions au hasard par partie) : **Drapeaux du monde**, **Pays sur carte**, **Capitales du monde**
+> (195 pays) ; **Drapeaux des départements** & **Départements sur carte** (101 dép. FR, métropole + DOM) ;
+> **Culture Générale** (900 questions texte, universelles). Pour les quizz à image, le palier Difficile
+> montre l'image **pixelisée** ; les quizz texte graduent par difficulté. Tout est jouable en **5 langues**
+> (FR/EN/ES/DE/IT). Les autres quizz du dépôt sont **dormants**.
 
 ## 📁 Structure du dépôt
 
