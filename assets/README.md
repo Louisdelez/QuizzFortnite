@@ -4,6 +4,11 @@
 > Seul ce `README.md` est tracké. Ne committe jamais les images/audio : ils sont lourds,
 > et certains sont sous licence tierce. Pour les recréer : lance le script `tools/` correspondant.
 
+> 🔧 **Refonte en cours (2026-06) :** un seul quizz est actuellement **actif** en jeu — **Drapeaux
+> du monde** (3 difficultés : Facile = drapeaux communs, Moyen = moins communs, Difficile = les 195
+> pixelisés). Les autres dossiers/banques ci-dessous existent mais sont **dormants** (retirés du
+> lobby et de la map UEFN) — ils reviendront un par un, retravaillés.
+
 ## À quoi sert ce dossier
 
 `assets/<quiz>/` est un dossier de **staging** : un script Python y écrit les PNG/audio,
@@ -26,8 +31,8 @@ Voir le pipeline complet dans [`../STRUCTURE.md`](../STRUCTURE.md).
 | `clubs/`          | Logos de clubs (Sport)     | `tools/banks/build_clubs.py`      | `verse/clubs_bank.verse` |
 | `dragonball/`     | Dragon Ball (Animés)       | `tools/banks/build_dragonball.py` | `verse/dragonball_bank.verse` |
 | `espace/`         | Espace / Astronomie        | `tools/banks/build_espace.py`     | `verse/espace_bank.verse` |
-| `flags/`          | Vrais drapeaux (source)    | `tools/banks/build_flags.py`      | *(source de `flags_pixel/`)* |
-| `flags_pixel/`    | Drapeaux pixelisés (Géo)   | `tools/banks/build_flags_pixel.py`| `verse/flags_pixel_bank.verse` |
+| `flags/`          | Drapeaux normaux (Géo)     | `tools/banks/build_flags.py`      | banque **Drapeaux** (paliers Facile/Moyen) dans `quiz_manager.verse` |
+| `flags_pixel/`    | Drapeaux pixelisés (Géo)   | `tools/banks/build_flags.py`      | banque **Drapeaux** (palier Difficile) — `build_flags.py` pixelise les images |
 | `jeuxvideo/`      | Jeux vidéo                 | `tools/banks/build_jeuxvideo.py`  | `verse/jeuxvideo_bank.verse` |
 | `logos/`          | Logos de marques           | `tools/banks/build_logos.py`      | `verse/logos_bank.verse` |
 | `monuments/`      | Monuments                  | `tools/banks/build_monuments.py`  | `verse/monuments_bank.verse` |

@@ -7,10 +7,32 @@ et le projet suit le [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté
+- **Lobby « Sélection du Quizz »** complet (au pixel d'une maquette) : choix du quizz, de la
+  **difficulté** (Facile / Moyen / Difficile) et de la **langue**, catégories, file d'attente/playlist.
+- **Localisation 5 langues** FR / EN / ES / DE / IT : UI **et** banques (questions + réponses)
+  traduites ; chaque joueur joue dans sa langue, le groupe partage le même tirage.
+- **Rangs persistants** : 18 paliers sauvegardés entre sessions (`weak_map`), emblèmes dédiés.
+- **Écran de résultats** : podium, classement partagé, stats, gains de rang.
+- **~35 banques de questions** générées par Python (Drapeaux, Capitales, Pokémon, Naruto, One Piece,
+  Dragon Ball, Culture Générale ×N, Sport, etc.) — multilingues.
+- **Pipeline d'outils** rangé : `tools/lib` (données partagées), `tools/banks` (générateurs de banques),
+  `tools/textures` (textures UI), `tools/map` (géométrie). Réorg du dépôt (`assets/`, `docs/`, `STRUCTURE.md`).
+
+### Modifié — refonte Quizz Drapeaux (2026-06)
+- **Drapeaux du monde** refondu en **un seul quizz à 3 difficultés** (le moteur filtre par palier) :
+  Facile = ~65 drapeaux communs (image normale), Moyen = ~130 moins communs (image normale),
+  Difficile = **les 195 drapeaux pixelisés**. L'ancien quizz séparé « Drapeaux pixelisés » est **fusionné**.
+  Banque de 390 questions × 5 langues ; 25 questions tirées au hasard par partie.
+- **Lobby réduit** au seul quizz Drapeaux + catégorie « Culture Generale » (les autres quizz restent
+  dans le dépôt mais **dormants**, retirés de la map UEFN ; ils reviendront un par un, retravaillés).
+- **Réorganisation des assets** : dossiers d'images alignés et **à plat** dans le Content UEFN
+  (contrainte de module Verse) ; dossiers de textures renommés (`jeu`, `lobby`, `rangs`, `resultats`).
+
 ### À venir
+- Réactivation progressive des autres quizz (un par un, « propre »).
 - Lives / vies par joueur (mode élimination optionnel).
 - Sons et effets de victoire.
-- Ordre des réponses mélangé par question (anti par-cœur renforcé).
 
 ## [0.2.0] - 2026-06-08
 

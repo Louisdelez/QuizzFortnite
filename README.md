@@ -14,15 +14,25 @@
   de la map (`SpawnProp`), détection par position, UI, score… tout est en code.
 - **Génération procédurale** — la map s'allonge automatiquement selon la taille de la banque de questions.
 - **Architecture pro modulaire** — un fichier `.verse` par responsabilité.
+- **Lobby de sélection** — choix du **quizz**, de la **difficulté** (Facile / Moyen / Difficile) et de
+  la **langue**, au pixel près d'une maquette dédiée.
+- **5 langues** — FR / EN / ES / DE / IT : UI **et** questions/réponses traduites, chaque joueur dans sa langue.
 - **Multijoueur** — état indépendant par joueur (score, progression, série).
-- **UI Verse** — question, 4 réponses colorées, score, **chronomètre**, **feedback Correct/Faux/Timeout**, **classement final partagé**.
+- **UI Verse** — question, 4 réponses colorées, score, **chronomètre**, **feedback Correct/Faux/Timeout**.
+- **Rangs persistants** — 18 paliers sauvegardés entre les sessions, emblèmes dédiés.
+- **Écran de résultats** — podium, classement partagé, stats, gains de rang.
 - **Scoring riche** — points par question + **combo** (série) + **bonus de rapidité**.
-- **Outils** — un générateur Python qui prévisualise la map et produit la géométrie 3D importable.
+- **Outils** — générateurs Python : banques de questions multilingues, textures d'UI, géométrie 3D de la map.
+
+> 🚧 **État du contenu (refonte en cours, 2026-06) :** un seul quizz est actuellement **actif** —
+> **Drapeaux du monde** (195 pays, 3 difficultés : Facile = drapeaux communs · Moyen = moins communs ·
+> Difficile = **tous, pixelisés** ; 25 questions tirées au hasard par partie). Les autres quizz
+> existent dans le dépôt mais sont **dormants** ; ils reviennent un par un, retravaillés « propre ».
 
 ## 📁 Structure du dépôt
 
 ```
-verse/      Le code Verse du quiz (cœur) — 7 modules moteur + ~35 banques de questions   [tracké]
+verse/      Le code Verse du quiz (cœur) — 7 modules moteur + ~35 banques (1 active, le reste dormant)  [tracké]
 tools/      Générateurs Python — lib/ banks/ textures/ map/                              [tracké]
 assets/     Images / audio / 3D GÉNÉRÉS (staging d'import UEFN)                           [gitignoré]
 docs/       Documentation hiérarchisée (00 → 08) + design/                               [tracké]

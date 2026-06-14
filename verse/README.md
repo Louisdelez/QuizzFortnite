@@ -16,6 +16,12 @@ Tu poses **un seul device** (`quiz_manager`) + 2 assets de props, et tout le res
 
 ## 🗃️ Les banques de questions (`*_bank.verse`)
 
+> 🔧 **Refonte en cours (2026-06) :** un seul quizz est **actif** en jeu — **Drapeaux du monde**
+> (banque intégrée dans `quiz_manager.verse`, 3 difficultés : Facile communs / Moyen moins communs /
+> Difficile = les 195 pixelisés). Les ~34 autres banques ci-dessous restent dans le dépôt mais sont
+> **dormantes** (retirées du lobby et de la map). `flags_pixel_bank.verse` est **déprécié** (fusionné
+> dans le quizz Drapeaux). Elles reviendront une par une, retravaillées.
+
 En plus des modules moteur ci-dessus, ~35 fichiers `*_bank.verse` contiennent les questions,
 **générés par les scripts [`../tools/banks/`](../tools/banks/)** :
 

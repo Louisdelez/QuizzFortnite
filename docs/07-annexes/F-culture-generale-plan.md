@@ -1,5 +1,10 @@
 # Culture Générale — Recherche, analyse et plan d'implémentation
 
+> ⚠️ **Document historique (2026-06-12).** Depuis la **refonte 2026-06-14**, le jeu repart « propre »
+> un quizz à la fois : seul **Drapeaux du monde** est actif en jeu, les autres quizz listés ici sont
+> **dormants** (présents dans `verse/`, hors lobby/map). Les ✅ ci-dessous signifient « banque générée »,
+> pas « actif en jeu ». Voir [E-reste-a-faire](./E-reste-a-faire.md).
+
 > Recherche du 2026-06-12. Objectif : couvrir TOUS les domaines « Culture Générale »
 > en quizz GIGA complets, 3 difficultés, 5 langues (FR/EN/ES/DE/IT).
 > Décision utilisateur : TOUT inclure, même les domaines sous licence

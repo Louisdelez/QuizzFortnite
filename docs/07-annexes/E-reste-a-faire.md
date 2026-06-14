@@ -1,7 +1,15 @@
-# Reste à faire — plan complet (2026-06-12) — ✅ TERMINÉ (sauf émojis)
+# Reste à faire — plan complet (2026-06-12)
 
-> RÈGLE : chaque quizz ≥ 80 questions, 5 langues, 3 difficultés (chaque palier ≥ 25).
-> VÉRIFIÉ par audit : 35 quizz, AUCUN palier <25, AUCUN quizz <80.
+> ⚠️ **MISE À JOUR — Refonte 2026-06-14.** Décision : **repartir « propre », un quizz à la fois.**
+> Un seul quizz est désormais **actif** en jeu : **Drapeaux du monde** (refondu en 3 difficultés —
+> Facile = drapeaux communs, Moyen = moins communs, Difficile = **tous, pixelisés** ; l'ancien quizz
+> séparé « Drapeaux pixelisés » a été **fusionné** dedans). Tous les autres quizz listés ci-dessous
+> existent dans `verse/` mais sont **DORMANTS** (retirés du lobby et de la map UEFN). Ce document
+> reste comme **historique** de la phase « tout générer » ; le plan courant est : réactiver et
+> retravailler les quizz un par un. Catégorie unique en lobby : « Culture Generale ».
+
+> RÈGLE (historique) : chaque quizz ≥ 80 questions, 5 langues, 3 difficultés (chaque palier ≥ 25).
+> Audit de l'époque : 35 quizz, AUCUN palier <25, AUCUN quizz <80.
 
 ## FAIT cette session (Gi 28→34)
 | Quizz | Gi | Cat | Q | Paliers | Images |
@@ -12,7 +20,7 @@
 | Sport | 31 | Culture G | 83 | 28/29/26 | — texte |
 | Séries TV | 32 | Culture G | 88 | 25/33/30 | series/ |
 | Jeux vidéo | 33 | Jeux Video | 99 | 33/35/31 | jeuxvideo/ |
-| Drapeaux pixelisés | 34 | Culture G | 195 | 41/63/91 | flags_pixel/ |
+| ~~Drapeaux pixelisés~~ | ~~34~~ | — | — | **FUSIONNÉ** dans « Drapeaux du monde » (palier Difficile) | flags_pixel/ |
 
 Étoffés à 80+ : Mythologie 90, Espace 88, Botanique 88, Drapeaux régionaux 88.
 Pipeline : filter_with_images() retire auto les pages Wikipédia sans image (séries/jeux).

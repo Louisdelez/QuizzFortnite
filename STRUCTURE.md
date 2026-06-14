@@ -58,7 +58,8 @@ QuizzFortnite/
 | **`verse/` doit rester À PLAT** (pas de sous-dossiers) | En Verse, le dossier fait partie du **chemin de module**. Sous-dossiers ⇒ la compilation casse. |
 | **`maps/quizz/Content/` = la vraie cible UEFN** | Les `.verse` y sont **à plat** + les dossiers d'assets `Content/<quiz>/`. C'est de là qu'UEFN compile, **pas** depuis `verse/`. |
 | **`verse/` est un miroir à synchroniser** | Source de vérité tracké = `verse/`. À recopier vers `maps/quizz/Content/` après chaque édition (manuel). |
-| **Les noms de dossiers `assets/<quiz>/` sont couplés à l'import UEFN** | Renommer un dossier oblige à réimporter dans UEFN. |
+| **Les dossiers d'assets aussi doivent rester À PLAT dans `Content/`** (pas de dossier parent type `ressources/`) | Un dossier d'assets imbriqué devient un **module Verse `internal`** → inaccessible depuis `quiz_manager` (erreur de compil **3593**). Donc `flags/`, `icons/`, `jeu/`, `lobby/`, … sont enfants directs de `Content/`. |
+| **Les noms de dossiers `assets/<quiz>/` sont couplés à l'import UEFN** | Renommer un dossier oblige à réimporter dans UEFN. Les noms du dépôt (`assets/<nom>/`) sont alignés sur ceux du Content (`<nom>/`). |
 | **`assets/` est gitignoré et régénérable** | Ne jamais committer le contenu ; seul `assets/README.md` est tracké. |
 
 ---

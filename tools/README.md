@@ -27,7 +27,8 @@ Mapping complet quiz → dossier d'assets → banque : voir [`../assets/README.m
 
 ```bash
 python banks/build_pokemon.py      # ex. : images Pokémon -> assets/pokemon/ + verse/pokemon_bank.verse
-python banks/build_flags_pixel.py  # drapeaux pixelisés (source : assets/flags/)
+python banks/build_flags.py        # Drapeaux : 195 drapeaux + versions pixelisées, banque 3 paliers x5 langues
+python banks/build_flags.py --bank-only   # régénère seulement la banque (images déjà là)
 ```
 `inject_banks.py` assemble les banques multilingues intermédiaires (ex. capitales) dans les `.verse`.
 

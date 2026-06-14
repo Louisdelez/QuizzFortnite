@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 # ============================================================
+#  ⚠️ DEPRECIE (refonte 2026-06-14) — NE PLUS UTILISER.
+#  Le quizz "Drapeaux pixelises" a ete FUSIONNE dans le quizz "Drapeaux du
+#  monde" (palier Difficile = 195 drapeaux pixelises). La pixelisation des
+#  images est desormais faite par tools/banks/build_flags.py. Ce script reste
+#  pour historique mais sa banque flags_pixel_bank.verse n'est plus utilisee.
+# ============================================================
 #  build_flags_pixel.py — Quizz "Drapeaux pixelises" (variante hardcore)
 #  Reutilise les 195 drapeaux deja telecharges (flags/flag_<iso>.png),
 #  les pixelise fortement -> flags_pixel/fpx_<iso>.png (246x164).
